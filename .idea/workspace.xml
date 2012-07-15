@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="with stylus + nib">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.styl" afterPath="$PROJECT_DIR$/public/css/app.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/header.jade" afterPath="$PROJECT_DIR$/views/partials/header.jade" />
     </list>
     <ignored path="caughtina.iws" />
@@ -64,10 +62,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.styl" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.styl" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/app.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="21" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.0">
+            <state line="65" column="46" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.5934959">
               <folding />
             </state>
           </provider>
@@ -82,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.jade" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="header.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/header.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="38" selection-start="381" selection-end="381" vertical-scroll-proportion="0.6086956">
+            <state line="16" column="62" selection-start="472" selection-end="472" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
@@ -114,8 +112,8 @@
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/views/partials/footer.jade" />
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/public/css/app.styl" />
         <option value="$PROJECT_DIR$/views/partials/header.jade" />
+        <option value="$PROJECT_DIR$/public/css/app.styl" />
       </list>
     </option>
   </component>
@@ -411,7 +409,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="with stylus + nib" />
+    <option name="LAST_COMMIT_MESSAGE" value="header look + feel" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -427,6 +425,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="with express framework" />
     <MESSAGE value="with stylus + nib" />
+    <MESSAGE value="header look + feel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -482,6 +481,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/header.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="62" selection-start="472" selection-end="472" vertical-scroll-proportion="-10.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="29" selection-start="63" selection-end="63" vertical-scroll-proportion="-1.875">
@@ -491,14 +497,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="21" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/header.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="38" selection-start="381" selection-end="381" vertical-scroll-proportion="0.6086956">
+        <state line="65" column="46" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.5934959">
           <folding />
         </state>
       </provider>
