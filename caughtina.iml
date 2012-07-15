@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Node.js v0.6.17 Core Library" level="application" />
   </component>
 </module>
 

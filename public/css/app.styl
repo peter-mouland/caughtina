@@ -1,0 +1,27 @@
+@import 'nib';
+@import url('http://fonts.googleapis.com/css?family=Quicksand');
+
+global-reset()
+footer,aside,section,article,nav,header{display:block;}
+
+/*vars*/
+main-color = #fa5b4d
+background-color = #faf9f0
+
+
+body{
+  font-family: 'Georgia';
+  background-color: background-color;
+  color: #444;
+}
+header{
+  font-family: 'Quicksand';
+  padding: 50px 10px;
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+
+  background-color: main-color;
+  border-bottom: 1px solid darken(main-color, 30%);
+  text-shadow: 0px -1px 0px darken(main-color, 30%);
+}
