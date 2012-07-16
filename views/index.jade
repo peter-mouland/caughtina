@@ -1,4 +1,44 @@
 extends layout
 
 block mainContent
-    section(role='main').main Welcome to my first blog!
+  section#recent_articles
+    h1 Recent Articles
+
+    article
+      header
+        h2
+          a(href='#') yes, no, what?
+        time(datetime="2012-06-26",pubdate="") 16th July 2012
+      p yes + no buttons still not things of the past?
+      aside
+        h3 tags
+        ul
+          li
+            a(href='/tags/ui') ui
+
+
+    article
+      header
+        h2
+          a(href='#') css3 transitions ready yet?
+        time(datetime="2012-06-26",pubdate="") 16th July 2012
+      p building a css3 carousel wasn't as easy as 1,2, css3.
+      aside
+        h3 tags
+        ul
+          li
+            a(href='/tags/css') css
+            a(href='/tags/js') js
+
+
+article
+      header
+        h2
+          a(href='#') one button, two actions
+        time(datetime="2012-06-26",pubdate="") 16th July 2012
+      p not sure why we want to force the user to multiple sites with one button click
+      aside
+        h3 tags
+        ul
+          li
+            a(href='/tags/css') ui

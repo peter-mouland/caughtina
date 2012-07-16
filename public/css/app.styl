@@ -14,6 +14,11 @@ body{
   font-family: 'Georgia';
   background-color: background-color;
   color: #444;
+    background-image: -webkit-radial-gradient(white 25%, background-color);
+    background-image: -moz-radial-gradient(white 25%, background-color);
+    background-image: -o-radial-gradient(white 25%, background-color);
+    background-image: -ms-radial-gradient(white 25%, background-color);
+    background-image: radial-gradient(white 25%, background-color);
 }
 a{
     text-decoration: none;
@@ -29,35 +34,33 @@ a:hover,a:focus{
     clip:rect(1px,1px,1px,1px);
 }
 
-header{
+#site_header{
   font-family: 'Quicksand';
   color: #fff;
   font-size: 3em;
   overflow: auto;
-
+  padding:2pc;
   background-color: main-color;
   border-bottom: 1px solid darken(main-color, 30%);
   text-shadow: 2px 2px 2px darken(main-color, 30%);
 
-h1{
+  .site_name{
     float: left;
-    margin: 2pc;
+    margin: 0pc;
   }
-h2{
+  .tag_line{
     position: absolute;
     top: 2pc; left: 2pc;
     font-size: 0.35em;
     padding-top: 2.75em;
     color: #F2E4D5;
-}
+  }
 
   ul {
-    line-height: 7pc;
     display:inline;
     li{
         display:inline;
         font-size: 0.5em;
-        margin: 2pc 0;
         a{
             border-radius: 15px;
             padding: 10px;
@@ -71,9 +74,19 @@ h2{
   }
   form{
       display: inline;
-
   }
 }
-.main{
+#site_footer{
+    color: main-color;
+    border-top: 1px solid darken(main-color, 30%);
+    padding:1pc 2pc;
+    font-size: 1.5em;
+    overflow: auto;
+}
+.main_wrapper{
+    padding:1pc 2pc;
     clear: both;
+}
+
+#recent_articles{
 }
