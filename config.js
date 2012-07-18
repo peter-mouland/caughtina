@@ -31,4 +31,9 @@ app.get('/', function(req, res){
     res.render('index',{title : "Home"});
 });
 
+app.get('/articles/:article', function(req, res){
+
+    res.render('articles/' + req.params.article,{title : "Article"});
+});
+
 app.listen(3000);
