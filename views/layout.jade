@@ -9,9 +9,9 @@ html(lang="en")
             for (; i < j ; i++) {
             document.createElement(a[i]);}
     body
-        include partials/header
+        #content
+            include partials/header
 
-        section(role='main').main_wrapper
             block mainContent
 
-        include partials/footer
+            include partials/footer

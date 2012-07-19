@@ -1,117 +1,131 @@
 extends layout
 
 block mainContent
-  #recent_articles
     h1 Recent Articles
+    #recent_articles.wrapper
+        section(role='main')
 
-    article
-      header
-        h2
-          a(href='/articles/using-html5-in-production') using html5 in production
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p I've seen many people question html5. Some say why bother using right now as it adds nothing to your websites apart from hassel.
-        | Others saying just use its no one should be using IE anyway - let alone with JS turned off!
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/usability') usability
-            a(href='/tags/html5') html5
+            article
+              header
+                h2
+                  a(href='/articles/using-html5-in-production') using html5 in production
+                .time
+                    time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p I've seen many people question html5. Some say why bother using right now as it adds nothing to your websites apart from hassel.
+                | Others saying just use its no one should be using IE anyway - let alone with JS turned off!
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/usability') usability
+                  li
+                    a(href='/tags/html5') html5
 
-    article
-      header
-        h2
-          a(href='#') yes, no, what?
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p yes + no buttons still not things of the past?
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/usability') usability
-
-
-    article
-      header
-        h2
-          a(href='#') css3 transitions ready yet?
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p building a css3 carousel wasn't as easy as 1,2, css3.
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/css') css
-            a(href='/tags/js') js
+            article
+              header
+                h2
+                  a(href='#') yes, no, what?
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p yes + no buttons still not things of the past?
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/usability') usability
 
 
-    article
-      header
-        h2
-          a(href='#') one button, two actions
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p not sure why we want to force the user to multiple sites with one button click
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/usability') usability
-            a(href='/tags/accessibility') accessibility
+            article
+              header
+                h2
+                  a(href='#') css transitions + browsers
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p building a css3 carousel wasn't as easy as 1,2, css3.
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/css') css
+                  li
+                    a(href='/tags/js') js
 
 
-
-    article
-      header
-        h2
-          a(href='#') pure css... not an image?
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p seen a lot of cool 'pure css' stuff like homer. We know it can be done so lets just use svgs eh?
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/css') css
+            article
+              header
+                h2
+                  a(href='#') one button, two actions
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p not sure why we want to force the user to multiple sites with one button click
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/usability') usability
+                  li
+                    a(href='/tags/accessibility') accessibility
 
 
 
-    article
-      header
-        h2
-          a(href='#') placeholders as example or label text?
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p the spec says one thing... but i REALLY want to do something else with it...
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/ui') ui
-            a(href='/tags/accessibility') accessibility
-
-
-    article
-      header
-        h2
-          a(href='#') column layout
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p Trying to do a cross browser multi column layout for a 'mega-dropdown' has its problems!
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/css') css
-            a(href='/tags/accessibility') accessibility
+            article
+              header
+                h2
+                  a(href='#') pure css... not an image?
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p seen a lot of cool 'pure css' stuff like homer. We know it can be done so lets just use svgs eh?
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/css') css
 
 
 
-    article
-      header
-        h2
-          a(href='#') javascript to upload files
-        time(datetime="2012-06-26",pubdate="") 16th July 2012
-      p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
-      aside
-        h3 tags
-        ul
-          li
-            a(href='/tags/js') js
+            article
+              header
+                h2
+                  a(href='#') placeholders as labels only?
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p the spec says one thing... but i REALLY want to do something else with it...
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/ui') ui
+                  li
+                    a(href='/tags/accessibility') accessibility
+
+
+            article
+              header
+                h2
+                  a(href='#') column layout
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p Trying to do a cross browser multi column layout for a 'mega-dropdown' has its problems!
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/css') css
+                  li
+                    a(href='/tags/accessibility') accessibility
+
+
+
+            article
+              header
+                h2
+                  a(href='#') javascript to upload files
+                .time
+                  time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
+              aside
+                h3.at tags
+                ul
+                  li
+                    a(href='/tags/js') js
 
