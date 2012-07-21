@@ -1,0 +1,57 @@
+@import 'nib';
+@import url('http://fonts.googleapis.com/css?family=Quicksand');
+
+/*vars*/
+main-color = rgb(255,222,169);
+header-shadow = rgba(0,0,0,0.7)
+
+
+
+/*resets*/
+global-reset()
+footer,aside,section,article,nav,header{display:block; margin:0;padding:0;}
+html,body{height: 100%;}
+body{
+  font-family: helvetica,'Georgia';
+  color:darken(#F2E4D5,27.5%);
+  background: url("/images/bg_orig3.jpg") center bottom no-repeat fixed ;
+  background-size:cover;
+}
+a{
+    text-decoration: none;
+    color: #A0AFAC;
+}
+a:hover,a:focus{
+    text-decoration: underline;
+}
+.at{
+    position: absolute;
+    clip: rect(0 0 0 0);
+    clip:rect(1px,1px,1px,1px);
+}
+
+h1,h2{
+    font-family: 'Quicksand';
+}
+
+
+/* layout : all pages */
+#content{
+    width: 960px; margin: 0 auto; position: relative;
+}
+.wrapper{
+    background:header-shadow;
+    padding: 20px;
+    border: 1px solid header-shadow;
+}
+h1{ font-size: 2em;color: black;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.33);
+    margin: 20px 0;
+    padding: 20px;
+}
+.main_wrapper{
+    padding:1pc 2pc;
+    clear: both;
+}
