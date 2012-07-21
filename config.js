@@ -6,7 +6,8 @@ var express = require('express'),
     compile = function(str, path) {
         return stylus(str)
             .set('filename', path)
-            .use(nib())
+            .set('compress', true)
+            .use(nib());
     };
 
 app.use(app.router);
