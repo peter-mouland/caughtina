@@ -1,16 +1,15 @@
 @import 'nib';
 @import url('http://fonts.googleapis.com/css?family=Quicksand');
 
+/*vars*/
+main-color = rgb(255,222,169);
+header-shadow = rgba(0,0,0,0.7)
+
+
+
 /*resets*/
 global-reset()
 footer,aside,section,article,nav,header{display:block; margin:0;padding:0;}
-
-/*vars*/
-main-color = rgb(255,222,169);
-header-shadow = rgba(0,0,0,0.66)
-
-
-
 html,body{height: 100%;}
 body{
   font-family: helvetica,'Georgia';
@@ -25,13 +24,18 @@ a{
 a:hover,a:focus{
     text-decoration: underline;
 }
-
 .at{
     position: absolute;
     clip: rect(0 0 0 0);
     clip:rect(1px,1px,1px,1px);
 }
 
+h1,h2{
+    font-family: 'Quicksand';
+}
+
+
+/* layout : all pages */
 #content{
     width: 960px; margin: 0 auto; position: relative;
 }
@@ -40,7 +44,19 @@ a:hover,a:focus{
     padding: 20px;
     border: 1px solid header-shadow;
 }
+h1{ font-size: 2em;color: black;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.33);
+    margin: 20px 0;
+    padding: 20px;
+}
+.main_wrapper{
+    padding:1pc 2pc;
+    clear: both;
+}
 
+/* header */
 #site_header{
     border: 1px solid header-shadow;
     border-radius:20px 20px 0 0;
@@ -73,7 +89,7 @@ a:hover,a:focus{
       overflow:auto;
     li{
         float:left;
-        font-size: 0.5em;
+        font-size: 0.4em;
         a{
             border-radius: 15px 15px 0 0;
             padding: 10px 30px;
@@ -93,14 +109,18 @@ a:hover,a:focus{
   }
   form{
       position: absolute; bottom: 0px; right:10px;border-radius: 15px 15px 0 0;
-      padding: 10px 30px;
+      padding: 0.5em 30px;
       background:rgba(0, 0, 0, 0.50);
       line-height: 1px;
+      font-size: 0.4em;
   }
     form:hover{
         background:header-shadow;
     }
 }
+
+
+/* footer */
 #site_footer{
     color: main-color;
     border-top: 1px solid darken(main-color, 30%);
@@ -109,29 +129,42 @@ a:hover,a:focus{
     overflow: auto;
     color: #F2E4D5;
     h2 { float:left;  margin:0;}
-    ul li { display:inline; line-height: 2em; margin: 0 20px;}
-}
-.main_wrapper{
-    padding:1pc 2pc;
-    clear: both;
+    ul li { display:inline; line-height: 2.4em; margin: 0 20px;}
 }
 
-h1,h2{
-    font-family: 'Quicksand';
-    font-size:2em;
-    margin: 10px 0;
+
+/* articles */
+
+html[xmlns] #recent_articles  article{
+    display: block;
 }
-h1{font-size: 2em;color: black;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255,255,255,0.33);
-    margin: 20px 0;
-    padding: 20px;
+
+* html #recent_articles article {
+    height: 1%;
 }
+
+
 #recent_articles{
-
-    h2{float: left; width: 50%;margin: 0.75em 0;
-        min-height: 2em; text-align: right;
+    article{
+         display: inline-block;
+         width: 100%;
+        border-bottom: 1px dashed #666;
+        padding-bottom: 20px;
+     }
+    article:after {
+          content: ".";
+          display: block;
+          clear: both;
+          visibility: hidden;
+          line-height: 0;
+          height: 0;
+    }
+    header{
+        width: 50%;
+        float: left;
+    }
+    h2{ margin: 0.75em 0;
+        text-align: right;
         font-size: 1.6em;
         text-shadow:1px 1px 1px darken(#A0AFAC, 40%);
         a{
@@ -156,7 +189,8 @@ h1{font-size: 2em;color: black;
         a{ color: darken(#A0AFAC, 40%);}
     }
     p{ color: darken(#F2E4D5, 45%);
-        padding-top: 1.5em;
+        padding-top: 1.5em;width: 50%;
+        float: right;
         .more{float:right;font-size: 0.875em; color: darken(#A0AFAC, 40%);}
     }
 }
