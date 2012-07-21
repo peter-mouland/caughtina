@@ -1,3 +1,4 @@
+//todo: gzip static assets
 var express = require('express'),
     app = express.createServer(),
     jade = require('jade'),
@@ -36,9 +37,6 @@ var express = require('express'),
         return distPath;
     };
 
-
-
-
 app.use(app.router);
 app.use(express.logger('dev'))
 app.use(stylus.middleware({ src: __dirname + '/public', compile: compile}));
@@ -56,16 +54,21 @@ app.configure('production', function(){
     uglify(JS_FILE_LIST,JS_FILE_PATH);
 });
 
+
+
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res){
-    res.render('index',{title : "Home", JS_FILE_PATH:JS_FILE_PATH});
+    res.render('index',{title : "Home"});
 });
 
 app.get('/articles/:article', function(req, res){
 
     res.render('articles/' + req.params.article,{title : "Article"});
 });
+
+
 
 app.listen(3000);
