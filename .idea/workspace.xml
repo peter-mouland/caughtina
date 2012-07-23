@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/bg_laptop.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/bg_laptop_small.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/bg_retina.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/bg_tablet_retina.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/devices.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/bg_orig3.JPG" afterPath="$PROJECT_DIR$/public/images/bg_orig3.JPG" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/articles.styl" afterPath="$PROJECT_DIR$/public/css/articles.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/footer.styl" afterPath="$PROJECT_DIR$/public/css/footer.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/global.styl" afterPath="$PROJECT_DIR$/public/css/global.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/header.styl" afterPath="$PROJECT_DIR$/public/css/header.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/me.js" afterPath="$PROJECT_DIR$/public/js/me.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,7 +83,7 @@
       <file leaf-file-name="header.styl" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/header.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="44" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.3181818">
+            <state line="60" column="1" selection-start="1504" selection-end="1504" vertical-scroll-proportion="0.53733766">
               <folding />
             </state>
           </provider>
@@ -103,7 +92,7 @@
       <file leaf-file-name="me.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/me.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="61" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0">
+            <state line="7" column="40" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -189,8 +178,8 @@
         <option value="$PROJECT_DIR$/public/css/footer.styl" />
         <option value="$PROJECT_DIR$/public/css/articles.styl" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/public/js/me.js" />
         <option value="$PROJECT_DIR$/public/css/global.styl" />
+        <option value="$PROJECT_DIR$/public/js/me.js" />
         <option value="$PROJECT_DIR$/public/css/header.styl" />
       </list>
     </option>
@@ -523,20 +512,20 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285968" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10648715" sideWeight="0.73396426" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26603577" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -579,7 +568,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added gzip todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="added device pictures + fixed header" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -603,6 +592,7 @@
     <MESSAGE value="added css + js min" />
     <MESSAGE value="added css app styl" />
     <MESSAGE value="added gzip todo" />
+    <MESSAGE value="added device pictures + fixed header" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -662,13 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/me.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="61" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/devices.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="17" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0" />
@@ -693,9 +676,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/me.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="40" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/header.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="44" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.3181818">
+        <state line="60" column="1" selection-start="1504" selection-end="1504" vertical-scroll-proportion="0.53733766">
           <folding />
         </state>
       </provider>

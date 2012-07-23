@@ -3,9 +3,9 @@ var ciac = {};
     var setupGlobalEvents = function(){
         window.onscroll = function(){
             console.log('scroll',window.pageYOffset);
-            var el = document.getElementById('site_header'),
+            var el = document.getElementsByTagName('body')[0],
                 c = el.getAttribute('class') || el.className;
-            if (window.pageYOffset > 60){
+            if (window.pageYOffset > 168){
                 if (c.indexOf('fixed')<0){
                     el.setAttribute('class',c + ' fixed');
                     el.className = c + ' fixed';
