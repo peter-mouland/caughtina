@@ -11,8 +11,9 @@ html[xmlns] #recent_articles  article{
     article{
         display: inline-block;
         width: 100%;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 20px;
+        padding: 20px 0;
+        background: rgba(0,0,0,0.5);
+        border-radius:20px;
     }
     article:after {
         content: ".";
@@ -29,11 +30,9 @@ html[xmlns] #recent_articles  article{
     h2{ margin: 0.75em 0;
         text-align: right;
         font-size: 1.6em;
-        text-shadow:1px 1px 1px darken(#A0AFAC, 40%);
-        a{
-            padding-right:20px;
-        }
-        }
+        text-shadow:1px 1px 1px darken(#A0AFAC, 33%);
+        padding-right:20px;
+    }
     article{
         position: relative;
         clear: left;
@@ -41,19 +40,21 @@ html[xmlns] #recent_articles  article{
     }
     .time{position: absolute;
         left: 50%;
-        top: 4px;
+        top: 24px;
         font-size:0.875em;
-        color: darken(main-color, 65%);
+        color: darken(main-color, 66%);
     }
     aside{
-        position: absolute;top: 4px; left:0; width:50%; text-align: right;
+        position: absolute;top: 24px; left:0; width:50%; text-align: right;
         font-size:0.875em;
         li{ display:inline; padding-right: 20px }
-        a{ color: darken(#A0AFAC, 40%);}
+        a{
+            color: darken(#A0AFAC, 40%);
+        }
     }
-    p{ color: darken(#F2E4D5, 45%);
+    p{ color: darken(#F2E4D5, 40%);
         padding-top: 1.5em;width: 50%;
         float: right;
-        .more{float:right;font-size: 0.875em; color: darken(#A0AFAC, 40%);}
+        .more{float:right;font-size: 0.875em; color: darken(#A0AFAC, 33%); padding-right: 20px;}
     }
 }

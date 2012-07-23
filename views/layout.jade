@@ -4,10 +4,8 @@ html(lang="en")
         title #{title}
         link(rel='stylesheet', href='/css/app.css')
         script(type='text/javascript')
-            var i = 0, j = a.length,
-                a = ['section', 'article', 'nav', 'header', 'footer', 'hgroup'];
-            for (; i < j ; i++) {
-            document.createElement(a[i]);}
+            var i = 0, a = ['section', 'article', 'nav', 'header', 'footer', 'hgroup'], j = a.length;
+            for (; i < j ; i++) {document.createElement(a[i]);}
     body
         #content
             include partials/header
