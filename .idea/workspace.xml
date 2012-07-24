@@ -82,7 +82,7 @@
       <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
+            <state line="14" column="1" selection-start="257" selection-end="257" vertical-scroll-proportion="0.31296572">
               <folding />
             </state>
           </provider>
@@ -567,7 +567,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved header transition" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated package.json to include node update" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -593,6 +593,7 @@
     <MESSAGE value="added gzip todo" />
     <MESSAGE value="added device pictures + fixed header" />
     <MESSAGE value="improved header transition" />
+    <MESSAGE value="updated package.json to include node update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -687,7 +688,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
+        <state line="14" column="1" selection-start="257" selection-end="257" vertical-scroll-proportion="0.31296572">
           <folding />
         </state>
       </provider>
