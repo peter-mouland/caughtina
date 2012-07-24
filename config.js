@@ -7,7 +7,7 @@ var express = require('express'),
     uglyfyJS = require('uglify-js'),
      _fs = require('fs'),
     FILE_ENCODING = 'utf-8',
-    JS_FILE_PATH = 'js/app.js',
+    JS_FILE_PATH = '/js/app.js',
     JS_FILE_LIST = ['public/js/me.js'],
     compile = function(str, path) {
         return stylus(str)
