@@ -73,4 +73,4 @@ app.get('/articles/:article', function(req, res){
 
 
 
-app.listen(18388);
+app.listen(process.env.PORT || 3000);

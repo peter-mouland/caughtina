@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
     </list>
     <ignored path="caughtina.iws" />
@@ -136,7 +137,16 @@
       <file leaf-file-name="config.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="3" selection-start="1967" selection-end="1967" vertical-scroll-proportion="0.5752608">
+            <state line="75" column="35" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.86587185">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,7 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" />
         <option value="$PROJECT_DIR$/views/index.haml" />
         <option value="$PROJECT_DIR$/views/partials/footer.jade" />
         <option value="$PROJECT_DIR$/views/partials/header.jade" />
@@ -170,6 +179,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gemfile" />
         <option value="$PROJECT_DIR$/public/js/me.js" />
+        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/config.js" />
       </list>
     </option>
@@ -572,7 +582,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed dir" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove uglify for heroku" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -607,6 +617,7 @@
     <MESSAGE value="update packages + Procfile" />
     <MESSAGE value="changed port for heroku" />
     <MESSAGE value="changed dir" />
+    <MESSAGE value="remove uglify for heroku" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -689,13 +700,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/me.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="42" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
@@ -703,9 +707,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="3" selection-start="1967" selection-end="1967" vertical-scroll-proportion="0.5752608">
+        <state line="75" column="35" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.86587185">
           <folding />
         </state>
       </provider>
