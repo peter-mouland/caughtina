@@ -2,7 +2,6 @@ var ciac = {};
 (function(){
     var setupGlobalEvents = function(){
         window.onscroll = function(){
-            console.log('scroll',window.pageYOffset);
             var el = document.getElementsByTagName('body')[0],
                 c = el.getAttribute('class') || el.className;
             if (window.pageYOffset > 168){
@@ -17,9 +16,7 @@ var ciac = {};
         };
     },
     init = function(){
-        console.log('init');
         setupGlobalEvents();
     };
     init();
-    console.log('anon');
 }());
