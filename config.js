@@ -53,7 +53,7 @@ app.configure('production', function(){
     var oneYear = 31557600000;
     app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
     app.use(express.errorHandler());
-//    uglify(JS_FILE_LIST,JS_FILE_PATH);
+    concat(JS_FILE_LIST,JS_FILE_PATH);//uglify
 });
 
 

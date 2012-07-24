@@ -6,7 +6,7 @@ table{border-collapse:separate;border-spacing:0;vertical-align:middle}
 caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
 footer,aside,section,article,nav,header{display:block;margin:0;padding:0}
 html,body{height:100%}
-body{font-family:helvetica,'Georgia';color:#d4a775;background:url("/images/bg_retina.jpg") center bottom no-repeat fixed;background-size:cover}
+body{font-family:helvetica,'Georgia';color:#d4a775;background-size:cover}
 a{text-decoration:none;color:#a0afac}
 a:hover,a:focus{text-decoration:underline}
 .at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
@@ -24,9 +24,9 @@ h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.2);bo
 #site_header ul li a:focus,#site_header ul li a:hover{background:#000;color:#ae7436}
 #site_header form{position:absolute;bottom:0;right:10px;border-radius:15px 15px 0 0;padding:.5em 30px;background:rgba(0,0,0,0.35);line-height:1px;font-size:.4em}
 #site_header form:hover{background:rgba(0,0,0,0.7)}
-body.fixed{padding-top:208px;}
-body.fixed #site_header{border:0;position:fixed;top:-168px;width:920px;padding-bottom:30px;z-index:10;background:-moz-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#000),color-stop(176px,#000),color-stop(100%,rgba(0,0,0,0)));background:-webkit-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-o-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-ms-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:linear-gradient(to bottom,#000 0%,#000 176px,rgba(0,0,0,0) 100%);}
-body.fixed #site_header form{bottom:30px}
+body.fixed{padding-top:258px;}
+body.fixed #site_header{border:0;position:fixed;top:-168px;width:920px;padding-bottom:0;z-index:10;background:#000}
+body.fixed h1{position:fixed;top:24px;width:920px;padding:4px 20px 10px;background:-moz-linear-gradient(top,#fff 0%,#fff 75%,rgba(255,255,255,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(75%,#fff),color-stop(100%,rgba(255,255,255,0)));background:-webkit-linear-gradient(top,#fff 0%,#fff 75%,rgba(255,255,255,0) 100%);background:-o-linear-gradient(top,#fff 0%,#fff 75%,rgba(255,255,255,0) 100%);background:-ms-linear-gradient(top,#fff 0%,#fff 75%,rgba(255,255,255,0) 100%);background:linear-gradient(to bottom,#fff 0%,#fff 75%,rgba(255,255,255,0) 100%);border:0;font-size:1.5em;z-index:1}
 #site_footer{color:#ffdea9;border-top:1px solid #ffad2a;padding:1pc 2pc;font-size:1em;overflow:auto;color:#f2e4d5;}
 #site_footer h2{float:right;margin:0}
 #site_footer ul li{display:inline;margin:0 20px}
@@ -43,3 +43,6 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles aside a{color:#5c6d6a}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right;}
 #recent_articles p .more{float:right;font-size:.875em;color:#677a76;padding-right:20px}
+#article h2{letter-spacing:2px;font-weight:bold;font-size:1.35em;color:#d48300}
+#article h3{color:#d48300;font-size:1.15em}
+#article p{margin:0 0 20px;line-height:1.5em}

@@ -1,21 +1,45 @@
 extends ../layout
 
 block mainContent
+    h1 using html5 in production
     #article.wrapper
-        h1 using html5 in production
-        p Recenlty I have been looking into using html5 and trying to get it through to production.
-        | The problem is this, Internet Explorer.
-        | Now I'm not one to bash an old foe when he's down and almost out, but he does seem to be giving me problems.
+        section
+            h2 the mission
+            p Recenlty I have been looking into using html5 tags (including attributes) and trying to get it through to a production site.
+                | The problem is this, Internet Explorer.
+                | Now I'm not one to bash an old foe when he's down and almost out, but he does seem to be giving me problems.
+        section
+            h2 the target
+            p The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
+                | So when going as far as saying non-javascript users are important this adds a new level of challange; how to get IE6 to play nicely without JS?
+                | <!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
 
-        p The sites i tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
-        | So when going as far as saying non-javascript users are important this adds a new level of challange; how to get IE6 to play nicely without JS?
-        | Performance ofcoarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.
+            |<!--h2 considerations-->
+            |<!--p If this edge case is a small percentage, then why bother?-->
+            |    <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+            |    <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+            |    <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+            |    <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+            |    <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.-->
+        section
+            h2 the methods
+            h3 pollyfil js
+            p use whold library code that is available (|) or simply writing your own d.cE() or feature detection
+            h3 conditional statements
+            p a strange idea, but one that would work if you are really keen to get IE to place nicely without JS.
+                | Not that i would ever recommend this method but i do like outside-the-box thinking behind it.
+                | For me it s simple too untidy and duplicating too much code which is made worse by the act that it is client side code to ever be a serious contender.
+            h3 extra DOM containers
 
-        p If this edge case is a small percentage, then why bother?
-        | Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.
-        | Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!
-        | The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.
-        | I'm sure more AT's will suport these semantic descriptive tags in the future.
-        | I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.
+        h2 the execution
+        p I've kept all my ARIA attributes on the HTML5 tags them selves.  This is so that in the future, when more AT's do understand the purpose of each tag, items are not duplication.
+            |I dont really want my new div container to seem like a navigation item to AT when its first child is also a navigation item!
 
-        p
+        h2 the reflection
+        p HTML5 can be used today in all browsers that are widely used today [1], even without JS, whoop whoop!
+            |
+
+        p It a shame though that the spec states that some elements are for styling only [1].
+            | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
+            | It is rare that developers will allow the browser to pick a style that can not be altered.
+            | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
