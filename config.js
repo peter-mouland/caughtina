@@ -40,6 +40,8 @@ var express = require('express'),
 app.use(app.router);
 app.use(express.logger('dev'))
 app.use(stylus.middleware({ src: __dirname + '/public', compile: compile}));
+app.use(express.favicon(__dirname + '/public/favicon.ico', {maxAge: 86400000}));
+
 
 app.configure('development',function(){
     app.use(express.static(__dirname + '/public'));
