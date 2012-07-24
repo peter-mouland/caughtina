@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
+    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="upgraded package.json express for heroku">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
@@ -82,7 +82,7 @@
       <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="1" selection-start="262" selection-end="262" vertical-scroll-proportion="0.31296572">
+            <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
               <folding />
             </state>
           </provider>
@@ -567,7 +567,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="downgraded package.json node for heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="downgraded package.json npm for heroku" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -595,6 +595,7 @@
     <MESSAGE value="improved header transition" />
     <MESSAGE value="updated package.json to include node update" />
     <MESSAGE value="downgraded package.json node for heroku" />
+    <MESSAGE value="downgraded package.json npm for heroku" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -689,7 +690,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="1" selection-start="262" selection-end="262" vertical-scroll-proportion="0.31296572">
+        <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
           <folding />
         </state>
       </provider>
