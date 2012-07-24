@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,7 +82,7 @@
       <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="21" selection-start="110" selection-end="110" vertical-scroll-proportion="0.13412817">
+            <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
               <folding />
             </state>
           </provider>
@@ -686,7 +687,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="110" selection-end="110" vertical-scroll-proportion="0.13412817">
+        <state line="2" column="21" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04470939">
           <folding />
         </state>
       </provider>
