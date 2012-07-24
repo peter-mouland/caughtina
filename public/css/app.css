@@ -1,0 +1,45 @@
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-family:inherit;font-size:100%;vertical-align:baseline}
+body{line-height:1;color:#000;background:#fff}
+ol,ul{list-style:none}
+table{border-collapse:separate;border-spacing:0;vertical-align:middle}
+caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
+footer,aside,section,article,nav,header{display:block;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:helvetica,'Georgia';color:#d4a775;background:url("/images/bg_retina.jpg") center bottom no-repeat fixed;background-size:cover}
+a{text-decoration:none;color:#a0afac}
+a:hover,a:focus{text-decoration:underline}
+.at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
+h1,h2{font-family:'Quicksand'}
+#content{width:960px;margin:0 auto;position:relative}
+.wrapper{background:rgba(0,0,0,0.7);padding:20px;border:1px solid rgba(0,0,0,0.7)}
+h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.33);margin:15px 0;padding:20px}
+.main_wrapper{padding:1pc 2pc;clear:both}
+#site_header{border:1px solid rgba(0,0,0,0.7);border-radius:20px 20px 0 0;font-family:'Quicksand';font-size:3em;margin:30px 0 15px;text-shadow:1px 1px 1px rgba(0,0,0,0.7);padding-bottom:0;position:relative;}
+#site_header .site_name{margin:0;font-size:1.4em;text-align:center;letter-spacing:-10px;word-spacing:10px;color:#ffdea9}
+#site_header .tag_line{font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
+#site_header ul{overflow:auto;}
+#site_header ul li{float:left;font-size:.4em;}
+#site_header ul li a{border-radius:15px 15px 0 0;padding:10px 30px;background:rgba(0,0,0,0.35);text-decoration:none;color:#f2e4d5;display:block;border:1px solid rgba(0,0,0,0.7);border-width:1px 1px 0}
+#site_header ul li a:focus,#site_header ul li a:hover{background:#000;color:#ae7436}
+#site_header form{position:absolute;bottom:0;right:10px;border-radius:15px 15px 0 0;padding:.5em 30px;background:rgba(0,0,0,0.35);line-height:1px;font-size:.4em}
+#site_header form:hover{background:rgba(0,0,0,0.7)}
+body.fixed{padding-top:208px;}
+body.fixed #site_header{border:0;position:fixed;top:-168px;width:920px;padding-bottom:30px;z-index:10;background:-moz-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#000),color-stop(176px,#000),color-stop(100%,rgba(0,0,0,0)));background:-webkit-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-o-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:-ms-linear-gradient(top,#000 0%,#000 176px,rgba(0,0,0,0) 100%);background:linear-gradient(to bottom,#000 0%,#000 176px,rgba(0,0,0,0) 100%);}
+body.fixed #site_header form{bottom:30px}
+#site_footer{color:#ffdea9;border-top:1px solid #ffad2a;padding:1pc 2pc;font-size:1em;overflow:auto;color:#f2e4d5;}
+#site_footer h2{float:right;margin:0}
+#site_footer ul li{display:inline;margin:0 20px}
+html[xmlns] #recent_articles  article{display:block}
+* html #recent_articles article{height:1%}
+#recent_articles article{display:inline-block;width:100%;padding:20px 0;background:rgba(0,0,0,0.5);border-radius:20px}
+#recent_articles article:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
+#recent_articles header{width:50%;float:left}
+#recent_articles h2{margin:.75em 0;text-align:right;font-size:1.6em;text-shadow:1px 1px 1px #677a76;padding-right:20px}
+#recent_articles article{position:relative;clear:left;margin-bottom:20px}
+#recent_articles .time{position:absolute;left:50%;top:24px;font-size:.875em;color:#905900}
+#recent_articles aside{position:absolute;top:24px;left:0;width:50%;text-align:right;font-size:.875em;}
+#recent_articles aside li{display:inline;padding-right:20px}
+#recent_articles aside a{color:#5c6d6a}
+#recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right;}
+#recent_articles p .more{float:right;font-size:.875em;color:#677a76;padding-right:20px}
