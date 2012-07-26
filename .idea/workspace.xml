@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/using-html5-production/modernizr.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" afterPath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,7 +100,7 @@
       <file leaf-file-name="using-html5-in-production.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/articles/using-html5-in-production.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="92" selection-start="4076" selection-end="4076" vertical-scroll-proportion="0.60784316">
+            <state line="60" column="8" selection-start="4346" selection-end="4346" vertical-scroll-proportion="1.4705882">
               <folding />
             </state>
           </provider>
@@ -756,7 +753,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/articles/using-html5-in-production.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="92" selection-start="4076" selection-end="4076" vertical-scroll-proportion="0.60784316">
+        <state line="60" column="8" selection-start="4346" selection-end="4346" vertical-scroll-proportion="1.4705882">
           <folding />
         </state>
       </provider>

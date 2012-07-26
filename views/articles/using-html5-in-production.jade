@@ -25,8 +25,12 @@ block mainContent
                             a(href:'http://modernizr.com/',target:'_new') modernizr
                         p after loving the configurable download screen i got down to business
                         h3
+                            a(href:'http://ajaxian.com/archives/enhancejs') enhanceJS
+                        p will look
 
-                        | use whold library code that is available (|) or simply writing your own d.cE() or feature detection
+                        h3 feature detection on a need to know bases
+                        p in conjunction with this excellent little snippet[4]
+                            code 'article aside footer header nav section time'.replace(/w+/g,function(n){document.createElement(n)})
 
                     dt conditional statements
                     dd a strange idea, but one that would work if you are really keen to get IE to place nicely without JS.
@@ -53,8 +57,9 @@ block mainContent
             [1] firefox 3 html 5 - https://developer.mozilla.org/en/Firefox_3_for_developers
             [2] the layout tags (header, hgroup, nav, section, article, footer)
             [3] IE6, IE7, IE8, IE9, FF3.6, FF14, Opera, Chrome, Safari
+            [4] http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html
 
-            [4] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html
+            [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html
 
 
 
