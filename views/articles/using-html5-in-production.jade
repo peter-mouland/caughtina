@@ -1,45 +1,69 @@
 extends ../layout
 
 block mainContent
-    h1 using html5 in production
-    #article.wrapper
-        section
-            h2 the mission
-            p Recenlty I have been looking into using html5 tags (including attributes) and trying to get it through to a production site.
-                | The problem is this, Internet Explorer.
-                | Now I'm not one to bash an old foe when he's down and almost out, but he does seem to be giving me problems.
-        section
-            h2 the target
-            p The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
-                | So when going as far as saying non-javascript users are important this adds a new level of challange; how to get IE6 to play nicely without JS?
-                | <!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+    #article
+        h1 using html5 in production
+        .wrapper
+            section
+                h2 the mission
+                p Recenlty I have been looking into using html5 markup and seeing what is required to get it through to a production site.
+                    | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
+                p So when going as far as saying non-javascript users are important this adds a new level of challange; how to get IE6 to play nicely without JS?
+                    | I'm not one to bash an old foe when he's down and almost out, but IE did give me problems.
+                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features[1], i had hope.
 
-            |<!--h2 considerations-->
-            |<!--p If this edge case is a small percentage, then why bother?-->
-            |    <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
-            |    <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
-            |    <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
-            |    <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
-            |    <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.-->
-        section
-            h2 the methods
-            h3 pollyfil js
-            p use whold library code that is available (|) or simply writing your own d.cE() or feature detection
-            h3 conditional statements
-            p a strange idea, but one that would work if you are really keen to get IE to place nicely without JS.
-                | Not that i would ever recommend this method but i do like outside-the-box thinking behind it.
-                | For me it s simple too untidy and duplicating too much code which is made worse by the act that it is client side code to ever be a serious contender.
-            h3 extra DOM containers
+            section
+                h2 the methods
+                The following methods are the possible sollutions i have found.  They do all have their drawbacks, but given the right requirements, all could be used.
+                dl
+                    dt pollyfil js
+                    dd I'm not a fan of copying a whole library into production code to solve what are potentially small problems, but they can be worth a look.
+                        | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - i took a look anyway!
+                        | I'm not going to compare and contrast libraries in detail here.  All i'm interested in whether or not they did the job i needed them to do.
+                        | So at this point i want them to be small, non-invasive and get a small number of html5 features[2] to work in all common browsers[3].
+                        h3
+                            a(href:'http://modernizr.com/',target:'_new') modernizr
+                        p after loving the configurable download screen i got down to business
+                        h3
 
-        h2 the execution
-        p I've kept all my ARIA attributes on the HTML5 tags them selves.  This is so that in the future, when more AT's do understand the purpose of each tag, items are not duplication.
-            |I dont really want my new div container to seem like a navigation item to AT when its first child is also a navigation item!
+                        | use whold library code that is available (|) or simply writing your own d.cE() or feature detection
 
-        h2 the reflection
-        p HTML5 can be used today in all browsers that are widely used today [1], even without JS, whoop whoop!
-            |
+                    dt conditional statements
+                    dd a strange idea, but one that would work if you are really keen to get IE to place nicely without JS.
+                        | Not that i would ever recommend this method but i do like outside-the-box thinking behind it.
+                        | For me it s simple too untidy and duplicating too much code which is made worse by the act that it is client side code to ever be a serious contender.
 
-        p It a shame though that the spec states that some elements are for styling only [1].
-            | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
-            | It is rare that developers will allow the browser to pick a style that can not be altered.
-            | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
+                    dt extra DOM containers
+                    dd mesy but works
+
+            h2 the execution
+            p I've kept all my ARIA attributes on the HTML5 tags them selves.  This is so that in the future, when more AT's do understand the purpose of each tag, items are not duplication.
+                |I dont really want my new div container to seem like a navigation item to AT when its first child is also a navigation item!
+
+            h2 the reflection
+            p HTML5 can be used today in all browsers that are widely used today [1], even without JS, whoop whoop!
+                |
+
+            p It a shame though that the spec states that some elements are for styling only [1].
+                | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
+                | It is rare that developers will allow the browser to pick a style that can not be altered.
+                | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
+
+
+            [1] firefox 3 html 5 - https://developer.mozilla.org/en/Firefox_3_for_developers
+            [2] the layout tags (header, hgroup, nav, section, article, footer)
+            [3] IE6, IE7, IE8, IE9, FF3.6, FF14, Opera, Chrome, Safari
+
+            [4] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html
+
+
+
+    | <!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+
+    |<!--h2 considerations-->
+    |<!--p If this edge case is a small percentage, then why bother?-->
+    |    <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+    |    <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+    |    <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+    |    <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+    |    <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.-->
