@@ -1,3 +1,5 @@
+//$ cd DevRoot/heroku/caughtina/
+//$ git push heroku-caughtina
 //todo: gzip static assets
 var express = require('express'),
     app = express.createServer(),

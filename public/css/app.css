@@ -10,7 +10,7 @@ body{font-family:helvetica,'Georgia';color:#d4a775;background-size:cover}
 a{text-decoration:none;color:#a0afac}
 a:hover,a:focus{text-decoration:underline}
 .at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
-h1,h2{font-family:'Quicksand'}
+h1,h2,dt{font-family:'Quicksand'}
 #content{width:960px;margin:0 auto;position:relative}
 .wrapper{background:rgba(0,0,0,0.7);padding:20px;border:1px solid rgba(0,0,0,0.7)}
 h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.33);margin:15px 0;padding:20px}
@@ -44,5 +44,13 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right;}
 #recent_articles p .more{float:right;font-size:.875em;color:#677a76;padding-right:20px}
 #article h2{letter-spacing:2px;font-weight:bold;font-size:1.35em;color:#d48300;line-height:1.5em}
-#article h3{color:#d48300;font-size:1em}
-#article p{margin:0 0 20px;line-height:1.5em}
+#article h3,#article dt{color:#d48300;font-size:1em}
+#article p,#article dd{margin:0 0 20px;line-height:1.5em}
+#article code{background:rgba(0,0,0,0.15);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(255,255,255,0.25);font-size:.85em;white-space:nowrap;margin:0 5px}
+#article code.complete{margin:10px 20px;padding:10px 20px;display:block}
+.button{background-color:#00a;border-radius:5px;position:relative;z-index:0;display:inline-block;}
+.button .pretty{background-color:#36a;display:block;width:100%;height:50%;position:absolute;top:0;left:0;z-index:1;border-radius:10px 10px 20px 20px}
+.button .text{z-index:2;position:relative;cursor:pointer;font-size:16px;line-height:30px;height:30px;color:#fff;background:transparent;border:0;padding:0 15px;cursor:pointer}
+.button input.text{line-height:100%}
+.button:hover{text-decoration:none;}
+.button:hover .pretty{background-color:#00a}
