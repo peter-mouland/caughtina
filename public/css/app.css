@@ -48,9 +48,9 @@ html[xmlns] #recent_articles  article{display:block}
 #article p,#article dd{margin:0 0 20px;line-height:1.5em}
 #article code{background:rgba(0,0,0,0.15);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(255,255,255,0.25);font-size:.85em;white-space:nowrap;margin:0 5px}
 #article code.complete{margin:10px 20px;padding:10px 20px;display:block}
-.button{background-color:#00a;border-radius:5px;position:relative;z-index:0;display:inline-block;}
-.button .pretty{background-color:#36a;display:block;width:100%;height:50%;position:absolute;top:0;left:0;z-index:1;border-radius:10px 10px 20px 20px}
-.button .text{z-index:2;position:relative;cursor:pointer;font-size:16px;line-height:30px;height:30px;color:#fff;background:transparent;border:0;padding:0 15px;cursor:pointer}
-.button input.text{line-height:100%}
+.button{font-size:1em;background-color:#00a;border-radius:.33em;position:relative;z-index:0;display:inline-block;}
+.button .pretty{background-color:#36a;display:block;width:100%;height:40%;position:absolute;top:0;left:0;z-index:1;border-radius:.725em .725em 1.5em 1.5em}
+.button .text{margin:0;z-index:2;position:relative;cursor:pointer;font-size:1em;line-height:2em;height:2em;color:#fff;background:transparent;border:0;padding:0 1em;cursor:pointer;letter-spacing:1px}
+.button input.text{line-height:100%;letter-spacing:0}
 .button:hover{text-decoration:none;}
 .button:hover .pretty{background-color:#00a}
