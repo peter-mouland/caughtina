@@ -4,16 +4,15 @@ block mainContent
     h1 Recent Articles
     #recent_articles.wrapper
         section(role='main')
-
             article
               header
                 h2
-                  a(href='/articles/using-html5-in-production') using html5 in production
+                  a(href='/articles/using-html5-in-production') structural html5 in production
                 .time
                     time(datetime="2012-06-26",pubdate="") 16th July 2012
               p I've seen many people question html5. Some say why bother as it too much hassel.
                 | Others saying just use its no one should be using IE anyway - let alone with JS turned off!
-                a.more more
+                a.more(href='/articles/using-html5-in-production') more
               aside
                 h3.at tags
                 ul
@@ -22,205 +21,69 @@ block mainContent
                   li
                     a(href='/tags/html5') html5
 
+
+    #recent_articles.wrapper.draft
+        h2 draft articles not yet published
+        section
             article
               header
                 h2
-                  a(href='#') yes, no, what?
+                  a(href='/articles/responsive-design') responsive design
                 .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p yes + no buttons still not things of the past?
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/usability') usability
-
-
-            article
-              header
-                h2
-                  a(href='#') css transitions + browsers
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p building a css3 carousel wasn't as easy as 1,2, css3.
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
-                  li
-                    a(href='/tags/js') js
-
-
-            article
-              header
-                h2
-                  a(href='#') one button, two actions
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p not sure why we want to force the user to multiple sites with one button click
+                    time(datetime="2012-06-26",pubdate="") 16th July 2012
+              p Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.
+                | I found out a cool way of reliabily detecting orientation too!
+                a.more(href='/articles/responsive-design') more
               aside
                 h3.at tags
                 ul
                   li
                     a(href='/tags/usability') usability
                   li
-                    a(href='/tags/accessibility') accessibility
-
+                    a(href='/tags/html5') css3
+                  li
+                    a(href='/tags/html5') javascript
 
 
             article
-              header
-                h2
-                  a(href='#') pure css... not an image?
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p seen a lot of cool 'pure css' stuff like homer. We know it can be done so lets just use svgs eh?
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
+                header
+                    h2
+                        a(href='/articles/css-event-hooks') css transitions + browsers
+                    .time
+                        time(datetime="2012-06-26",pubdate="") 16th July 2012
+                p building a css3 carousel wasn't as easy as 1,2, css3.
+                    a.more(href='/articles/css-event-hooks')  more
+                aside
+                    h3.at tags
+                    ul
+                        li
+                            a(href='/tags/css') css
+                        li
+                            a(href='/tags/js') js
 
+            article
+                header
+                    h2
+                        a(href='#') javascript to upload files
+                    .time
+                        time(datetime="2012-06-26",pubdate="") 16th July 2012
+                p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
+                aside
+                    h3.at tags
+                        ul
+                            li
+                                a(href='/tags/js') js
 
 
             article
-              header
-                h2
-                  a(href='#') placeholders as labels only?
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p the spec says one thing... but i REALLY want to do something else with it...
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/ui') ui
-                  li
-                    a(href='/tags/accessibility') accessibility
-
-
-            article
-              header
-                h2
-                  a(href='#') column layout
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p Trying to do a cross browser multi column layout for a 'mega-dropdown' has its problems!
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
-                  li
-                    a(href='/tags/accessibility') accessibility
-
-
-
-            article
-              header
-                h2
-                  a(href='#') javascript to upload files
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/js') js
-
-
-            article
-              header
-                h2
-                  a(href='#') screen resolutions, media queries and viewports
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p hmm... trying to get a cool responsive site to look great on multiple devices
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/ui') ui
-
-            article
-              header
-                h2
-                  a(href='#') keyboard users + drop downs
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p tabbing through sites with hover events complicates what you thought about usin ARIA to just announce list titles and other hidden content.
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/accessibility') accessibility
-
-            article
-              header
-                h2
-                  a(href='#') Data transfer methods between pages
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p Pro's and cons on how to send data especially now cookies are the bad guys.
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/accessibility') accessibility
-
-
-            article
-              header
-                h2
-                  a(href='#') play time - render page as if being developed on the fly
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p something fun to do mixing js setTimeout chains and css2
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
-                  li
-                    a(href='/tags/js') js
-
-
-
-            article
-              header
-                h2
-                  a(href='#') pixels, percentages and em?
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p I always stay firm when talking about the need for 'em's for font sizes.
-                | I thought i'd check this out and find out if this thought is still based on reality or if i am being archaich in my ways.
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
-                  li
-                    a(href='/tags/accessibility') accessibility
-
-
-
-            article
-              header
-                h2
-                  a(href='#') pollyfiling
-                .time
-                  time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p I'm not a fan of blindly including a whole js library to fix a small problem, mainly because they a 'black holes'.
-                | I dont like including code if i don't know how it works or what it is doing.
-                | So i took a look to see and tested these libraries against my own JS.
-                | I wanted to know if i am being archaic in not trusting the 3rd party scripts.
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/css') css
-                  li
-                    a(href='/tags/accessibility') accessibility
-
+                header
+                    h2
+                        a(href='#') keyboard users + drop downs
+                    .time
+                        time(datetime="2012-06-26",pubdate="") 16th July 2012
+                p tabbing through sites with hover events complicates what you thought about usin ARIA to just announce list titles and other hidden content.
+                aside
+                    h3.at tags
+                    ul
+                        li
+                            a(href='/tags/accessibility') accessibility

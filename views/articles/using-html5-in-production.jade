@@ -3,6 +3,7 @@ extends ../layout
 block mainContent
     #article
         h1 using html5 in production
+            small [draft copy!]
         .wrapper
             section
                 h2 the mission
@@ -99,13 +100,7 @@ block mainContent
                 li [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html
                 li [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/
 
-        a.button(href="#")
-            span.pretty
-            span.text button
-        hr
-        span.button
-            span.pretty
-            input.text(type="submit",value="button")
+
 
     | <!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
 

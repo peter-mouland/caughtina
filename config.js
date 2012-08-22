@@ -69,10 +69,12 @@ app.get('/', function(req, res){
 });
 
 app.get('/articles/:article', function(req, res){
-
-    res.render('articles/' + req.params.article,{title : "Article"});
+    var article = (req.params.article =='using-html5-in-production') ? req.params.article : 'holding-page.jade';
+    res.render('articles/' + article,{title : "Article"});
 });
 
-
+app.get('/tags/:tag', function(req, res){
+    res.render('tags/holding-page.jade', {title : "Tag Search"});
+});
 
 app.listen(process.env.PORT || 3000);
