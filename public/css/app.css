@@ -49,5 +49,5 @@ html[xmlns] #recent_articles  article{display:block}
 #article h2{letter-spacing:2px;font-weight:bold;font-size:1.35em;color:#d48300;line-height:1.5em}
 #article h3,#article dt{color:#d48300;font-size:1em}
 #article p,#article dd{margin:0 0 20px;line-height:1.5em}
-#article code{background:rgba(0,0,0,0.15);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(255,255,255,0.25);font-size:.85em;white-space:nowrap;margin:0 5px}
+#article code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
 #article code.complete{margin:10px 20px;padding:10px 20px;display:block}
