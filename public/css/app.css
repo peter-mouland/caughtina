@@ -11,9 +11,10 @@ a{text-decoration:none;color:#a0afac}
 a:hover,a:focus{text-decoration:underline}
 .at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
 h1,h2,dt{font-family:'Quicksand'}
+body{background:url("/images/bg_laptop.JPG") center 0 no-repeat;background-size:cover;background-attachment:fixed}
 #content{width:960px;margin:0 auto;position:relative}
 .wrapper{background:rgba(0,0,0,0.7);padding:20px;border:1px solid rgba(0,0,0,0.7)}
-h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.33);margin:15px 0;padding:20px}
+h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.75);margin:15px 0;padding:20px}
 .main_wrapper{padding:1pc 2pc;clear:both}
 .draft{display:none}
 small{font-size:.5em;color:#333;font-style:italic;margin-left:1em}
