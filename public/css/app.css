@@ -18,6 +18,7 @@ h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.5);bo
 .main_wrapper{padding:1pc 2pc;clear:both}
 .draft{display:none}
 small{font-size:.5em;color:#333;font-style:italic;margin-left:1em}
+ul.references{list-style:decimal;padding:20px}
 #site_header{border:1px solid rgba(0,0,0,0.7);border-radius:20px 20px 0 0;font-family:'Quicksand';font-size:3em;margin:30px 0 15px;text-shadow:1px 1px 1px rgba(0,0,0,0.7);padding:20px 0 0;position:relative;}
 #site_header .site_name{margin:0;font-size:1.4em;text-align:center;letter-spacing:-10px;word-spacing:10px;color:#ffdea9}
 #site_header .tag_line{font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
@@ -46,7 +47,7 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles aside a{color:#5c6d6a}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right;}
 #recent_articles p .more{float:right;font-size:.875em;color:#677a76;padding-right:20px}
-#article h2{letter-spacing:2px;font-weight:bold;font-size:1.35em;color:#d48300;line-height:1.5em}
+#article h2{letter-spacing:2px;font-weight:bold;font-size:1.5em;color:#d48300;line-height:1.5em}
 #article h3,#article dt{color:#d48300;font-size:1em}
 #article p,#article dd{margin:0 0 20px;line-height:1.5em}
 #article code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}

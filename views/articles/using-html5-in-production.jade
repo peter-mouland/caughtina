@@ -6,7 +6,7 @@ block mainContent
             small [draft copy!]
         .wrapper
             section
-                h2 mission
+                h2 Mission
                 p Recenlty I have been looking into using html5 markup and seeing what is required to get it through to a production site.
                     | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
                 p So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
@@ -14,16 +14,39 @@ block mainContent
                     | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features[1], i had hope.
 
             section
-                h2 methods
+                h2 Methods
                 p The following all had their drawbacks, but given the right circumstance and a less strict set of requirements, any of them could be used to solve the problem.
                 dl
-                    dt pollyfil js
+                    dt Conditional Statements
+                    dd I thought this was a strange idea, but one that would work if you are really keen to get IE to play nicely without JS.
+                        | This will have to be updated when IE10 comes out later this year.
+                        code.html.complete &lt;!--[if lt IE 9]>&lt;div class='section'>&lt;![endif]--><br/>
+                            | &lt;!--[if gt IE 8]>&lt;section class='section'>&lt;![endif]--><br/>
+                            | &lt;!--[if !IE]>&lt;section class='section'>&lt;![endif]--><br/>
+                            | ...<br/>
+                            | &lt;!--[if lt IE 9]>&lt;/div>&lt;![endif]--><br/>
+                            | &lt;!--[if gt IE 8]>&lt;/section>&lt;![endif]--><br/>
+                            | &lt;!--[if !IE]>&lt;/section>&lt;![endif]-->
+                        | For me this method is simply too untidy and duplicates too much client side code to ever be a serious contender, but i do like outside-the-box thinking behind it!
+
+                    dt HTML5 Containers
+                    dd This method wraps each HTML5 tag in its own container with a descriptive
+                        code.html class
+                        |. The idea here is to never actually attempt to style the HTML5 tags, instead just get the browser to simply style the tags that they do understand.
+                        code.html.complete &lt;div class='section'><br/>
+                            | &lt;section><br/>
+                            | ...<br/>
+                            | &lt;/section>
+                            | &lt;/div><br/>
+                        | We do end up with more elements in the DOM than i would like, but we also get the semantic benefit of the HTML5 tags while not losing any styling.
+                        | All this without JavaScript.
+
+                    dt Pollyfil JS
                     dd
                         p I'm not a fan of copying a whole library into production code to solve what are potentially small problems, but they are worth a look.
                             | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - i took a look anyway.
-                            | I'm not going to compare and contrast libraries in detail here.  All i'm interested in whether or not they did the job i needed them to do.
-                            | So at this point i want them to have a small footprint, be non-invasive and get a small number of html5 features[2] to work in all common browsers[3].
-                        p As CSS3 features is not my goal here, I am moving on past&nbsp;
+                            | I'm not going to compare and contrast libraries in detail here.
+                        p As CSS3 features is not my goal here, just a small number of html5 features[2] working in all common browsers[3], I am moving on past&nbsp;
                             a(href='http://modernizr.com/', target='_new') modernizr
                             | ,&nbsp;
                             a(href='http://css3pie.com/', target='_new') CSS3Pie
@@ -33,65 +56,43 @@ block mainContent
                             a(href='https://github.com/aFarkas/html5shiv', target='_new') HTML5Shiv
                             |  (which is at the source of Modernizr).
 
-                        p A quick look at the source for this shim shows how small and effective it really in allowing all HTML5 tags to be styled by the browser.
-                            | Even going as far as ensuring the prined document is as good as the screen.
-                            | Along with this, it also replecates some javascript functions (<code>createDocumentFragment</code> + <code>createElement</code>).
-                            | Although these features could be very useful, I dont need them at this time.
+                        p A quick look at the source for this shim shows how little code is used to get browsers to style unknown tags.
+                            | Even going as far as ensuring the printed document is as good as what is seen the screen.
+                            | Along with this, it also replecates a javascript function (<code>createDocumentFragment</code>), which would be very useful, but I dont need it at this time.
 
                         p It turns out, all i needed in the way of JavaScript was this excellent little snippet[4] and along with the CSS
                             code.css display:block
                             | we are able to get HTML5 tags to render in all browsers.
                             code.js.complete 'article aside footer header nav section time'.replace(/w+/g,function(n){document.createElement(n)})
 
-                    dt conditional statements
-                    dd I thought this was a strange idea, but one that would work if you are really keen to get IE to play nicely without JS.
-                        | Not that i would ever recommend this method, but i do like outside-the-box thinking behind it.
-                        | For me it is simply too untidy and it duplicates too much client side code to ever be a serious contender.
-                        code.html.complete &lt;--[if lt IE 9]-->&lt;div class='section'>&lt;[endif]--><br/>
-                            | &lt;--[if gt IE 8]-->&lt;section class='section'>&lt;[endif]--><br/>
-                            | &lt;--[if !IE]-->&lt;section class='section'>&lt;[endif]--><br/>
-                            | ...<br/>
-                            | &lt;--[if lt IE 9]-->&lt;/div>&lt;[endif]--><br/>
-                            | &lt;--[if gt IE 8]-->&lt;/section>&lt;[endif]--><br/>
-                            | &lt;--[if !IE]-->&lt;/section>&lt;[endif]-->
 
-                    dt extra 'containers'
-                    dd This method wraps each HTML5 tag in its own container and in order for any css associated with the element from the
-                        code.html id
-                        |or
-                        code.html class
-                        |to be rendered in IE6.
-                        code.html.complete &lt;section><br/>
-                            | &lt;div class='section'><br/>
-                            | ...<br/>
-                            | &lt;/div><br/>
-                            | &lt;/section>
+            section
+                h2 Aside
+                p I've kept all my ARIA attributes on the HTML5 tags themselves.
+                    |This is so that in the future, when more <abbr title="Assistive Technology">AT</abbr>'s do understand the purpose of each tag, announcements are not duplicated.
+
+            section
+                h2 Conclusion
+                p HTML5 can be used today in all browsers that are widely used today[1], even without the need for <abbr title="Javascript">JS</abbr>, whoop whoop!
+
+                p It a shame though that the spec states that some elements are for styling only [5].
+                    | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
+                    | It is rare that developers will allow the browser to pick a style that can not be altered.
+                    | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
+                p  Overall, The semantic benifits these tags give will help future proof your site as well as aiding <abbr title="Assistive Technology">AT</abbr>'s.
+                    | For me, thismakes the small effort worth it.
 
 
-            h2 execution
-            p I've kept all my ARIA attributes on the HTML5 tags themselves.  This is so that in the future, when more AT's do understand the purpose of each tag, items/announcements to the user are not duplicated.
-                |I dont really want my new div container to seem like a navigation item to AT when its first child is also a navigation item!
-
-            h2 reflection
-            p HTML5 can be used today in all browsers that are widely used today [1], even without JS, whoop whoop!
-
-
-            p It a shame though that the spec states that some elements are for styling only [1].
-                | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
-                | It is rare that developers will allow the browser to pick a style that can not be altered.
-                | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
-
-            ul
-                li [1] firefox 3 html 5 - https://developer.mozilla.org/en/Firefox_3_for_developers
-                li [2] the layout tags (header, hgroup, nav, section, article, footer) and fontface, border-radius, opacity, rgba, text-shadow, columns, gradients, transitions and touch.
-                li [3] IE6, IE7, IE8, IE9, FF3.6, FF14, Opera, Chrome, Safari
-                li [4] http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html
-                li [5] elements with 'filter' css will always have their overflow hidden.
-                li [6] css3 support tests + results
-                li [7] no way of hidding text from screen readers at the moment
-                li [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html
-                li [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/
-
+            section
+                h2 <a name="sources">References</a>
+                ul.references
+                    li <a href="https://developer.mozilla.org/en/Firefox_3_for_developers" target="_new">New developer features in Firefox 3</a>
+                    li HTML5 tags to be rendered are header, hgroup, nav, section, article and footer.
+                    li Important and Popular browsers being IE6, IE7, IE8, IE9, FF3.6, FF15, Opera, Chrome, Safari.
+                    li <a href="http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html" target="_new">A Simple HTML5 Fix for IE</a>
+    |<!-- [7] no way of hidding text from screen readers at the moment-->
+    |<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+    |<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
 
 
     | <!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
