@@ -1,0 +1,63 @@
+extends ../layout
+
+block mainContent
+    #article
+        h1 Important front end information to get you started
+            small [draft copy!]
+        .wrapper
+            section
+                h2 Mission
+                p To start with build tabbed document within which each document contains 5 bits of information;
+                    | an image, a title, sub text and published date.
+                p This should look the same in all browsers from IE6 to IE9 as well as Firefox 3.6 and the latest versons for Firefox, chrome, safari and Opera.
+
+                .figure
+                    .caption an image showing the final product
+
+                h2 layout desicions
+                p important when the code loads you dont get fouc (flash of unstyled content).
+                    | its also important each tab and content does not move position when switching.
+
+                h3 the tabs
+                ul
+                   li structure of code (li's of headers containing articles of information)
+                   li to get them next to each other
+                   li inline: cant set height or width, so how to get around that?  (padding, or use a block element inside)
+                   li inline-block: not cross browser compatible
+                   li block: takes full width (so float left but now the container doesnt know its there)
+                   li gradient: image or css? (css as most browsers support this and isnt too bad if an old brwoser cant see it)
+                   li drop-shadow: image or css? (image as looks really bad in older browsers if it isn't there)
+
+                h3 tab content
+                ul
+                    li how to get everything lined up?
+                    li does each tab have a heading and why does it matter?
+                    li
+
+                h3 tab switching
+                ul
+                    li attach events to each li or tab container?
+                    li js debug
+                    li how to hide the ther tabs
+                    li display: none     (not on the page. old ie has trouble getting height and widths in js)
+                    li visibility:hidden (still in document flow but not shown)
+                    li transitions?
+
+                h3 tracking user interaction
+                ul
+                    li what info should be sent?
+                    li
+
+                h3 device support
+                ul
+                    li responsive design
+                    li tap event
+                    li orientation change
+                    li media queries
+
+                h3 accessibility
+                ul
+                    li screen reader support (aria, live regions and structure)
+                    li keyboard support
+
+
