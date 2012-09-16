@@ -55,3 +55,6 @@ html[xmlns] #recent_articles  article{display:block}
 #article p,#article dd{margin:0 0 20px;line-height:1.5em}
 #article code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
 #article code.complete{margin:10px 20px;padding:10px 20px;display:block}
+#article dl.contentList{clear:both;overflow:auto;}
+#article dl.contentList dt{float:left;clear:left;line-height:1.5em}
+#article dl.contentList dd{float:left;margin:0 0 0 12px}
