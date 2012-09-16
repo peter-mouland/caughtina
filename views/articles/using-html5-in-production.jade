@@ -3,15 +3,14 @@ extends ../layout
 block mainContent
     #article
         h1 using html5 in production
-            small [draft copy!]
         .wrapper
             section
                 h2 Mission
-                p Recenlty I have been looking into using html5 markup and seeing what is required to get it through to a production site.
-                    | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours trapped behind the corporate build.
+                p Recenlty I have been looking into using html5 markup and seeing what is required to get it through to a live site.
+                    | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours, trapped behind the corporate build.
                 p So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
                     | I'm not one to bash an old foe when he's down and almost out, but IE did give me problems.
-                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features[1], i had hope.
+                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup>[1]</sup>, i had hope.
 
             section
                 h2 Methods
@@ -20,6 +19,7 @@ block mainContent
                     dt Conditional Statements
                     dd I thought this was a strange idea, but one that would work if you are really keen to get IE to play nicely without JS.
                         | This will have to be updated when IE10 comes out later this year.
+                        | The idea is to only let IE render the tags it understands depending on its version number.
                         code.html.complete &lt;!--[if lt IE 9]>&lt;div class='section'>&lt;![endif]--><br/>
                             | &lt;!--[if gt IE 8]>&lt;section class='section'>&lt;![endif]--><br/>
                             | &lt;!--[if !IE]>&lt;section class='section'>&lt;![endif]--><br/>
@@ -27,18 +27,20 @@ block mainContent
                             | &lt;!--[if lt IE 9]>&lt;/div>&lt;![endif]--><br/>
                             | &lt;!--[if gt IE 8]>&lt;/section>&lt;![endif]--><br/>
                             | &lt;!--[if !IE]>&lt;/section>&lt;![endif]-->
-                        | For me this method is simply too untidy and duplicates too much client side code to ever be a serious contender, but i do like outside-the-box thinking behind it!
+                        | For me, this method simply duplicates too much client side code to ever be a serious contender.
+                        | It also means that we completely lose the HTML 5 tags + their semantic meaning for older versions of IE.
+                        | But I do like outside-the-box thinking behind it!
 
                     dt HTML5 Containers
                     dd This method wraps each HTML5 tag in its own container with a descriptive
                         code.html class
-                        |. The idea here is to never actually attempt to style the HTML5 tags, instead just get the browser to simply style the tags that they do understand.
+                        |. The idea here is to never actually attempt to style or do anything with the HTML5 tags. Instead we just get the browser to style HTML5 containers.
                         code.html.complete &lt;div class='section'><br/>
                             | &lt;section><br/>
                             | ...<br/>
                             | &lt;/section>
                             | &lt;/div><br/>
-                        | We do end up with more elements in the DOM than i would like, but we also get the semantic benefit of the HTML5 tags while not losing any styling.
+                        | We do end up with more elements in the DOM than I would like, but we also get the semantic benefit of the HTML5 tags.
                         | All this without JavaScript.
 
                     dt Pollyfil JS
@@ -46,7 +48,7 @@ block mainContent
                         p I'm not a fan of copying a whole library into production code to solve what are potentially small problems, but they are worth a look.
                             | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - i took a look anyway.
                             | I'm not going to compare and contrast libraries in detail here.
-                        p As CSS3 features is not my goal here, just a small number of html5 features[2] working in all common browsers[3], I am moving on past&nbsp;
+                        p As CSS3 features is not my goal here, just a small number of html5 features<sup>[2]</sup> working in all common browsers<sup>[3]</sup>, I am moving past&nbsp;
                             a(href='http://modernizr.com/', target='_new') modernizr
                             | ,&nbsp;
                             a(href='http://css3pie.com/', target='_new') CSS3Pie
@@ -56,40 +58,44 @@ block mainContent
                             a(href='https://github.com/aFarkas/html5shiv', target='_new') HTML5Shiv
                             |  (which is at the source of Modernizr).
 
-                        p A quick look at the source for this shim shows how little code is used to get browsers to style unknown tags.
-                            | Even going as far as ensuring the printed document is as good as what is seen the screen.
-                            | Along with this, it also replecates a javascript function (<code>createDocumentFragment</code>), which would be very useful, but I dont need it at this time.
+                        p A quick look at the source for this shim shows how little code is needed to get browsers to style unknown tags.
+                            | Even going as far as ensuring the printed version of a HTML5 page also works.
+                            | Along with this, it also replecates a javascript function (<code>createDocumentFragment</code>), which could be very useful.
 
-                        p It turns out, all i needed in the way of JavaScript was this excellent little snippet[4] and along with the CSS
+                        p As it turns out, all I needed in the way of JavaScript was this excellent little snippet<sup>[4]</sup> and along with the CSS
                             code.css display:block
                             | we are able to get HTML5 tags to render in all browsers.
                             code.js.complete 'article aside footer header nav section time'.replace(/w+/g,function(n){document.createElement(n)})
 
-
-            section
-                h2 Aside
-                p I've kept all my ARIA attributes on the HTML5 tags themselves.
-                    |This is so that in the future, when more <abbr title="Assistive Technology">AT</abbr>'s do understand the purpose of each tag, announcements are not duplicated.
-
             section
                 h2 Conclusion
-                p HTML5 can be used today in all browsers that are widely used today[1], even without the need for <abbr title="Javascript">JS</abbr>, whoop whoop!
+                p HTML5 can be used today in all browsers that are widely used today<sup>[5]</sup>, even without <abbr title="Javascript">JS</abbr>!
 
-                p It a shame though that the spec states that some elements are for styling only [5].
-                    | I was hoping for the aim to be higher, for these styling elements have gone down in writing as aiming to assist AT when possible.
+                p It a shame though that the spec states that some elements are primarily for styling<sup>[6]</sup>.
+                    | I was hoping for the aim to be higher, to allow code to be more descriptive and ive AT's more of a helping hand.
                     | It is rare that developers will allow the browser to pick a style that can not be altered.
                     | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
-                p  Overall, The semantic benifits these tags give will help future proof your site as well as aiding <abbr title="Assistive Technology">AT</abbr>'s.
-                    | For me, thismakes the small effort worth it.
+                p  Overall, The semantic benifits these tags give will help future proof our sites as well as aiding <abbr title="Assistive Technology">AT</abbr>'s.
+                    | For me, this makes the small effort worth it.
 
+
+            section
+                h2 Other Notes
+                p When implementing my sollution, I decided to keep all my <abbr title="Accessible Rich Internet Application">ARIA</abbr> attributes on the HTML5 tags themselves.
+                    | This is so that in the future, when more <abbr title="Assistive Technology">AT</abbr>'s do understand the purpose of each tag, the announcements made by screen readers are not duplicated.
 
             section
                 h2 <a name="sources">References</a>
                 ul.references
                     li <a href="https://developer.mozilla.org/en/Firefox_3_for_developers" target="_new">New developer features in Firefox 3</a>
                     li HTML5 tags to be rendered are header, hgroup, nav, section, article and footer.
-                    li Important and Popular browsers being IE6, IE7, IE8, IE9, FF3.6, FF15, Opera, Chrome, Safari.
+                    li Browsers chosen as being either important or popular IE6, IE7, IE8, IE9, FF3.6, FF15, Opera, Chrome, Safari.
                     li <a href="http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html" target="_new">A Simple HTML5 Fix for IE</a>
+                    li <a href="http://gs.statcounter.com/#browser_version_partially_combined-ww-yearly-2012-2012-bar">Browser usage statistics for 2012</a>
+                    li <a href="http://www.w3.org/wiki/HTML/Elements/input/search">Example of an HTML5 element which is used primarily for styling</a>
+        .wrapper
+            aside
+                First published: 26th July 2012. Last updated: 16th September 2012.
     |<!-- [7] no way of hidding text from screen readers at the moment-->
     |<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
     |<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->

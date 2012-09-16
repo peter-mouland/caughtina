@@ -19,6 +19,7 @@ h1{font-size:2em;color:#000;font-weight:bold;background:rgba(255,255,255,0.5);bo
 .draft{display:none}
 small{font-size:.5em;color:#333;font-style:italic;margin-left:1em}
 ul.references{list-style:decimal;padding:20px}
+img{max-width:100%}
 #site_header{border:1px solid rgba(0,0,0,0.7);border-radius:20px 20px 0 0;font-family:'Quicksand';font-size:3em;margin:30px 0 15px;text-shadow:1px 1px 1px rgba(0,0,0,0.7);padding:20px 0 0;position:relative;}
 #site_header .site_name{margin:0;font-size:1.4em;text-align:center;letter-spacing:-10px;word-spacing:10px;color:#ffdea9}
 #site_header .tag_line{font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
@@ -26,7 +27,8 @@ ul.references{list-style:decimal;padding:20px}
 #site_header ul li{float:left;font-size:.4em;}
 #site_header ul li a{border-radius:15px 15px 0 0;padding:10px 20px;background:rgba(0,0,0,0.35);text-decoration:none;color:#f2e4d5;display:block;border:1px solid rgba(0,0,0,0.7);border-width:1px 1px 0 0}
 #site_header ul li a:focus,#site_header ul li a:hover{background:#000;color:#ae7436}
-#site_header form{position:absolute;bottom:0;right:0;border-radius:15px 15px 0 0;padding:.5em 30px;background:rgba(0,0,0,0.35);line-height:1px;font-size:.4em}
+#site_header form{position:absolute;bottom:0;right:0;border-radius:15px 15px 0 0;padding:.5em 30px;background:rgba(0,0,0,0.35);line-height:1px;font-size:.4em;}
+#site_header form input[type=search]{width:150px}
 #site_header form:hover{background:rgba(0,0,0,0.7)}
 body.fixed{padding-top:258px;}
 body.fixed #site_header{border:0;position:fixed;top:-168px;width:960px;padding-bottom:0;z-index:10;background:#000}

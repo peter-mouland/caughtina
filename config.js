@@ -69,7 +69,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/articles/:article', function(req, res){
-    var article = (req.params.article =='using-html5-in-production') ? req.params.article : 'holding-page.jade';
+    var article = (req.params.article =='using-html5-in-production' || req.params.article =='useful-front-end') ? req.params.article : 'holding-page.jade';
     res.render('articles/' + article,{title : "Article"});
 });
 

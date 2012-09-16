@@ -5,19 +5,35 @@ block mainContent
     #recent_articles.wrapper
         section(role='main')
             article
+                header
+                    h2
+                        a(href='/articles/useful-front-end') useful front-end information to get you started
+                    .time
+                        time(datetime="2012-08-16",pubdate="") 16th September 2012
+                p I've been asked to put together some training notes that I would give to server-side developers to help them tackle client-side problems quickly.
+                    | So here is my guide to useful front-end code.
+                    a.more(href='/articles/using-html5-in-production') more
+                aside
+                    h3.at tags
+                    ul
+                        li
+                            a(href='/tags/Accessibility') Accessibility
+                        li
+                            a(href='/tags/usability') CSS
+            article
               header
                 h2
                   a(href='/articles/using-html5-in-production') structural html5 in production
                 .time
-                    time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p I've seen many people question html5. Some say why bother as it too much hassel.
-                | Others saying just use its no one should be using IE anyway - let alone with JS turned off!
+                    time(datetime="2012-07-16",pubdate="2012-07-16") 16th July 2012
+              p I've seen many people question html5. Some say 'why bother, there's not enough support'.
+                | Others saying 'just use it as no one should be using IE anyway'!
                 a.more(href='/articles/using-html5-in-production') more
               aside
                 h3.at tags
                 ul
                   li
-                    a(href='/tags/usability') usability
+                    a(href='/tags/Accessibility') Accessibility
                   li
                     a(href='/tags/html5') html5
 
