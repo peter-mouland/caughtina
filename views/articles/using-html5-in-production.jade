@@ -10,7 +10,7 @@ block mainContent
                     | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site during work hours, trapped behind the corporate build.
                 p So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
                     | I'm not one to bash an old foe when he's down and almost out, but IE did give me problems.
-                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup>[1]</sup>, i had hope.
+                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup><a href="#sources">[1]</a></sup>, i had hope.
 
             section
                 h2 Methods
@@ -48,7 +48,7 @@ block mainContent
                         p I'm not a fan of copying a whole library into production code to solve what are potentially small problems, but they are worth a look.
                             | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - i took a look anyway.
                             | I'm not going to compare and contrast libraries in detail here.
-                        p As CSS3 features is not my goal here, just a small number of html5 features<sup>[2]</sup> working in all common browsers<sup>[3]</sup>, I am moving past&nbsp;
+                        p As CSS3 features is not my goal here, just a small number of html5 features<sup><a href="#sources">[2]</a></sup> working in all common browsers<sup><a href="#sources">[3]</a></sup>, I am moving past&nbsp;
                             a(href='http://modernizr.com/', target='_new') modernizr
                             | ,&nbsp;
                             a(href='http://css3pie.com/', target='_new') CSS3Pie
@@ -62,16 +62,16 @@ block mainContent
                             | Even going as far as ensuring the printed version of a HTML5 page also works.
                             | Along with this, it also replecates a javascript function (<code>createDocumentFragment</code>), which could be very useful.
 
-                        p As it turns out, all I needed in the way of JavaScript was this excellent little snippet<sup>[4]</sup> and along with the CSS
+                        p As it turns out, all I needed in the way of JavaScript was this excellent little snippet<sup><a href="#sources">[4]</a></sup> and along with the CSS
                             code.css display:block
                             | we are able to get HTML5 tags to render in all browsers.
                             code.js.complete 'article aside footer header nav section time'.replace(/w+/g,function(n){document.createElement(n)})
 
             section
                 h2 Conclusion
-                p HTML5 can be used today in all browsers that are widely used today<sup>[5]</sup>, even without <abbr title="Javascript">JS</abbr>!
+                p HTML5 can be used today in all browsers that are widely used today<sup><a href="#sources">[5]</a></sup>, even without <abbr title="Javascript">JS</abbr>!
 
-                p It a shame though that the spec states that some elements are primarily for styling<sup>[6]</sup>.
+                p It a shame though that the spec states that some elements are primarily for styling<sup><a href="#sources">[6]</a></sup>.
                     | I was hoping for the aim to be higher, to allow code to be more descriptive and ive AT's more of a helping hand.
                     | It is rare that developers will allow the browser to pick a style that can not be altered.
                     | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
