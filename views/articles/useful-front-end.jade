@@ -11,19 +11,19 @@ block mainContent
                     | Along with these I will give you the sollutions and best practises in order to get around the issues or to avoid them all together.
 
                 p To help put the theory into practise I will be building a tabbed document.
-                    | Each tab will show a set of four articles which each contain an image, logo, title, tag-line and a call-to-action.
+                    | A tab will show a set of four articles, each containing an image, logo, title, tag-line and a button.
 
                 p The end product should look the same in all browsers from IE6 to IE9 as well as Firefox 3.6 and the latest versons for Firefox (v15), chrome (v21), safari (v6) and Opera (v12).
 
                 figure
                     img(src='/images/articles/useful-front-end.JPG')
-                    figcaption an image showing the final product
+                    figcaption The final product, a tabbed document looking pretty.
 
                 h2 code coverage
-                p the issue being touched on here is
+                p.listStatement The main items being covered are:
                     dl.contentList
                         dt document flow:
-                        dd including inline, block, inline-block, float and overflow
+                        dd pro's and con's of display types (inline, block, inline-block), float and overflow
                         dt css3:
                         dd when to use css3 or to stick with images
                         dt transitions:
@@ -35,9 +35,21 @@ block mainContent
                         dt accessiblity:
                         dd what ARIA is and how to structure your document to make sense for <abbr title="Assistive Technologies">AT's</abbr>
 
-                h2 layout desicions
-                p important when the code loads you dont get fouc (flash of unstyled content).
-                    | its also important each tab and content does not move position when switching.
+                h2 layout decisions
+                p The first thing to do is to build all the HTML that is needed, forget styling, right now we need to get the structure right.
+                    | If the document makes sense un-styled, it is likely to make sense to a screen-reader too.
+                p When it comes to styling, ensure that the user never sees a flash of unstyled content (FOUC)<sup><a href="#sources">[1]</a></sup>.
+                    | This means never rely on JavaScript to help with the layout.
+                    | Not because 'non-JS' users wont appreciate it, but because waiting for <code>$(document).ready</code> takes too long.
+                P If there is something which needs Javascript (e.g. feature-detection to help with some complicated styling),
+                    | then either <code>gracefully fallback</code> or <code>progressively enhancement</code> the user experience.
+                    | Which one will depend on you.  Do you choose to code for the browser most commonly used on your site, or the latest and greatest browser that was just released.
+                    | As long as the most popular browser still looks awesome, works as intended and is fast it shouldn't matter too much.
+                P
+                    | Being able allign items with each other, as in the designs, is also important to get right.
+                    | The designs rarely cover all possibilities so you must choose which allignments are most important.
+                    | Although this shouldn't affect your HTML structure, it may mean an extra div or two to help contain elements.
+                    | These elements can then be moved on the page as a group using <code>float</code> or <code>position: absolute</code>.
 
                 h3 the tabs
                 ul

@@ -58,3 +58,4 @@ html[xmlns] #recent_articles  article{display:block}
 #article dl.contentList{clear:both;overflow:auto;}
 #article dl.contentList dt{float:left;clear:left;line-height:1.5em}
 #article dl.contentList dd{float:left;margin:0 0 0 12px}
+#article p.listStatement{margin:0}
