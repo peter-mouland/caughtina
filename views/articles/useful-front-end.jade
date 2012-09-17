@@ -8,8 +8,24 @@ block mainContent
             section
                 h2 Mission
                 p I want to expose the common problems and frustrations associated with front-end development.
-                    | Along with these I will give you the sollutions and best practises in order to get around the issues or to avoid them all together.
+                    | Along with these I will give sollutions and best practises in order to get around the issues or to avoid them all together.
 
+                p.listStatement In this post i will concentrate on the following topics;
+                dl.contentList
+                    dt document flow:
+                    dd pro's and con's of display types (inline, block, inline-block), float and overflow
+                    dt css3:
+                    dd when to use css3 or to stick with images
+                    dt transitions:
+                    dd css3 support and JS fallback
+                    dt javascript
+                    dd jQuery pitfalls and testing
+                    dt devices:
+                    dd responsive design and media queries
+                    dt accessiblity:
+                    dd what ARIA is and how to structure your document to make sense for <abbr title="Assistive Technologies">AT's</abbr>
+
+                h2 target design
                 p To help put the theory into practise I will be building a tabbed document.
                     | A tab will show a set of four articles, each containing an image, logo, title, tag-line and a button.
 
@@ -19,21 +35,6 @@ block mainContent
                     img(src='/images/articles/useful-front-end.JPG')
                     figcaption The final product, a tabbed document looking pretty.
 
-                h2 topics
-                p.listStatement The main items being covered are:
-                    dl.contentList
-                        dt document flow:
-                        dd pro's and con's of display types (inline, block, inline-block), float and overflow
-                        dt css3:
-                        dd when to use css3 or to stick with images
-                        dt transitions:
-                        dd css3 support and JS fallback
-                        dt javascript
-                        dd jQuery pitfalls and testing
-                        dt devices:
-                        dd responsive design and media queries
-                        dt accessiblity:
-                        dd what ARIA is and how to structure your document to make sense for <abbr title="Assistive Technologies">AT's</abbr>
 
                 h2 layout decisions
                 p The first thing to do is to build all the HTML that is needed, forget styling, right now we need to get the structure right.
@@ -46,7 +47,7 @@ block mainContent
                     | Which one will depend on you.  Do you choose to code for the browser most commonly used on your site, or the latest and greatest browser that was just released.
                     | As long as the most popular browser still looks awesome, works as intended and is fast it shouldn't matter too much.
                 P
-                    | Being able allign items with each other, as in the designs, is also important to get right.
+                    | Being able align items with each other, as in the designs, is also important to get right.
                     | The designs rarely cover all possibilities so you must choose which allignments are most important.
                     | Although this shouldn't affect your HTML structure, it may mean an extra div or two to help contain elements.
                     | These elements can then be moved on the page as a group using <code>float</code> or <code>position: absolute</code>.

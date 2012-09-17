@@ -50,7 +50,8 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles aside a{color:#5c6d6a}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right;}
 #recent_articles p .more{float:right;font-size:.875em;color:#677a76;padding-right:20px}
-#article h2{letter-spacing:2px;font-weight:bold;font-size:1.5em;color:#d48300;line-height:1.5em}
+#article h2{letter-spacing:2px;font-weight:bold;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
+#article h2:first-child{margin:0}
 #article h3,#article dt{color:#d48300;font-size:1em}
 #article p,#article dd{margin:0 0 20px;line-height:1.5em}
 #article code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
