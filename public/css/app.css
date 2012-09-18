@@ -13,7 +13,8 @@ a:hover,a:focus{text-decoration:underline}
 h1,h2,dt{font-family:'Quicksand'}
 body{background:url("/images/bg_laptop.JPG") center 0 no-repeat;background-size:cover;background-attachment:fixed}
 #content{width:960px;margin:0 auto;position:relative}
-.wrapper{background:rgba(0,0,0,0.75);padding:20px;border:1px solid rgba(0,0,0,0.75)}
+.wrapper{background:rgba(0,0,0,0.75);padding:20px;border:1px solid rgba(0,0,0,0.75);}
+.wrapper section{width:650px}
 .main_wrapper{padding:1pc 2pc;clear:both}
 .draft{display:none}
 small{font-size:.5em;font-style:italic;margin-left:1em}
@@ -34,9 +35,13 @@ body h1{border:0;border-bottom:4px solid #d48300;box-shadow:0 20px 20px -10px #0
 body.fixed{padding-top:300px;}
 body.fixed #site_header{border:0;position:fixed;top:-168px;width:960px;padding-bottom:0;z-index:10;background:#171c2a}
 body.fixed h1{position:fixed;top:40px;width:920px;background:#0b0e16;z-index:1}
-#site_footer{color:#ffdea9;border-top:1px solid #ffad2a;padding:1pc 2pc;font-size:1em;overflow:auto;color:#f2e4d5;}
+body.fixed .authorProfile{top:20px}
+.authorProfile{box-shadow:0 0 14px 0 #000;position:absolute;top:289px;right:20px;width:200px;background:rgba(0,0,0,0.5);padding:20px;color:#d48300;}
+.authorProfile img{border-bottom:2px solid #d48300}
+.authorProfile small{display:block;margin:0;color:#d4a775}
+#site_footer{color:#ffdea9;border-top:1px solid #ffad2a;font-size:1em;overflow:auto;color:#f2e4d5;}
 #site_footer h2{float:right;margin:0}
-#site_footer ul li{display:inline;margin:0 20px}
+#site_footer ul li{display:inline}
 html[xmlns] #recent_articles  article{display:block}
 * html #recent_articles article{height:1%}
 #recent_articles article{display:inline-block;width:100%;padding:20px 0;background:rgba(0,0,0,0.5);border-radius:20px}
@@ -44,6 +49,7 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles header{width:50%;float:left}
 #recent_articles h2{margin:.75em 0;text-align:right;font-size:1.6em;text-shadow:1px 1px 1px #677a76;padding-right:20px}
 #recent_articles article{position:relative;clear:left;margin-bottom:20px}
+#recent_articles section{width:100%}
 #recent_articles .time{position:absolute;left:50%;top:24px;font-size:.875em;color:#905900}
 #recent_articles aside{position:absolute;top:24px;left:0;width:50%;text-align:right;font-size:.875em;}
 #recent_articles aside li{display:inline;padding-right:20px}

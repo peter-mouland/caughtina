@@ -1,6 +1,9 @@
 extends ../layout
 
 block mainContent
+
+    include ../partials/profile
+
     #article
         h1 Useful front-end code
             small [draft copy!]
@@ -13,7 +16,7 @@ block mainContent
                 p.listStatement In this post i will concentrate on the following topics;
                 dl.contentList
                     dt document flow:
-                    dd pro's and con's of display types (inline, block, inline-block), float and overflow
+                    dd pro's and con's of display types, float and overflow
                     dt css3:
                     dd when to use css3 or to stick with images
                     dt transitions:
