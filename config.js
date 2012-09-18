@@ -65,7 +65,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res){
-    res.render('index',{title : "Home"});
+    res.render('index',{title : "all posts"});
 });
 
 app.get('/articles/:article', function(req, res){

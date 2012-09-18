@@ -1,4 +1,4 @@
-var ciac = {};
+var ciadc = {};
 (function(){
     var setupGlobalEvents = function(){
         window.onscroll = function(){
