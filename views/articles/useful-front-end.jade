@@ -48,11 +48,34 @@ block mainContent
             section
                 <a name="from-design-to-web"></a>
                 h2 From design to web
-                P
-                    | Being able align items with each other, as in the designs, is also important to get right.
-                    | The designs rarely cover all possibilities so you must choose which allignments are most important.
-                    | Although this shouldn't affect your HTML structure, it may mean an extra div or two to help contain elements.
-                    | These elements can then be moved on the page as a group using <code class='css'>float</code> or <code class='css'>position: absolute</code>.
+                h3 designs are great
+                p often looking awesome on their printed A3 sheets, designs are great.
+                    |unfortunately the web is not a piece of paper and our printers (the browser) are in the hand of the user.
+                    | this allows any variation of size and colours to be seen.
+                p this is part of the reason why I dont use tools like <code>pixel perfect</code>.
+                    |what might look perfect in your printer of choice, may look completely different in another.
+                    |there is a better way. go and speak to the designer and ask for his annotations.
+                    |learn the thinking behind their madness and use this to help guide you when things don't go to plan.
+                h3 designs are incomplete
+                p as with the design above you can not see what are on the other tabs.
+                    | unfortunately, you have probably missed most of the thinking that has gone into the design.
+                    | this means you cant assume to know what the other tabs will hold.
+
+                h3 UI
+                p designs often miss what happens when a user interacts with the elements.
+                    | has the design included <code>hover</code> and <code>focus</code> (via the tab key) look and feel?
+                    | transitions from one state to anther will also probably be missing, but this is ok.
+                    | as long as you have been given the time, the interaction model (moving from one state to another) often has be to used before you know if it feels right.
+
+                h3 catching the unexpected
+                p everything looks cool in the design, but what does it look like if a channel logo is missing.
+                    | can you ensure all images will be the same height?
+                    | if not, what do you do; crop the image somewhere or allow the images to be different and set a <code class="css">max-height</code>?
+
+                h3 alligning page elements is good
+                p Being able align items with each other is important.
+                    | as you switch tabs in this design, the elements within the tabs should stay in the same position.
+                    | i.e. the channel logo's should always be in the same position, as should the call-to-action at the bottom.
 
             section
                 <a name="document-flow"></a>
