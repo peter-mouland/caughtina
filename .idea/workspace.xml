@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/articles.styl" afterPath="$PROJECT_DIR$/public/css/articles.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/header.styl" afterPath="$PROJECT_DIR$/public/css/header.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade" afterPath="$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/articles/useful-front-end.jade" afterPath="$PROJECT_DIR$/views/articles/useful-front-end.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" afterPath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,7 +91,7 @@
       <file leaf-file-name="caught-in-a-dot-com.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="111" selection-start="899" selection-end="899" vertical-scroll-proportion="0.49624062">
+            <state line="32" column="0" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.7079646">
               <folding />
             </state>
           </provider>
@@ -753,7 +747,11 @@
       <created>1348243605564</created>
       <updated>1348243605564</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix headers + trim about page">
+      <created>1348247298180</created>
+      <updated>1348247298180</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -839,7 +837,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 'about' page" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix headers + trim about page" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -852,7 +850,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="remove uglify for heroku" />
     <MESSAGE value="update port options" />
     <MESSAGE value="update article plus fix h1 when scroll" />
     <MESSAGE value="update fixed nav look and feel" />
@@ -877,6 +874,7 @@
     <MESSAGE value="add right hand bar + profile pic" />
     <MESSAGE value="justify text for new thinner article widths" />
     <MESSAGE value="added 'about' page" />
+    <MESSAGE value="fix headers + trim about page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="111" selection-start="899" selection-end="899" vertical-scroll-proportion="0.49624062">
+        <state line="32" column="0" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.7079646">
           <folding />
         </state>
       </provider>
