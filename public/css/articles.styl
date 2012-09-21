@@ -19,17 +19,7 @@
         line-height: 1.5em;
         text-align: justify;
     }
-    code {
-        background: rgba(0,0,0,0.33);
-        color:  darken(main-color, 15%);;
-        font-family: Georgia;
-        padding: 3px 6px;
-        border: 1px dashed rgba(0,0,0,0.75);
-        font-size: 0.85em;
-        white-space: nowrap;
-        margin: 0 5px;
-
-    }
+    figure,
     code.complete{
         margin: 10px 20px;
         padding: 10px 20px;
@@ -41,9 +31,21 @@
         overflow: auto;
         dt {float:left; clear: left;line-height: 1.5em;}
         dd {float:left; margin: 0 0 0 12px; }
+        dd.hide{ opacity:0.25;}
     }
     p.listStatement{
         margin: 0;
     }
-
+    figure{
+        box-shadow: 0px 0px 14px 0px #000;
+        background: rgba(0,0,0,0.5);
+        img{
+            border-bottom: 2px solid #D48300;
+        }
+        figcaption{
+            font-style:italic;
+            line-height: 1.5em;
+            font-size: 0.875em
+        }
+    }
 }

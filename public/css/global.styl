@@ -12,7 +12,7 @@ body{line-height:1;color:#000;background:#fff}
 ol,ul{list-style:none}
 table{border-collapse:separate;border-spacing:0;vertical-align:middle}
 caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
-footer,aside,section,article,nav,header{display:block; margin:0;padding:0;}
+footer,aside,section,article,nav,header,figure{display:block; margin:0;padding:0;}
 html,body{height: 100%;}
 body{
   font-family: helvetica,'Georgia';
@@ -34,7 +34,7 @@ a:hover,a:focus{
     clip:rect(1px,1px,1px,1px);
 }
 
-h1,h2, dt{
+h1,h2, dt, code.site{
     font-family: 'Quicksand';
 }
 
@@ -72,4 +72,16 @@ img{
 sup{
     vertical-align: super;
     font-size: 0.75em;
+    line-height: 1em;
+}
+
+code {
+    background: rgba(0,0,0,0.33);
+    color:  darken(main-color, 15%);
+    font-family: Georgia;
+    padding: 3px 6px;
+    border: 1px dashed rgba(0,0,0,0.75);
+    font-size: 0.85em;
+    white-space: nowrap;
+    margin: 0 5px;
 }

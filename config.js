@@ -68,6 +68,10 @@ app.get('/', function(req, res){
     res.render('index',{title : "all posts"});
 });
 
+app.get('/about', function(req, res){
+    res.render('about/caught-in-a-dot-com',{title : "about caught in a dot com"});
+});
+
 app.get('/articles/:article', function(req, res){
     var article = (req.params.article =='using-html5-in-production' || req.params.article =='useful-front-end') ? req.params.article : 'holding-page.jade';
     res.render('articles/' + article,{title : "Article"});

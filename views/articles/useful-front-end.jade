@@ -44,26 +44,34 @@ block mainContent
                     | If the document makes sense un-styled, it is likely to make sense to a screen-reader too.
                 p When it comes to styling, ensure that the user never sees a flash of unstyled content (FOUC)<sup><a href="#sources">[1]</a></sup>.
                     | This means never rely on JavaScript to help with the layout.
-                    | Not because 'non-JS' users wont appreciate it, but because waiting for <code>$(document).ready</code> takes too long.
+                    | Not because 'non-JS' users wont appreciate it, but because waiting for <code class='js'>$(document).ready</code> takes too long.
                 P If there is something which needs Javascript (e.g. feature-detection to help with some complicated styling),
-                    | then either <code>gracefully fallback</code> or <code>progressively enhancement</code> the user experience.
+                    | then either use 'graceful fallback' or 'progressive enhancement' methods to improve the user experience.
                     | Which one will depend on you.  Do you choose to code for the browser most commonly used on your site, or the latest and greatest browser that was just released.
                     | As long as the most popular browser still looks awesome, works as intended and is fast it shouldn't matter too much.
                 P
                     | Being able align items with each other, as in the designs, is also important to get right.
                     | The designs rarely cover all possibilities so you must choose which allignments are most important.
                     | Although this shouldn't affect your HTML structure, it may mean an extra div or two to help contain elements.
-                    | These elements can then be moved on the page as a group using <code>float</code> or <code>position: absolute</code>.
+                    | These elements can then be moved on the page as a group using <code class='css'>float</code> or <code class='css'>position: absolute</code>.
 
-                h3 the tabs
-                ul
-                   li structure of code (li's of headers containing articles of information)
-                   li to get them next to each other
-                   li inline: cant set height or width, so how to get around that?  (padding, or use a block element inside)
-                   li inline-block: not cross browser compatible
-                   li block: takes full width (so float left but now the container doesnt know its there)
-                   li gradient: image or css? (css as most browsers support this and isnt too bad if an old brwoser cant see it)
-                   li drop-shadow: image or css? (image as looks really bad in older browsers if it isn't there)
+                h3 document flow
+                p First of all, think how you would structure the code.
+                    | Most tags can be made to look and act like each other, so styling shouldn't influence your decision here.
+                dl.contentList
+                   dt how would you structure the code?
+                   dd.hide use <code class="html">li</code>'s containing <code class="html">h</code> tags.
+                   dt How would you get them to sit nicely next to each other?
+                   dd.hide the following display types could be used
+                     ul
+                       li inline: cant set height or width, so how to get around that?  (padding, or use a block element inside)
+                       li inline-block: not cross browser compatible
+                       li block: takes full width (so float left but now the container doesnt know its there)
+                       li position:absolute : taken out of document flow so not very scaleable - would have to duplicate code
+                   dt gradient: image or css?
+                   dd.hide css as most browsers support this and isnt too bad if an old brwoser cant see it)
+                   dt drop-shadow: image or css?
+                   dd.hide image as looks really bad in older browsers if it isn't there)
 
                 h3 tab content
                 ul

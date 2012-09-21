@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/articles.styl" afterPath="$PROJECT_DIR$/public/css/articles.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/global.styl" afterPath="$PROJECT_DIR$/public/css/global.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/header.styl" afterPath="$PROJECT_DIR$/public/css/header.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/articles/useful-front-end.jade" afterPath="$PROJECT_DIR$/views/articles/useful-front-end.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" afterPath="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.jade" afterPath="$PROJECT_DIR$/views/partials/footer.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/profile.jade" afterPath="$PROJECT_DIR$/views/partials/profile.jade" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,82 +71,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="useful-front-end.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/articles/useful-front-end.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="37" selection-end="69" vertical-scroll-proportion="-1.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="using-html5-in-production.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/articles/using-html5-in-production.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-2.5">
+            <state line="13" column="26" selection-start="245" selection-end="301" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/profile.jade">
+      <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="106" selection-end="106" vertical-scroll-proportion="-2.5">
+            <state line="25" column="94" selection-start="1073" selection-end="1179" vertical-scroll-proportion="-14.375">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/partials/header.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="51" selection-start="763" selection-end="763" vertical-scroll-proportion="-13.125">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="16" selection-start="372" selection-end="408" vertical-scroll-proportion="-5.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global.styl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/global.styl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="22" selection-start="173" selection-end="175" vertical-scroll-proportion="-5.1923075">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="0" selection-start="5184" selection-end="5184" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="articles.styl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="articles.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/articles.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="9" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33333334">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recent_articles.styl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/recent_articles.styl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="19" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
+            <state line="20" column="5" selection-start="434" selection-end="434" vertical-scroll-proportion="-5.4545455">
               <folding />
             </state>
           </provider>
@@ -145,8 +101,46 @@
       <file leaf-file-name="header.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/header.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="17" selection-start="2913" selection-end="2913" vertical-scroll-proportion="0.0">
+            <state line="133" column="22" selection-start="3409" selection-end="3409" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.jade" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/partials/footer.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="8" selection-start="89" selection-end="89" vertical-scroll-proportion="0.06428572">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.jade" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/profile.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="16" selection-start="168" selection-end="168" vertical-scroll-proportion="-3.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="global.styl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/global.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="4" selection-start="2002" selection-end="2002" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="78" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,22 +158,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/articles/important-front-end.jade" />
         <option value="$PROJECT_DIR$/views/articles/responsive-design.jade" />
-        <option value="$PROJECT_DIR$/views/partials/footer.jade" />
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/public/js/me.js" />
-        <option value="$PROJECT_DIR$/public/css/global.styl" />
         <option value="$PROJECT_DIR$/public/css/footer.styl" />
-        <option value="$PROJECT_DIR$/public/css/header.styl" />
         <option value="$PROJECT_DIR$/views/partials/header.jade" />
-        <option value="$PROJECT_DIR$/views/partials/profile.jade" />
+        <option value="$PROJECT_DIR$/public/css/recent_articles.styl" />
+        <option value="$PROJECT_DIR$/public/css/app.css" />
         <option value="$PROJECT_DIR$/views/articles/useful-front-end.jade" />
         <option value="$PROJECT_DIR$/views/articles/using-html5-in-production.jade" />
-        <option value="$PROJECT_DIR$/public/css/recent_articles.styl" />
+        <option value="$PROJECT_DIR$/views/partials/profile.jade" />
+        <option value="$PROJECT_DIR$/public/css/header.styl" />
+        <option value="$PROJECT_DIR$/views/partials/footer.jade" />
         <option value="$PROJECT_DIR$/public/css/articles.styl" />
-        <option value="$PROJECT_DIR$/public/css/app.css" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/public/css/global.styl" />
+        <option value="$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade" />
       </list>
     </option>
   </component>
@@ -309,6 +303,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="articles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="about" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -719,7 +731,11 @@
       <created>1348008151530</created>
       <updated>1348008151530</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="justify text for new thinner article widths">
+      <created>1348009152617</created>
+      <updated>1348009152617</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -749,7 +765,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44374344" sideWeight="0.48225215" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44374344" sideWeight="0.48225215" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44374344" sideWeight="0.5134639" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -757,8 +773,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285968" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20501836" sideWeight="0.5562566" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21030495" sideWeight="0.47123623" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20501836" sideWeight="0.7896951" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21030495" sideWeight="0.47123623" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -805,7 +821,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add right hand bar + profile pic" />
+    <option name="LAST_COMMIT_MESSAGE" value="justify text for new thinner article widths" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -818,7 +834,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="changed port for heroku" />
     <MESSAGE value="changed dir" />
     <MESSAGE value="remove uglify for heroku" />
     <MESSAGE value="update port options" />
@@ -843,37 +858,12 @@
     <MESSAGE value="useful front end article write up tweaks" />
     <MESSAGE value="improve header style and transition" />
     <MESSAGE value="add right hand bar + profile pic" />
+    <MESSAGE value="justify text for new thinner article widths" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="180" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="8" selection-start="42" selection-end="42" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="29" selection-start="2171" selection-end="2176" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/me.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/devices.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -886,44 +876,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/header.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="17" selection-start="2913" selection-end="2913" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/header.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="51" selection-start="763" selection-end="763" vertical-scroll-proportion="-13.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/profile.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="106" selection-end="106" vertical-scroll-proportion="-2.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="372" selection-end="408" vertical-scroll-proportion="-5.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/articles/useful-front-end.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="37" selection-end="69" vertical-scroll-proportion="-1.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/articles/using-html5-in-production.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
@@ -935,13 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/global.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="173" selection-end="175" vertical-scroll-proportion="-5.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="0" selection-start="5184" selection-end="5184" vertical-scroll-proportion="0.0">
@@ -949,9 +897,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/articles/useful-front-end.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="22" selection-start="3789" selection-end="3789" vertical-scroll-proportion="-6.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="94" selection-start="1073" selection-end="1179" vertical-scroll-proportion="-14.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/profile.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="168" selection-end="168" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="372" selection-end="408" vertical-scroll-proportion="0.15375854">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="78" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/header.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="22" selection-start="3409" selection-end="3409" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="4" selection-start="2002" selection-end="2002" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/articles.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="9" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33333334">
+        <state line="20" column="5" selection-start="434" selection-end="434" vertical-scroll-proportion="-5.4545455">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/articles/using-html5-in-production.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="26" selection-start="245" selection-end="301" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/about/caught-in-a-dot-com.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="73" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.8032787">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="8" selection-start="89" selection-end="89" vertical-scroll-proportion="0.06428572">
           <folding />
         </state>
       </provider>

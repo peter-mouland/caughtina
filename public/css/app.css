@@ -4,13 +4,13 @@ body{line-height:1;color:#000;background:#fff}
 ol,ul{list-style:none}
 table{border-collapse:separate;border-spacing:0;vertical-align:middle}
 caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
-footer,aside,section,article,nav,header{display:block;margin:0;padding:0}
+footer,aside,section,article,nav,header,figure{display:block;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:helvetica,'Georgia';color:#d4a775;background-size:cover}
 a{text-decoration:none;color:#a0afac}
 a:hover,a:focus{text-decoration:underline}
 .at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
-h1,h2,dt{font-family:'Quicksand'}
+h1,h2,dt,code.site{font-family:'Quicksand'}
 body{background:url("/images/bg_laptop.JPG") center 0 no-repeat;background-size:cover;background-attachment:fixed}
 #content{width:960px;margin:0 auto;position:relative}
 .wrapper{background:rgba(0,0,0,0.75);padding:20px;border:1px solid rgba(0,0,0,0.75);}
@@ -20,7 +20,8 @@ body{background:url("/images/bg_laptop.JPG") center 0 no-repeat;background-size:
 small{font-size:.5em;font-style:italic;margin-left:1em}
 ul.references{list-style:decimal;padding:20px}
 img{max-width:100%}
-sup{vertical-align:super;font-size:.75em}
+sup{vertical-align:super;font-size:.75em;line-height:1em}
+code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
 #site_header{border:0 solid rgba(0,0,0,0.75);border-radius:20px 20px 0 0;font-family:'Quicksand';font-size:3em;margin:30px 0 0;text-shadow:1px 1px 1px rgba(0,0,0,0.75);padding:20px 0 0;position:relative;background:rgba(0,0,0,0.5);-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out;}
 #site_header .site_name{margin:0;font-size:1.4em;text-align:center;letter-spacing:-10px;word-spacing:10px;color:#ffdea9}
 #site_header .tag_line{font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
@@ -31,14 +32,16 @@ sup{vertical-align:super;font-size:.75em}
 #site_header form{position:absolute;bottom:0;right:0;border-radius:15px 15px 0 0;padding:.5em 30px;background:rgba(0,0,0,0.5);line-height:1px;font-size:.4em;}
 #site_header form input[type=search]{width:150px}
 #site_header form:hover{background:rgba(0,0,0,0.75)}
-body h1{border:0;border-bottom:4px solid #d48300;box-shadow:0 20px 20px -10px #000;color:#d48300;font-size:2em;font-weight:bold;background:rgba(0,0,0,0.75);margin:0 0 15px 0;padding:20px;-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out}
+body #article header{position:relative;border:0;border-bottom:4px solid #d48300;box-shadow:0 20px 20px -10px #000;color:#d48300;font-size:2em;font-weight:bold;background:rgba(0,0,0,0.75);margin:0 0 15px 0;padding:20px;-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out;}
+body #article header .time{position:absolute;top:.5em;left:20px;font-size:.4em;font-weight:normal;color:#d48300}
 body.fixed{padding-top:300px;}
 body.fixed #site_header{border:0;position:fixed;top:-168px;width:960px;padding-bottom:0;z-index:10;background:#171c2a}
-body.fixed h1{position:fixed;top:40px;width:920px;background:#0b0e16;z-index:1}
+body.fixed #article header{position:fixed;top:40px;width:920px;background:#0b0e16;z-index:1}
 body.fixed .authorProfile{top:20px}
 .authorProfile{box-shadow:0 0 14px 0 #000;position:absolute;top:289px;right:20px;width:200px;background:rgba(0,0,0,0.5);padding:20px;color:#d48300;}
 .authorProfile img{border-bottom:2px solid #d48300}
-.authorProfile small{display:block;margin:0;color:#d4a775}
+.authorProfile small{display:block;margin:6px 0 0;color:#d4a775;font-size:.75em;}
+.authorProfile small a{display:block}
 #site_footer{color:#ffdea9;border-top:1px solid #ffad2a;font-size:1em;overflow:auto;color:#f2e4d5;}
 #site_footer h2{float:right;margin:0}
 #site_footer ul li{display:inline}
@@ -59,10 +62,13 @@ html[xmlns] #recent_articles  article{display:block}
 #article h2{letter-spacing:2px;font-weight:bold;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
 #article h2:first-child{margin:0}
 #article h3,#article dt{color:#d48300;font-size:1em}
-#article p,#article dd{margin:0 0 20px;line-height:1.5em}
-#article code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
-#article code.complete{margin:10px 20px;padding:10px 20px;display:block}
+#article p,#article dd{margin:0 0 20px;line-height:1.5em;text-align:justify}
+#article figure,#article code.complete{margin:10px 20px;padding:10px 20px;display:block}
 #article dl.contentList{clear:both;overflow:auto;}
 #article dl.contentList dt{float:left;clear:left;line-height:1.5em}
 #article dl.contentList dd{float:left;margin:0 0 0 12px}
+#article dl.contentList dd.hide{opacity:.25}
 #article p.listStatement{margin:0}
+#article figure{box-shadow:0 0 14px 0 #000;background:rgba(0,0,0,0.5);}
+#article figure img{border-bottom:2px solid #d48300}
+#article figure figcaption{font-style:italic;line-height:1.5em;font-size:.875em}
