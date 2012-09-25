@@ -17,11 +17,11 @@ block mainContent
                     | The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site trapped behind and old corporate build.
                 p So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
                     | I'm not one to bash an old foe when he's down and almost out, but IE did give me problems.
-                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup><a href="#sources">[1]</a></sup>, i had hope.
+                    | I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup><a href="#sources">[1]</a></sup>, I had hope.
 
             section
                 h2 Methods
-                p The following all had their drawbacks, but given the right circumstance and a less strict set of requirements, any of them could be used to solve the problem.
+                p The following all had their draw-backs, but given the right circumstance and a less strict set of requirements, any of them could be used to solve the problem.
                 dl
                     dt Conditional Statements
                     dd I thought this was a strange idea, but one that would work if you are really keen to get IE to play nicely without JS.
@@ -52,7 +52,7 @@ block mainContent
                     dt Pollyfil JS
                     dd
                         p I'm not a fan of copying a whole library into production code to solve what are potentially small problems, but they are worth a look.
-                            | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - i took a look anyway.
+                            | If no-JS wasn't a requirement, this might have been an option, so out of curiosity - I took a look anyway.
                             | I'm not going to compare and contrast libraries in detail here.
                         p As CSS3 features is not my goal here, just a small number of html5 features<sup><a href="#sources">[2]</a></sup> working in all common browsers<sup><a href="#sources">[3]</a></sup>, I am moving past&nbsp;
                             a(href='http://modernizr.com/', target='_new') modernizr
@@ -66,7 +66,7 @@ block mainContent
 
                         p A quick look at the source for this shim shows how little code is needed to get browsers to style unknown tags.
                             | Even going as far as ensuring printing a HTML5 page works.
-                            | Along with this, it also replecates a javascript function (<code class="js">createDocumentFragment</code>), which could be very useful.
+                            | Along with this, it also replicates a javascript function (<code class="js">createDocumentFragment</code>), which could be very useful.
 
                         p As it turns out, all I needed in the way of JavaScript was this excellent little snippet<sup><a href="#sources">[4]</a></sup> and along with the CSS
                             code.css display:block
@@ -80,7 +80,7 @@ block mainContent
                 p It a shame though that the HTML5 spec states that some elements are primarily for styling<sup><a href="#sources">[6]</a></sup>.
                     | I was hoping for the aim to be higher, to allow code to be more descriptive and give AT's more of a helping hand.
                     | It is rare that developers will allow the browser to pick a style that can not be altered.
-                    | It is rarer still that a business would accept elements on their sites that dont match their own style-guide.
+                    | It is rarer still that a business would accept elements on their sites that don't match their own style-guide.
                 p  Overall, the semantic benifits these tags give will help future proof our sites as well as aiding <abbr title="Assistive Technology">AT</abbr>'s.
                     | For me, this makes the extra effort worth it.
 

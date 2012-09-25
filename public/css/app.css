@@ -68,7 +68,7 @@ html[xmlns] #recent_articles  article{display:block}
 #article dl.contentList{clear:both;overflow:auto;}
 #article dl.contentList dt{float:left;clear:left;line-height:1.5em;margin-right:12px}
 #article dl.contentList dd{margin:0}
-#article dl.contentList dd.hide{opacity:.25}
+#article dd.hide{opacity:.25}
 #article p.listStatement{margin:0}
 #article figure{box-shadow:0 0 14px 0 #000;background:rgba(0,0,0,0.5);}
 #article figure img{border-bottom:2px solid #d48300}
