@@ -8,6 +8,7 @@ var express = require('express'),
     nib = require('nib'),
     uglyfyJS = require('uglify-js'),
      _fs = require('fs'),
+     moment = require('moment'),
     FILE_ENCODING = 'utf-8',
     JS_FILE_PATH = '/js/app.js',
     JS_FILE_LIST = ['public/js/me.js'],
@@ -58,27 +59,76 @@ app.configure('production', function(){
     concat(JS_FILE_LIST,JS_FILE_PATH);//uglify
 });
 
+var ciadc = {
+  urlExists: function(type,url) { //todo: improve s will get slow with lots of posts
+      var i= 0,
+          parent = ciadc[type]
+          len = parent.length;
+      for (i;i<len;i++){
+          if (parent[i].url == url) { return parent[i]; }
+      }
+      return false;
+  }
+};
 
+ciadc.posts = [
+    {   url:'using-html5-in-production',
+        title:'using html5 in production',
+        published: '2012-07-16',
+        lastUpdated: '2012-07-30',
+        author: 'peter-mouland',
+        dataCode: ''
+    },
+    {   url:'client-side-kickstart',
+        title:'a client side kickstart',
+        subtitle:'part 1 : introduction',
+        published: '2012-08-16',
+        lastUpdated: '2012-08-26',
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-design-to-web',
+        title:'a client side kickstart',
+        subtitle:'part 2 : design to web',
+        published: '2012-08-16',
+        lastUpdated: '2012-08-26',
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-document-flow',
+        title:'a client side kickstart',
+        subtitle:'part 3 : document flow',
+        published: '2012-08-16',
+        lastUpdated: '2012-08-26',
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-css3',
+        title:'a client side kickstart',
+        subtitle:'part 4 : css3',
+        published: '2012-08-16',
+        lastUpdated: '2012-08-26',
+        author: 'peter-mouland'
+    }
+];
 
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res){
-    res.render('index',{title : "all posts"});
+    res.render('index',{post:{title : "all posts"}});
 });
 
 app.get('/about', function(req, res){
-    res.render('about/caught-in-a-dot-com',{title : "about caught in a dot com"});
+    res.render('about/caught-in-a-dot-com', {post:{title : "about caught in a dot com"}});
 });
 
-app.get('/articles/:article', function(req, res){
-    var article = (req.params.article =='using-html5-in-production' || req.params.article =='useful-front-end') ? req.params.article : 'holding-page.jade';
-    res.render('articles/' + article,{title : "Article"});
+app.get('/posts/:post', function(req, res){
+    var post = ciadc.urlExists('posts',req.params.post),
+        url = (post) ? req.params.post : 'holding-page';
+    res.render('posts/' + url + '.jade',{post : post, moment:moment});
 });
 
 app.get('/tags/:tag', function(req, res){
-    res.render('tags/holding-page.jade', {title : "Tag Search"});
+    res.render('tags/holding-page.jade', {post:{title : "Tag Search"}});
 });
 
 app.listen(process.env.PORT || 3000);

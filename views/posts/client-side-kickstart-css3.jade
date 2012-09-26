@@ -2,15 +2,11 @@ extends ../layout
 
 block mainContent
 
-    include ../partials/profile
+    include ../partials/profile-peter-mouland
 
     #article
-        #page_header
-            header
-                h1 Useful front-end code
-                    small [draft copy!]
-                .time
-                    time(datetime="2012-09-16",pubdate="2012-08-16") 16th September 2012
+
+        include ../partials/post-header
 
         .wrapper
             section
@@ -31,7 +27,7 @@ block mainContent
                     dd jQuery pitfalls and testing
                     dt <a href="#devices">devices</a>:
                     dd responsive design and media queries
-                    dt <a href="accessibility">accessiblity</a>:
+                    dt <a href="accessibility">accessibility</a>:
                     dd what ARIA is and how to structure your document so <abbr title="Assistive Technologies">AT's</abbr> can make sense of it
 
                 h3 target design
@@ -122,7 +118,7 @@ block mainContent
                 p there is a way to get all browsers to render a gradient in CSS, although in some browsers this can have some nasty side affects.
                 p when using <code>filter</code> within IE, custom text within that element will have 'true-type' sudennly turned off.
                     | filters will also cause <code class="css">overflow</code> to misbehave.
-                p usin the svg method (for ie9) as this causes problems in an safari 4<sup><a href="#sources">[6]</a></sup>
+                p using the svg method (for ie9) as this causes problems in an safari 4<sup><a href="#sources">[6]</a></sup>
                     | and if kept within a conditional will not render for ie9 in a different document mode<sup><a href="#sources">[7]</a></sup>
                 p Using images for gradients normally involve partially transparent .png's which are relatively large image files.
                     | ignoring that not all browsers support png-24s<sup><a href="#sources">[4]</a></sup>, <sup><a href="#sources">[5]</a></sup>.

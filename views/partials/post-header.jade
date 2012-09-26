@@ -1,0 +1,7 @@
+#page_header
+    header
+        h1 #{post.title}
+            -if (post.subtitle)
+                small #{post.subtitle}
+        .time
+            time(datetime="#{post.updated}",pubdate="#{post.published}") #{moment(post.published).format('Do MMMM YYYY')}

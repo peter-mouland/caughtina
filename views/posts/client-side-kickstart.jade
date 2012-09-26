@@ -1,0 +1,43 @@
+extends ../layout
+
+block mainContent
+
+    include ../partials/profile-peter-mouland
+
+    #article
+
+        include ../partials/post-header
+
+        .wrapper
+            section
+                h2 Mission
+                p I want to explain some common problems and frustrations associated with client-side development.
+                    | I started wwriting this as a single post, with a couple of quick tips, but as the post got longer it made sense to split it.
+
+                h3 target design
+                p To help put the theory into practise I will be building a tabbed document.
+                    | Each tab will show a set of four articles, each containing an image, logo, title, tag-line and a button.
+
+                p The end product should look the same in all browsers from IE6 to IE9 as well as Firefox 3.6 and the latest versons for Firefox (v15), chrome (v21), safari (v6) and Opera (v12).
+
+                figure
+                    img(src='/images/articles/useful-front-end.JPG')
+                    figcaption The final product, a tabbed document looking pretty.
+
+                h3 approach
+                p.listStatement Below are the other posts in this mini-series, in order of how I approach most jobs;
+                dl.contentList
+                    dt <a href="/posts/client-side-kickstart-design-to-web">from design to web</a>:
+                    dd some things that designs don't show you
+                    dt <a href="/posts/client-side-kickstart-document-flow">document flow</a>:
+                    dd how to structure the html and the effects of display types
+                    dt <a href="/posts/client-side-kickstart-css3">css3</a>:
+                    dd when to use css3 or stick to images
+                    dt <a href="#transitions">transitions</a>:
+                    dd css3 support and JS fallback
+                    dt <a href="#javascript">javascript</a>:
+                    dd jQuery pitfalls and testing
+                    dt <a href="#devices">devices</a>:
+                    dd responsive design and media queries
+                    dt <a href="accessibility">accessibility</a>:
+                    dd what ARIA is and how to structure your document so <abbr title="Assistive Technologies">AT's</abbr> can make sense of it

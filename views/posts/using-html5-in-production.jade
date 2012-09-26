@@ -2,14 +2,12 @@ extends ../layout
 
 block mainContent
 
-    include ../partials/profile
+    include ../partials/profile-peter-mouland
 
     #article
-        #page_header
-            header
-                h1 using html5 in production
-                .time
-                    time(datetime="2012-08-16",pubdate="2012-07-16") 16th July 2012
+
+        include ../partials/post-header
+
         .wrapper
             section
                 h2 Mission
