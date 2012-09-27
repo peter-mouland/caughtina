@@ -59,6 +59,7 @@ app.configure('production', function(){
     concat(JS_FILE_LIST,JS_FILE_PATH);//uglify
 });
 
+
 var ciadc = {
   items_per_page: 5,
   utils: {
@@ -210,7 +211,7 @@ ciadc.posts = [
         lastUpdated: null,
         author: 'peter-mouland'
     }
-];
+].sort(function(a,b){return (b.published && a.published != b.published);});
 
 
 app.set('views', __dirname + '/views');
