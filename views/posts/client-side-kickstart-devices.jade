@@ -5,183 +5,19 @@ block mainContent
     include ../partials/profile
 
     #article
-        #page_header
-            header
-                h1 Useful front-end code
-                    small [draft copy!]
-                .time
-                    time(datetime="2012-09-16",pubdate="2012-08-16") 16th September 2012
+
+        include ../partials/post-header
 
         .wrapper
             section
-                h2 Mission
-                p I want to explain some common problems and frustrations associated with client-side development.
-
-                p.listStatement In order of how I (sometimes) approach the job, here are the topics to think about;
-                dl.contentList
-                    dt <a href="#from-design-to-web">from design to web</a>:
-                    dd some things that designs don't show you
-                    dt <a href="#document-flow">document flow</a>:
-                    dd how to structure the html and the effects of display types
-                    dt <a href="#css3">css3</a>:
-                    dd when to use css3 or stick to images
-                    dt <a href="#transitions">transitions</a>:
-                    dd css3 support and JS fallback
-                    dt <a href="#javascript">javascript</a>:
-                    dd jQuery pitfalls and testing
-                    dt <a href="#devices">devices</a>:
-                    dd responsive design and media queries
-                    dt <a href="accessibility">accessibility</a>:
-                    dd what ARIA is and how to structure your document so <abbr title="Assistive Technologies">AT's</abbr> can make sense of it
-
-                h3 target design
-                p To help put the theory into practise I will be building a tabbed document.
-                    | Each tab will show a set of four articles, each containing an image, logo, title, tag-line and a button.
-
-                p The end product should look the same in all browsers from IE6 to IE9 as well as Firefox 3.6 and the latest versons for Firefox (v15), chrome (v21), safari (v6) and Opera (v12).
-
-                figure
-                    img(src='/images/articles/useful-front-end.JPG')
-                    figcaption The final product, a tabbed document looking pretty.
-
-            section
-                <a name="from-design-to-web"></a>
-                h2 From design to web
-                h3 designs are great
-                p often looking awesome on their printed A3 sheets, designs are great.
-                    |unfortunately the web is not a piece of paper and our printers (the browser) are in the hand of the user.
-                    | this allows any variation of size and colours to be seen.
-                p this is part of the reason why I dont use tools like <code>pixel perfect</code>.
-                    |what might look perfect in one browser, may look completely different in another.
-                    |there is a better way. go and speak to the designer and ask for his annotations.
-                    |learn the thinking behind their madness and use this to help guide you when things don't go to plan.
-
-                h3 UI
-                p designs often miss what happens when a user interacts with the elements.
-                    | has the design included the look and feel for <code>hover</code> and <code>focus</code> states?
-                    | the transitions that the user should shee when moving from one state to another will also be missing.
-                    | In my example above this will be when the suer changes tabs.
-                p transitions take a little time to get right as its all about feel.  How long should it take, should it animate or fade etc
-
-                h3 catching the unexpected
-                p everything looks cool in the design, but what does it look like if a channel logo is missing.
-                    | can you ensure all images will be the same height?
-                    | if not, what do you do; crop the image somewhere or allow the images to be different and set a <code class="css">max-height</code>?
-                p In the design above I have intentionally  shown how the tabs look when there is too much text,
-                    |but this too would normally be missing from the initial design and needs to be thought about.
-
-                h3 alligning page elements is good
-                p Being able align items with each other is important.
-                    | as you switch tabs in this design, the elements within the tabs should stay in the same position.
-                    | I.e. the channel logo's should always be in the same position, as should the call-to-action at the bottom.
-                    | if any matching elements move by even a pixel, this will look strange and buggy to the user.
-
-            section
-                <a name="document-flow"></a>
-                h2 document flow
-                p First of all, think how you would structure the code.
-                    | Most tags can be made to look and act like each other, so don't start to think about styling before the structure is done.
-                    | If the document makes sense un-styled, it is likely to make sense to a screen-reader too.
-                p When it does come to styling, ensure that the user never sees a flash of unstyled content (FOUC)<sup><a href="#sources">[1]</a></sup>.
-                    | This means never rely on JavaScript to help with the layout.
-                    | waiting for javascript to execute (especially when enclosed within a <code class='js'>$(document).ready</code>) simply takes too long.
-
-                dl
-                   dt how would you structure the code?
-                   dd.hide use <code class="html">li</code>'s containing <code class="html">h</code> tags for the tabs.
-                        |the tab contents should be another list, but should the article titles for <code class="html">h</code> tags also?
-                        | there is an arguement for this as titles are clearly headers, but think about a AT user pressing their 'h' key to skip along all headers on the page.
-                        | I think making the titles also headers would be too much, best to leave them out.
-
-                   dt How would you get the tabs to sit nicely next to each other?
-                   dd.hide the following display types could be used
-                     ul
-                       li inline: the downside here is that you cant set height or width. To get around that you could rely on a block element inside to force a min width and height.
-                        | You could also use padding (IE will add font-size to the height even with no text inside<sup><a href="#sources">[2]</a></sup>)
-                       li inline-block: This will allow height and width to be set on an but it is not fully cross browser compatible<sup><a href="#sources">[3]</a></sup>
-                       li block: These elements will take full width of the screen, so <code class="css">float:left</code> will also have to be used.
-                       li position:absolute : put the element where ever you want, but now you have to specifiy a place for each tab.
-                        | This should be used last as its not very scaleable and elements are taken out of the document flow.
-                        | This means more work is still needed to ensure the rest of the page renders as expected with no overlaps.
+                h2 supporting multiple devices
+                ul
+                    li responsive design
+                    li tap event
+                    li orientation change
+                    li media queries
 
 
-                    dt How to layout the tabs content?
-                    dd.hide as the content of each tab starts in the same position, position:absolute has to be used here.
-                        | as the question suggest, this is tab content, as it belongs in the same LI as the tab header.
-
-
-            section
-                <a name="css3"></a>
-                h2 CSS3
-                p a buzzword that is on many CV's at the moment.  It does include  some very nice things like gradients and rounded-corners.
-                    | sometimes a given design will make these things more than nice, and essential to useability.
-                    | it is when this line is crossed when the CSS approach has to be abandoned and bad old images should be used once again.
-                    | our tabs example includes both, 'nice to have' and 'cant-live-without' effects.
-
-                h3 gradients
-                p there is a way to get all browsers to render a gradient in CSS, although in some browsers this can have some nasty side affects.
-                p when using <code>filter</code> within IE, custom text within that element will have 'true-type' sudennly turned off.
-                    | filters will also cause <code class="css">overflow</code> to misbehave.
-                p using the svg method (for ie9) as this causes problems in an safari 4<sup><a href="#sources">[6]</a></sup>
-                    | and if kept within a conditional will not render for ie9 in a different document mode<sup><a href="#sources">[7]</a></sup>
-                p Using images for gradients normally involve partially transparent .png's which are relatively large image files.
-                    | ignoring that not all browsers support png-24s<sup><a href="#sources">[4]</a></sup>, <sup><a href="#sources">[5]</a></sup>.
-                    | be sure not use the
-
-                h3 drop-shadows
-                p as <code class="css">drop-shadow</code> isn't support by all browsers we really need to understand the use of the drop-shadow I.e. is it important?
-                    | in our case above, I would say it is.  without it, the 'white' select tab would probably just look broken.
-
-            section
-                <a name="transitions"></a>
-                h2 transitions
-                p
-
-            section
-                <a name="javascript"></a>
-                h2 Javascript
-                h3 when to add JS
-                P When adding javascript (e.g. for changing tabs), ensure that the initial look of the page does not rely on it.
-                    | this is to help prevent a flash of unstyled content.
-                    | Without any script on your page, ensure the look and feel is perfect.
-                    | using something like the following little block, then make sure a 'no script' page is functional.
-                    code(class="complete")
-                        &lt;body class=' noscript '><br/>
-                        &lt;script>document.body.className=document.body.className.replace(/noscript/,'');&lt;/script>
-                    | this will allow you to customise the non-javascript view with a few more CSS rules and prepending <code class="css">body.noscript</code> to the start of them.
-                    | lastly, use js to update the functionality.
-
-                h3 jQuery
-                p clearly an awesome library, but I find that what is happening in the scenes is often forgotten about.
-                    | we must not forget that this is a client side library, simply wrapping javascript up into neat little cross-browser compatible functions.
-                    | it has bugs, especially the older versions.
-                    | but most importantly, this is client-side scripting which means slow out of date computers should be kept in mind.
-
-                p when using jquery within a page which has many DOM elements, dont forget that nesting loops are bad.
-                    | performance matters so do what you can to limit loops around the DOM and maximise saving the DOM into variables.
-                    | getting javascript to return you an element once will always be faster than doing 10 times!
-                    | modern browsers are much better at handling these types of requests, but be sure there is no other (faster) way before using
-                    code.js .parents()
-                    | or
-                    code.js .has()
-                    | etc
-
-                h3 testing
-                p gone are the days of encapsulation and private self executing functions.
-                    | in the past I have used the following to keep my code safe; but impossible to test.
-                    code(class="complete")
-                      |  (function(){ ...
-                      |  }());
-
-                p it is now all about public code that can be mocked and changed by your tests at will.
-                    code(class="complete")
-                        |  var namespace = {};<br/>
-                        |  namespace.buildMyStuff = function(){ ... };<br/>
-                        |  namespace.buildMyStuff.prototype = { ... };<br/>
-                        |  var localStuff = new namespace.buildMyStuff();
-
-                p currently <a href="http://code.google.com/p/js-test-driver/" target="_blank">JSTestDriver</a> is fullfilling all my needs
-                    | and I recomend it as cross-browser functionality and its integration with IntelliJ is superb.
 
                 h3 tab content
                 ul
@@ -189,31 +25,4 @@ block mainContent
                     li image as tag or sprite?
                     li icons as image tags or spries?
                     li how to get everything lined up?
-
-                h3 tab switching
-                ul
-                    li attach events to each li or tab container?
-                    li js debug
-                    li how to hide the ther tabs
-                    li display: none     (not on the page. old ie has trouble getting height and widths in js)
-                    li visibility:hidden (still in document flow but not shown)
-                    li transitions?
-
-                h3 tracking user interaction
-                ul
-                    li what info should be sent?
-                    li
-
-                h3 device support
-                ul
-                    li responsive design
-                    li tap event
-                    li orientation change
-                    li media queries
-
-                h3 accessibility
-                ul
-                    li screen reader support (aria, live regions and structure)
-                    li keyboard support
-
 

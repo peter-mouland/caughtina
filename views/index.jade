@@ -2,41 +2,43 @@ extends layout
 
 block mainContent
     section(role='main')
-        #page_header
-            h1 all posts
+
+        include partials/post-header
+
         #recent_articles.wrapper
-            article
-                header
-                    h2
-                        a(href='/posts/client-side-kickstart') a client-side kickstart
-                    .time
-                        time(datetime="2012-08-16",pubdate="") 16th September 2012
-                p I've been asked to put together some training notes that I would give to server-side developers to help them tackle common client-side problems quickly.
-                    | So here is my attempt!
-                    a.more(href='/articles/using-html5-in-production') more
-                aside
-                    h3.at tags
-                    ul
+            -page = ciadc.paged('posts', this_page);
+            -pageItems = page.items;
+            -for (var i = 0; i<pageItems.length;i++)
+                -pageItem = pageItems[i];
+                article
+                    header
+                        h2
+                            a(href='/posts/' + pageItem.url) #{pageItem.title}
+                                -if (pageItem.subtitle)
+                                    small #{pageItem.subtitle}
+                        .time
+                            time(datetime="#{pageItem.updated}",pubdate="#{pageItem.published}") #{moment(pageItem.published).format('Do MMMM YYYY')}
+                    p #{pageItem.summary}
+                        a.more(href='/posts/' + pageItem.url) more
+                    -if (pageItem.tags)
+                        aside
+                            h3.at tags
+                            ul
+                                -for (var x=0; x<pageItem.tags.length;x++)
+                                    -tag = pageItem.tags[x];
+                                    li
+                                        a(href='/tags/' + tag.url) #{tag.title}
+            -if(page.count!==1)
+                h3.at navigate post pages
+                ul.navigator
+                    -for (var y=0;y<page.count; y++)
+                        -page_number = y+1
                         li
-                            a(href='/tags/Accessibility') Accessibility
-                        li
-                            a(href='/tags/usability') CSS
-            article
-              header
-                h2
-                  a(href='/posts/using-html5-in-production') using html5 in production
-                .time
-                    time(datetime="2012-07-16",pubdate="2012-07-16") 16th July 2012
-              p I've seen many people question html5. Some say 'why bother, there's not enough support'.
-                | Others saying 'just use it as no one should be using IE anyway'!
-                a.more(href='/articles/using-html5-in-production') more
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/Accessibility') Accessibility
-                  li
-                    a(href='/tags/html5') html5
+                            -if (page_number==page.current)
+                                b
+                                    a(href='/page/' + page_number) #{page_number}
+                            -else
+                                a(href='/page/' + page_number) #{page_number}
 
 
     #recent_articles.wrapper.draft

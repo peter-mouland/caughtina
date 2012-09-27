@@ -60,16 +60,61 @@ app.configure('production', function(){
 });
 
 var ciadc = {
-  urlExists: function(type,url) { //todo: improve s will get slow with lots of posts
-      var i= 0,
-          parent = ciadc[type]
-          len = parent.length;
-      for (i;i<len;i++){
-          if (parent[i].url == url) { return parent[i]; }
+  items_per_page: 5,
+  utils: {
+      published_count: function(type){
+          var i= 0,
+              parent = ciadc[type],
+              len = parent.length,
+              count = 0;
+          for (i;i<len;i++){
+              if (parent[i].published) { count++; }
+          }
+          return count;
+      },
+      paged: function(type,page_number){
+          var i= 0,
+              parent = ciadc[type],
+              len = (parent.length>ciadc.items_per_page)? ciadc.items_per_page : parent.length,
+              pages = [];
+          if (page_number){
+              i=((page_number-1)*(len));
+              len=i+len;
+          }
+          for (i;i<len;i++){
+              if (parent[i].published) { pages.push(parent[i]); }
+          }
+          return {items:pages,current:page_number || 1, count:(Math.ceil(ciadc.utils.published_count(type)/ciadc.items_per_page))};
+      },
+      metadata: function(type,url) { //todo: improve s will get slow with lots of posts
+          var i= 0,
+              parent = ciadc[type],
+              len = parent.length;
+          for (i;i<len;i++){
+              if (parent[i].url == url) { return parent[i]; }
+          }
+          return false;
+      },
+      urlHelper: function(type,url){
+          var md = ciadc.utils.metadata(type,url); //todo: cache url result so dont have to look up again
+          return '<a href="/'+ type + '/' + md.url + '" >' + md.title + '</a>'
+      },
+      urlHelper_subtitle: function(type,url){ //todo: cache url result so dont have to look up again
+          var md = ciadc.utils.metadata(type,url);
+          return '<a href="/'+ type + '/' + md.url + '" >' + md.subtitle + '</a>'
       }
-      return false;
   }
 };
+
+ciadc.index = [
+    {   url: '/',
+        title: 'all posts',
+        published: '2012-07-16',
+        lastUpdated: '2012-09-26',
+        author:'peter-mouland',
+        dataCode: ''
+    }
+];
 
 ciadc.posts = [
     {   url:'using-html5-in-production',
@@ -77,34 +122,92 @@ ciadc.posts = [
         published: '2012-07-16',
         lastUpdated: '2012-07-30',
         author: 'peter-mouland',
-        dataCode: ''
+        dataCode: '',
+        summary: 'I\'ve seen many people question html5. Some say \'why bother, there\'s not enough support\'. ' +
+            'Others saying \'just use it as no one should be using IE anyway\'!',
+        tags: [
+            {   title: 'Accessibility',
+                url: 'accessibility'
+            },
+            {   title: 'HTML5',
+                url: 'html5'
+            }
+        ]
     },
     {   url:'client-side-kickstart',
         title:'a client side kickstart',
-        subtitle:'part 1 : introduction',
+        subtitle:'introduction',
         published: '2012-08-16',
         lastUpdated: '2012-08-26',
-        author: 'peter-mouland'
+        author: 'peter-mouland',
+        summary: 'I\'ve been asked to put together some training notes for server-side developers to help them tackle common client-side problems. ' +
+            'So here is my attempt!',
+        tags: [
+            {   title: 'Accessibility',
+                url: 'accessibility'
+            },
+            {   title: 'CSS',
+                url: 'css'
+            }
+        ]
     },
     {   url:'client-side-kickstart-design-to-web',
         title:'a client side kickstart',
-        subtitle:'part 2 : design to web',
-        published: '2012-08-16',
-        lastUpdated: '2012-08-26',
-        author: 'peter-mouland'
+        subtitle:'part 1 : design to web',
+        published: '2012-08-30',
+        lastUpdated: '2012-09-26',
+        author: 'peter-mouland',
+        summary: 'the first of 7 posts looking into kick-starting client-side development. ' +
+            'here I look into what to think about when you see a design that needs to be turned into a web page',
+        tags: [
+            {   title: 'Accessibility',
+                url: 'accessibility'
+            },
+            {   title: 'CSS',
+                url: 'css'
+            }
+        ]
     },
     {   url:'client-side-kickstart-document-flow',
         title:'a client side kickstart',
-        subtitle:'part 3 : document flow',
-        published: '2012-08-16',
-        lastUpdated: '2012-08-26',
+        subtitle:'part 2 : document flow',
+        published: '2012-09-10',
+        lastUpdated: '2012-09-26',
         author: 'peter-mouland'
     },
     {   url:'client-side-kickstart-css3',
         title:'a client side kickstart',
-        subtitle:'part 4 : css3',
-        published: '2012-08-16',
-        lastUpdated: '2012-08-26',
+        subtitle:'part 3 : css3',
+        published: null,
+        lastUpdated: '2012-09-26',
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-ui',
+        title:'a client side kickstart',
+        subtitle:'part 4 : ui',
+        published: null,
+        lastUpdated: null,
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-javascript',
+        title:'a client side kickstart',
+        subtitle:'part 5 : javascript',
+        published: null,
+        lastUpdated: null,
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-devices',
+        title:'a client side kickstart',
+        subtitle:'part 6 : devices',
+        published: null,
+        lastUpdated: null,
+        author: 'peter-mouland'
+    },
+    {   url:'client-side-kickstart-tracking',
+        title:'a client side kickstart',
+        subtitle:'part 7 : tracking',
+        published: null,
+        lastUpdated: null,
         author: 'peter-mouland'
     }
 ];
@@ -114,7 +217,11 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res){
-    res.render('index',{post:{title : "all posts"}});
+    res.render('index',{post:ciadc.index[0], moment:moment, ciadc:ciadc.utils, this_page:1});
+});
+
+app.get('/page/:page', function(req, res){
+    res.render('index',{post:ciadc.index[0], moment:moment, ciadc:ciadc.utils, this_page: req.params.page});
 });
 
 app.get('/about', function(req, res){
@@ -122,9 +229,9 @@ app.get('/about', function(req, res){
 });
 
 app.get('/posts/:post', function(req, res){
-    var post = ciadc.urlExists('posts',req.params.post),
+    var post = ciadc.utils.metadata('posts',req.params.post),
         url = (post) ? req.params.post : 'holding-page';
-    res.render('posts/' + url + '.jade',{post : post, moment:moment});
+    res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils});
 });
 
 app.get('/tags/:tag', function(req, res){

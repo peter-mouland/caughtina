@@ -27,17 +27,24 @@ block mainContent
                 h3 approach
                 p.listStatement Below are the other posts in this mini-series, in order of how I approach most jobs;
                 dl.contentList
-                    dt <a href="/posts/client-side-kickstart-design-to-web">from design to web</a>:
+                    -var md = ciadc.metadata('posts','client-side-kickstart-design-to-web');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd some things that designs don't show you
-                    dt <a href="/posts/client-side-kickstart-document-flow">document flow</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-document-flow');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd how to structure the html and the effects of display types
-                    dt <a href="/posts/client-side-kickstart-css3">css3</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-css3');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd when to use css3 or stick to images
-                    dt <a href="#transitions">transitions</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-ui');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd css3 support and JS fallback
-                    dt <a href="#javascript">javascript</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-javascript');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd jQuery pitfalls and testing
-                    dt <a href="#devices">devices</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-devices');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd responsive design and media queries
-                    dt <a href="accessibility">accessibility</a>:
+                    -md = ciadc.metadata('posts','client-side-kickstart-tracking');
+                    dt <a href="/posts/#{md.url}" >#{md.subtitle}</a>:
                     dd what ARIA is and how to structure your document so <abbr title="Assistive Technologies">AT's</abbr> can make sense of it
