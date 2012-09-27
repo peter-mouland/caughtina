@@ -63,15 +63,28 @@ app.configure('production', function(){
 var ciadc = {
   items_per_page: 5,
   utils: {
-      published_count: function(type){
+      get_previous:function(type, current){
+          var parent = this.published(type);
+          return parent[parent.indexOf(current)+1];
+      },
+      get_next:function(type, current){
+          var parent = this.published(type);
+          return parent[parent.indexOf(current)-1];
+      },
+      published: function(type){
+          if (this._published && this._published[type]){
+              return this._published[type];
+          }
+          this._published = {};
           var i= 0,
               parent = ciadc[type],
               len = parent.length,
-              count = 0;
+              items = [];
           for (i;i<len;i++){
-              if (parent[i].published) { count++; }
+              if (parent[i].published) { items.push(parent[i]); }
           }
-          return count;
+          this._published[type] = items;
+          return items;
       },
       paged: function(type,page_number){
           var i= 0,
@@ -85,7 +98,7 @@ var ciadc = {
           for (i;i<len;i++){
               if (parent[i].published) { pages.push(parent[i]); }
           }
-          return {items:pages,current:page_number || 1, count:(Math.ceil(ciadc.utils.published_count(type)/ciadc.items_per_page))};
+          return {items:pages,current:page_number || 1, count:(Math.ceil(ciadc.utils.published(type).count/ciadc.items_per_page))};
       },
       metadata: function(type,url) { //todo: improve s will get slow with lots of posts
           var i= 0,
@@ -121,7 +134,7 @@ ciadc.posts = [
     {   url:'using-html5-in-production',
         title:'using html5 in production',
         published: '2012-07-16',
-        lastUpdated: '2012-07-30',
+        lastUpdated: '2012-09-20',
         author: 'peter-mouland',
         dataCode: '',
         summary: 'I\'ve seen many people question html5. Some say \'why bother, there\'s not enough support\'. ' +
@@ -154,7 +167,7 @@ ciadc.posts = [
     },
     {   url:'client-side-kickstart-design-to-web',
         title:'a client side kickstart',
-        subtitle:'part 1 : design to web',
+        subtitle:'part 1 - design to web',
         published: '2012-08-30',
         lastUpdated: '2012-09-26',
         author: 'peter-mouland',
@@ -171,14 +184,15 @@ ciadc.posts = [
     },
     {   url:'client-side-kickstart-document-flow',
         title:'a client side kickstart',
-        subtitle:'part 2 : document flow',
+        subtitle:'part 2 - document flow',
         published: '2012-09-10',
         lastUpdated: '2012-09-26',
-        author: 'peter-mouland'
+        author: 'peter-mouland',
+        summary: 'draft copy!'
     },
     {   url:'client-side-kickstart-css3',
         title:'a client side kickstart',
-        subtitle:'part 3 : css3',
+        subtitle:'part 3 - css3',
         published: null,
         lastUpdated: '2012-09-26',
         author: 'peter-mouland'

@@ -13,7 +13,7 @@ a:hover,a:focus{text-decoration:underline}
 h1,h2,dt,code.site{font-family:'Quicksand'}
 body{background:url("/images/bg_laptop.JPG") center 0 no-repeat;background-size:cover;background-attachment:fixed}
 #content{width:960px;margin:0 auto;position:relative}
-.wrapper{background:rgba(0,0,0,0.75);padding:20px;border:1px solid rgba(0,0,0,0.75);}
+.wrapper{background:rgba(0,0,0,0.75);padding:20px;border:0 solid #d48300;border-top-width:1px;}
 .wrapper section{width:650px}
 .main_wrapper{padding:1pc 2pc;clear:both}
 .draft{display:none}
@@ -42,9 +42,16 @@ body.fixed .authorProfile{top:20px}
 .authorProfile img{border-bottom:2px solid #d48300}
 .authorProfile small{display:block;margin:6px 0 0;color:#d4a775;font-size:.75em;}
 .authorProfile small a{display:block}
-#site_footer{color:#ffdea9;border-top:1px solid #ffad2a;font-size:1em;overflow:auto;color:#f2e4d5;}
+#site_footer{color:#ffdea9;border-top:1px solid #d48300;font-size:1em;overflow:auto;color:#f2e4d5;clear:both;}
 #site_footer h2{float:right;margin:0}
 #site_footer ul li{display:inline}
+ul.nav_posts{overflow:auto;background:rgba(0,0,0,0.75);border:0;border-bottom:4px solid #d48300;box-shadow:0 20px 20px -10px #000;margin:0 0 15px 0;font-size:1.15em;}
+ul.nav_posts li a{background:rgba(0,0,0,0.5);line-height:2em;padding:7px 20px;color:#d48300;}
+ul.nav_posts li a:hover{background:#000}
+ul.nav_posts li.prev{float:left;}
+ul.nav_posts li.prev a{border-radius:0 10px 0 0}
+ul.nav_posts li.next{float:right;margin-left:-40px;}
+ul.nav_posts li.next a{border-radius:10px 0 0 0}
 html[xmlns] #recent_articles  article{display:block}
 * html #recent_articles article{height:1%}
 #recent_articles article{display:inline-block;width:100%;padding:20px 0;background:rgba(0,0,0,0.5);border-radius:20px}

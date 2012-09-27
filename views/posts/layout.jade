@@ -1,0 +1,16 @@
+doctype html
+html(lang="en", class="no-js")
+    head
+        title caught in a dot com | #{post.title}
+        link(rel='stylesheet', href='/css/app.css')
+    body
+        #content
+            include ../partials/header
+
+            block mainContent
+
+            include ../partials/navigate_next_previous
+
+            include ../partials/footer
+
+        script(type='text/javascript', src="/js/app.js")
