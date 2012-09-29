@@ -61,6 +61,7 @@ module.exports = {
             if (!this._metadata){                this._metadata = {};              }
             if (!this._metadata[type]){          this._metadata[type] = {};        }
             if (this._metadata[type][url]){      return this._metadata[type][url]; }
+            if (!url) {url='/';}
             var i= 0,
                 parent = data[type],
                 len = parent.length,
