@@ -5,8 +5,6 @@ var fs = require('fs'),
     };
 
 module.exports = {
-    index: data['index'], //todo: dont expose this - use get* functions within config.js
-
     utils: {
         items_per_page: 5,
         get_previous:function(type, current){
@@ -20,9 +18,7 @@ module.exports = {
         },
 
         published: function(type){
-            if (this._published && this._published[type]){
-                return this._published[type];
-            }
+            if (this._published && this._published[type]){  return this._published[type];     }
             this._published = {};
             var i= 0,
                 parent = data[type],
@@ -36,39 +32,55 @@ module.exports = {
         },
 
         paged: function(type,page_number){
+            if (!this._paged) {                  this._paged = {};                      }
+            if (!this._paged[type]){             this._paged[type] = {};                }
+            if (this._paged[type][page_number]){ return this._paged[type][page_number]; }
             var i= 0,
                 parent = data[type],
                 len = 0,
-                pages = [];
+                pages = [],
+                _return;
             if (!parent){return {items:0};} //no page items so you leave with nothing.
 
             len = (parent.length>this.items_per_page)? this.items_per_page : parent.length;
             if (page_number){
                 i=((page_number-1)*(len));
                 len=i+len;
+            } else {
+                page_number = 1;
             }
             for (i;i<len;i++){
                 if (parent[i].published) { pages.push(parent[i]); }
             }
-            return {items:pages,current:page_number || 1, count:(Math.ceil(this.published(type).count/this.items_per_page))};
+            _return = {items:pages,current:page_number, count:(Math.ceil(this.published(type).length/this.items_per_page))};
+            this._paged[type][page_number] = _return;
+            return _return;
         },
 
         metadata: function(type,url) { //todo: improve s will get slow with lots of posts
+            if (!this._metadata){                this._metadata = {};              }
+            if (!this._metadata[type]){          this._metadata[type] = {};        }
+            if (this._metadata[type][url]){      return this._metadata[type][url]; }
             var i= 0,
                 parent = data[type],
-                len = parent.length;
+                len = parent.length,
+                _return;
             for (i;i<len;i++){
-                if (parent[i].url == url) { return parent[i]; }
+                if (parent[i].url == url) {
+                    _return = parent[i];
+                    this._metadata[type][url] = _return;
+                    return _return;
+                }
             }
             return false;
         },
 
         urlHelper: function(type,url){
-            var md = this.metadata(type,url); //todo: cache url result so dont have to look up again
+            var md = this.metadata(type,url);
             return '<a href="/'+ type + '/' + md.url + '" >' + md.title + '</a>'
         },
 
-        urlHelper_subtitle: function(type,url){ //todo: cache url result so dont have to look up again
+        urlHelper_subtitle: function(type,url){
             var md = this.metadata(type,url);
             return '<a href="/'+ type + '/' + md.url + '" >' + md.subtitle + '</a>'
         }

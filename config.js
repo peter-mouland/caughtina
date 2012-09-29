@@ -1,6 +1,7 @@
 //$ cd DevRoot/heroku/caughtina/
 //$ git push heroku-caughtina
 //todo: gzip static assets
+//todo: improve cache bustine of assets for new builds
 var express = require('express'),
     app = express.createServer(),
     jade = require('jade'),
@@ -64,11 +65,13 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res){
-    res.render('index',{post:ciadc.index[0], moment:moment, ciadc:ciadc.utils, this_page:1});
+    var index = ciadc.utils.metadata('index');
+    res.render('index',{post:index, moment:moment, ciadc:ciadc.utils, this_page:1});
 });
 
 app.get('/page/:page', function(req, res){
-    res.render('index',{post:ciadc.index[0], moment:moment, ciadc:ciadc.utils, this_page: req.params.page});
+    var index = ciadc.utils.metadata('index');
+    res.render('index',{post:index, moment:moment, ciadc:ciadc.utils, this_page: req.params.page});
 });
 
 app.get('/about', function(req, res){
