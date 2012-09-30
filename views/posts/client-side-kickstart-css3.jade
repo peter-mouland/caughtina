@@ -2,32 +2,24 @@ extends layout
 
 block mainContent
 
-    include ../partials/profile-peter-mouland
+    section
+        <a name="css3"></a>
+        h2 CSS3
+        p a buzzword that is on many CV's at the moment.  It does include  some very nice things like gradients and rounded-corners.
+            | sometimes a given design will make these things more than nice, and essential to useability.
+            | it is when this line is crossed when the CSS approach has to be abandoned and bad old images should be used once again.
+            | our tabs example includes both, 'nice to have' and 'cant-live-without' effects.
 
-    #article
+        h3 gradients
+        p there is a way to get all browsers to render a gradient in CSS, although in some browsers this can have some nasty side affects.
+        p when using <code>filter</code> within IE, custom text within that element will have 'true-type' sudennly turned off.
+            | filters will also cause <code class="css">overflow</code> to misbehave.
+        p using the svg method (for ie9) as this causes problems in an safari 4<sup><a href="#sources">[6]</a></sup>
+            | and if kept within a conditional will not render for ie9 in a different document mode<sup><a href="#sources">[7]</a></sup>
+        p Using images for gradients normally involve partially transparent .png's which are relatively large image files.
+            | ignoring that not all browsers support png-24s<sup><a href="#sources">[4]</a></sup>, <sup><a href="#sources">[5]</a></sup>.
+            | be sure not use the
 
-        include ../partials/post-header
-
-        .wrapper
-
-            section
-                <a name="css3"></a>
-                h2 CSS3
-                p a buzzword that is on many CV's at the moment.  It does include  some very nice things like gradients and rounded-corners.
-                    | sometimes a given design will make these things more than nice, and essential to useability.
-                    | it is when this line is crossed when the CSS approach has to be abandoned and bad old images should be used once again.
-                    | our tabs example includes both, 'nice to have' and 'cant-live-without' effects.
-
-                h3 gradients
-                p there is a way to get all browsers to render a gradient in CSS, although in some browsers this can have some nasty side affects.
-                p when using <code>filter</code> within IE, custom text within that element will have 'true-type' sudennly turned off.
-                    | filters will also cause <code class="css">overflow</code> to misbehave.
-                p using the svg method (for ie9) as this causes problems in an safari 4<sup><a href="#sources">[6]</a></sup>
-                    | and if kept within a conditional will not render for ie9 in a different document mode<sup><a href="#sources">[7]</a></sup>
-                p Using images for gradients normally involve partially transparent .png's which are relatively large image files.
-                    | ignoring that not all browsers support png-24s<sup><a href="#sources">[4]</a></sup>, <sup><a href="#sources">[5]</a></sup>.
-                    | be sure not use the
-
-                h3 drop-shadows
-                p as <code class="css">drop-shadow</code> isn't support by all browsers we really need to understand the use of the drop-shadow I.e. is it important?
-                    | in our case above, I would say it is.  without it, the 'white' select tab would probably just look broken.
+        h3 drop-shadows
+        p as <code class="css">drop-shadow</code> isn't support by all browsers we really need to understand the use of the drop-shadow I.e. is it important?
+            | in our case above, I would say it is.  without it, the 'white' select tab would probably just look broken.

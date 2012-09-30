@@ -3,5 +3,8 @@
         h1 #{post.title}
             -if (post.subtitle)
                 small #{post.subtitle}
-        .time
-            time(datetime="#{post.updated}",pubdate="#{post.published}") #{moment(post.published).format('Do MMMM YYYY')}
+        -if (post.published)
+            .time
+                time(datetime="#{post.published}", pubdate) #{moment(post.published).format('Do MMMM YYYY')}
+        -if (editable)
+            a.button#save-page update

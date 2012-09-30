@@ -5,12 +5,12 @@ nav
   ul.nav_posts
     -if (previous)
         li.prev
-            a(href=previous.url) &laquo; #{previous.title}
+            a(href='/posts/'+previous.url) &laquo; #{previous.title}
                 -if (previous.subtitle)
                     |: #{previous.subtitle}
     -if (next)
         li.next
-            a(href=next.url) #{next.title}
+            a(href='/posts/'+next.url) #{next.title}
                 -if (next.subtitle)
                     |: #{next.subtitle}
                 | &raquo;

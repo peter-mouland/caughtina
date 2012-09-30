@@ -1,13 +1,23 @@
 doctype html
 html(lang="en", class="no-js")
     head
-        title caught in a dot com | #{post.title}
+        title #{post.title}
+        script
+            document.getElementsByTagName('html')[0].setAttribute('class','');
         link(rel='stylesheet', href='/css/app.css')
     body
         #content
             include ../partials/header
 
-            block mainContent
+            include ../partials/profile-peter-mouland
+
+            #article
+
+                include ../partials/post-header
+
+                .wrapper(contenteditable=editable,'data-key'=key)
+
+                    block mainContent
 
             include ../partials/navigate_next_previous
 

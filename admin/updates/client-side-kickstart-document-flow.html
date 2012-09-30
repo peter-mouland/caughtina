@@ -1,0 +1,12 @@
+<section><h2>document flow</h2><p>first of all, think how you would structure the code.
+    Most tags can be made to look and act like each other, so don't start to think about styling before the structure is done.
+    If the document makes sense un-styled, it is likely to make sense to a screen-reader too.</p><p>When it does come to styling, ensure that the user never sees a flash of unstyled content (FOUC)<sup><a href="#sources">[1]</a></sup>.
+    This means never rely on JavaScript to help with the layout.
+    waiting for javascript to execute (especially when enclosed within a <code class="js">$(document).ready</code>) simply takes too long.</p><dl><dt>how would you structure the code?</dt><dd class="hide">use <code class="html">li</code>'s containing <code class="html">h</code> tags for the tabs.
+    the tab contents should be another list, but should the article titles for <code class="html">h</code> tags also?
+    there is an arguement for this as titles are clearly headers, but think about a AT user pressing their 'h' key to skip along all headers on the page.
+    I think making the titles also headers would be too much, best to leave them out.</dd><dt>How would you get the tabs to sit nicely next to each other?</dt><dd class="hide">the following display types could be used<ul><li>inline: the downside here is that you cant set height or width. To get around that you could rely on a block element inside to force a min width and height.
+    You could also use padding (IE will add font-size to the height even with no text inside<sup><a href="#sources">[2]</a></sup>)</li><li>inline-block: This will allow height and width to be set on an but it is not fully cross browser compatible<sup><a href="#sources">[3]</a></sup></li><li>block: These elements will take full width of the screen, so <code class="css">float:left</code> will also have to be used.</li><li>position:absolute : put the element where ever you want, but now you have to specifiy a place for each tab.
+    This should be used last as its not very scaleable and elements are taken out of the document flow.
+    This means more work is still needed to ensure the rest of the page renders as expected with no overlaps.</li></ul></dd><dt>How to layout the tabs content?</dt><dd class="hide">as the content of each tab starts in the same position, position:absolute has to be used here.
+    as the question suggest, this is tab content, as it belongs in the same LI as the tab header.</dd></dl></section>
