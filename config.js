@@ -4,9 +4,11 @@
 //todo: improve cache busting of assets for new builds
 //todo: write path to download all page versions and delete on server
 //todo: write updates to deal with multiple users
-//todo: add cookie check for edit url
+//todo: make admin cookie secure with login
+//todo: put admin check in function
 //todo: write full page html generator
-//todo: use local storgae to save document updates when offline
+//todo: use local storage to save document updates when offline
+//todo: create tags pages
 
 var express = require('express'),
     app = express.createServer(),
@@ -112,39 +114,50 @@ app.get('/tags/:tag', function(req, res){
 
 
 app.post('/update/:file', function(req, res){
-    var data = '',
-        oldFile = './admin/updates/' + req.params.file + '.html',
-        newFile = './admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
-    req.addListener('data', function(chunk) { data += chunk; });
-    console.log(req.cookies.juan);
-//    req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
+    var admin = ciadc.admin_users();
+    if (admin[req.cookies.uid] !== req.cookies.pass){
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.end('not found');
+    } else {
+        var data = '',
+            oldFile = './admin/updates/' + req.params.file + '.html',
+            newFile = './admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
+        req.addListener('data', function(chunk) { data += chunk; });
+        req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
+    }
 });
 
 
 app.get('/admin/archive', function(req, res){
-    fs.readdir('./admin/archive/', function(err, files){
-        if (files.length<1){ return; }
-        var out = fs.createWriteStream('./admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
-            zip = zipstream.createZip({ level: 1 }),
-            fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
-            execute = "",
-            filename = "",
-            final = "",
-            len= files.length, f= 0;
-        zip.pipe(out);
+    var admin = ciadc.admin_users();
+    if (admin[req.cookies.uid] !== req.cookies.pass){
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.end('not found');
+    } else {
+        fs.readdir('./admin/archive/', function(err, files){
+            if (files.length<1){ return; }
+            var out = fs.createWriteStream('./admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
+                zip = zipstream.createZip({ level: 1 }),
+                fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
+                execute = "",
+                filename = "",
+                final = "",
+                len= files.length, f= 0;
+            zip.pipe(out);
 
-        for (f; f<len; f++){
-            filename = files[f];
-            execute +="zip.addFile(fs.createReadStream('./admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
-            fn += " fs.unlink('./admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
-            if (f==len-1){
-                execute += fn;
+            for (f; f<len; f++){
+                filename = files[f];
+                execute +="zip.addFile(fs.createReadStream('./admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
+                fn += " fs.unlink('./admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
+                if (f==len-1){
+                    execute += fn;
+                }
+                final += "});";
             }
-            final += "});";
-        }
-        execute += final;
-        eval(execute);
-    });
+            execute += final;
+            eval(execute);
+        });
+    }
 });
 
 app.listen(process.env.PORT || 3000);

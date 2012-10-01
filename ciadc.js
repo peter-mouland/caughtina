@@ -100,16 +100,6 @@ module.exports = {
                 }
             }
             return false;
-        },
-
-        urlHelper: function(type,url){
-            var md = this.metadata(type,url);
-            return '<a href="/'+ type + '/' + md.url + '" >' + md.title + '</a>'
-        },
-
-        urlHelper_subtitle: function(type,url){
-            var md = this.metadata(type,url);
-            return '<a href="/'+ type + '/' + md.url + '" >' + md.subtitle + '</a>'
         }
     }
 };
