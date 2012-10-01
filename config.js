@@ -1,13 +1,18 @@
 //$ cd DevRoot/heroku/caughtina/
 //$ git push heroku-caughtina
 //todo: gzip static assets
-//todo: improve cache bustine of assets for new builds
+//todo: improve cache busting of assets for new builds
 //todo: write path to download all page versions and delete on server
-//todo:write updates to deal with multiple users
+//todo: write updates to deal with multiple users
+//todo: add cookie check for edit url
+//todo: write full page html generator
+//todo: use local storgae to save document updates when offline
+
 var express = require('express'),
     app = express.createServer(),
     jade = require('jade'),
     stylus = require('stylus'),
+    zipstream = require('zipstream'),
     nib = require('nib'),
     uglyfyJS = require('uglify-js'),
     fs = require('fs'),
@@ -15,6 +20,7 @@ var express = require('express'),
     FILE_ENCODING = 'utf-8',
     JS_FILE_PATH = '/js/app.js',
     JS_FILE_LIST = ['public/js/lib/jquery-1.8.2.min.js',
+                    'public/js/lib/jquery.cookie.js',
                     'public/js/ciadc.js'],
     ciadc = require('./ciadc.js'),
     compile = function(str, path) {
@@ -45,8 +51,9 @@ var express = require('express'),
         return distPath;
     };
 
+app.use(express.cookieParser());
 app.use(app.router);
-app.use(express.logger('dev'))
+app.use(express.logger('dev'));
 app.use(stylus.middleware({ src: __dirname + '/public', compile: compile}));
 app.use(express.favicon(__dirname + '/public/favicon.ico', {maxAge: 86400000}));
 
@@ -88,9 +95,15 @@ app.get('/posts/:post', function(req, res){
 });
 
 app.get('/posts/:post/edit', function(req, res){
-    var post = ciadc.utils.metadata('posts',req.params.post),
-        url = (post) ? req.params.post : 'holding-page';
-    res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils, editable:true, key:Math.random()*10000000000000000});
+    var admin = ciadc.admin_users();
+    if (admin[req.cookies.uid] !== req.cookies.pass){
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.end('not found');
+    } else {
+        var post = ciadc.utils.metadata('posts',req.params.post),
+            url = (post) ? req.params.post : 'holding-page';
+        res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils, editable:true, key:Math.random()*10000000000000000});
+    }
 });
 
 app.get('/tags/:tag', function(req, res){
@@ -99,26 +112,39 @@ app.get('/tags/:tag', function(req, res){
 
 
 app.post('/update/:file', function(req, res){
-    req.addListener('data', function(chunk) { data += chunk; });
-
     var data = '',
         oldFile = './admin/updates/' + req.params.file + '.html',
-        newFile = './admin/versioning/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
-
-    req.addListener('end', function() {
-        fs.readFile(oldFile, 'utf8', function (err, originalData) {
-            if (err) {   return console.log(err);        }
-            fs.writeFile(newFile, originalData, function (err) {
-                if (err) {  return console.log(err); }
-                console.log(oldFile + ' copied to ' + newFile);
-                fs.writeFile(oldFile, data, function (err) {
-                    if (err) { return console.log(err);}
-                    console.log(oldFile + ' updated.');
-                });
-            });
-        });
-    });
+        newFile = './admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
+    req.addListener('data', function(chunk) { data += chunk; });
+    console.log(req.cookies.juan);
+//    req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
 });
 
+
+app.get('/admin/archive', function(req, res){
+    fs.readdir('./admin/archive/', function(err, files){
+        if (files.length<1){ return; }
+        var out = fs.createWriteStream('./admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
+            zip = zipstream.createZip({ level: 1 }),
+            fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
+            execute = "",
+            filename = "",
+            final = "",
+            len= files.length, f= 0;
+        zip.pipe(out);
+
+        for (f; f<len; f++){
+            filename = files[f];
+            execute +="zip.addFile(fs.createReadStream('./admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
+            fn += " fs.unlink('./admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
+            if (f==len-1){
+                execute += fn;
+            }
+            final += "});";
+        }
+        execute += final;
+        eval(execute);
+    });
+});
 
 app.listen(process.env.PORT || 3000);

@@ -1,10 +1,34 @@
 var fs = require('fs'),
     data = {
+        admin_users:eval(fs.readFileSync('./admin/user.json')+'')[0],
         posts: eval(fs.readFileSync('ciadc.posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);}),
         index: eval(fs.readFileSync('ciadc.index.json')+'')
     };
 
 module.exports = {
+    admin_users: function(){
+        if (!this._admin_users){
+            this._admin_users = data['admin_users'];
+        }
+        return this._admin_users;
+    },
+    updateFile: function(oldFile,newFile,data, res){
+        fs.readFile(oldFile, 'utf8', function (err, originalData) {
+            if (err) {   return console.log(err);        }
+            fs.writeFile(newFile, originalData, function (err) {
+                if (err) {  return console.log(err); }
+                console.log(oldFile + ' copied to ' + newFile);
+                fs.writeFile(oldFile, data, function (err) {
+                    if (err) { return console.log(err);}
+                    console.log(oldFile + ' updated.');
+                    res.writeHead(200, {'Content-Type': 'text/json'});
+                    res.end('{"saved":"true"}');
+
+                });
+            });
+        });
+    },
+
     utils: {
         items_per_page: 5,
         get_previous:function(type, current){
@@ -16,7 +40,9 @@ module.exports = {
             var parent = this.published(type);
             return parent[parent.indexOf(current)-1];
         },
+        get_admin_users: function(){
 
+        },
         published: function(type){
             if (this._published && this._published[type]){  return this._published[type];     }
             this._published = {};
@@ -57,7 +83,7 @@ module.exports = {
             return _return;
         },
 
-        metadata: function(type,url) { //todo: improve s will get slow with lots of posts
+        metadata: function(type,url) {
             if (!this._metadata){                this._metadata = {};              }
             if (!this._metadata[type]){          this._metadata[type] = {};        }
             if (this._metadata[type][url]){      return this._metadata[type][url]; }

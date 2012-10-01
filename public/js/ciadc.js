@@ -1,20 +1,35 @@
 var ciadc = function(){
-
+    $('body').append($('<div class="save-message"></div>'));
+    $message=$('.save-message');
 };
 
+
+ciadc.prototype.showMessage = function(text){
+    $message.text(text);
+    $message.addClass('shown');
+    setTimeout(function(){
+        $message.fadeOut(function(){
+            $message.removeClass('shown').removeAttr('style');
+        });
+    },1000);
+};
 
 ciadc.prototype.savePage = function(){
     var $content = $('.wrapper[contenteditable]'),
         html = $content.html(),
         key = $content.data('key'),
-        file = document.location.pathname.split('/')[2]
+        file = document.location.pathname.split('/')[2],
+        _this = this;
     $.ajax({url:'/update/' + file,
             type:'post',
             data: html,
             contentType:'text/html',
-            processData:false})
-    //ajax response to save url
-    //fade success message
+            processData:false
+        }).done(function(data,status){
+            _this.showMessage('Page Updated successfully');
+        }).fail(function(data,status){
+            console.log(status); //parseerror
+        });
 };
 
 ciadc.prototype.fixHeader = function(){
@@ -32,8 +47,9 @@ ciadc.prototype.fixHeader = function(){
 };
 
 ciadc.prototype.setupGlobalEvents = function(){
+    var _this = this;
     window.onscroll = this.fixHeader;
-    $('#save-page').live('click', this.savePage)
+    $('#save-page').live('click', function(){_this.savePage();});
 };
 
 ciadc.prototype.init = function(){

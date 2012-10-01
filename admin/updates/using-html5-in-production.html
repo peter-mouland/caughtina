@@ -1,5 +1,5 @@
-<section><h2>Mission</h2><p>Recently I have been looking into using html5 markup and seeing what is required to get it through to a live site.
-    The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site trapped behind and old corporate build.</p><p>So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
+<section><h2>Mission</h2><p>Recently I have been looking into using html5 markup and seeing what is required to get it through to a live.
+    The sites I tend to build have to be fully functional down to IE6, this is due to the number of people using the site trapped behind an old corporate build.</p><p>So when going as far as saying non-javascript users are also important, this adds a new level of challange; how to get IE6 to play nicely without JS?
     I'm not one to bash an old foe when he's down and almost out, but IE did give me problems.
     I wasn't expecting miricles, but after noting that even Firefox 3 (released June 2008) implemented some HTML5 features<sup><a href="#sources">[1]</a></sup>, I had hope.</p></section><section><h2>Methods</h2><p>The following all had their draw-backs, but given the right circumstance and a less strict set of requirements, any of them could be used to solve the problem.</p><dl><dt>Conditional Statements</dt><dd>I thought this was a strange idea, but one that would work if you are really keen to get IE to play nicely without JS.
     The idea is to only let IE render the tags it understands depending on its version number.<code class="html complete">&lt;!--[if lt IE 9]&gt;&lt;div class='section'&gt;&lt;![endif]--&gt;<br>
@@ -25,3 +25,244 @@
     It is rarer still that a business would accept elements on their sites that don't match their own style-guide.</p><p> Overall, the semantic benifits these tags give will help future proof our sites as well as aiding <abbr title="Assistive Technology">AT</abbr>'s.
     For me, this makes the extra effort worth it.</p></section><section><h2>Other Notes</h2><p>When implementing my sollution, I decided to keep all my <abbr title="Accessible Rich Internet Application">ARIA</abbr> attributes on the HTML5 tags themselves.
     This is so that in the future, when more <abbr title="Assistive Technology">AT</abbr>'s do understand the purpose of each tag, the announcements made by screen readers are not duplicated.</p></section><section><h2><a name="sources">References</a></h2><ul class="references"><li><a href="https://developer.mozilla.org/en/Firefox_3_for_developers" target="_new">New developer features in Firefox 3</a></li><li>HTML5 tags to be rendered are header, hgroup, nav, section, article, aside and footer.</li><li>Browsers chosen as being either important or popular IE6, IE7, IE8, IE9, FF3.6, FF15, Opera, Chrome, Safari.</li><li><a href="http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html" target="_new">A Simple HTML5 Fix for IE</a></li><li><a href="http://gs.statcounter.com/#browser_version_partially_combined-ww-yearly-2012-2012-bar">Browser usage statistics for 2012</a></li><li><a href="http://www.w3.org/wiki/HTML/Elements/input/search">Example of an HTML5 element which is used primarily for styling</a></li></ul></section>
+<!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.--><!-- [7] no way of hidding text from screen readers at the moment-->
+<!-- [n] http://nefariousdesigns.co.uk/sniff-my-browser-the-modernizr-inadequacy.html-->
+<!-- [n] http://www.css3files.com/2011/06/07/why-i-don%E2%80%99t-use-modernizr-yet/-->
+<!--| Performance of coarse is also a factor as adding too many elements to the DOM, or executing too much JS needlessly may be too much for some browser/operating system/hardware clients.-->
+<!--h2 considerations-->
+<!--p If this edge case is a small percentage, then why bother?-->
+   <!--| Simple, because even a small percentage of return visitors would turn into a large number missing clicks if we didnt provide a good looking, usable site.-->
+   <!--| Having said that, I'll still be more than happy when the people above decide that this number is small enough to be ignored!-->
+   <!--| The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.-->
+   <!--| I'm sure more AT's will suport these semantic descriptive tags in the future.-->
+   <!--| I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.-->

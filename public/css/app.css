@@ -22,6 +22,8 @@ ul.references{list-style:decimal;padding:20px}
 img{max-width:100%}
 sup{vertical-align:super;font-size:.75em;line-height:1em}
 code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6px;border:1px dashed rgba(0,0,0,0.75);font-size:.85em;white-space:nowrap;margin:0 5px}
+.save-message{display:none;position:absolute;top:0;left:25%;border:1px solid #d48300;border-width:0 1px 1px 1px;border-radius:0 0 10px 10px;box-shadow:0 20px 10px -10px #000;line-height:2em;background:#000;padding:0 20px;width:50%;}
+.save-message.shown{display:block}
 #site_header{border:0 solid rgba(0,0,0,0.75);border-radius:20px 20px 0 0;font-family:'Quicksand';font-size:3em;margin:30px 0 0;text-shadow:1px 1px 1px rgba(0,0,0,0.75);padding:20px 0 0;position:relative;background:rgba(0,0,0,0.5);-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out;}
 #site_header .site_name{margin:0;font-size:1.4em;text-align:center;letter-spacing:-10px;word-spacing:10px;color:#ffdea9}
 #site_header .tag_line{font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
@@ -34,7 +36,8 @@ code{background:rgba(0,0,0,0.33);color:#ffc669;font-family:Georgia;padding:3px 6
 #site_header form:hover{background:rgba(0,0,0,0.75)}
 body #page_header{position:relative;border:0;border-bottom:4px solid #d48300;box-shadow:0 20px 20px -10px #000;color:#d48300;font-size:2em;font-weight:bold;background:rgba(0,0,0,0.75);margin:0 0 15px 0;padding:20px;-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out;}
 body #page_header .time{position:absolute;top:.5em;left:20px;font-size:.4em;font-weight:normal;color:#d48300}
-body #page_header .button{font-size:.45em;right:20px;position:absolute;cursor:pointer}
+body #page_header .button{font-size:.45em;right:0;bottom:0;position:absolute;cursor:pointer;background:rgba(0,0,0,0.5);line-height:2em;padding:7px 20px;color:#d48300;border-radius:10px 0 0 0;border:1px solid;border-width:1px 0 0 1px;}
+body #page_header .button:hover{background:#000}
 body.fixed{padding-top:300px;}
 body.fixed #site_header{border:0;position:fixed;top:-168px;width:960px;padding-bottom:0;z-index:10;background:#171c2a}
 body.fixed #page_header{position:fixed;top:40px;width:920px;background:#0b0e16;z-index:1}
