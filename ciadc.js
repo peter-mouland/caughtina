@@ -1,17 +1,10 @@
 var fs = require('fs'),
     data = {
-        admin_users:eval(fs.readFileSync('./admin/user.json')+'')[0],
         posts: eval(fs.readFileSync('ciadc.posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);}),
         index: eval(fs.readFileSync('ciadc.index.json')+'')
     };
 
 module.exports = {
-    admin_users: function(){
-        if (!this._admin_users){
-            this._admin_users = data['admin_users'];
-        }
-        return this._admin_users;
-    },
     updateFile: function(oldFile,newFile,data, res){
         fs.readFile(oldFile, 'utf8', function (err, originalData) {
             if (err) {   return console.log(err);        }

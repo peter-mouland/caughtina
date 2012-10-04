@@ -1,2 +1,3 @@
 # admin files
-admin/*.json
+admin/archive/*.html
+admin/archive/*.zip

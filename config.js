@@ -9,6 +9,7 @@
 //todo: write full page html generator
 //todo: use local storage to save document updates when offline
 //todo: create tags pages
+//todo: workout how to synchronise changes between local(offline) and web
 
 var express = require('express'),
     app = express.createServer(),
@@ -19,6 +20,9 @@ var express = require('express'),
     uglyfyJS = require('uglify-js'),
     fs = require('fs'),
     moment = require('moment'),
+    mongo = require('mongodb'),
+    Server = mongo.Server,
+    Db = mongo.Db,
     FILE_ENCODING = 'utf-8',
     JS_FILE_PATH = '/js/app.js',
     JS_FILE_LIST = ['public/js/lib/jquery-1.8.2.min.js',
@@ -52,6 +56,9 @@ var express = require('express'),
         console.log('uglify: '+ distPath +' built.');
         return distPath;
     };
+
+ciadc.db = require('./ciadc.db.js'),
+ciadc.db.create();
 
 app.use(express.cookieParser());
 app.use(app.router);
@@ -96,68 +103,79 @@ app.get('/posts/:post', function(req, res){
     res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils, editable:false, key:false});
 });
 
-app.get('/posts/:post/edit', function(req, res){
-    var admin = ciadc.admin_users();
-    if (admin[req.cookies.uid] !== req.cookies.pass){
-        res.writeHead(404, {'Content-Type': 'text/html'});
-        res.end('not found');
-    } else {
-        var post = ciadc.utils.metadata('posts',req.params.post),
-            url = (post) ? req.params.post : 'holding-page';
-        res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils, editable:true, key:Math.random()*10000000000000000});
-    }
-});
-
 app.get('/tags/:tag', function(req, res){
     res.render('tags/holding-page.jade', {post:{title : "Tag Search"}, editable:false});
 });
 
 
-app.post('/update/:file', function(req, res){
-    var admin = ciadc.admin_users();
-    if (admin[req.cookies.uid] !== req.cookies.pass){
+
+app.post('/admin', function(req, res){
+    var user = ciadc.db.get_user('', 'optimus');
+    if (user.username==''){
+        //show page to set user
+    } else if (!req.cookies.uid){
+        //show login
+    } else if (req.cookies.uid!=user.username || req.cookies.pass!=user.password){
+        //show login with error
+    } else {
+        //show admin
+    }
+});
+
+app.get('/posts/:post/edit', function(req, res){
+//    if (admin[req.cookies.uid] !== req.cookies.pass){
+    res.writeHead(404, {'Content-Type': 'text/html'});
+    res.end('not found');
+//    } else {
+//        var post = ciadc.utils.metadata('posts',req.params.post),
+//            url = (post) ? req.params.post : 'holding-page';
+//        res.render('posts/' + url + '.jade',{post : post, moment:moment, ciadc:ciadc.utils, editable:true, key:Math.random()*10000000000000000});
+//    }
+});
+
+app.post('/admin/update/:file', function(req, res){
+//    if (admin[req.cookies.uid] !== req.cookies.pass){
         res.writeHead(404, {'Content-Type': 'text/html'});
         res.end('not found');
-    } else {
-        var data = '',
-            oldFile = './admin/updates/' + req.params.file + '.html',
-            newFile = './admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
-        req.addListener('data', function(chunk) { data += chunk; });
-        req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
-    }
+//    } else {
+//        var data = '',
+//            oldFile = './admin/updates/' + req.params.file + '.html',
+//            newFile = './admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
+//        req.addListener('data', function(chunk) { data += chunk; });
+//        req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
+//    }
 });
 
 
 app.get('/admin/archive', function(req, res){
-    var admin = ciadc.admin_users();
-    if (admin[req.cookies.uid] !== req.cookies.pass){
+//    if (admin[req.cookies.uid] !== req.cookies.pass){
         res.writeHead(404, {'Content-Type': 'text/html'});
         res.end('not found');
-    } else {
-        fs.readdir('./admin/archive/', function(err, files){
-            if (files.length<1){ return; }
-            var out = fs.createWriteStream('./admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
-                zip = zipstream.createZip({ level: 1 }),
-                fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
-                execute = "",
-                filename = "",
-                final = "",
-                len= files.length, f= 0;
-            zip.pipe(out);
-
-            for (f; f<len; f++){
-                filename = files[f];
-                execute +="zip.addFile(fs.createReadStream('./admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
-                fn += " fs.unlink('./admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
-                if (f==len-1){
-                    execute += fn;
-                }
-                final += "});";
-            }
-            execute += final;
-            eval(execute);
-        });
-    }
+//    } else {
+//        fs.readdir('./admin/archive/', function(err, files){
+//            if (files.length<1){ return; }
+//            var out = fs.createWriteStream('./admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
+//                zip = zipstream.createZip({ level: 1 }),
+//                fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
+//                execute = "",
+//                filename = "",
+//                final = "",
+//                len= files.length, f= 0;
+//            zip.pipe(out);
+//
+//            for (f; f<len; f++){
+//                filename = files[f];
+//                execute +="zip.addFile(fs.createReadStream('./admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
+//                fn += " fs.unlink('./admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
+//                if (f==len-1){
+//                    execute += fn;
+//                }
+//                final += "});";
+//            }
+//            execute += final;
+//            eval(execute);
+//        });
+//    }
 });
 
 app.listen(process.env.PORT || 3000);

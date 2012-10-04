@@ -20,7 +20,7 @@ ciadc.prototype.savePage = function(){
         key = $content.data('key'),
         file = document.location.pathname.split('/')[2],
         _this = this;
-    $.ajax({url:'/update/' + file,
+    $.ajax({url:'/admin/update/' + file,
             type:'post',
             data: html,
             contentType:'text/html',
