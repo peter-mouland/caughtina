@@ -1,7 +1,8 @@
 var fs = require('fs'),
     data = {
-        posts: eval(fs.readFileSync('ciadc.posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);}),
-        index: eval(fs.readFileSync('ciadc.index.json')+'')
+        posts: {},//eval(fs.readFileSync('ciadc.posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);}),
+        index: {},//eval(fs.readFileSync('ciadc.index.json')+''),
+        admin: {}//eval(fs.readFileSync('ciadc.admin.json')+'')
     };
 
 module.exports = {

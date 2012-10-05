@@ -1,6 +1,14 @@
 {
     "name": "hello",
-    "version": "0.0.8",
+    "version": "0.0.9",
+    "description": "A blog. my first time using Node.js & MongoDb",
+    "author": {
+        "name": "Peter Mouland",
+        "email": "peter.mouland@gmail.com"
+    },
+    "website":{
+        "url": "www.caughtina.com"
+    },
     "engines":{
         "node": "0.8.2",
         "npm":"1.1.41"
@@ -14,6 +22,7 @@
         "moment": "*",
         "fs": "*",
         "zipstream": "*",
+        "bcrypt": ">= 0.5.x",
         "mongodb": "*"
     }
 }

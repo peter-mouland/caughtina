@@ -19,18 +19,32 @@ module.exports = {
                 console.log(err);
             }
         });
+        return db;
     },
     get_user: function(user, type){
         if (!type) type = 'casual';
+        var _return;
         db.collection('users', function(err, collection) {
             if(err) { console.log(err); }
             collection.findOne({type:'optimus'}, function(err, user) {
-                return user;
+//                $.trigger('ciadc.get_user',user);
             });
         });
-
+        console.log('get',_return)
+        return _return;
     },
-    show_set_user_dialog: function(){
-
+    update_user: function(user, type, data){
+        if (!type) type = 'casual';
+        var _return;
+        db.collection('users', function(err, collection) {
+            if(err) { console.log(err); }
+            collection.update({type:'optimus'}, {$set:{username:data.username}}, {safe:true}, function(err, result) {
+                collection.findOne({type:'optimus'}, function(err, user) {
+                    console.log(user)
+                    _return = user;
+                });
+            });
+        });
+        return _return;
     }
 };

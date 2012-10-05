@@ -1,0 +1,22 @@
+doctype html
+html(lang="en", class="no-js")
+    head
+        title #{post.title}
+        script
+            document.getElementsByTagName('html')[0].setAttribute('class','');
+        link(rel='stylesheet', href='/css/app.css')
+    body
+        #content
+            include ../partials/header
+
+            #article
+
+                include ../partials/post-header
+
+                .wrapper
+
+                    block mainContent
+
+            include ../partials/footer
+
+        script(type='text/javascript', src="/js/app.js")
