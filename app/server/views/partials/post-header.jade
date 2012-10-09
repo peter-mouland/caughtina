@@ -6,5 +6,11 @@
         -if (post.published)
             .time
                 time(datetime="#{post.published}", pubdate) #{moment(post.published).format('Do MMMM YYYY')}
+        form(method='post',action='/login')
+            input(name='user')
+            input(name='pass')
+            input(type='submit',value='login')
+            a.button#login(href='#login') login
+
         -if (editable)
             a.button#save-page update
