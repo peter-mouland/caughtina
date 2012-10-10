@@ -5,12 +5,20 @@
                 small #{post.subtitle}
         -if (post.published)
             .time
-                time(datetime="#{post.published}", pubdate) #{moment(post.published).format('Do MMMM YYYY')}
-        form(method='post',action='/login')
-            input(name='user')
-            input(name='pass')
-            input(type='submit',value='login')
-            a.button#login(href='#login') login
+                time(datetime="#{post.published}", pubdate) #{ciadc.pretty_date(post.published)}
 
-        -if (editable)
-            a.button#save-page update
+        -if (user)
+            form#logout(method='post',action='/login')
+                -if (updateable)
+                    a.button#save-page update
+                -else if (editable)
+                    a.button#edit-page(href='#{post.url}/edit') edit
+                a.button#logout(href='/logout') logout
+
+        -if (!user)
+            form#login(method='post',action='/login')
+                a.button(href='#login') user login
+                input(name='user', placeholder='username')
+                input(name='pass', type='password', placeholder='password')
+                input(type='submit', value='login')
+

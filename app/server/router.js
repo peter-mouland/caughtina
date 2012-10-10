@@ -1,33 +1,19 @@
-var zipstream = require('zipstream'),
-    fs = require('fs'),
-    events= require('events'),
-    moment = require('moment'),
-    ciadc = require('./ciadc.js'),
-    account_manager = require('./modules/account-manager');
+var page_manager = require('./modules/page-manager'),
+    account_manager = require('./modules/account-manager'),
+    db = {  dbPort: 27017,
+            dbHost: global.host,
+            dbName: 'ciadc'};
 
-ciadc.db = require('./ciadc.db.js');
-var db = ciadc.db.create(),
-    AM = new account_manager({
-        dbPort: 27017,
-        dbHost: global.host,
-        dbName: 'ciadc'});
+var AM = new account_manager(db);
+var PM = new page_manager(db);
 
-ciadc.checkLogin = function(req,success, fail){
-    // check if the user's credentials are saved in a cookie //
-    if (req.cookies.user == undefined || req.cookies.pass == undefined){
-        fail();
-    }	else{
-        // attempt automatic login //
-        AM.autoLogin(req.cookies.user, req.cookies.pass);
-        AM.on('autoLogin.fail', fail);
-        AM.on('autoLogin.success', success);
-    }
-};
-ciadc.getUser = function(req){
-    return (req.session && req.session.user != null) ? req.session.user : undefined;
-};
-ciadc.isAdminUser = function(user){
-    return (user!=null && user.email=='peter.mouland@gmail.com')
+var getLocals = function(req, pageType, pageItem){
+    var contents = PM.metadata(pageType, pageItem),
+        user = AM.getUser(req),
+        page = req.params.page || 1,
+        editable = false,
+        updateable = false;
+    return {post:contents, ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
 };
 
 module.exports = function(app) {
@@ -44,9 +30,13 @@ module.exports = function(app) {
     });
 
     app.get('/', function(req, res){
-        var index = ciadc.utils.metadata('index'),
-            user = ciadc.getUser(req);
-        res.render('index',{post:index, moment:moment, ciadc:ciadc.utils, this_page:1, editable:false, user:user});
+        var locals = getLocals(req, 'index');
+        res.render('index', locals);
+    });
+
+    app.get('/page/:page', function(req, res){
+        var locals = getLocals(req, 'index');
+        res.render('index', locals);
     });
 
     app.post('/login', function(req, res){
@@ -54,6 +44,7 @@ module.exports = function(app) {
             if (!o){
                 res.send(e, 400);
             }	else{
+                o.is_admin = AM.isAdminUser(o);
                 req.session.user = o;
                 if (req.param('remember-me') == 'true'){
                     res.cookie('user', o.user, { maxAge: 900000 });
@@ -64,55 +55,55 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/page/:page', function(req, res){
-        var index = ciadc.utils.metadata('index');
-        res.render('index',{post:index, moment:moment, ciadc:ciadc.utils, this_page: req.params.page, editable:false});
+    app.get('/logout', function(req, res){
+        req.session.user = undefined;
+        res.redirect('/');
     });
 
     app.get('/about', function(req, res){
-        res.render('about/caught-in-a-dot-com', {post:{title : "about caught in a dot com"}, editable:false});
+        var locals = getLocals(req, 'about');
+        res.render('about/caught-in-a-dot-com', locals);
     });
 
     app.get('/posts/:post', function(req, res){
-        var post = ciadc.utils.metadata('posts',req.params.post),
-            url = (post) ? req.params.post : 'holding-page';
-        res.render('posts/' + url ,{post : post, moment:moment, ciadc:ciadc.utils, editable:false, key:false});
+        var locals = getLocals(req, 'posts', req.params.post),
+            url = (locals.post) ? req.params.post : 'holding-page';
+        locals.editable = true;
+        res.render('posts/' + url, locals);
+    });
+
+    app.get('/posts/:post/edit', function(req, res){
+        var locals = getLocals(req, 'posts', req.params.post),
+            url = (locals.post) ? req.params.post : 'holding-page';
+        if (!locals.user || !locals.user.is_admin){
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            res.end('not found');
+        } else {
+            locals.updateable = true;
+            res.render('posts/' + url, locals);
+        }
     });
 
     app.get('/tags/:tag', function(req, res){
         res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false});
     });
 
-
-
     app.get('/admin', function(req, res){
-        var index = ciadc.utils.metadata('admin');
-        var user = ciadc.getUser(req);
+        var locals = getLocals(req, 'admin');
 
-        if (!user){
+        if (!locals.user){
             //show login
-        } else if (!ciadc.isAdminUser(user)){
+        } else if (!locals.user.is_admin){
             //show login with error
         } else {
             //show admin
         }
     });
 
-    app.get('/posts/:post/edit', function(req, res){
-        var user = ciadc.getUser(req);
-        if (!ciadc.isAdminUser(user)){
-          res.writeHead(404, {'Content-Type': 'text/html'});
-          res.end('not found');
-        } else {
-            var post = ciadc.utils.metadata('posts',req.params.post),
-                url = (post) ? req.params.post : 'holding-page';
-            res.render('posts/' + url,{post : post, moment:moment, ciadc:ciadc.utils, editable:true, key:Math.random()*10000000000000000});
-        }
-    });
 
     app.post('/admin/update/:file', function(req, res){
-        var user = ciadc.getUser(req);
-        if (!ciadc.isAdminUser(user)){
+        var user = AM.getUser(req);
+        if (!user || !user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
@@ -120,39 +111,18 @@ module.exports = function(app) {
                 oldFile = 'app/server/admin/updates/' + req.params.file + '.html',
                 newFile = 'app/server/admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
             req.addListener('data', function(chunk) { data += chunk; });
-            req.addListener('end', function(){ciadc.updateFile(oldFile,newFile,data, res);});
+            req.addListener('end', function(){PM.update_file(oldFile,newFile,data, res);});
         }
     });
 
 
     app.get('/admin/archive', function(req, res){
-        var user = ciadc.getUser(req);
-        if (!ciadc.isAdminUser(user)){
+        var user = AM.getUser(req);
+        if (!user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
-            fs.readdir('app/server/admin/archive/', function(err, files){
-                if (files.length<1){ return; }
-                var out = fs.createWriteStream('app/server/admin/archive-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.zip'),
-                    zip = zipstream.createZip({ level: 1 }),
-                    fn = "zip.finalize(function(written) { console.log(written + ' total bytes written');});",
-                    execute = "",
-                    filename = "",
-                    final = "",
-                    len= files.length, f= 0;
-                zip.pipe(out);
-
-                for (f; f<len; f++){
-                    filename = files[f];
-                    execute +="zip.addFile(fs.createReadStream('app/server/admin/archive/" + filename + "'),{name:'" + filename + "'},function(){";
-                    fn += " fs.unlink('app/server/admin/archive/" + filename + "',function(err){if (err) console.log(err);});";
-                    if (f==len-1){
-                        execute += fn;
-                    }
-                    final += "});";
-                }
-                execute += final;
-                eval(execute);
+            PM.archive_directory('app/server/admin','archive',function(){
                 res.writeHead(200, {'Content-Type': 'text/html'});
             });
         }

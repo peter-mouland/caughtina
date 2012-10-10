@@ -11,18 +11,24 @@ var bcrypt = require('bcrypt'),
                 console.log(e);
             }	else{
                 console.log('connected to database :: ' + opts.dbName);
-                self.accounts = this.db.collection('accounts');
+                self.accounts = self.db.collection('accounts');
             }
         });
 
     };
 
-
-
 AM.prototype = new events.EventEmitter;
 module.exports = AM;
-// logging in //
 
+//checking user details//
+AM.prototype.getUser = function(req){
+    return (req.session && req.session.user != null) ? req.session.user : undefined;
+};
+AM.prototype.isAdminUser = function(user){
+    return (user!=null && user.email=='peter.mouland@gmail.com')
+};
+
+// logging in //
 AM.prototype.autoLogin = function(user, pass)
 {   var self = this;
     self.accounts.findOne({user:user}, function(e, o) {

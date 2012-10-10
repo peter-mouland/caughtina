@@ -116,7 +116,6 @@ ciadc.prototype.showMessage = function(text){
 ciadc.prototype.savePage = function(){
     var $content = $('.wrapper[contenteditable]'),
         html = $content.html(),
-        key = $content.data('key'),
         file = document.location.pathname.split('/')[2],
         _this = this;
     $.ajax({url:'/admin/update/' + file,

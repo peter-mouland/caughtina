@@ -17,7 +17,7 @@ block mainContent
                                 -if (pageItem.subtitle)
                                     small #{pageItem.subtitle}
                         .time
-                            time(datetime="#{pageItem.published}", pubdate) #{moment(pageItem.published).format('Do MMMM YYYY')}
+                            time(datetime="#{pageItem.published}", pubdate) #{ciadc.pretty_date(pageItem.published)}
                     p #{pageItem.summary}
                         a.more(href='/posts/' + pageItem.url) more
                     -if (pageItem.tags)
