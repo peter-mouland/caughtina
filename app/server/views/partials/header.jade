@@ -23,7 +23,7 @@
                 input(type='submit',value='search')
 
         -if (user)
-            form#login.loggedin(method='post',action='/login/#{post.url}')
+            form#login.loggedin(method='post',action='/login')
                 -if (updateable)
                     a.button#save-page update
                 -else if (editable)
@@ -31,7 +31,7 @@
                 a.button#logout(href='/logout') logout
 
         -if (!user)
-            form#login.notloggedin(method='post',action='/login/#{post.url}')
+            form#login.notloggedin(method='post',action='/login')
                 a.button.login(href='#login') user login
                 input(name='user', placeholder='username')
                 input(name='pass', type='password', placeholder='password')

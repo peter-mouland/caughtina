@@ -188,8 +188,7 @@ code {
 }
 .save-message {
   display: none;
-  position: fixed;
-    z-index: 20;
+  position: absolute;
   top: 0;
   left: 25%;
   border: 1px solid #d48300;
@@ -298,7 +297,8 @@ code {
 }
 #site_header form#login input {
   float: right;
-  display: none;
+/*display: none;*/
+/* only hide after anim finished*/
 }
 #site_header form#login.hover.notloggedin,
 #site_header form#login:hover.notloggedin {

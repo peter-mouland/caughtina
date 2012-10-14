@@ -39,7 +39,7 @@ module.exports = function(app) {
         res.render('index', locals);
     });
 
-    app.post('/login/:post', function(req, res){
+    app.post('/login', function(req, res){
         AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
             if (!o){
                 res.send(e, 400);
@@ -50,7 +50,7 @@ module.exports = function(app) {
                     res.cookie('user', o.user, { maxAge: 900000 });
                     res.cookie('pass', o.pass, { maxAge: 900000 });
                 }
-                res.redirect('/posts/' + req.params.post);
+                res.redirect(req.header('referrer'));
             }
         });
     });
