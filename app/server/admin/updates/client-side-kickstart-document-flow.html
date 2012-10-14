@@ -1,4 +1,4 @@
-<section><h2>document flow</h2><p>think how you would structure the code, most tags can be made to look and act like each other, so don't start to think about styling before the structure is done.
+<section><h2>document flow</h2><p>think how you would structure the code, most tags can be made to look and act like each other, so don't start to think about styling befosre the structure is done.
     If the document makes sense un-styled, it is likely to make sense to a screen-reader too.</p><p>When it does come to styling, ensure that the user never sees a flash of unstyled content (FOUC)<sup><a href="#sources">[1]</a></sup>.
     This means never rely on JavaScript to help with the layout.
     waiting for javascript to execute (especially when enclosed within a <code class="js">$(document).ready</code>) simply takes too long.</p><dl><dt>how would you structure the code?</dt><dd class="hide">use <code class="html">li</code>'s containing <code class="html">h</code> tags for the tabs.

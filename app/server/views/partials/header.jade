@@ -17,6 +17,23 @@
                     a(href='/tags/js') js
                 li
                     a(href='/tags/accessibility') accessibility
-            form(role='search')
+
+            form#search(role='search')
                 input(type='search',value='',placeholder='e.g. js+transitions',results='10',autosave='ciadc_search')
                 input(type='submit',value='search')
+
+        -if (user)
+            form#login.loggedin(method='post',action='/login/#{post.url}')
+                -if (updateable)
+                    a.button#save-page update
+                -else if (editable)
+                    a.button#edit-page(href='#{post.url}/edit') edit
+                a.button#logout(href='/logout') logout
+
+        -if (!user)
+            form#login.notloggedin(method='post',action='/login/#{post.url}')
+                a.button.login(href='#login') user login
+                input(name='user', placeholder='username')
+                input(name='pass', type='password', placeholder='password')
+                input(type='submit', value='login')
+

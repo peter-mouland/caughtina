@@ -188,7 +188,8 @@ code {
 }
 .save-message {
   display: none;
-  position: absolute;
+  position: fixed;
+    z-index: 20;
   top: 0;
   left: 25%;
   border: 1px solid #d48300;
@@ -257,7 +258,7 @@ code {
   background: #000;
   color: #ae7436;
 }
-#site_header form {
+#site_header form#search {
   position: absolute;
   bottom: 0px;
   right: 0;
@@ -267,8 +268,56 @@ code {
   line-height: 1px;
   font-size: 0.4em;
 }
-#site_header form input[type=search] {
+#site_header form#search input[type=search] {
   width: 150px;
+}
+#site_header form#login {
+  text-align: right;
+  overflow: hidden;
+  width: 150px;
+  height: 1.5em;
+  line-height: 1.5em;
+  font-size: 0.45em;
+  right: 0;
+  bottom: -73px;
+  position: absolute;
+/*cursor: pointer;*/
+  background: rgba(0,0,0,0.5);
+  background: #000;
+  padding: 0 20px;
+  color: #d48300;
+  border-radius: 10px 0 0 0;
+  border: 1px solid;
+  border-width: 1px 0 0 1px;
+  z-index: 11;
+  -webkit-transition: height 0.5s ease-out;
+  -moz-transition: height 0.5s ease-out;
+  -o-transition: height 0.5s ease-out;
+  -ms-transition: height 0.5s ease-out;
+  transition: height 0.5s ease-out;
+}
+#site_header form#login input {
+  float: right;
+  display: none;
+}
+#site_header form#login.hover.notloggedin,
+#site_header form#login:hover.notloggedin {
+  background: #000;
+  height: 115px;
+}
+#site_header form#login.hover.notloggedin input,
+#site_header form#login:hover.notloggedin input {
+  display: block;
+}
+#site_header form#login a {
+  cursor: pointer;
+  font-size: 0.75em;
+  padding: 0 8px;
+  display: block;
+}
+#site_header form#login a.button {
+  display: inline;
+  margin-left: 8px;
 }
 #site_header form:hover {
   background: rgba(0,0,0,0.75);
@@ -297,37 +346,6 @@ body #page_header .time {
   font-size: 0.4em;
   font-weight: normal;
   color: #d48300;
-}
-body #page_header form {
-  text-align: right;
-  overflow: hidden;
-  width: 150px;
-  height: 2em;
-  font-size: 0.45em;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  cursor: pointer;
-  background: rgba(0,0,0,0.5);
-  background: #000;
-  line-height: 2em;
-  padding: 0 20px;
-  color: #d48300;
-  border-radius: 10px 0 0 0;
-  border: 1px solid;
-  border-width: 1px 0 0 1px;
-  -webkit-transition: height 0.5s ease-out;
-  -moz-transition: height 0.5s ease-out;
-  -o-transition: height 0.5s ease-out;
-  -ms-transition: height 0.5s ease-out;
-  transition: height 0.5s ease-out;
-}
-body #page_header form#login:hover {
-  background: #000;
-  height: 115px;
-}
-body #page_header form a {
-  padding: 0 8px;
 }
 body.fixed {
   padding-top: 300px;

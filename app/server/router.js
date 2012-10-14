@@ -39,7 +39,7 @@ module.exports = function(app) {
         res.render('index', locals);
     });
 
-    app.post('/login', function(req, res){
+    app.post('/login/:post', function(req, res){
         AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
             if (!o){
                 res.send(e, 400);
@@ -50,7 +50,7 @@ module.exports = function(app) {
                     res.cookie('user', o.user, { maxAge: 900000 });
                     res.cookie('pass', o.pass, { maxAge: 900000 });
                 }
-                res.redirect('/');
+                res.redirect('/posts/' + req.params.post);
             }
         });
     });
@@ -107,11 +107,10 @@ module.exports = function(app) {
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
-            var data = '',
-                oldFile = 'app/server/admin/updates/' + req.params.file + '.html',
-                newFile = 'app/server/admin/archive/' + req.params.file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
-            req.addListener('data', function(chunk) { data += chunk; });
-            req.addListener('end', function(){PM.update_file(oldFile,newFile,data, res);});
+            PM.update_file(req, req.params.file, function(){
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end('{"saved":"true"}');
+            });
         }
     });
 

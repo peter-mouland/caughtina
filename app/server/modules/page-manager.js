@@ -40,22 +40,30 @@ PM.prototype.archive_directory = function(root, dir, callback){
     });
 }
 
-PM.prototype.update_file = function(oldFile,newFile,data, res){
-    fs.readFile(oldFile, 'utf8', function (err, originalData) {
-        if (err) {   return console.log(err);        }
-        fs.writeFile(newFile, originalData, function (err) {
-            if (err) {  return console.log(err); }
-            console.log(oldFile + ' copied to ' + newFile);
-            fs.writeFile(oldFile, data, function (err) {
-                if (err) { return console.log(err);}
-                console.log(oldFile + ' updated.');
-                res.writeHead(200, {'Content-Type': 'text/json'});
-                res.end('{"saved":"true"}');
+PM.prototype.update_file = function(req, file, callback){
+    var oldFile = 'app/server/admin/updates/' + file + '.html',
+        newFile = 'app/server/admin/archive/' + file + '-' + moment(new Date()).format('YYYYMMDDhhmmss') + '.html';
 
+    var data = '';
+    req.addListener('data', function(chunk) { data += chunk; });
+    req.addListener('end', function(){
+        fs.readFile(oldFile, 'utf8', function (err, originalData) {
+            if (err) {   return console.log(err);        }
+            fs.writeFile(newFile, originalData, function (err) {
+                if (err) {  return console.log(err); }
+                console.log(oldFile + ' copied to ' + newFile);
+                fs.writeFile(oldFile, data, function (err) {
+                    if (err) { return console.log(err);}
+                    console.log(oldFile + ' updated.');
+                    callback();
+
+                });
             });
         });
     });
 };
+
+
 
 PM.prototype.get_previous = function(type, current){
     var parent = this.published(type);

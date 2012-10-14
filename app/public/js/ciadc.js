@@ -1,15 +1,17 @@
 var ciadc = function(){
     $('body').append($('<div class="save-message"></div>'));
-    $message=$('.save-message');
+    this.$login = $('#login')
+    this.$message=$('.save-message');
 };
 
 
 ciadc.prototype.showMessage = function(text){
-    $message.text(text);
-    $message.addClass('shown');
+    var self = this;
+    self.$message.text(text);
+    self.$message.addClass('shown');
     setTimeout(function(){
-        $message.fadeOut(function(){
-            $message.removeClass('shown').removeAttr('style');
+        self.$message.fadeOut(function(){
+            self.$message.removeClass('shown').removeAttr('style');
         });
     },1000);
 };
@@ -45,10 +47,24 @@ ciadc.prototype.fixHeader = function(){
     }
 };
 
+ciadc.prototype.toggleLogin = function(){
+    this.$login.toggleClass('hover');
+};
+ciadc.prototype.hideLogin = function(){
+    this.$login.removeClass('hover');
+};
+ciadc.prototype.enableEdit = function(){
+    $('#article div.wrapper').attr('contenteditable','true');
+    $('a#edit-page',this.$login).text('update').attr('id','save-page');
+};
+
 ciadc.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
-    $('#save-page').live('click', function(){_this.savePage();});
+    $('a.login',this.$login).live('click',   function(e){ e.preventDefault(); _this.toggleLogin();});
+    $('a#save-page',this.$login).live('click', function(e){ e.preventDefault(); _this.savePage();  });
+    $('a#edit-page',this.$login).live('click',   function(e){ e.preventDefault(); _this.enableEdit();});
+    $('input[type=submit]',this.$login).live('blur',   function(e){ e.preventDefault(); _this.hideLogin();});
 };
 
 ciadc.prototype.init = function(){
