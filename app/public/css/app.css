@@ -582,3 +582,20 @@ html[xmlns] #recent_articles  article {
   line-height: 1.5em;
   font-size: 0.875em;
 }
+.editable p,
+.editable h2,
+.editable dt,
+.editable dd {
+  border: 1px dashed;
+  position: relative;
+  padding: 4px;
+  left: -4px;
+  top: -4px;
+}
+.edit-controls {
+  display: none;
+  position: absolute;
+}
+.edit-controls.show {
+  display: block;
+}

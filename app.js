@@ -10,6 +10,7 @@
 //todo: use local storage to save document updates when offline
 //todo: create tags pages
 //todo: workout how to synchronise changes between local(offline) and web
+//todo: move admin css/js to its own files and download when verified
 
 var express = require('express'),
     app = express.createServer();

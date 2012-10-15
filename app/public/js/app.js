@@ -100,7 +100,7 @@ jQuery.cookie = function(name, value, options) {
 var ciadc = function(){
     $('body').append($('<div class="save-message"></div>'));
     this.$login = $('#login')
-    this.$message=$('.save-message');
+    this.$message=$('div.save-message');
 };
 
 
@@ -146,6 +146,10 @@ ciadc.prototype.fixHeader = function(){
     }
 };
 
+ciadc.prototype.giveFocus = function(){
+    if ($("input",this.$login).size()==0) return;
+    $("input",this.$login)[0].focus();
+};
 ciadc.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
@@ -153,17 +157,31 @@ ciadc.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 ciadc.prototype.enableEdit = function(){
-    $('#article div.wrapper').attr('contenteditable','true');
+    $('#article div.wrapper').attr('contenteditable','true').addClass('editable');
+    $('body').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span><span class="move">=</span></div>'));
+    this.controls = $('div.edit-controls');
     $('a#edit-page',this.$login).text('update').attr('id','save-page');
+};
+
+ciadc.prototype.showEditControls = function(el){
+    console.log(el)
+    this.controls.css({'left':el.left(),'top':el.top()});
+
+};
+ciadc.prototype.hideEditControls = function(el){
+
 };
 
 ciadc.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
+    this.$login.live('mouseenter',   function(e){ e.preventDefault(); _this.giveFocus();});
     $('a.login',this.$login).live('click',   function(e){ e.preventDefault(); _this.toggleLogin();});
     $('a#save-page',this.$login).live('click', function(e){ e.preventDefault(); _this.savePage();  });
     $('a#edit-page',this.$login).live('click',   function(e){ e.preventDefault(); _this.enableEdit();});
     $('input[type=submit]',this.$login).live('blur',   function(e){ e.preventDefault(); _this.hideLogin();});
+    $('h2, p,dt,dd',$('.editable ')).live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
+    $('h2, p,dt,dd',$('.editable ')).live('mouseleave',   function(e){ e.preventDefault(); _this.hideEditControls($(this));});
 };
 
 ciadc.prototype.init = function(){
