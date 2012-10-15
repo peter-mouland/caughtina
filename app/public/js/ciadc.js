@@ -1,7 +1,11 @@
 var ciadc = function(){
     $('body').append($('<div class="save-message"></div>'));
+    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span><span class="move">=</span></div>'));
+    this.controls = $('div.edit-controls');
     this.$login = $('#login')
     this.$message=$('div.save-message');
+    this.adminUser = false;
+    this.editableTags = $('h2,p,dt,dd',$('#article div.wrapper'));
 };
 
 
@@ -17,7 +21,8 @@ ciadc.prototype.showMessage = function(text){
 };
 
 ciadc.prototype.savePage = function(){
-    var $content = $('.wrapper[contenteditable]'),
+    this.disableEdit();
+    var $content = $('#article div.wrapper'),
         html = $content.html(),
         file = document.location.pathname.split('/')[2],
         _this = this;
@@ -58,35 +63,74 @@ ciadc.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 ciadc.prototype.enableEdit = function(){
-    $('#article div.wrapper').attr('contenteditable','true').addClass('editable');
-    $('body').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span><span class="move">=</span></div>'));
-    this.controls = $('div.edit-controls');
+    var self = this;
+    this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.preventBadKeys(e, this); });
+    this.adminUser = true;
     $('a#edit-page',this.$login).text('update').attr('id','save-page');
 };
 
-ciadc.prototype.showEditControls = function(el){
-//    this.controls.addClass('show').css({'left':el.left(),'top':el.top()});
+ciadc.prototype.disableEdit = function(){
+    var self = this;
+    this.adminUser = false;
+    this.editableTags.removeAttr('contenteditable').unbind('keydown');
+    $('a#save-page',this.$login).text('edit').attr('id','edit-page');
+    self.hideEditControls();
 };
-ciadc.prototype.hideEditControls = function(el){
-    this.controls.removeClass('show');
+
+ciadc.prototype.showEditControls = function(el){
+    if (!this.adminUser){ return; }
+    var pos = el.position();
+    this.controls.hovering = true;
+    this.controls.elementToEdit = el;
+    this.controls.addClass('show').css({'left':pos.left,'top':pos.top});
+};
+
+ciadc.prototype.hideEditControls = function(){
+    var self = this,
+        hideLater = function(){
+            if (self.controls.hovering){ setTimeout(hideLater,1000); return; }
+            self.controls.removeClass('show');
+            self.clearEditVars();
+        };
+    setTimeout(hideLater,1000);
+};
+
+ciadc.prototype.clearEditVars = function(){
+    this.controls.hovering = false;
+    this.controls.elementToEdit = undefined;
+};
+
+ciadc.prototype.addElement = function(){
+    var el = this.controls.elementToEdit,
+        newEl = el.clone();
+    newEl.text('new section');
+    newEl.insertAfter(el);
+};
+
+ciadc.prototype.preventBadKeys = function(e, el){
+    if (e.keyCode==13){
+        e.preventDefault();
+    }
 };
 
 ciadc.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
-    this.$login.live('mouseenter',   function(e){ e.preventDefault(); _this.giveFocus();});
-    $('a.login',this.$login).live('click',   function(e){ e.preventDefault(); _this.toggleLogin();});
-    $('a#save-page',this.$login).live('click', function(e){ e.preventDefault(); _this.savePage();  });
-    $('a#edit-page',this.$login).live('click',   function(e){ e.preventDefault(); _this.enableEdit();});
-    $('input[type=submit]',this.$login).live('blur',   function(e){ e.preventDefault(); _this.hideLogin();});
-    $('h2, p,dt,dd',$('.editable ')).live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
-    $('h2, p,dt,dd',$('.editable ')).live('mouseleave',   function(e){ e.preventDefault(); _this.hideEditControls($(this));});
+    this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
+    $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
+    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.savePage();         });
+    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit();       });
+    $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
+    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
+    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); _this.controls.hovering = false; _this.hideEditControls(); });
+    this.controls.live('mouseenter',       function(){ _this.controls.hovering = true; });
+    this.controls.live('mouseleave',       function(){ _this.clearEditVars(); });
+    $('span.plus',this.controls).live('click',           function(){ _this.addElement(); });
 };
 
 ciadc.prototype.init = function(){
     this.setupGlobalEvents();
 };
-
 
 var app = new ciadc();
 app.init();
