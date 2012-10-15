@@ -97,14 +97,96 @@ jQuery.cookie = function(name, value, options) {
     }
 };
 
+/*
+ * HTML5 Sortable jQuery Plugin
+ * http://farhadi.ir/projects/html5sortable
+ *
+ * Copyright 2012, Ali Farhadi
+ * Released under the MIT license.
+ */
+(function($) {
+    var dragging, placeholders = $();
+    $.fn.sortable = function(options) {
+        var method = String(options);
+        options = $.extend({
+            connectWith: false
+        }, options);
+        return this.each(function() {
+            if (/^enable|disable|destroy$/.test(method)) {
+                var items = $(this).children($(this).data('items')).attr('draggable', method == 'enable');
+                if (method == 'destroy') {
+                    items.add(this).removeData('connectWith items')
+                        .off('dragstart.h5s dragend.h5s selectstart.h5s dragover.h5s dragenter.h5s drop.h5s');
+                }
+                return;
+            }
+            var isHandle, index, items = $(this).children(options.items);
+            var placeholder = $('<' + (/^ul|ol$/i.test(this.tagName) ? 'li' : 'div') + ' class="sortable-placeholder">');
+            items.find(options.handle).mousedown(function() {
+                isHandle = true;
+            }).mouseup(function() {
+                    isHandle = false;
+                });
+            $(this).data('items', options.items)
+            placeholders = placeholders.add(placeholder);
+            if (options.connectWith) {
+                $(options.connectWith).add(this).data('connectWith', options.connectWith);
+            }
+            items.attr('draggable', 'true').on('dragstart.h5s', function(e) {
+                if (options.handle && !isHandle) {
+                    return false;
+                }
+                isHandle = false;
+                var dt = e.originalEvent.dataTransfer;
+                dt.effectAllowed = 'move';
+                dt.setData('Text', 'dummy');
+                index = (dragging = $(this)).addClass('sortable-dragging').index();
+            }).on('dragend.h5s', function() {
+                    dragging.removeClass('sortable-dragging').show();
+                    placeholders.detach();
+                    if (index != dragging.index()) {
+                        items.parent().trigger('sortupdate', {item: dragging});
+                    }
+                    dragging = null;
+                }).not('a[href], img').on('selectstart.h5s', function() {
+                    this.dragDrop && this.dragDrop();
+                    return false;
+                }).end().add([this, placeholder]).on('dragover.h5s dragenter.h5s drop.h5s', function(e) {
+                    if (!items.is(dragging) && options.connectWith !== $(dragging).parent().data('connectWith')) {
+                        return true;
+                    }
+                    if (e.type == 'drop') {
+                        e.stopPropagation();
+                        placeholders.filter(':visible').after(dragging);
+                        return false;
+                    }
+                    e.preventDefault();
+                    e.originalEvent.dataTransfer.dropEffect = 'move';
+                    if (items.is(this)) {
+                        if (options.forcePlaceholderSize) {
+                            placeholder.height(dragging.outerHeight());
+                        }
+                        dragging.hide();
+                        $(this)[placeholder.index() < $(this).index() ? 'after' : 'before'](placeholder);
+                        placeholders.not(placeholder).detach();
+                    } else if (!placeholders.is(this) && !$(this).children(options.items).length) {
+                        placeholders.detach();
+                        $(this).append(placeholder);
+                    }
+                    return false;
+                });
+        });
+    };
+})(jQuery);
 var ciadc = function(){
     $('body').append($('<div class="save-message"></div>'));
-    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span><span class="move">=</span></div>'));
+    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
     this.controls = $('div.edit-controls');
     this.$login = $('#login')
     this.$message=$('div.save-message');
     this.adminUser = false;
-    this.editableTags = $('h2,p,dt,dd',$('#article div.wrapper'));
+    this.articleWrapper = $('#article div.wrapper');
+    this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
 };
 
 
@@ -155,12 +237,15 @@ ciadc.prototype.giveFocus = function(){
     if ($("input",this.$login).size()==0) return;
     $("input",this.$login)[0].focus();
 };
+
 ciadc.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
+
 ciadc.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
+
 ciadc.prototype.enableEdit = function(){
     var self = this;
     this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.preventBadKeys(e, this); });
@@ -171,9 +256,16 @@ ciadc.prototype.enableEdit = function(){
 ciadc.prototype.disableEdit = function(){
     var self = this;
     this.adminUser = false;
-    this.editableTags.removeAttr('contenteditable').unbind('keydown');
+    this.editableTags.removeAttr('contenteditable').removeAttr('draggable').unbind('keydown');
     $('a#save-page',this.$login).text('edit').attr('id','edit-page');
     self.hideEditControls();
+};
+
+ciadc.prototype.enableDrag = function(){
+    $('section',this.articleWrapper).sortable();
+};
+ciadc.prototype.disableDrag = function(){
+    $('section',this.articleWrapper).sortable('destroy');
 };
 
 ciadc.prototype.showEditControls = function(el){
@@ -215,8 +307,6 @@ ciadc.prototype.removeElement = function(){
     }
 };
 
-
-
 ciadc.prototype.preventBadKeys = function(e, el){
     if (e.keyCode==13){
         e.preventDefault();
@@ -229,7 +319,7 @@ ciadc.prototype.setupGlobalEvents = function(){
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
     $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
     $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit();       });
+    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit(); _this.enableDrag();      });
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
     this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
     this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); _this.controls.hovering = false; _this.hideEditControls(); });

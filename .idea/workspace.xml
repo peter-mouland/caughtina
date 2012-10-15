@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
+    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="added delete element + improve save message positioning">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/js/lib/jquery.sortable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.js" afterPath="$PROJECT_DIR$/app/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/css/app.css" afterPath="$PROJECT_DIR$/app/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/css/contenteditable.styl" afterPath="$PROJECT_DIR$/app/public/css/contenteditable.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/css/global.styl" afterPath="$PROJECT_DIR$/app/public/css/global.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/css/header.styl" afterPath="$PROJECT_DIR$/app/public/css/header.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/js/app.js" afterPath="$PROJECT_DIR$/app/public/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/js/ciadc.js" afterPath="$PROJECT_DIR$/app/public/js/ciadc.js" />
     </list>
@@ -69,16 +69,27 @@
       <file leaf-file-name="contenteditable.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/public/css/contenteditable.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="22" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
+            <state line="27" column="36" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.styl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="jquery.sortable.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/public/js/lib/jquery.sortable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="11" selection-start="3766" selection-end="3766" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/public/css/header.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="18" selection-start="4005" selection-end="4005" vertical-scroll-proportion="-0.09400324">
+            <state line="150" column="18" selection-start="4005" selection-end="4005" vertical-scroll-proportion="-86.53846">
               <folding />
             </state>
           </provider>
@@ -111,10 +122,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciadc.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ciadc.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/public/js/ciadc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="68" selection-start="3697" selection-end="3697" vertical-scroll-proportion="-5.769231">
+            <state line="87" column="54" selection-start="2848" selection-end="2848" vertical-scroll-proportion="0.7159864">
               <folding />
             </state>
           </provider>
@@ -142,8 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/server/modules/account-manager.js" />
-        <option value="$PROJECT_DIR$/app/server/views/partials/post-header.jade" />
         <option value="$PROJECT_DIR$/app/server/modules/page-manager.js" />
         <option value="$PROJECT_DIR$/app/public/css/app.css" />
         <option value="$PROJECT_DIR$/app/server/views/partials/header.jade" />
@@ -154,10 +163,12 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
         <option value="$PROJECT_DIR$/app/server/admin/updates/client-side-kickstart-document-flow.html" />
-        <option value="$PROJECT_DIR$/app/public/js/ciadc.js" />
-        <option value="$PROJECT_DIR$/app/public/css/contenteditable.styl" />
         <option value="$PROJECT_DIR$/app/public/css/global.styl" />
         <option value="$PROJECT_DIR$/app/public/css/header.styl" />
+        <option value="$PROJECT_DIR$/app/public/js/lib/jquery-sortable.js" />
+        <option value="$PROJECT_DIR$/app/config.js" />
+        <option value="$PROJECT_DIR$/app/public/css/contenteditable.styl" />
+        <option value="$PROJECT_DIR$/app/public/js/ciadc.js" />
       </list>
     </option>
   </component>
@@ -339,6 +350,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -775,7 +812,11 @@
       <created>1350335943825</created>
       <updated>1350335943825</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="added delete element + improve save message positioning">
+      <created>1350336670847</created>
+      <updated>1350336670847</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -861,7 +902,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve inline editing of text + improve 'add' element button" />
+    <option name="LAST_COMMIT_MESSAGE" value="added delete element + improve save message positioning" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -874,7 +915,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="justify text for new thinner article widths" />
     <MESSAGE value="added 'about' page" />
     <MESSAGE value="fix headers + trim about page" />
     <MESSAGE value=" trim about page some more" />
@@ -899,18 +939,12 @@
     <MESSAGE value="improved login" />
     <MESSAGE value="start to add edit controls" />
     <MESSAGE value="improve inline editing of text + improve 'add' element button" />
+    <MESSAGE value="added delete element + improve save message positioning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.19386107">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/server/json/posts.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -955,13 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="35" selection-start="2496" selection-end="2496" vertical-scroll-proportion="1.5072933">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/public/css/app.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="29" selection-start="155" selection-end="155" vertical-scroll-proportion="0.11664075">
@@ -990,20 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/js/ciadc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="68" selection-start="3697" selection-end="3697" vertical-scroll-proportion="-5.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/css/contenteditable.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="22" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/public/css/global.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="109" column="13" selection-start="2742" selection-end="2742" vertical-scroll-proportion="0.0">
@@ -1013,7 +1026,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/css/header.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="18" selection-start="4005" selection-end="4005" vertical-scroll-proportion="-0.09400324">
+        <state line="150" column="18" selection-start="4005" selection-end="4005" vertical-scroll-proportion="-86.53846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/js/lib/jquery.sortable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="11" selection-start="3766" selection-end="3766" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="50" selection-start="440" selection-end="440" vertical-scroll-proportion="0.28985506">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/css/contenteditable.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="36" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/js/ciadc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="54" selection-start="2848" selection-end="2848" vertical-scroll-proportion="0.7159864">
           <folding />
         </state>
       </provider>

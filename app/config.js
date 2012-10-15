@@ -10,6 +10,7 @@ module.exports = function(app, exp) {
             JS_FILE_PATH = '/js/app.js',
             JS_FILE_LIST = ['app/public/js/lib/jquery-1.8.2.min.js',
                 'app/public/js/lib/jquery.cookie.js',
+                'app/public/js/lib/jquery.sortable.js',
                 'app/public/js/ciadc.js'],
             compile = function(str, path) {
                 return stylus(str)

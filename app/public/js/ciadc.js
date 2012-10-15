@@ -1,11 +1,12 @@
 var ciadc = function(){
     $('body').append($('<div class="save-message"></div>'));
-    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span><span class="move">=</span></div>'));
+    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
     this.controls = $('div.edit-controls');
     this.$login = $('#login')
     this.$message=$('div.save-message');
     this.adminUser = false;
-    this.editableTags = $('h2,p,dt,dd',$('#article div.wrapper'));
+    this.articleWrapper = $('#article div.wrapper');
+    this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
 };
 
 
@@ -56,12 +57,15 @@ ciadc.prototype.giveFocus = function(){
     if ($("input",this.$login).size()==0) return;
     $("input",this.$login)[0].focus();
 };
+
 ciadc.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
+
 ciadc.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
+
 ciadc.prototype.enableEdit = function(){
     var self = this;
     this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.preventBadKeys(e, this); });
@@ -72,9 +76,16 @@ ciadc.prototype.enableEdit = function(){
 ciadc.prototype.disableEdit = function(){
     var self = this;
     this.adminUser = false;
-    this.editableTags.removeAttr('contenteditable').unbind('keydown');
+    this.editableTags.removeAttr('contenteditable').removeAttr('draggable').unbind('keydown');
     $('a#save-page',this.$login).text('edit').attr('id','edit-page');
     self.hideEditControls();
+};
+
+ciadc.prototype.enableDrag = function(){
+    $('section',this.articleWrapper).sortable();
+};
+ciadc.prototype.disableDrag = function(){
+    $('section',this.articleWrapper).sortable('destroy');
 };
 
 ciadc.prototype.showEditControls = function(el){
@@ -116,8 +127,6 @@ ciadc.prototype.removeElement = function(){
     }
 };
 
-
-
 ciadc.prototype.preventBadKeys = function(e, el){
     if (e.keyCode==13){
         e.preventDefault();
@@ -130,7 +139,7 @@ ciadc.prototype.setupGlobalEvents = function(){
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
     $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
     $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit();       });
+    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit(); _this.enableDrag();      });
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
     this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
     this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); _this.controls.hovering = false; _this.hideEditControls(); });
