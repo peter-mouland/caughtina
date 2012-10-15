@@ -107,6 +107,17 @@ ciadc.prototype.addElement = function(){
     newEl.insertAfter(el);
 };
 
+ciadc.prototype.removeElement = function(){
+    var el = this.controls.elementToEdit;
+    if (el.text()==''){
+        el.remove();
+    } else {
+        this.showMessage('Cannot delete elements containing text!');
+    }
+};
+
+
+
 ciadc.prototype.preventBadKeys = function(e, el){
     if (e.keyCode==13){
         e.preventDefault();
@@ -126,6 +137,7 @@ ciadc.prototype.setupGlobalEvents = function(){
     this.controls.live('mouseenter',       function(){ _this.controls.hovering = true; });
     this.controls.live('mouseleave',       function(){ _this.clearEditVars(); });
     $('span.plus',this.controls).live('click',           function(){ _this.addElement(); });
+    $('span.minus',this.controls).live('click',          function(){ _this.removeElement(); });
 };
 
 ciadc.prototype.init = function(){

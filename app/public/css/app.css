@@ -188,7 +188,7 @@ code {
 }
 .save-message {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 25%;
   border: 1px solid #d48300;
@@ -199,6 +199,7 @@ code {
   background: #000;
   padding: 0 20px;
   width: 50%;
+  z-index: 5;
 }
 .save-message.shown {
   display: block;
@@ -356,7 +357,7 @@ body.fixed #site_header {
   top: -168px;
   width: 960px;
   padding-bottom: 0px;
-  z-index: 10;
+  z-index: 4;
   background: #171c2a;
 }
 body.fixed #page_header {
@@ -365,7 +366,7 @@ body.fixed #page_header {
 /*24px;*/
   width: 920px;
   background: #0b0e16;
-  z-index: 1;
+  z-index: 3;
 }
 body.fixed .authorProfile {
   top: 20px;
@@ -620,12 +621,13 @@ html[xmlns] #recent_articles  article {
 }
 .edit-controls span {
   display: block;
-  width: 10px;
-  height: 10px;
   text-align: center;
-  line-height: 10px;
+  line-height: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+.edit-controls span:hover {
+  color: #fff;
 }
 .edit-controls.show {
   display: block;

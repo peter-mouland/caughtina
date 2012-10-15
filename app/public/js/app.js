@@ -206,8 +206,18 @@ ciadc.prototype.addElement = function(){
     newEl.insertAfter(el);
 };
 
+ciadc.prototype.removeElement = function(){
+    var el = this.controls.elementToEdit;
+    if (el.text()==''){
+        el.remove();
+    } else {
+        this.showMessage('Cannot delete elements containing text!');
+    }
+};
+
+
+
 ciadc.prototype.preventBadKeys = function(e, el){
-//    var cursorPos = getCaretCharacterOffsetWithin(el);
     if (e.keyCode==13){
         e.preventDefault();
     }
@@ -226,30 +236,12 @@ ciadc.prototype.setupGlobalEvents = function(){
     this.controls.live('mouseenter',       function(){ _this.controls.hovering = true; });
     this.controls.live('mouseleave',       function(){ _this.clearEditVars(); });
     $('span.plus',this.controls).live('click',           function(){ _this.addElement(); });
+    $('span.minus',this.controls).live('click',          function(){ _this.removeElement(); });
 };
 
 ciadc.prototype.init = function(){
     this.setupGlobalEvents();
 };
-
-
-//function getCaretCharacterOffsetWithin(element) {
-//    var caretOffset = 0;
-//    if (typeof window.getSelection != "undefined") {
-//        var range = window.getSelection().getRangeAt(0);
-//        var preCaretRange = range.cloneRange();
-//        preCaretRange.selectNodeContents(element);
-//        preCaretRange.setEnd(range.endContainer, range.endOffset);
-//        caretOffset = preCaretRange.toString().length;
-//    } else if (typeof document.selection != "undefined" && document.selection.type != "Control") {
-//        var textRange = document.selection.createRange();
-//        var preCaretTextRange = document.body.createTextRange();
-//        preCaretTextRange.moveToElementText(element);
-//        preCaretTextRange.setEndPoint("EndToEnd", textRange);
-//        caretOffset = preCaretTextRange.text.length;
-//    }
-//    return caretOffset;
-//}
 
 var app = new ciadc();
 app.init();

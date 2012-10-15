@@ -96,7 +96,7 @@ code {
 
 .save-message{
     display: none;
-    position: absolute;
+    position: fixed;
     top:0;
     left: 25%;
     border: 1px solid #d48300;
@@ -107,6 +107,7 @@ code {
     background: black;
     padding: 0 20px;
     width: 50%;
+    z-index:5;
     &.shown{
         display:block;
     }
