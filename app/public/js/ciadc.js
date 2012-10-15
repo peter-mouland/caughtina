@@ -76,16 +76,17 @@ ciadc.prototype.enableEdit = function(){
 ciadc.prototype.disableEdit = function(){
     var self = this;
     this.adminUser = false;
-    this.editableTags.removeAttr('contenteditable').removeAttr('draggable').unbind('keydown');
+    this.editableTags.removeAttr('contenteditable').unbind('keydown');
     $('a#save-page',this.$login).text('edit').attr('id','edit-page');
     self.hideEditControls();
+    self.disableDrag();
 };
 
 ciadc.prototype.enableDrag = function(){
-    $('section',this.articleWrapper).sortable();
+//    $('section',this.articleWrapper).sortable();
 };
 ciadc.prototype.disableDrag = function(){
-    $('section',this.articleWrapper).sortable('destroy');
+//    $('section',this.articleWrapper).sortable('destroy');
 };
 
 ciadc.prototype.showEditControls = function(el){
