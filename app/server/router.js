@@ -1,7 +1,7 @@
 var page_manager = require('./modules/page-manager'),
     account_manager = require('./modules/account-manager'),
     db = {  dbPort: 27017,
-            dbHost: global.host,
+            dbHost: global.dbhost,
             dbName: 'ciadc'};
 
 var AM = new account_manager(db);

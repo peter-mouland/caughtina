@@ -16,11 +16,12 @@ var express = require('express'),
     app = express.createServer();
 
 app.root = __dirname;
-global.host = 'localhost';
+var port = process.env.PORT || 3000;
+var mongoUri = process.env.MONGOLAB_URI;
 
 require('./app/config')(app, express);
 require('./app/server/router')(app);
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(port || 3000, function(){
 //    console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

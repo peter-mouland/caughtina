@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -23,6 +23,7 @@
         "fs": "*",
         "zipstream": "*",
         "bcrypt": ">= 0.5.x",
-        "mongodb": "*"
+        "mongodb": "*",
+        "connect": "*"
     }
 }

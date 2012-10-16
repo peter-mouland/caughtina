@@ -45,6 +45,8 @@ module.exports = function(app, exp) {
             app.use(exp.static(app.root + '/public'));
             app.use(exp.errorHandler({ dumpExceptions: true, showStack: true }));
             concat(JS_FILE_LIST,JS_FILE_PATH);
+            global.host = 'localhost'
+            global.dburi = "mongodb://localhost/ciadc"
         });
 
         app.configure('production', function(){
@@ -52,6 +54,8 @@ module.exports = function(app, exp) {
             app.use(exp.static(app.root + '/public', { maxAge: oneYear }));
             app.use(exp.errorHandler());
             concat(JS_FILE_LIST,JS_FILE_PATH);//uglify
+            global.host = 'www.caughtina.com'
+            global.dbhost = ENV['MONGOLAB_URI']
         });
 
         app.set('views', app.root + '/app/server/views');

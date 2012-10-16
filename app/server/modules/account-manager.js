@@ -1,20 +1,32 @@
 var bcrypt = require('bcrypt'),
-    Db = require('mongodb').Db,
-    Server = require('mongodb').Server,
+    connect = require('connect'),
+    mongo = require('mongodb'),
+    Db = mongo.Db,
+    Server = Db.Server,
     moment = require('moment'),
     events= require('events'),
     AM = function(opts){
         var self = this;
-        self.db = new Db(opts.dbName, new Server(opts.dbHost, opts.dbPort, {auto_reconnect: true}, {}));
-        self.db.open(function(e, d){
-            if (e) {
-                console.log(e);
-            }	else{
-                console.log('connected to database :: ' + opts.dbName);
-                self.accounts = self.db.collection('accounts');
-            }
-        });
+        mongo.connect(global.dburi, {}, function(error, db)
+        {
+            console.log("connected, db: " + db.name);
+            self.db = db;
+            self.db.addListener("error", function(error){
+                console.log("Error connecting to MongoLab", error);
+            });
+            var connect = function(table){
+                self.db.createCollection(table, function(e, collection) {
+                    if (e) {
+                        console.log("error in getCollection: " + e);
+                    } else {
+                        console.log('connected to table :: ' + collection.name);
+                        self[table] = collection;
+                    }
+                });
 
+            };
+            connect('accounts');
+        });
     };
 
 AM.prototype = new events.EventEmitter;
