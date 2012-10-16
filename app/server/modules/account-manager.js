@@ -94,8 +94,8 @@ AM.prototype.signup = function(newData, callback)
 };
 
 AM.prototype.update = function(newData, callback)
-{
-    AM.accounts.findOne({user:newData.user}, function(e, o){
+{   var self = this;
+    self.accounts.findOne({user:newData.user}, function(e, o){
         o.name 		= newData.name;
         o.email 	= newData.email;
         o.country 	= newData.country;
@@ -111,8 +111,8 @@ AM.prototype.update = function(newData, callback)
 };
 
 AM.prototype.setPassword = function(email, newPass, callback)
-{
-    AM.accounts.findOne({email:email}, function(e, o){
+{   var self = this;
+    self.accounts.findOne({email:email}, function(e, o){
         AM.saltAndHash(newPass, function(hash){
             o.pass = hash;
             AM.accounts.save(o); callback(o);
@@ -121,8 +121,8 @@ AM.prototype.setPassword = function(email, newPass, callback)
 };
 
 AM.prototype.validateLink = function(email, passHash, callback)
-{
-    AM.accounts.find({ $and: [{email:email, pass:passHash}] }, function(e, o){
+{   var self = this;
+    selfaccounts.find({ $and: [{email:email, pass:passHash}] }, function(e, o){
         callback(o ? 'ok' : null);
     });
 };
@@ -137,25 +137,25 @@ AM.prototype.saltAndHash = function(pass, callback)
 };
 
 AM.prototype.delete = function(id, callback)
-{
-    AM.accounts.remove({_id: this.getObjectId(id)}, callback);
+{   var self = this;
+    self.accounts.remove({_id: this.getObjectId(id)}, callback);
 };
 
 // auxiliary methods //
 
 AM.prototype.getEmail = function(email, callback)
-{
-    AM.accounts.findOne({email:email}, function(e, o){ callback(o); });
+{   var self = this;
+    self.accounts.findOne({email:email}, function(e, o){ callback(o); });
 };
 
 AM.prototype.getObjectId = function(id)
 {
-    return AM.accounts.db.bson_serializer.ObjectID.createFromHexString(id)
+    return this.accounts.db.bson_serializer.ObjectID.createFromHexString(id)
 }
 
 AM.prototype.getAllRecords = function(callback)
-{
-    AM.accounts.find().toArray(
+{   var self = this;
+    self.accounts.find().toArray(
         function(e, res) {
             if (e) callback(e)
             else callback(null, res)
@@ -163,15 +163,15 @@ AM.prototype.getAllRecords = function(callback)
 };
 
 AM.prototype.delAllRecords = function(id, callback)
-{
-    AM.accounts.remove(); // reset accounts collection for testing //
+{   var self = this;
+    self.accounts.remove(); // reset accounts collection for testing //
 }
 
 // just for testing - these are not actually being used //
 
 AM.prototype.findById = function(id, callback)
-{
-    AM.accounts.findOne({_id: this.getObjectId(id)},
+{   var self = this;
+    self.accounts.findOne({_id: this.getObjectId(id)},
         function(e, res) {
             if (e) callback(e)
             else callback(null, res)

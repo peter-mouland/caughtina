@@ -19,7 +19,7 @@ module.exports = function(app) {
         //todo call this on app load
         AM.signup({user:req.params.a, email:req.params.b, pass:req.params.c}, function(s){
             if (s==null){
-                res.send(o, 200);
+                res.send('added: ' + req.params.a, 200);
             } else {
                 res.send(s, 400);
             }
