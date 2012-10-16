@@ -55,7 +55,7 @@ module.exports = function(app, exp) {
             app.use(exp.errorHandler());
             concat(JS_FILE_LIST,JS_FILE_PATH);//uglify
             global.host = 'www.caughtina.com'
-            global.dbhost = ENV['MONGOLAB_URI']
+            global.dburi = ENV['MONGOLAB_URI']
         });
 
         app.set('views', app.root + '/app/server/views');

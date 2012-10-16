@@ -1,11 +1,8 @@
 var page_manager = require('./modules/page-manager'),
-    account_manager = require('./modules/account-manager'),
-    db = {  dbPort: 27017,
-            dbHost: global.dbhost,
-            dbName: 'ciadc'};
+    account_manager = require('./modules/account-manager');
 
-var AM = new account_manager(db);
-var PM = new page_manager(db);
+var AM = new account_manager();
+var PM = new page_manager();
 
 var getLocals = function(req, pageType, pageItem){
     var contents = PM.metadata(pageType, pageItem),

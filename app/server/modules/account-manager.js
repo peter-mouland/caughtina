@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt'),
     Server = Db.Server,
     moment = require('moment'),
     events= require('events'),
-    AM = function(opts){
+    AM = function(){
         var self = this;
         mongo.connect(global.dburi, {}, function(error, db)
         {
