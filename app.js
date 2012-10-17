@@ -1,10 +1,11 @@
 //$ cd DevRoot/heroku/caughtina/
 //$ git push heroku-caughtina
+//$ heroku logs --app caughtina
+//$ mongod
 //todo: gzip static assets
 //todo: improve cache busting of assets for new builds
 //todo: write path to download all page versions and delete on server
 //todo: write updates to deal with multiple users
-//todo: make admin cookie secure with login
 //todo: put admin check in function
 //todo: write full page html generator
 //todo: use local storage to save document updates when offline
