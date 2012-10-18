@@ -12,16 +12,16 @@
 //todo: create tags pages
 //todo: workout how to synchronise changes between local(offline) and web
 //todo: move admin css/js to its own files and download when verified
+//todo: remove super-duper-secret-secret
 
 var express = require('express'),
     app = express.createServer();
 
 app.root = __dirname;
-var port = process.env.PORT || 3000;
 
 require('./app/config')(app, express);
 require('./app/server/router')(app);
 
-app.listen(port, function(){
+app.listen(process.env.PORT || 3000, function(){
 //    console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
