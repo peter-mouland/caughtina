@@ -1,28 +1,9 @@
-var utils = function(){
-    $('body').append($('<div class="save-message"></div>'));
+var navigation_manager = function(){
     this.$login = $('#login');
-    this.$message=$('div.save-message');
     this.init();
 };
 
-
-utils.prototype.showMessage = function(e,cfg){
-    var self = this,
-        msg = cfg.msg,
-        time = cfg.time || 2000,
-        hide = function(){
-            self.$message.fadeOut(function(){
-                self.$message.removeClass('shown').removeAttr('style');
-            });
-        };
-    self.$message.html(msg).addClass('shown');
-    if (time>0){
-        setTimeout(hide,time);
-    }
-};
-
-
-utils.prototype.fixHeader = function(){
+navigation_manager.prototype.fixHeader = function(){
     var el = document.body,
         c = el.getAttribute('class') || el.className;
     if (window.pageYOffset > 168){
@@ -36,30 +17,29 @@ utils.prototype.fixHeader = function(){
     }
 };
 
-utils.prototype.giveFocus = function(){
+navigation_manager.prototype.giveFocus = function(){
     if ($("input",this.$login).size()==0) return;
     $("input",this.$login)[0].focus();
 };
 
-utils.prototype.toggleLogin = function(){
+navigation_manager.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
 
-utils.prototype.hideLogin = function(){
+navigation_manager.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-utils.prototype.setupGlobalEvents = function(){
+navigation_manager.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
     $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
-    $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
 };
 
-utils.prototype.init = function(){
+navigation_manager.prototype.init = function(){
     this.setupGlobalEvents();
 };
 
-var ciadc = new utils();
+var NM = new navigation_manager();

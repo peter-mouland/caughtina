@@ -179,12 +179,11 @@ jQuery.cookie = function(name, value, options) {
     };
 })(jQuery);
 var utils = function(){
+    var self = this;
     $('body').append($('<div class="save-message"></div>'));
-    this.$login = $('#login');
     this.$message=$('div.save-message');
-    this.init();
+    $(window).bind('show-message',function(e,cfg){ self.showMessage(e,cfg);});
 };
-
 
 utils.prototype.showMessage = function(e,cfg){
     var self = this,
@@ -201,8 +200,13 @@ utils.prototype.showMessage = function(e,cfg){
     }
 };
 
+var U = new utils();
+var navigation_manager = function(){
+    this.$login = $('#login');
+    this.init();
+};
 
-utils.prototype.fixHeader = function(){
+navigation_manager.prototype.fixHeader = function(){
     var el = document.body,
         c = el.getAttribute('class') || el.className;
     if (window.pageYOffset > 168){
@@ -216,33 +220,32 @@ utils.prototype.fixHeader = function(){
     }
 };
 
-utils.prototype.giveFocus = function(){
+navigation_manager.prototype.giveFocus = function(){
     if ($("input",this.$login).size()==0) return;
     $("input",this.$login)[0].focus();
 };
 
-utils.prototype.toggleLogin = function(){
+navigation_manager.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
 
-utils.prototype.hideLogin = function(){
+navigation_manager.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-utils.prototype.setupGlobalEvents = function(){
+navigation_manager.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
     $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
-    $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
 };
 
-utils.prototype.init = function(){
+navigation_manager.prototype.init = function(){
     this.setupGlobalEvents();
 };
 
-var ciadc = new utils();
+var NM = new navigation_manager();
 var page_editor = function(){
     var self = this;
     $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
@@ -346,7 +349,6 @@ page_editor.prototype.disableDrag = function(){
 };
 
 page_editor.prototype.offlineMode = function(){
-    console.log('offline')
     $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be save automtically when online again',time:-1});
 };
 
@@ -368,24 +370,23 @@ page_editor.prototype.init = function(){
 //navigator.onLine
     $(window).bind('online', function(){ self.onlineMode(); });
     $(window).bind('offline', function(){ self.offlineMode(); });
-    console.log(navigator.onLine)
     if (!navigator.onLine){ self.offlineMode(); }
 };
 
 var PM = new page_editor()
-var OSM = function(dbName){
+var offline_storage = function(dbName){
     this.db = openDatabase(dbName, "1.0", dbName, 200000);
 
     this.dataset = {};
 //    navigator.onLine
 };
 
-OSM.prototype.onError = function(tx, error) {
+offline_storage.prototype.onError = function(tx, error) {
     alert(error.message);
 };
 
 
-OSM.prototype.create_table = function(){
+offline_storage.prototype.create_table = function(){
     var self = this,
         createStatement = "CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, commit_sent INT, commit_saved INT, name TEXT, content TEXT, change_saved DATE)";
     self.db.transaction(function(tx) {
@@ -394,7 +395,7 @@ OSM.prototype.create_table = function(){
 
 };
 
-OSM.prototype.showRecords = function() {
+offline_storage.prototype.showRecords = function() {
     var self = this,
         selectAllStatement = "SELECT * FROM Contacts";
     results.innerHTML = '';
@@ -412,7 +413,7 @@ OSM.prototype.showRecords = function() {
     });
 };
 
-OSM.prototype.loadRecord = function(i) {
+offline_storage.prototype.loadRecord = function(i) {
     var item = dataset.item(i);
     firstName.value = item['firstName'];
     lastName.value = item['lastName'];
@@ -420,7 +421,7 @@ OSM.prototype.loadRecord = function(i) {
     id.value = item['id'];
 };
 
-OSM.prototype.update = function(){
+offline_storage.prototype.update = function(){
     var self = this,
         updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
     self.db.transaction(function(tx) {
@@ -429,7 +430,7 @@ OSM.prototype.update = function(){
 };
 
 
-OSM.prototype.insert = function(){
+offline_storage.prototype.insert = function(){
     var self = this,
         insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
     self.db.transaction(function(tx) {
@@ -438,7 +439,7 @@ OSM.prototype.insert = function(){
 
 };
 
-OSM.prototype.delete = function(){
+offline_storage.prototype.delete = function(){
     var self = this,
         deleteStatement = "DELETE FROM Contacts WHERE id=?";
     self.db.transaction(function(tx) {
@@ -447,7 +448,7 @@ OSM.prototype.delete = function(){
     self.resetForm();
 };
 
-OSM.prototype.drop = function(){
+offline_storage.prototype.drop = function(){
     var self = this,
         dropStatement = "DROP TABLE Contacts";
     self.db.transaction(function(tx) {
@@ -456,12 +457,12 @@ OSM.prototype.drop = function(){
     self.resetForm();
 };
 
-OSM.prototype.loadAndReset = function(){
+offline_storage.prototype.loadAndReset = function(){
     self.resetForm();
     self.showRecords();
 };
 
-OSM.prototype.resetForm = function(){
+offline_storage.prototype.resetForm = function(){
     firstName.value = '';
     lastName.value = '';
     phone.value = '';

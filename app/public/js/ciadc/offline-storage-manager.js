@@ -1,16 +1,16 @@
-var OSM = function(dbName){
+var offline_storage = function(dbName){
     this.db = openDatabase(dbName, "1.0", dbName, 200000);
 
     this.dataset = {};
 //    navigator.onLine
 };
 
-OSM.prototype.onError = function(tx, error) {
+offline_storage.prototype.onError = function(tx, error) {
     alert(error.message);
 };
 
 
-OSM.prototype.create_table = function(){
+offline_storage.prototype.create_table = function(){
     var self = this,
         createStatement = "CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, commit_sent INT, commit_saved INT, name TEXT, content TEXT, change_saved DATE)";
     self.db.transaction(function(tx) {
@@ -19,7 +19,7 @@ OSM.prototype.create_table = function(){
 
 };
 
-OSM.prototype.showRecords = function() {
+offline_storage.prototype.showRecords = function() {
     var self = this,
         selectAllStatement = "SELECT * FROM Contacts";
     results.innerHTML = '';
@@ -37,7 +37,7 @@ OSM.prototype.showRecords = function() {
     });
 };
 
-OSM.prototype.loadRecord = function(i) {
+offline_storage.prototype.loadRecord = function(i) {
     var item = dataset.item(i);
     firstName.value = item['firstName'];
     lastName.value = item['lastName'];
@@ -45,7 +45,7 @@ OSM.prototype.loadRecord = function(i) {
     id.value = item['id'];
 };
 
-OSM.prototype.update = function(){
+offline_storage.prototype.update = function(){
     var self = this,
         updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
     self.db.transaction(function(tx) {
@@ -54,7 +54,7 @@ OSM.prototype.update = function(){
 };
 
 
-OSM.prototype.insert = function(){
+offline_storage.prototype.insert = function(){
     var self = this,
         insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
     self.db.transaction(function(tx) {
@@ -63,7 +63,7 @@ OSM.prototype.insert = function(){
 
 };
 
-OSM.prototype.delete = function(){
+offline_storage.prototype.delete = function(){
     var self = this,
         deleteStatement = "DELETE FROM Contacts WHERE id=?";
     self.db.transaction(function(tx) {
@@ -72,7 +72,7 @@ OSM.prototype.delete = function(){
     self.resetForm();
 };
 
-OSM.prototype.drop = function(){
+offline_storage.prototype.drop = function(){
     var self = this,
         dropStatement = "DROP TABLE Contacts";
     self.db.transaction(function(tx) {
@@ -81,12 +81,12 @@ OSM.prototype.drop = function(){
     self.resetForm();
 };
 
-OSM.prototype.loadAndReset = function(){
+offline_storage.prototype.loadAndReset = function(){
     self.resetForm();
     self.showRecords();
 };
 
-OSM.prototype.resetForm = function(){
+offline_storage.prototype.resetForm = function(){
     firstName.value = '';
     lastName.value = '';
     phone.value = '';
