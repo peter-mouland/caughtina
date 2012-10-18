@@ -6,9 +6,9 @@ module.exports = function(app, exp) {
         [   app.public + '/js/lib/jquery-1.8.2.min.js',
             app.public + '/js/lib/jquery.cookie.js',
             app.public + '/js/lib/jquery.sortable.js',
-            app.public + '/js/offline-storage-manager.js',
+            app.public + '/js/ciadc.js',
             app.public + '/js/page-editor.js',
-            app.public + '/js/ciadc.js']);
+            app.public + '/js/offline-storage-manager.js']);
     var css_manager = new asset_manager();
 
     app.configure(function(){

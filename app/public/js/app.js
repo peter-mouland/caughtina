@@ -178,6 +178,201 @@ jQuery.cookie = function(name, value, options) {
         });
     };
 })(jQuery);
+var utils = function(){
+    $('body').append($('<div class="save-message"></div>'));
+    this.$login = $('#login');
+    this.$message=$('div.save-message');
+    this.init();
+};
+
+
+utils.prototype.showMessage = function(e,cfg){
+    var self = this,
+        msg = cfg.msg,
+        time = cfg.time || 2000,
+        hide = function(){
+            self.$message.fadeOut(function(){
+                self.$message.removeClass('shown').removeAttr('style');
+            });
+        };
+    self.$message.html(msg).addClass('shown');
+    if (time>0){
+        setTimeout(hide,time);
+    }
+};
+
+
+utils.prototype.fixHeader = function(){
+    var el = document.body,
+        c = el.getAttribute('class') || el.className;
+    if (window.pageYOffset > 168){
+        if (c.indexOf('fixed')<0){
+            el.setAttribute('class',c + ' fixed');
+            el.className = c + ' fixed';
+        }
+    } else if(c.indexOf('fixed')>=0){
+        el.setAttribute('class', c.replace('fixed',''));
+        el.className = c.replace('fixed','');
+    }
+};
+
+utils.prototype.giveFocus = function(){
+    if ($("input",this.$login).size()==0) return;
+    $("input",this.$login)[0].focus();
+};
+
+utils.prototype.toggleLogin = function(){
+    this.$login.toggleClass('hover');
+};
+
+utils.prototype.hideLogin = function(){
+    this.$login.removeClass('hover');
+};
+
+utils.prototype.setupGlobalEvents = function(){
+    var _this = this;
+    window.onscroll = this.fixHeader;
+    this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
+    $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
+    $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
+    $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
+};
+
+utils.prototype.init = function(){
+    this.setupGlobalEvents();
+};
+
+var ciadc = new utils();
+var page_editor = function(){
+    var self = this;
+    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
+    this.controls = $('div.edit-controls');
+    this.articleWrapper = $('#article div.wrapper');
+    this.$login = $('#login')
+    this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
+    this.adminUser = false;
+
+    self.init()
+};
+
+page_editor.prototype.savePage = function(){
+    this.disableEdit();
+    var html = this.articleWrapper.html(),
+        file = document.location.pathname.split('/')[2];
+    $.ajax({url:'/admin/update/' + file,
+        type:'post',
+        data: html,
+        contentType:'text/html',
+        processData:false
+    }).done(function(data,status){
+            $(window).trigger('show-message',{msg:'Page Updated successfully'});
+        }).fail(function(data,status){
+            console.log(status); //parseerror
+        });
+};
+
+
+page_editor.prototype.enableEdit = function(){
+    var self = this;
+    this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.setupKeys(e, this); });
+    this.adminUser = true;
+    $('a#edit-page',this.$login).text('update').attr('id','save-page');
+};
+
+
+page_editor.prototype.disableEdit = function(){
+    var self = this;
+    this.adminUser = false;
+    this.editableTags.removeAttr('contenteditable').unbind('keydown');
+    $('a#save-page',this.$login).text('edit').attr('id','edit-page');
+    self.hideEditControls();
+    self.disableDrag();
+};
+
+
+page_editor.prototype.addElement = function(){
+    var el = this.controls.elementToEdit,
+        newEl = el.clone();
+    newEl.text('new section');
+    newEl.insertAfter(el);
+};
+
+page_editor.prototype.removeElement = function(){
+    var el = this.controls.elementToEdit;
+    if (el.text()==''){
+        el.remove();
+    } else {
+        $(window).trigger('show-message',{msg:'Cannot delete elements containing text!'});
+    }
+};
+
+page_editor.prototype.setupKeys = function(e, el){
+    if (e.keyCode==13){
+        e.preventDefault();
+    } else if (e.keyCode == 27 && document.execCommand){
+        document.execCommand('undo');
+    }
+};
+
+page_editor.prototype.showEditControls = function(el){
+    if (!this.adminUser){ return; }
+    var pos = el.position();
+    this.controls.hovering = true;
+    this.controls.elementToEdit = el;
+    this.controls.addClass('show').css({'left':pos.left,'top':pos.top});
+};
+
+page_editor.prototype.hideEditControls = function(){
+    var self = this,
+        hideLater = function(){
+            if (self.controls.hovering){ setTimeout(hideLater,1000); return; }
+            self.controls.removeClass('show');
+            self.clearEditVars();
+        };
+    setTimeout(hideLater,1000);
+};
+
+page_editor.prototype.clearEditVars = function(){
+    this.controls.hovering = false;
+    this.controls.elementToEdit = undefined;
+};
+
+page_editor.prototype.enableDrag = function(){
+//    $('section',this.articleWrapper).sortable();
+};
+
+page_editor.prototype.disableDrag = function(){
+//    $('section',this.articleWrapper).sortable('destroy');
+};
+
+page_editor.prototype.offlineMode = function(){
+    console.log('offline')
+    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be save automtically when online again',time:-1});
+};
+
+page_editor.prototype.onlineMode = function(){
+    $(window).trigger('show-message',{msg:'Site is now Online.'});
+};
+
+page_editor.prototype.init = function(){
+    var self = this;
+    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
+    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
+    this.controls.live('mouseenter',       function(){ self.controls.hovering = true; });
+    this.controls.live('mouseleave',       function(){ self.clearEditVars(); });
+    $('span.plus', this.controls).live('click',          function(){ self.addElement(); });
+    $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
+    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
+    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+
+//navigator.onLine
+    $(window).bind('online', function(){ self.onlineMode(); });
+    $(window).bind('offline', function(){ self.offlineMode(); });
+    console.log(navigator.onLine)
+    if (!navigator.onLine){ self.offlineMode(); }
+};
+
+var PM = new page_editor()
 var OSM = function(dbName){
     this.db = openDatabase(dbName, "1.0", dbName, 200000);
 
@@ -273,201 +468,31 @@ OSM.prototype.resetForm = function(){
     id.value = '';
 };
 
-//window.onload = function () {
-//    writeroot = document.getElementById('writeroot');
-//    addEventSimple(window,'online',test);
-//    addEventSimple(window,'offline',test);
-//    test();
-//}
-
-function addEventSimple(obj,evt,fn) {
-    if (obj.addEventListener)
-        obj.addEventListener(evt,fn,false);
-    else if (obj.attachEvent)
-        obj.attachEvent('on'+evt,fn);
-}
-
-function removeEventSimple(obj,evt,fn) {
-    if (obj.removeEventListener)
-        obj.removeEventListener(evt,fn,false);
-    else if (obj.detachEvent)
-        obj.detachEvent('on'+evt,fn);
-}
-var page_editor = function(){
-    var self = this;
-    $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
-    this.controls = $('div.edit-controls');
-    this.articleWrapper = $('#article div.wrapper');
-    this.$login = $('#login')
-    this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
-    this.adminUser = false;
-
-    self.init()
-};
-
-page_editor.prototype.savePage = function(){
-    this.disableEdit();
-    var html = this.articleWrapper.html(),
-        file = document.location.pathname.split('/')[2],
-        _this = this;
-    $.ajax({url:'/admin/update/' + file,
-        type:'post',
-        data: html,
-        contentType:'text/html',
-        processData:false
-    }).done(function(data,status){
-            $(window).trigger('show-message',{msg:'Page Updated successfully'});
-        }).fail(function(data,status){
-            console.log(status); //parseerror
-        });
-};
-
-
-page_editor.prototype.enableEdit = function(){
-    var self = this;
-    this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.setupKeys(e, this); });
-    this.adminUser = true;
-    $('a#edit-page',this.$login).text('update').attr('id','save-page');
-};
-
-
-page_editor.prototype.disableEdit = function(){
-    var self = this;
-    this.adminUser = false;
-    this.editableTags.removeAttr('contenteditable').unbind('keydown');
-    $('a#save-page',this.$login).text('edit').attr('id','edit-page');
-    self.hideEditControls();
-    self.disableDrag();
-};
-
-
-page_editor.prototype.addElement = function(){
-    var el = this.controls.elementToEdit,
-        newEl = el.clone();
-    newEl.text('new section');
-    newEl.insertAfter(el);
-};
-
-page_editor.prototype.removeElement = function(){
-    var el = this.controls.elementToEdit;
-    if (el.text()==''){
-        el.remove();
-    } else {
-        $(window).trigger('show-message',{msg:'Cannot delete elements containing text!'});
-    }
-};
-
-page_editor.prototype.setupKeys = function(e, el){
-    if (e.keyCode==13){
-        e.preventDefault();
-    } else if (e.keyCode == 27 && document.execCommand){
-        document.execCommand('undo');
-    }
-};
-
-page_editor.prototype.showEditControls = function(el){
-    if (!this.adminUser){ return; }
-    var pos = el.position();
-    this.controls.hovering = true;
-    this.controls.elementToEdit = el;
-    this.controls.addClass('show').css({'left':pos.left,'top':pos.top});
-};
-
-page_editor.prototype.hideEditControls = function(){
-    var self = this,
-        hideLater = function(){
-            if (self.controls.hovering){ setTimeout(hideLater,1000); return; }
-            self.controls.removeClass('show');
-            self.clearEditVars();
-        };
-    setTimeout(hideLater,1000);
-};
-
-page_editor.prototype.clearEditVars = function(){
-    this.controls.hovering = false;
-    this.controls.elementToEdit = undefined;
-};
-
-page_editor.prototype.enableDrag = function(){
-//    $('section',this.articleWrapper).sortable();
-};
-page_editor.prototype.disableDrag = function(){
-//    $('section',this.articleWrapper).sortable('destroy');
-};
-
-page_editor.prototype.init = function(){
-    var self = this;
-    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
-    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
-    this.controls.live('mouseenter',       function(){ self.controls.hovering = true; });
-    this.controls.live('mouseleave',       function(){ self.clearEditVars(); });
-    $('span.plus', this.controls).live('click',          function(){ self.addElement(); });
-    $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
-    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
-};
-
-var PM = new page_editor()
-var ciadc = function(){
-    $('body').append($('<div class="save-message"></div>'));
-    this.$login = $('#login')
-    this.$message=$('div.save-message');
-};
-
-
-ciadc.prototype.showMessage = function(e,cfg){
-    var self = this,
-        msg = cfg.msg,
-        time = cfg.time || 2000;
-    self.$message.text(msg).addClass('shown');
-    setTimeout(function(){
-        self.$message.fadeOut(function(){
-            self.$message.removeClass('shown').removeAttr('style');
-        });
-    },time);
-};
-
-
-ciadc.prototype.fixHeader = function(){
-    var el = document.body,
-        c = el.getAttribute('class') || el.className;
-    if (window.pageYOffset > 168){
-        if (c.indexOf('fixed')<0){
-            el.setAttribute('class',c + ' fixed');
-            el.className = c + ' fixed';
-        }
-    } else if(c.indexOf('fixed')>=0){
-        el.setAttribute('class', c.replace('fixed',''));
-        el.className = c.replace('fixed','');
-    }
-};
-
-ciadc.prototype.giveFocus = function(){
-    if ($("input",this.$login).size()==0) return;
-    $("input",this.$login)[0].focus();
-};
-
-ciadc.prototype.toggleLogin = function(){
-    this.$login.toggleClass('hover');
-};
-
-ciadc.prototype.hideLogin = function(){
-    this.$login.removeClass('hover');
-};
-
-
-ciadc.prototype.setupGlobalEvents = function(){
-    var _this = this;
-    window.onscroll = this.fixHeader;
-    this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
-    $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
-    $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
-    $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
-};
-
-ciadc.prototype.init = function(){
-    this.setupGlobalEvents();
-};
-
-var app = new ciadc();
-app.init();
+//var cache = window.applicationCache;
+//
+//cache.addEventListener("cached", function () {
+//    console.log("All resources for this web app have now been downloaded. You can run this application while not connected to the internet");
+//}, false);
+//cache.addEventListener("checking", function () {
+//    console.log("Checking manifest");
+//}, false);
+//cache.addEventListener("downloading", function () {
+//    console.log("Starting download of cached files");
+//}, false);
+//cache.addEventListener("error", function (e) {
+//    console.log("There was an error in the manifest, downloading cached files or you're offline: " + e);
+//}, false);
+//cache.addEventListener("noupdate", function () {
+//    console.log("There was no update needed");
+//}, false);
+//cache.addEventListener("progress", function () {
+//    console.log("Downloading cached files");
+//}, false);
+//cache.addEventListener("updateready", function () {
+//    cache.swapCache();
+//    console.log("Updated cache is ready");
+//    Even after swapping the cache the currently loaded page won't use it
+//    until it is reloaded, so force a reload so it is current.
+//    window.location.reload(true);
+//    console.log("Window reloaded");
+//}, false);

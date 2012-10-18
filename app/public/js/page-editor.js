@@ -100,6 +100,14 @@ page_editor.prototype.disableDrag = function(){
 //    $('section',this.articleWrapper).sortable('destroy');
 };
 
+page_editor.prototype.offlineMode = function(){
+    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be save automtically when online again',time:-1});
+};
+
+page_editor.prototype.onlineMode = function(){
+    $(window).trigger('show-message',{msg:'Site is now Online.'});
+};
+
 page_editor.prototype.init = function(){
     var self = this;
     this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
@@ -110,6 +118,11 @@ page_editor.prototype.init = function(){
     $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
     $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
     $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+
+//navigator.onLine
+    $(window).bind('online', function(){ self.onlineMode(); });
+    $(window).bind('offline', function(){ self.offlineMode(); });
+    if (!navigator.onLine){ self.offlineMode(); }
 };
 
 var PM = new page_editor()

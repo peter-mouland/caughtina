@@ -1,24 +1,28 @@
-var ciadc = function(){
+var utils = function(){
     $('body').append($('<div class="save-message"></div>'));
-    this.$login = $('#login')
+    this.$login = $('#login');
     this.$message=$('div.save-message');
+    this.init();
 };
 
 
-ciadc.prototype.showMessage = function(e,cfg){
+utils.prototype.showMessage = function(e,cfg){
     var self = this,
         msg = cfg.msg,
-        time = cfg.time || 2000;
-    self.$message.text(msg).addClass('shown');
-    setTimeout(function(){
-        self.$message.fadeOut(function(){
-            self.$message.removeClass('shown').removeAttr('style');
-        });
-    },time);
+        time = cfg.time || 2000,
+        hide = function(){
+            self.$message.fadeOut(function(){
+                self.$message.removeClass('shown').removeAttr('style');
+            });
+        };
+    self.$message.html(msg).addClass('shown');
+    if (time>0){
+        setTimeout(hide,time);
+    }
 };
 
 
-ciadc.prototype.fixHeader = function(){
+utils.prototype.fixHeader = function(){
     var el = document.body,
         c = el.getAttribute('class') || el.className;
     if (window.pageYOffset > 168){
@@ -32,21 +36,20 @@ ciadc.prototype.fixHeader = function(){
     }
 };
 
-ciadc.prototype.giveFocus = function(){
+utils.prototype.giveFocus = function(){
     if ($("input",this.$login).size()==0) return;
     $("input",this.$login)[0].focus();
 };
 
-ciadc.prototype.toggleLogin = function(){
+utils.prototype.toggleLogin = function(){
     this.$login.toggleClass('hover');
 };
 
-ciadc.prototype.hideLogin = function(){
+utils.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-
-ciadc.prototype.setupGlobalEvents = function(){
+utils.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
@@ -55,9 +58,8 @@ ciadc.prototype.setupGlobalEvents = function(){
     $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
 };
 
-ciadc.prototype.init = function(){
+utils.prototype.init = function(){
     this.setupGlobalEvents();
 };
 
-var app = new ciadc();
-app.init();
+var ciadc = new utils();
