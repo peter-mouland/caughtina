@@ -13,6 +13,7 @@
 //todo: workout how to synchronise changes between local(offline) and web
 //todo: move admin css/js to its own files and download when verified
 //todo: remove super-duper-secret-secret
+//todo: add performance testing
 
 var express = require('express'),
     app = express.createServer();

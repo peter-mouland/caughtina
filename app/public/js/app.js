@@ -178,46 +178,255 @@ jQuery.cookie = function(name, value, options) {
         });
     };
 })(jQuery);
-var ciadc = function(){
-    $('body').append($('<div class="save-message"></div>'));
+var OSM = function(dbName){
+    this.db = openDatabase(dbName, "1.0", dbName, 200000);
+
+    this.dataset = {};
+//    navigator.onLine
+};
+
+OSM.prototype.onError = function(tx, error) {
+    alert(error.message);
+};
+
+
+OSM.prototype.create_table = function(){
+    var self = this,
+        createStatement = "CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, commit_sent INT, commit_saved INT, name TEXT, content TEXT, change_saved DATE)";
+    self.db.transaction(function(tx) {
+        tx.executeSql(createStatement, [], self.showRecords, self.onError);
+    });
+
+};
+
+OSM.prototype.showRecords = function() {
+    var self = this,
+        selectAllStatement = "SELECT * FROM Contacts";
+    results.innerHTML = '';
+    self.db.transaction(function(tx) {
+        tx.executeSql(selectAllStatement, [], function(tx, result) {
+            self.dataset = result.rows;
+            console.log(self.dataset)
+//            for (var i = 0, item = null; i < dataset.length; i++) {
+//                item = dataset.item(i);
+//                results.innerHTML +=
+//                '<li>' + item['lastName'] + ' , ' + item['firstName'] + ' <a href="#" onclick="loadRecord('+i+')">edit</a>  ' +
+//                '<a href="#" onclick="deleteRecord('+item['id']+')">delete</a></li>';
+//            }
+        });
+    });
+};
+
+OSM.prototype.loadRecord = function(i) {
+    var item = dataset.item(i);
+    firstName.value = item['firstName'];
+    lastName.value = item['lastName'];
+    phone.value = item['phone'];
+    id.value = item['id'];
+};
+
+OSM.prototype.update = function(){
+    var self = this,
+        updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
+    self.db.transaction(function(tx) {
+        tx.executeSql(updateStatement, [firstName.value, lastName.value, phone.value, id.value], self.loadAndReset, self.onError);
+    });
+};
+
+
+OSM.prototype.insert = function(){
+    var self = this,
+        insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
+    self.db.transaction(function(tx) {
+        tx.executeSql(insertStatement, [firstName.value, lastName.value, phone.value], self.loadAndReset, self.onError);
+    });
+
+};
+
+OSM.prototype.delete = function(){
+    var self = this,
+        deleteStatement = "DELETE FROM Contacts WHERE id=?";
+    self.db.transaction(function(tx) {
+        tx.executeSql(deleteStatement, [id], self.showRecords, self.onError);
+    });
+    self.resetForm();
+};
+
+OSM.prototype.drop = function(){
+    var self = this,
+        dropStatement = "DROP TABLE Contacts";
+    self.db.transaction(function(tx) {
+        tx.executeSql(dropStatement, [], self.showRecords, self.onError);
+    });
+    self.resetForm();
+};
+
+OSM.prototype.loadAndReset = function(){
+    self.resetForm();
+    self.showRecords();
+};
+
+OSM.prototype.resetForm = function(){
+    firstName.value = '';
+    lastName.value = '';
+    phone.value = '';
+    id.value = '';
+};
+
+//window.onload = function () {
+//    writeroot = document.getElementById('writeroot');
+//    addEventSimple(window,'online',test);
+//    addEventSimple(window,'offline',test);
+//    test();
+//}
+
+function addEventSimple(obj,evt,fn) {
+    if (obj.addEventListener)
+        obj.addEventListener(evt,fn,false);
+    else if (obj.attachEvent)
+        obj.attachEvent('on'+evt,fn);
+}
+
+function removeEventSimple(obj,evt,fn) {
+    if (obj.removeEventListener)
+        obj.removeEventListener(evt,fn,false);
+    else if (obj.detachEvent)
+        obj.detachEvent('on'+evt,fn);
+}
+var page_editor = function(){
+    var self = this;
     $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
     this.controls = $('div.edit-controls');
-    this.$login = $('#login')
-    this.$message=$('div.save-message');
-    this.adminUser = false;
     this.articleWrapper = $('#article div.wrapper');
+    this.$login = $('#login')
     this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
+    this.adminUser = false;
+
+    self.init()
 };
 
-
-ciadc.prototype.showMessage = function(text){
-    var self = this;
-    self.$message.text(text);
-    self.$message.addClass('shown');
-    setTimeout(function(){
-        self.$message.fadeOut(function(){
-            self.$message.removeClass('shown').removeAttr('style');
-        });
-    },1000);
-};
-
-ciadc.prototype.savePage = function(){
+page_editor.prototype.savePage = function(){
     this.disableEdit();
-    var $content = $('#article div.wrapper'),
-        html = $content.html(),
+    var html = this.articleWrapper.html(),
         file = document.location.pathname.split('/')[2],
         _this = this;
     $.ajax({url:'/admin/update/' + file,
-            type:'post',
-            data: html,
-            contentType:'text/html',
-            processData:false
-        }).done(function(data,status){
-            _this.showMessage('Page Updated successfully');
+        type:'post',
+        data: html,
+        contentType:'text/html',
+        processData:false
+    }).done(function(data,status){
+            $(window).trigger('show-message',{msg:'Page Updated successfully'});
         }).fail(function(data,status){
             console.log(status); //parseerror
         });
 };
+
+
+page_editor.prototype.enableEdit = function(){
+    var self = this;
+    this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.setupKeys(e, this); });
+    this.adminUser = true;
+    $('a#edit-page',this.$login).text('update').attr('id','save-page');
+};
+
+
+page_editor.prototype.disableEdit = function(){
+    var self = this;
+    this.adminUser = false;
+    this.editableTags.removeAttr('contenteditable').unbind('keydown');
+    $('a#save-page',this.$login).text('edit').attr('id','edit-page');
+    self.hideEditControls();
+    self.disableDrag();
+};
+
+
+page_editor.prototype.addElement = function(){
+    var el = this.controls.elementToEdit,
+        newEl = el.clone();
+    newEl.text('new section');
+    newEl.insertAfter(el);
+};
+
+page_editor.prototype.removeElement = function(){
+    var el = this.controls.elementToEdit;
+    if (el.text()==''){
+        el.remove();
+    } else {
+        $(window).trigger('show-message',{msg:'Cannot delete elements containing text!'});
+    }
+};
+
+page_editor.prototype.setupKeys = function(e, el){
+    if (e.keyCode==13){
+        e.preventDefault();
+    } else if (e.keyCode == 27 && document.execCommand){
+        document.execCommand('undo');
+    }
+};
+
+page_editor.prototype.showEditControls = function(el){
+    if (!this.adminUser){ return; }
+    var pos = el.position();
+    this.controls.hovering = true;
+    this.controls.elementToEdit = el;
+    this.controls.addClass('show').css({'left':pos.left,'top':pos.top});
+};
+
+page_editor.prototype.hideEditControls = function(){
+    var self = this,
+        hideLater = function(){
+            if (self.controls.hovering){ setTimeout(hideLater,1000); return; }
+            self.controls.removeClass('show');
+            self.clearEditVars();
+        };
+    setTimeout(hideLater,1000);
+};
+
+page_editor.prototype.clearEditVars = function(){
+    this.controls.hovering = false;
+    this.controls.elementToEdit = undefined;
+};
+
+page_editor.prototype.enableDrag = function(){
+//    $('section',this.articleWrapper).sortable();
+};
+page_editor.prototype.disableDrag = function(){
+//    $('section',this.articleWrapper).sortable('destroy');
+};
+
+page_editor.prototype.init = function(){
+    var self = this;
+    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
+    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
+    this.controls.live('mouseenter',       function(){ self.controls.hovering = true; });
+    this.controls.live('mouseleave',       function(){ self.clearEditVars(); });
+    $('span.plus', this.controls).live('click',          function(){ self.addElement(); });
+    $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
+    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
+    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+};
+
+var PM = new page_editor()
+var ciadc = function(){
+    $('body').append($('<div class="save-message"></div>'));
+    this.$login = $('#login')
+    this.$message=$('div.save-message');
+};
+
+
+ciadc.prototype.showMessage = function(e,cfg){
+    var self = this,
+        msg = cfg.msg,
+        time = cfg.time || 2000;
+    self.$message.text(msg).addClass('shown');
+    setTimeout(function(){
+        self.$message.fadeOut(function(){
+            self.$message.removeClass('shown').removeAttr('style');
+        });
+    },time);
+};
+
 
 ciadc.prototype.fixHeader = function(){
     var el = document.body,
@@ -246,88 +455,14 @@ ciadc.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-ciadc.prototype.enableEdit = function(){
-    var self = this;
-    this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.preventBadKeys(e, this); });
-    this.adminUser = true;
-    $('a#edit-page',this.$login).text('update').attr('id','save-page');
-};
-
-ciadc.prototype.disableEdit = function(){
-    var self = this;
-    this.adminUser = false;
-    this.editableTags.removeAttr('contenteditable').unbind('keydown');
-    $('a#save-page',this.$login).text('edit').attr('id','edit-page');
-    self.hideEditControls();
-    self.disableDrag();
-};
-
-ciadc.prototype.enableDrag = function(){
-//    $('section',this.articleWrapper).sortable();
-};
-ciadc.prototype.disableDrag = function(){
-//    $('section',this.articleWrapper).sortable('destroy');
-};
-
-ciadc.prototype.showEditControls = function(el){
-    if (!this.adminUser){ return; }
-    var pos = el.position();
-    this.controls.hovering = true;
-    this.controls.elementToEdit = el;
-    this.controls.addClass('show').css({'left':pos.left,'top':pos.top});
-};
-
-ciadc.prototype.hideEditControls = function(){
-    var self = this,
-        hideLater = function(){
-            if (self.controls.hovering){ setTimeout(hideLater,1000); return; }
-            self.controls.removeClass('show');
-            self.clearEditVars();
-        };
-    setTimeout(hideLater,1000);
-};
-
-ciadc.prototype.clearEditVars = function(){
-    this.controls.hovering = false;
-    this.controls.elementToEdit = undefined;
-};
-
-ciadc.prototype.addElement = function(){
-    var el = this.controls.elementToEdit,
-        newEl = el.clone();
-    newEl.text('new section');
-    newEl.insertAfter(el);
-};
-
-ciadc.prototype.removeElement = function(){
-    var el = this.controls.elementToEdit;
-    if (el.text()==''){
-        el.remove();
-    } else {
-        this.showMessage('Cannot delete elements containing text!');
-    }
-};
-
-ciadc.prototype.preventBadKeys = function(e, el){
-    if (e.keyCode==13){
-        e.preventDefault();
-    }
-};
 
 ciadc.prototype.setupGlobalEvents = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
     $('a.login',this.$login).live('click',               function(e){ e.preventDefault(); _this.toggleLogin();      });
-    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); _this.enableEdit(); _this.enableDrag();      });
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
-    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); _this.showEditControls($(this));});
-    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); _this.controls.hovering = false; _this.hideEditControls(); });
-    this.controls.live('mouseenter',       function(){ _this.controls.hovering = true; });
-    this.controls.live('mouseleave',       function(){ _this.clearEditVars(); });
-    $('span.plus',this.controls).live('click',           function(){ _this.addElement(); });
-    $('span.minus',this.controls).live('click',          function(){ _this.removeElement(); });
+    $(window).bind('show-message',function(e,cfg){ _this.showMessage(e,cfg);});
 };
 
 ciadc.prototype.init = function(){
