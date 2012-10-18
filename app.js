@@ -17,7 +17,8 @@
 var express = require('express'),
     app = express.createServer();
 
-app.root = __dirname;
+app.root = __dirname + '/';
+app.public = 'app/public';
 
 require('./app/config')(app, express);
 require('./app/server/router')(app);

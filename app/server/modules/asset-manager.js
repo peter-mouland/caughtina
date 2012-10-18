@@ -15,7 +15,7 @@ AM.prototype.concatFiles = function() {
         out = self.files.map(function(filePath){
         return fs.readFileSync(filePath, FILE_ENCODING);
     });
-    fs.writeFileSync('app/public/' + self.path, out.join('\n'), FILE_ENCODING);
+    fs.writeFileSync(self.path, out.join('\n'), FILE_ENCODING);
     console.log('concat: '+ self.path +' built.');
     return self.path;
 };
@@ -36,12 +36,12 @@ AM.prototype.uglify = function () {
             srcPath = this.concatFiles(),
             jsp = uglyfyJS.parser,
             pro = uglyfyJS.uglify,
-            ast = jsp.parse( fs.readFileSync('app/public/' + srcPath, FILE_ENCODING) );
+            ast = jsp.parse( fs.readFileSync(srcPath, FILE_ENCODING) );
 
         ast = pro.ast_mangle(ast);
         ast = pro.ast_squeeze(ast);
 
-        fs.writeFileSync('app/public/' + self.path, pro.gen_code(ast), FILE_ENCODING);
+        fs.writeFileSync(self.path, pro.gen_code(ast), FILE_ENCODING);
         console.log('uglify: '+ self.path +' built.');
         return self.path;
 };
