@@ -1,32 +1,32 @@
 var offline_storage = function(dbName){
     this.db = openDatabase(dbName, "1.0", dbName, 200000);
-
     this.dataset = {};
-//    navigator.onLine
 };
+
+
 
 offline_storage.prototype.onError = function(tx, error) {
-    alert(error.message);
+    console.log(tx,error.message);
 };
 
 
-offline_storage.prototype.create_table = function(){
+offline_storage.prototype.create_table = function(tbName){
     var self = this,
-        createStatement = "CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, commit_sent INT, commit_saved INT, name TEXT, content TEXT, change_saved DATE)";
+        createStatement = "CREATE TABLE IF NOT EXISTS " + tbName + " (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, commit_sent INT DEFAULT 0, commit_saved INT DEFAULT 0, name TEXT, content TEXT, change_saved DATETIME DEFAULT CURRENT_TIMESTAMP)";
     self.db.transaction(function(tx) {
-        tx.executeSql(createStatement, [], self.showRecords, self.onError);
+        tx.executeSql(createStatement, [], function(){self.showRecords(tbName);}, self.onError);
     });
 
 };
 
-offline_storage.prototype.showRecords = function() {
+offline_storage.prototype.showRecords = function(tbName, callback) {
     var self = this,
-        selectAllStatement = "SELECT * FROM Contacts";
-    results.innerHTML = '';
+        selectAllStatement = "SELECT * FROM " + tbName + " where commit_saved=0";
+//    results.innerHTML = '';
     self.db.transaction(function(tx) {
         tx.executeSql(selectAllStatement, [], function(tx, result) {
             self.dataset = result.rows;
-            console.log(self.dataset)
+            if (callback) callback(self.dataset)
 //            for (var i = 0, item = null; i < dataset.length; i++) {
 //                item = dataset.item(i);
 //                results.innerHTML +=
@@ -38,60 +38,63 @@ offline_storage.prototype.showRecords = function() {
 };
 
 offline_storage.prototype.loadRecord = function(i) {
-    var item = dataset.item(i);
-    firstName.value = item['firstName'];
-    lastName.value = item['lastName'];
-    phone.value = item['phone'];
-    id.value = item['id'];
+    var item = this.dataset.item(i);
+//    firstName.value = item['user'];
+//    lastName.value = item['content'];
+//    phone.value = item['phone'];
+//    id.value = item['id'];
+    return item;
 };
 
-offline_storage.prototype.update = function(){
+offline_storage.prototype.update = function(tbName){
     var self = this,
-        updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
+        updateStatement = "UPDATE " + tbName + " SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
     self.db.transaction(function(tx) {
-        tx.executeSql(updateStatement, [firstName.value, lastName.value, phone.value, id.value], self.loadAndReset, self.onError);
+        tx.executeSql(updateStatement, [firstName.value, lastName.value, phone.value, id.value], function(){self.loadAndReset()}, self.onError);
     });
 };
 
 
-offline_storage.prototype.insert = function(){
+offline_storage.prototype.insert = function(tbName, content){
     var self = this,
-        insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
+        insertStatement = "INSERT INTO " + tbName + " (user, name, content) VALUES (?, ?, ?)";
     self.db.transaction(function(tx) {
-        tx.executeSql(insertStatement, [firstName.value, lastName.value, phone.value], self.loadAndReset, self.onError);
+        tx.executeSql(insertStatement, ['', '', content], function(){self.loadAndReset()}, self.onError);
     });
 
 };
 
-offline_storage.prototype.delete = function(){
+offline_storage.prototype.delete = function(tbName){
     var self = this,
-        deleteStatement = "DELETE FROM Contacts WHERE id=?";
+        deleteStatement = "DELETE FROM " + tbName + " WHERE id=?";
     self.db.transaction(function(tx) {
-        tx.executeSql(deleteStatement, [id], self.showRecords, self.onError);
+        tx.executeSql(deleteStatement, [id], function(){self.showRecords(tbName);}, self.onError);
     });
     self.resetForm();
 };
 
-offline_storage.prototype.drop = function(){
+offline_storage.prototype.drop = function(tbName){
     var self = this,
-        dropStatement = "DROP TABLE Contacts";
+        dropStatement = "DROP TABLE " + tbName + "";
     self.db.transaction(function(tx) {
-        tx.executeSql(dropStatement, [], self.showRecords, self.onError);
+        tx.executeSql(dropStatement, [], function(){self.showRecords(tbName);}, self.onError);
     });
     self.resetForm();
 };
 
 offline_storage.prototype.loadAndReset = function(){
-    self.resetForm();
-    self.showRecords();
+    this.resetForm();
+    this.showRecords();
 };
 
 offline_storage.prototype.resetForm = function(){
-    firstName.value = '';
-    lastName.value = '';
-    phone.value = '';
-    id.value = '';
+//    firstName.value = '';
+//    lastName.value = '';
+//    phone.val///ue = '';
+//    id.value = '';
 };
+
+var OS = new offline_storage('posts');
 
 //var cache = window.applicationCache;
 //

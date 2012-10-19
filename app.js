@@ -14,6 +14,8 @@
 //todo: move admin css/js to its own files and download when verified
 //todo: remove super-duper-secret-secret
 //todo: add performance testing
+//todo: fix stylus
+//todo: add test accounts for pepole to play!
 
 var express = require('express'),
     app = express.createServer();

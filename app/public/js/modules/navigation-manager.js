@@ -1,5 +1,6 @@
 var navigation_manager = function(){
     this.$login = $('#login');
+
     this.init();
 };
 
@@ -30,7 +31,7 @@ navigation_manager.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-navigation_manager.prototype.setupGlobalEvents = function(){
+navigation_manager.prototype.init = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
@@ -38,8 +39,4 @@ navigation_manager.prototype.setupGlobalEvents = function(){
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
 };
 
-navigation_manager.prototype.init = function(){
-    this.setupGlobalEvents();
-};
-
-var NM = new navigation_manager();
+new navigation_manager();

@@ -203,6 +203,7 @@ utils.prototype.showMessage = function(e,cfg){
 var U = new utils();
 var navigation_manager = function(){
     this.$login = $('#login');
+
     this.init();
 };
 
@@ -233,7 +234,7 @@ navigation_manager.prototype.hideLogin = function(){
     this.$login.removeClass('hover');
 };
 
-navigation_manager.prototype.setupGlobalEvents = function(){
+navigation_manager.prototype.init = function(){
     var _this = this;
     window.onscroll = this.fixHeader;
     this.$login.live('mouseenter',                       function(e){ e.preventDefault(); _this.giveFocus();        });
@@ -241,11 +242,133 @@ navigation_manager.prototype.setupGlobalEvents = function(){
     $('input[type=submit]',this.$login).live('blur',     function(e){ e.preventDefault(); _this.hideLogin();        });
 };
 
-navigation_manager.prototype.init = function(){
-    this.setupGlobalEvents();
+new navigation_manager();
+var offline_storage = function(dbName){
+    this.db = openDatabase(dbName, "1.0", dbName, 200000);
+    this.dataset = {};
 };
 
-var NM = new navigation_manager();
+
+
+offline_storage.prototype.onError = function(tx, error) {
+    console.log(tx,error.message);
+};
+
+
+offline_storage.prototype.create_table = function(tbName){
+    var self = this,
+        createStatement = "CREATE TABLE IF NOT EXISTS " + tbName + " (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, commit_sent INT DEFAULT 0, commit_saved INT DEFAULT 0, name TEXT, content TEXT, change_saved DATETIME DEFAULT CURRENT_TIMESTAMP)";
+    self.db.transaction(function(tx) {
+        tx.executeSql(createStatement, [], function(){self.showRecords(tbName);}, self.onError);
+    });
+
+};
+
+offline_storage.prototype.showRecords = function(tbName, callback) {
+    var self = this,
+        selectAllStatement = "SELECT * FROM " + tbName + " where commit_saved=0";
+//    results.innerHTML = '';
+    self.db.transaction(function(tx) {
+        tx.executeSql(selectAllStatement, [], function(tx, result) {
+            self.dataset = result.rows;
+            if (callback) callback(self.dataset)
+//            for (var i = 0, item = null; i < dataset.length; i++) {
+//                item = dataset.item(i);
+//                results.innerHTML +=
+//                '<li>' + item['lastName'] + ' , ' + item['firstName'] + ' <a href="#" onclick="loadRecord('+i+')">edit</a>  ' +
+//                '<a href="#" onclick="deleteRecord('+item['id']+')">delete</a></li>';
+//            }
+        });
+    });
+};
+
+offline_storage.prototype.loadRecord = function(i) {
+    var item = this.dataset.item(i);
+//    firstName.value = item['user'];
+//    lastName.value = item['content'];
+//    phone.value = item['phone'];
+//    id.value = item['id'];
+    return item;
+};
+
+offline_storage.prototype.update = function(tbName){
+    var self = this,
+        updateStatement = "UPDATE " + tbName + " SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
+    self.db.transaction(function(tx) {
+        tx.executeSql(updateStatement, [firstName.value, lastName.value, phone.value, id.value], function(){self.loadAndReset()}, self.onError);
+    });
+};
+
+
+offline_storage.prototype.insert = function(tbName, content){
+    var self = this,
+        insertStatement = "INSERT INTO " + tbName + " (user, name, content) VALUES (?, ?, ?)";
+    self.db.transaction(function(tx) {
+        tx.executeSql(insertStatement, ['', '', content], function(){self.loadAndReset()}, self.onError);
+    });
+
+};
+
+offline_storage.prototype.delete = function(tbName){
+    var self = this,
+        deleteStatement = "DELETE FROM " + tbName + " WHERE id=?";
+    self.db.transaction(function(tx) {
+        tx.executeSql(deleteStatement, [id], function(){self.showRecords(tbName);}, self.onError);
+    });
+    self.resetForm();
+};
+
+offline_storage.prototype.drop = function(tbName){
+    var self = this,
+        dropStatement = "DROP TABLE " + tbName + "";
+    self.db.transaction(function(tx) {
+        tx.executeSql(dropStatement, [], function(){self.showRecords(tbName);}, self.onError);
+    });
+    self.resetForm();
+};
+
+offline_storage.prototype.loadAndReset = function(){
+    this.resetForm();
+    this.showRecords();
+};
+
+offline_storage.prototype.resetForm = function(){
+//    firstName.value = '';
+//    lastName.value = '';
+//    phone.val///ue = '';
+//    id.value = '';
+};
+
+var OS = new offline_storage('posts');
+
+//var cache = window.applicationCache;
+//
+//cache.addEventListener("cached", function () {
+//    console.log("All resources for this web app have now been downloaded. You can run this application while not connected to the internet");
+//}, false);
+//cache.addEventListener("checking", function () {
+//    console.log("Checking manifest");
+//}, false);
+//cache.addEventListener("downloading", function () {
+//    console.log("Starting download of cached files");
+//}, false);
+//cache.addEventListener("error", function (e) {
+//    console.log("There was an error in the manifest, downloading cached files or you're offline: " + e);
+//}, false);
+//cache.addEventListener("noupdate", function () {
+//    console.log("There was no update needed");
+//}, false);
+//cache.addEventListener("progress", function () {
+//    console.log("Downloading cached files");
+//}, false);
+//cache.addEventListener("updateready", function () {
+//    cache.swapCache();
+//    console.log("Updated cache is ready");
+//    Even after swapping the cache the currently loaded page won't use it
+//    until it is reloaded, so force a reload so it is current.
+//    window.location.reload(true);
+//    console.log("Window reloaded");
+//}, false);
 var page_editor = function(){
     var self = this;
     $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
@@ -258,8 +381,12 @@ var page_editor = function(){
     self.init()
 };
 
-page_editor.prototype.savePage = function(){
-    this.disableEdit();
+page_editor.prototype.savePageLocally = function(){
+    OS.create_table('posts');
+    OS.insert('posts',this.articleWrapper.html());
+};
+
+page_editor.prototype.savePageOnServer = function(){
     var html = this.articleWrapper.html(),
         file = document.location.pathname.split('/')[2];
     $.ajax({url:'/admin/update/' + file,
@@ -268,10 +395,19 @@ page_editor.prototype.savePage = function(){
         contentType:'text/html',
         processData:false
     }).done(function(data,status){
-            $(window).trigger('show-message',{msg:'Page Updated successfully'});
+            $(window).trigger('show-message',{msg:'Page Saved successfully'});
         }).fail(function(data,status){
             console.log(status); //parseerror
         });
+};
+
+page_editor.prototype.savePage = function(){
+    this.disableEdit();
+    if (navigator.onLine){
+        this.savePageOnServer();
+    } else {
+        this.savePageLocally();
+    }
 };
 
 
@@ -279,7 +415,7 @@ page_editor.prototype.enableEdit = function(){
     var self = this;
     this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.setupKeys(e, this); });
     this.adminUser = true;
-    $('a#edit-page',this.$login).text('update').attr('id','save-page');
+    $('a#edit-page',this.$login).text('save').attr('id','save-page');
 };
 
 
@@ -349,11 +485,26 @@ page_editor.prototype.disableDrag = function(){
 };
 
 page_editor.prototype.offlineMode = function(){
-    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be save automtically when online again',time:-1});
+    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be saved locally',time:-1});
 };
 
 page_editor.prototype.onlineMode = function(){
-    $(window).trigger('show-message',{msg:'Site is now Online.'});
+    OS.showRecords('posts', function(dataset){
+        if (dataset.length>0){
+            $(window).trigger('show-message',{msg:'Site is now Online. There is data to save on the server.',time:-1});
+        } else {
+            $(window).trigger('show-message',{msg:'Site is now Online.'});
+        }
+    });
+};
+
+page_editor.prototype.loadOfflineContent = function(){
+    var self = this;
+    OS.showRecords('posts', function(dataset){
+        if (dataset.length>0){
+            self.articleWrapper.html(dataset.item(dataset.length-1).content).addClass('offlineContent')
+        }
+    });
 };
 
 page_editor.prototype.init = function(){
@@ -367,133 +518,11 @@ page_editor.prototype.init = function(){
     $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
     $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
 
-//navigator.onLine
     $(window).bind('online', function(){ self.onlineMode(); });
     $(window).bind('offline', function(){ self.offlineMode(); });
     if (!navigator.onLine){ self.offlineMode(); }
+
+    this.loadOfflineContent();
 };
 
-var PM = new page_editor()
-var offline_storage = function(dbName){
-    this.db = openDatabase(dbName, "1.0", dbName, 200000);
-
-    this.dataset = {};
-//    navigator.onLine
-};
-
-offline_storage.prototype.onError = function(tx, error) {
-    alert(error.message);
-};
-
-
-offline_storage.prototype.create_table = function(){
-    var self = this,
-        createStatement = "CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, commit_sent INT, commit_saved INT, name TEXT, content TEXT, change_saved DATE)";
-    self.db.transaction(function(tx) {
-        tx.executeSql(createStatement, [], self.showRecords, self.onError);
-    });
-
-};
-
-offline_storage.prototype.showRecords = function() {
-    var self = this,
-        selectAllStatement = "SELECT * FROM Contacts";
-    results.innerHTML = '';
-    self.db.transaction(function(tx) {
-        tx.executeSql(selectAllStatement, [], function(tx, result) {
-            self.dataset = result.rows;
-            console.log(self.dataset)
-//            for (var i = 0, item = null; i < dataset.length; i++) {
-//                item = dataset.item(i);
-//                results.innerHTML +=
-//                '<li>' + item['lastName'] + ' , ' + item['firstName'] + ' <a href="#" onclick="loadRecord('+i+')">edit</a>  ' +
-//                '<a href="#" onclick="deleteRecord('+item['id']+')">delete</a></li>';
-//            }
-        });
-    });
-};
-
-offline_storage.prototype.loadRecord = function(i) {
-    var item = dataset.item(i);
-    firstName.value = item['firstName'];
-    lastName.value = item['lastName'];
-    phone.value = item['phone'];
-    id.value = item['id'];
-};
-
-offline_storage.prototype.update = function(){
-    var self = this,
-        updateStatement = "UPDATE Contacts SET firstName = ?, lastName = ?, phone = ? WHERE id = ?";
-    self.db.transaction(function(tx) {
-        tx.executeSql(updateStatement, [firstName.value, lastName.value, phone.value, id.value], self.loadAndReset, self.onError);
-    });
-};
-
-
-offline_storage.prototype.insert = function(){
-    var self = this,
-        insertStatement = "INSERT INTO Contacts (firstName, lastName, phone) VALUES (?, ?, ?)";
-    self.db.transaction(function(tx) {
-        tx.executeSql(insertStatement, [firstName.value, lastName.value, phone.value], self.loadAndReset, self.onError);
-    });
-
-};
-
-offline_storage.prototype.delete = function(){
-    var self = this,
-        deleteStatement = "DELETE FROM Contacts WHERE id=?";
-    self.db.transaction(function(tx) {
-        tx.executeSql(deleteStatement, [id], self.showRecords, self.onError);
-    });
-    self.resetForm();
-};
-
-offline_storage.prototype.drop = function(){
-    var self = this,
-        dropStatement = "DROP TABLE Contacts";
-    self.db.transaction(function(tx) {
-        tx.executeSql(dropStatement, [], self.showRecords, self.onError);
-    });
-    self.resetForm();
-};
-
-offline_storage.prototype.loadAndReset = function(){
-    self.resetForm();
-    self.showRecords();
-};
-
-offline_storage.prototype.resetForm = function(){
-    firstName.value = '';
-    lastName.value = '';
-    phone.value = '';
-    id.value = '';
-};
-
-//var cache = window.applicationCache;
-//
-//cache.addEventListener("cached", function () {
-//    console.log("All resources for this web app have now been downloaded. You can run this application while not connected to the internet");
-//}, false);
-//cache.addEventListener("checking", function () {
-//    console.log("Checking manifest");
-//}, false);
-//cache.addEventListener("downloading", function () {
-//    console.log("Starting download of cached files");
-//}, false);
-//cache.addEventListener("error", function (e) {
-//    console.log("There was an error in the manifest, downloading cached files or you're offline: " + e);
-//}, false);
-//cache.addEventListener("noupdate", function () {
-//    console.log("There was no update needed");
-//}, false);
-//cache.addEventListener("progress", function () {
-//    console.log("Downloading cached files");
-//}, false);
-//cache.addEventListener("updateready", function () {
-//    cache.swapCache();
-//    console.log("Updated cache is ready");
-//    Even after swapping the cache the currently loaded page won't use it
-//    until it is reloaded, so force a reload so it is current.
-//    window.location.reload(true);
-//    console.log("Window reloaded");
-//}, false);
+new page_editor();

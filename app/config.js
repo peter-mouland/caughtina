@@ -6,10 +6,10 @@ module.exports = function(app, exp) {
         [   app.public + '/js/lib/jquery-1.8.2.min.js',
             app.public + '/js/lib/jquery.cookie.js',
             app.public + '/js/lib/jquery.sortable.js',
-            app.public + '/js/ciadc/utils.js',
-            app.public + '/js/ciadc/navigation-manager.js',
-            app.public + '/js/ciadc/page-editor.js',
-            app.public + '/js/ciadc/offline-storage-manager.js']);
+            app.public + '/js/modules/utils.js',
+            app.public + '/js/modules/navigation-manager.js',
+            app.public + '/js/modules/offline-storage-manager.js',
+            app.public + '/js/modules/page-editor.js']);
     var css_manager = new asset_manager();
 
     app.configure(function(){

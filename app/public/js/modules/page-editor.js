@@ -10,8 +10,12 @@ var page_editor = function(){
     self.init()
 };
 
-page_editor.prototype.savePage = function(){
-    this.disableEdit();
+page_editor.prototype.savePageLocally = function(){
+    OS.create_table('posts');
+    OS.insert('posts',this.articleWrapper.html());
+};
+
+page_editor.prototype.savePageOnServer = function(){
     var html = this.articleWrapper.html(),
         file = document.location.pathname.split('/')[2];
     $.ajax({url:'/admin/update/' + file,
@@ -20,10 +24,19 @@ page_editor.prototype.savePage = function(){
         contentType:'text/html',
         processData:false
     }).done(function(data,status){
-            $(window).trigger('show-message',{msg:'Page Updated successfully'});
+            $(window).trigger('show-message',{msg:'Page Saved successfully'});
         }).fail(function(data,status){
             console.log(status); //parseerror
         });
+};
+
+page_editor.prototype.savePage = function(){
+    this.disableEdit();
+    if (navigator.onLine){
+        this.savePageOnServer();
+    } else {
+        this.savePageLocally();
+    }
 };
 
 
@@ -31,7 +44,7 @@ page_editor.prototype.enableEdit = function(){
     var self = this;
     this.editableTags.attr('contenteditable','true').bind('keydown',function(e) { self.setupKeys(e, this); });
     this.adminUser = true;
-    $('a#edit-page',this.$login).text('update').attr('id','save-page');
+    $('a#edit-page',this.$login).text('save').attr('id','save-page');
 };
 
 
@@ -101,11 +114,26 @@ page_editor.prototype.disableDrag = function(){
 };
 
 page_editor.prototype.offlineMode = function(){
-    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be save automtically when online again',time:-1});
+    $(window).trigger('show-message',{msg:'Site is now in Offline Mode.<br/>  Updates will be saved locally',time:-1});
 };
 
 page_editor.prototype.onlineMode = function(){
-    $(window).trigger('show-message',{msg:'Site is now Online.'});
+    OS.showRecords('posts', function(dataset){
+        if (dataset.length>0){
+            $(window).trigger('show-message',{msg:'Site is now Online. There is data to save on the server.',time:-1});
+        } else {
+            $(window).trigger('show-message',{msg:'Site is now Online.'});
+        }
+    });
+};
+
+page_editor.prototype.loadOfflineContent = function(){
+    var self = this;
+    OS.showRecords('posts', function(dataset){
+        if (dataset.length>0){
+            self.articleWrapper.html(dataset.item(dataset.length-1).content).addClass('offlineContent')
+        }
+    });
 };
 
 page_editor.prototype.init = function(){
@@ -119,10 +147,11 @@ page_editor.prototype.init = function(){
     $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
     $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
 
-//navigator.onLine
     $(window).bind('online', function(){ self.onlineMode(); });
     $(window).bind('offline', function(){ self.offlineMode(); });
     if (!navigator.onLine){ self.offlineMode(); }
+
+    this.loadOfflineContent();
 };
 
-var PM = new page_editor()
+new page_editor();
