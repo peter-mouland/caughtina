@@ -5,29 +5,29 @@ block mainContent
 
         include partials/post-header
 
-        #recent_articles.wrapper
+        #recent_articles
             -page = ciadc.paged('posts', this_page);
             -pageItems = page.items;
             -for (var i = 0; i<pageItems.length;i++)
                 -pageItem = pageItems[i];
                 article
-                    header
-                        h2
-                            a(href='/posts/' + pageItem.url) #{pageItem.title}
-                                -if (pageItem.subtitle)
-                                    small #{pageItem.subtitle}
-                        .time
-                            time(datetime="#{pageItem.published}", pubdate) #{ciadc.pretty_date(pageItem.published)}
-                    p #{pageItem.summary}
-                        a.more(href='/posts/' + pageItem.url) more
-                    -if (pageItem.tags)
-                        aside
-                            h3.at tags
-                            ul
-                                -for (var x=0; x<pageItem.tags.length;x++)
-                                    -tag = pageItem.tags[x];
-                                    li
-                                        a(href='/tags/' + tag.url) #{tag.title}
+                    .wrapper.clearfix
+                        header
+                            h2
+                                a(href='/posts/' + pageItem.url) #{pageItem.title}
+                                    -if (pageItem.subtitle)
+                                        small #{pageItem.subtitle}
+                            .time
+                                time(datetime="#{pageItem.published}", pubdate) #{ciadc.pretty_date(pageItem.published)}
+                        p #{pageItem.summary}
+                        -if (pageItem.tags)
+                            aside
+                                h3.at tags
+                                ul
+                                    -for (var x=0; x<pageItem.tags.length;x++)
+                                        -tag = pageItem.tags[x];
+                                        li
+                                            a(href='/tags/' + tag.url) #{tag.title}
             -if(page.count!==1)
                 h3.at navigate post pages
                 ul.navigator
@@ -41,7 +41,7 @@ block mainContent
                                 a(href='/page/' + page_number) #{page_number}
 
 
-    #recent_articles.wrapper.draft
+    #recent_articles_draft.wrapper.draft
         h2 draft articles not yet published
         section
             article
@@ -52,7 +52,6 @@ block mainContent
                     time(datetime="2012-06-26",pubdate="") 16th July 2012
               p Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.
                 | I found out a cool way of reliabily detecting orientation too!
-                a.more(href='/articles/responsive-design') more
               aside
                 h3.at tags
                 ul
@@ -71,7 +70,6 @@ block mainContent
                     .time
                         time(datetime="2012-06-26",pubdate="") 16th July 2012
                 p building a css3 carousel wasn't as easy as 1,2, css3.
-                    a.more(href='/articles/css-event-hooks')  more
                 aside
                     h3.at tags
                     ul

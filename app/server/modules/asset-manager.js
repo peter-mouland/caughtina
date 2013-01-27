@@ -20,9 +20,10 @@ AM.prototype.concatFiles = function() {
     return self.path;
 };
 
-AM.prototype.stylus = function(root){
-    return stylus.middleware({ src: root, compile: this.compile})
-}
+AM.prototype.stylus = function(config){
+    config.compile = this.compile
+    return stylus.middleware(config)
+};
 
 AM.prototype.compile = function(str, path) {
         return stylus(str)

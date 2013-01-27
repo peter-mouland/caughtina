@@ -1,4 +1,6 @@
-var asset_manager = require('./server/modules/asset-manager');
+var asset_manager = require('./server/modules/asset-manager'),
+stylus = require('stylus'),
+    nib = require('nib');
 
 module.exports = function(app, exp) {
 
@@ -39,7 +41,7 @@ module.exports = function(app, exp) {
         app.use(app.router);
         app.use(exp.logger('dev'));
         app.use(exp.methodOverride());
-        app.use(css_manager.stylus(app.root + app.public));
+        app.use(css_manager.stylus({ src: __dirname + '/server/assets',dest: __dirname + '/public'}));
         app.use(exp.favicon(app.root + app.public + '/favicon.ico', {maxAge: 86400000}));
     });
 

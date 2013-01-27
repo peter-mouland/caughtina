@@ -7,7 +7,7 @@
 
 /*vars*/
 main-color = rgb(255,222,169);
-header-shadow = rgba(0,0,0,0.75)
+header-shadow = rgba(0,0,0,0.75);
 
 
 
@@ -19,16 +19,23 @@ table{border-collapse:separate;border-spacing:0;vertical-align:middle}
 caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
 footer,aside,section,article,nav,header,figure{display:block; margin:0;padding:0;}
 html,body{height: 100%;}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
 body{
   font-family: helvetica,'Georgia';
   color:darken(#F2E4D5,27.5%);
-  /*background: url("/images/bg_retina.jpg") center bottom no-repeat fixed ;*/
-    /* change background image to design style guide */
-  background-size:cover;
+  background:#d9ccb9;
+
 }
 a{
     text-decoration: none;
-    color: #A0AFAC;
+    color: #017890;
 }
 a:hover,a:focus{
     text-decoration: underline;
@@ -43,32 +50,35 @@ h1,h2, dt, code.site{
     font-family: 'Quicksand';
 }
 
-body{
-    background: url('/images/bg_laptop.JPG') center 0 no-repeat;
-    background-size:cover; background-attachment: fixed;
+h2 small,
+h1 small{
+    font-family: helvetica;
+    font-weight: normal;
 }
 
-
 /* layout : all pages */
+
+.wrapper{
+    width: (920/960)*100%;
+    padding: 20px (20/960)*100%;
+    background: #613d2d;
+}
+
+article:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
 #content{
     width: 960px; margin: 0 auto; position: relative;
 }
-.wrapper{
-    background:header-shadow;
-    padding: 20px;
-    border: 0 solid #d48300;
-    border-top-width: 1px;
-    section{
-        width: 650px;
-    }
-}
-.main_wrapper{
-    padding:1pc 2pc;
-    clear: both;
-}
 
 .draft{ display:none;}
-small{ font-size: 0.5em; font-style: italic; margin-left: 1em;}
+small{ font-size: 0.5em; margin-left: 1em;}
 
 ul.references{
     list-style: decimal;
@@ -112,4 +122,21 @@ code {
     &.shown{
         display:block;
     }
+}
+
+
+a.mainLink{
+    border-bottom: 4px solid transparent;
+    padding: 10px 20px;
+    text-decoration: none;
+    &:focus,
+    &:hover{
+        background:rgb(0, 0, 0);
+        color: darken(#F2E4D5,50%);
+        border-color: #017890; /*light blue 8fbcdb*/
+    }
+}
+
+.rightColumn{
+    width: 200px;
 }

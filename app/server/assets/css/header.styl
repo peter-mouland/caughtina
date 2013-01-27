@@ -1,0 +1,125 @@
+#site_header{
+    overflow: auto;
+    border: 0px solid header-shadow;
+    border-bottom: 4px solid #D48300;
+    font-family: 'Quicksand';
+    font-size: 3em;
+    padding:0;
+    position:relative;
+    background: rgba(0,0,0,0);
+    -webkit-transition:background 1s ease-out;
+    -moz-transition:background 1s ease-out;
+    -o-transition:background 1s ease-out;
+    -ms-transition: background 1s ease-out;
+    transition:background 1s ease-out;
+
+    hgroup{
+        width:240px;
+        float:left;
+        padding-right:3px;
+
+        .site_name{
+            margin: 0pc;
+            font-size: 1.2em;
+            text-align: justify;
+            letter-spacing: -8px;
+            word-spacing: 10px;
+            color:#d48300;
+        }
+        .tag_line{
+            display: none;;
+            font-size: 0.35em;
+            text-align: center;
+            margin-bottom: 20px;
+            margin: 0 auto;
+            margin-bottom: 2em;
+            overflow: visible;
+        }
+
+    }
+    a.mainLink{
+        float: left;
+    }
+    ul {
+        overflow:auto;
+        float: left;
+        line-height: 2em;
+
+        li{
+            float:left;
+            font-size: 0.4em;
+            a{
+                padding:20px;
+                color: #017890;
+                display: block;
+            }
+        }
+    }
+    form#search{
+        display:none;
+        position: absolute; bottom: 0px; right:0;border-radius: 15px 15px 0 0;
+        padding: 0.5em 30px;
+        background:rgba(0, 0, 0, 0.5);
+        line-height: 1px;
+        font-size: 0.4em;
+        input[type=search]{
+            width:150px;
+        }
+    }
+    form#login{
+        float: right;
+        text-align: right;
+        line-height: 1.5em;
+        font-size: 0.45em;
+        padding: 10px 20px;
+        color: #d48300;
+
+        input{
+            display: block;
+            width: 92%;
+            padding: 4px 3%;
+            &[type=submit]{
+                width:100%;
+            }
+        }
+    }
+}
+
+#page_header{
+    text-align: left;
+    position: relative;
+    border: 0;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px;
+    color: #D48300;
+    -webkit-transition:background 1s ease-out;
+    -moz-transition:background 1s ease-out;
+    -o-transition:background 1s ease-out;
+    -ms-transition: background 1s ease-out;
+    transition:background 1s ease-out;
+    .time{
+        font-size: 0.4em;
+        font-weight: normal;
+    }
+}
+
+.authorProfile{
+    float: right;
+    margin: 20px;
+    width:200px;
+    color: #D48300;
+    img{
+        border-bottom: 2px solid #D48300;
+    }
+    small{
+        display:block;
+        margin:0;
+        color: #D4A775;
+        font-size: 0.75em;
+        a{
+            display:block;
+        }
+    }
+}
+

@@ -27,5 +27,5 @@ require('./app/config')(app, express);
 require('./app/server/router')(app);
 
 app.listen(process.env.PORT || 3000, function(){
-//    console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+    console.log("Express server listening on port %d in %s mode", process.env.PORT || 3000, app.settings.env);
 });

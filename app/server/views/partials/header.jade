@@ -1,29 +1,28 @@
-#site_header.wrapper
+#site_header
     header(role='banner')
-        hgroup
-            h2.site_name caught in a dot com
-            h3.tag_line diary of web geek
+        a.mainLink(href='/')
+            hgroup
+                h2.site_name caught in a dot com
+                h3.tag_line diary of web geek
 
         nav(role='navigation')
             h2.at Site Navigation
             ul
                 li
-                    a(href='/') all posts
+                    a.mainLink(href='/tags/css') css
                 li
-                    a(href='/tags/css') css
+                    a.mainLink(href='/tags/html') html
                 li
-                    a(href='/tags/html') html
+                    a.mainLink(href='/tags/js') js
                 li
-                    a(href='/tags/js') js
-                li
-                    a(href='/tags/accessibility') accessibility
+                    a.mainLink(href='/tags/accessibility') accessibility
 
             form#search(role='search')
                 input(type='search',value='',placeholder='e.g. js+transitions',results='10',autosave='ciadc_search')
                 input(type='submit',value='search')
 
         -if (user)
-            form#login.loggedin(method='post',action='/login')
+            form#login.loggedin.rightColumn(method='post',action='/login')
                 -if (updateable)
                     a.button#save-page update
                 -else if (editable)
@@ -31,8 +30,8 @@
                 a.button#logout(href='/logout') logout
 
         -if (!user)
-            form#login.notloggedin(method='post',action='/login')
-                a.button.login(href='#login') user login
+            form#login.notloggedin.rightColumn(method='post',action='/login')
+                .login(href='#login') user login
                 input(name='user', placeholder='username')
                 input(name='pass', type='password', placeholder='password')
                 input(type='submit', value='login')

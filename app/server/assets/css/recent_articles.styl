@@ -8,21 +8,6 @@ html[xmlns] #recent_articles  article{
 
 
 #recent_articles{
-    article{
-        display: inline-block;
-        width: 100%;
-        padding: 20px 0;
-        background: rgba(0,0,0,0.5);
-        border-radius:20px;
-    }
-    article:after {
-        content: ".";
-        display: block;
-        clear: both;
-        visibility: hidden;
-        line-height: 0;
-        height: 0;
-    }
     header{
         width: 50%;
         float: left;
@@ -30,7 +15,6 @@ html[xmlns] #recent_articles  article{
     h2{ margin: 0.75em 0;
         text-align: right;
         font-size: 1.6em;
-        text-shadow:1px 1px 1px darken(#A0AFAC, 33%);
         padding-right:20px;
         small{
             display:block;
@@ -49,20 +33,19 @@ html[xmlns] #recent_articles  article{
         left: 50%;
         top: 24px;
         font-size:0.875em;
-        color: darken(main-color, 66%);
+        color: #F2E4D5;
     }
     aside{
         position: absolute;top: 24px; left:0; width:50%; text-align: right;
         font-size:0.875em;
         li{ display:inline; padding-right: 20px }
         a{
-            color: darken(#A0AFAC, 40%);
+            color: lighten(#677a76, 30%);
         }
     }
     p{ color: darken(#F2E4D5, 40%);
         padding-top: 1.5em;width: 50%;
         float: right;
-        .more{float:right;font-size: 0.875em; color: darken(#A0AFAC, 33%); padding-right: 20px;}
     }
     ul.navigator{
         li{
