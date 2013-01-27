@@ -2,35 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/js/lib/jquery-1.9.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/js/lib/jquery-2.0.0b.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/public/css/app.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/public/js/app.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/app.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/app.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/articles.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/articles.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/contenteditable.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/contenteditable.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/devices.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/devices.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/footer.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/footer.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/global.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/global.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/header.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/header.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/css/recent_articles.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/modules/asset-manager.js" afterPath="$PROJECT_DIR$/app/server/modules/asset-manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.js" afterPath="$PROJECT_DIR$/app/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/partials/footer.jade" afterPath="$PROJECT_DIR$/app/server/views/partials/footer.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/assets/css/global.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/global.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/partials/header.jade" afterPath="$PROJECT_DIR$/app/server/views/partials/header.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/index.jade" afterPath="$PROJECT_DIR$/app/server/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/json/index.json" afterPath="$PROJECT_DIR$/app/server/json/index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/posts/layout.jade" afterPath="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/js/modules/navigation-manager.js" afterPath="$PROJECT_DIR$/app/public/js/modules/navigation-manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/partials/profile-peter-mouland.jade" afterPath="$PROJECT_DIR$/app/server/views/partials/profile-peter-mouland.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/router.js" afterPath="$PROJECT_DIR$/app/server/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/assets/css/header.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/header.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/partials/post-header.jade" afterPath="$PROJECT_DIR$/app/server/views/partials/post-header.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359212081795" ignored="false" />
+    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359300014442" ignored="false" />
     <file path="/utils.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357394904649" ignored="false" />
     <file path="/app.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357402301279" ignored="false" />
     <file path="/index.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359296792370" ignored="false" />
@@ -41,15 +23,15 @@
     <file path="$PROJECT_DIR$/../stylus/views/stylesheets/style2.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359213113831" ignored="false" />
     <file path="/style2.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359213106560" ignored="false" />
     <file path="$PROJECT_DIR$/../stylus/views/layout.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359213307202" ignored="false" />
-    <file path="/header.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359294914549" ignored="false" />
-    <file path="/a.dummy" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359299311094" ignored="false" />
-    <file path="/post-header.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359224061144" ignored="false" />
-    <file path="/global.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359299678977" ignored="false" />
-    <file path="/recent_articles.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359298921479" ignored="false" />
+    <file path="/header.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359307879884" ignored="false" />
+    <file path="/a.dummy" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359306521260" ignored="false" />
+    <file path="/post-header.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359306530512" ignored="false" />
+    <file path="/global.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359300274830" ignored="false" />
+    <file path="/recent_articles.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359307417785" ignored="false" />
     <file path="/router.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359283741532" ignored="false" />
     <file path="/client-side-kickstart-document-flow.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359283675710" ignored="false" />
     <file path="/client-side-kickstart-design-to-web.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359283671454" ignored="false" />
-    <file path="/header.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359291695825" ignored="false" />
+    <file path="/header.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359305875945" ignored="false" />
     <file path="/profile-peter-mouland.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359290414070" ignored="false" />
     <file path="/articles.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359290941422" ignored="false" />
     <file path="/footer.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359294148204" ignored="false" />
@@ -114,7 +96,7 @@
       <file leaf-file-name="header.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/views/partials/header.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
+            <state line="14" column="30" selection-start="428" selection-end="439" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,16 +105,16 @@
       <file leaf-file-name="post-header.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+            <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="global.styl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="global.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/assets/css/global.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="9" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.6239601">
+            <state line="129" column="8" selection-start="2819" selection-end="2821" vertical-scroll-proportion="-10.576923">
               <folding />
             </state>
           </provider>
@@ -182,7 +164,7 @@
       <file leaf-file-name="recent_articles.styl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/assets/css/recent_articles.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="5" selection-start="986" selection-end="986" vertical-scroll-proportion="-14.538462">
+            <state line="8" column="0" selection-start="115" selection-end="133" vertical-scroll-proportion="9.115385">
               <folding />
             </state>
           </provider>
@@ -197,10 +179,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.styl" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="header.styl" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/server/assets/css/header.styl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="9" selection-start="2578" selection-end="2583" vertical-scroll-proportion="-13.807693">
+            <state line="177" column="5" selection-start="3601" selection-end="3601" vertical-scroll-proportion="0.5408163">
               <folding />
             </state>
           </provider>
@@ -231,16 +213,16 @@
         <option value="$PROJECT_DIR$/app/server/assets/css/articles.styl" />
         <option value="$PROJECT_DIR$/app/server/views/partials/profile-peter-mouland.jade" />
         <option value="$PROJECT_DIR$/app/public/js/modules/navigation-manager.js" />
-        <option value="$PROJECT_DIR$/app/server/views/partials/post-header.jade" />
         <option value="$PROJECT_DIR$/app/server/json/index.json" />
         <option value="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
-        <option value="$PROJECT_DIR$/app/server/assets/css/header.styl" />
         <option value="$PROJECT_DIR$/app/server/views/partials/footer.jade" />
-        <option value="$PROJECT_DIR$/app/server/views/partials/header.jade" />
         <option value="$PROJECT_DIR$/app/server/views/index.jade" />
-        <option value="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" />
         <option value="$PROJECT_DIR$/app/server/assets/css/footer.styl" />
         <option value="$PROJECT_DIR$/app/server/assets/css/global.styl" />
+        <option value="$PROJECT_DIR$/app/server/views/partials/header.jade" />
+        <option value="$PROJECT_DIR$/app/server/views/partials/post-header.jade" />
+        <option value="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" />
+        <option value="$PROJECT_DIR$/app/server/assets/css/header.styl" />
       </list>
     </option>
   </component>
@@ -979,7 +961,11 @@
       <created>1350606886505</created>
       <updated>1350606886506</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="redesign. now much simpler look + feel. brown. very brown :s">
+      <created>1359300038174</created>
+      <updated>1359300038174</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1008,21 +994,21 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20715037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32563025" sideWeight="0.4406365" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32563025" sideWeight="0.42839658" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32563025" sideWeight="0.56731945" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277311" sideWeight="0.49510404" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1878825" sideWeight="0.67436975" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32563025" sideWeight="0.5550796" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38445377" sideWeight="0.6346389" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277311" sideWeight="0.49510404" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38445377" sideWeight="0.6315789" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1067,7 +1053,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add offline-content loading + status messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="redesign. now much simpler look + feel. brown. very brown :s" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1080,7 +1066,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="update package + remove unused modules" />
     <MESSAGE value="add mongo + disable admin pages" />
     <MESSAGE value="restructure" />
     <MESSAGE value="add data files back in" />
@@ -1105,6 +1090,7 @@
     <MESSAGE value="add online/offline messages" />
     <MESSAGE value="small refactor of client js" />
     <MESSAGE value="add offline-content loading + status messages" />
+    <MESSAGE value="redesign. now much simpler look + feel. brown. very brown :s" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1173,16 +1159,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
+    <entry file="file://$PROJECT_DIR$/app/server/assets/css/footer.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+        <state line="24" column="30" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/views/partials/header.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
+        <state line="14" column="30" selection-start="428" selection-end="439" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/server/assets/css/global.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="8" selection-start="2819" selection-end="2821" vertical-scroll-proportion="-10.576923">
           <folding />
         </state>
       </provider>
@@ -1203,28 +1203,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/assets/css/recent_articles.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="5" selection-start="986" selection-end="986" vertical-scroll-proportion="-14.538462">
+        <state line="8" column="0" selection-start="115" selection-end="133" vertical-scroll-proportion="9.115385">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/assets/css/header.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="9" selection-start="2578" selection-end="2583" vertical-scroll-proportion="-13.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/server/assets/css/footer.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="30" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/server/assets/css/global.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="9" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.6239601">
+        <state line="177" column="5" selection-start="3601" selection-end="3601" vertical-scroll-proportion="0.5408163">
           <folding />
         </state>
       </provider>
