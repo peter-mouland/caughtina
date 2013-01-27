@@ -7,7 +7,17 @@
     color: #F2E4D5;
     clear:both;
     h2 { float:right;  margin:0; }
-    ul li { display:inline; }
+    ul {
+        overflow: hidden;
+        li {
+            border-left:1px solid #000;
+            padding-left: 20px;
+            margin-left: 20px;
+            display:inline;
+            position: relative;
+            left: -41px;
+        }
+    }
 }
 
 ul.nav_posts{

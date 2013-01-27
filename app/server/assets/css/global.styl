@@ -74,7 +74,12 @@ article:after {
 }
 
 #content{
-    max-width: 960px; margin: 0 auto; position: relative;
+    width: 1064px; margin: 0 auto; position: relative;
+}
+.responsive #content{
+    width: auto;
+    max-width: 1064px;
+    min-width: 320px;
 }
 
 .draft{ display:none;}
@@ -127,7 +132,7 @@ code {
 
 a.mainLink{
     border-bottom: 4px solid transparent;
-    padding: 10px 20px;
+    padding: 10px 2.083333333333333%;
     text-decoration: none;
     float: left;
 

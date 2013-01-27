@@ -4,9 +4,10 @@
     border-bottom: 4px solid #D48300;
     font-family: 'Quicksand';
     font-size: 3em;
-    padding:0;
+    padding-top:0;
+    padding-bottom:0;
     position:relative;
-    background: rgba(0,0,0,0);
+    background: none;
     -webkit-transition:background 1s ease-out;
     -moz-transition:background 1s ease-out;
     -o-transition:background 1s ease-out;
@@ -125,61 +126,65 @@ form#login{
 }
 
 @media (max-width: 900px){
-    #site_header ul {
-        padding-top: 1em;
-        line-height: 1em;
-        float: right;
-    }
-    form#login{
-        position: absolute;
-        right:0;
-        width:95%;
-        div,
-        input,
-        input[type=submit]{
-            display:inline;
-            width: auto;
-            padding: 4px 1%;
+    body.responsive{
+        #site_header ul {
+            padding-top: 1em;
+            line-height: 1em;
+            float: right;
+        }
+        form#login{
+            position: absolute;
+            right:0;
+            width:95%;
+            div,
+            input,
+            input[type=submit]{
+                display:inline;
+                width: auto;
+                padding: 4px 1%;
+            }
         }
     }
-
 }
 
 @media (max-width: 750px){
-    #site_header {
-        .login{
-            display:none;
-        }
-        hgroup {
-            width:167px;
-            .site_name{
-                letter-spacing:-4px;
-                font-size: 0.75em;
+    body.responsive{
+        #site_header {
+            .login{
+                display:none;
+            }
+            hgroup {
+                width:167px;
+                .site_name{
+                    letter-spacing:-4px;
+                    font-size: 0.75em;
+                }
+            }
+            ul li a{
+                padding:0 20px;
             }
         }
-        ul li a{
-            padding:0 20px;
+        #page_header{
+            font-size: 1.5em;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
-    }
-    #page_header{
-        font-size: 1.5em;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    a.mainLink{
-        padding:12px 20px;
-    }
-    .authorProfile{
-        width:25%;
-        min-width: 125px;
-    }
-    article h2{
-        line-height: 1em;
+        a.mainLink{
+            padding-top:12px;
+            padding-bottom:12px;
+        }
+        .authorProfile{
+            width:25%;
+            min-width: 125px;
+        }
+        article h2{
+            line-height: 1em;
+        }
     }
 }
 
 @media (max-width: 600px){
-    body{
+    body.responsive{
 
         #recent_articles header h2,
         #recent_articles header,
@@ -228,7 +233,7 @@ form#login{
 
 
 @media (max-width: 480px){
-    body{
+    body.responsive{
         .clear_bp480{
             clear: left;
         }
@@ -238,7 +243,7 @@ form#login{
             }
             a.mainLink{
                line-height:1em;
-                padding: 5px 0;
+                padding: 4px 0;
             }
         }
     }

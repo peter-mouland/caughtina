@@ -1,4 +1,4 @@
-//$ cd DevRoot/heroku/caughtina/
+//$ cd ~/DevRoot/heroku/caughtina/
 //$ git push heroku-caughtina
 //$ heroku logs --app caughtina
 //$ mongod
