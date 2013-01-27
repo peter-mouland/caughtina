@@ -11,12 +11,12 @@ body{font-family:helvetica,'Georgia';color:#d4a775;background:#d9ccb9}
 a{text-decoration:none;color:#017890}
 a:hover,a:focus{text-decoration:underline}
 .at{position:absolute;clip:rect(0 0 0 0);clip:rect(1px,1px,1px,1px)}
-h1,h2,dt,code.site{font-family:'Quicksand'}
+h1,h2,dt{font-family:'Quicksand';font-weight:normal}
 h2 small,h1 small{font-family:helvetica;font-weight:normal}
 .wrapper{width:95.83333333333334%;padding:20px 2.083333333333333%;background:#613d2d}
 article:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
 #content{width:1064px;margin:0 auto;position:relative}
-.responsive #content{width:auto;max-width:1064px;min-width:320px}
+.responsive #content{width:auto;max-width:1064px;min-width:320px;overflow:hidden}
 .draft{display:none}
 small{font-size:.5em;margin-left:1em}
 ul.references{list-style:decimal;padding:20px}
@@ -49,7 +49,8 @@ form#login input[type=submit]{width:100%}
 @media (max-width: 900px){body.responsive #site_header ul{padding-top:1em;line-height:1em;float:right}
 body.responsive form#login{position:absolute;right:0;width:95%;}
 body.responsive form#login div,body.responsive form#login input,body.responsive form#login input[type=submit]{display:inline;width:auto;padding:4px 1%}
-}@media (max-width: 750px){body.responsive #site_header .login{display:none}
+body.responsive form#login input{width:115px}
+}@media (max-width: 768px){body.responsive #site_header .login{display:none}
 body.responsive #site_header hgroup{width:167px;}
 body.responsive #site_header hgroup .site_name{letter-spacing:-4px;font-size:.75em}
 body.responsive #site_header ul li a{padding:0 20px}
@@ -66,6 +67,7 @@ body.responsive form#login{display:none;width:200px;}
 body.responsive form#login input{display:block}
 body.responsive #page_header h1 small{display:block;margin:0}
 }@media (max-width: 480px){body.responsive .clear_bp480{clear:left}
+body.responsive #site_header header .site_name{font-size:.65em}
 body.responsive #site_header ul li{width:50%}
 body.responsive #site_header a.mainLink{line-height:1em;padding:4px 0}
 }#site_footer{color:#ffdea9;border-top:1px solid #d48300;font-size:1em;overflow:auto;color:#f2e4d5;clear:both;}
@@ -93,12 +95,12 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles aside a{color:#93a4a0}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right}
 #recent_articles ul.navigator li{display:inline;margin:0 4px}
-article h2{letter-spacing:2px;font-weight:bold;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
+article h2{letter-spacing:2px;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
 article h2:first-child{margin:0}
 article h3{margin-top:1em}
 article h3,article dt{color:#d48300;font-size:1em}
 article p,article dd{margin:0 0 20px;line-height:1.5em;text-align:justify}
-article code.complete{padding:10px 20px;display:block}
+article code.complete{padding:10px 20px;display:block;margin:10px 0;overflow:auto}
 article dl.contentList{clear:both;overflow:auto;}
 article dl.contentList dt{float:left;clear:left;line-height:1.5em;margin-right:12px}
 article dl.contentList dd{margin:0}

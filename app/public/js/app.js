@@ -335,7 +335,14 @@ offline_storage.prototype.resetForm = function(){
 //    id.value = '';
 };
 
-var OS = new offline_storage('posts');
+var OS;
+if (typeof openDatabase!='undefined') {
+    OS = new offline_storage('posts');
+} else {
+    OS = {
+        showRecords: function(){}
+    }
+}
 
 //var cache = window.applicationCache;
 //
