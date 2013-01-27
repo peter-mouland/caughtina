@@ -14,7 +14,7 @@ a:hover,a:focus{text-decoration:underline}
 h1,h2,dt{font-family:'Quicksand';font-weight:normal}
 h2 small,h1 small{font-family:helvetica;font-weight:normal}
 .wrapper{width:95.83333333333334%;padding:20px 2.083333333333333%;background:#613d2d}
-article:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
+.article:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
 #content{width:1064px;margin:0 auto;position:relative}
 .responsive #content{width:auto;max-width:1064px;min-width:320px;overflow:hidden}
 .draft{display:none}
@@ -29,9 +29,9 @@ a.mainLink{border-bottom:4px solid transparent;padding:10px 2.083333333333333%;t
 a.mainLink:focus,a.mainLink:hover{background:#000;color:#ae7436;border-color:#017890;}
 .rightColumn{width:200px}
 #site_header{overflow:auto;border:0 solid rgba(0,0,0,0.75);border-bottom:4px solid #d48300;font-family:'Quicksand';font-size:3em;padding-top:0;padding-bottom:0;position:relative;background:none;-webkit-transition:background 1s ease-out;-moz-transition:background 1s ease-out;-o-transition:background 1s ease-out;-ms-transition:background 1s ease-out;transition:background 1s ease-out;}
-#site_header hgroup{width:240px;float:left;padding-right:3px;}
-#site_header hgroup .site_name{margin:0;font-size:1.2em;text-align:justify;letter-spacing:-8px;word-spacing:10px;color:#d48300}
-#site_header hgroup .tag_line{display:none;font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
+#site_header .hgroup{width:240px;float:left;padding-right:3px;}
+#site_header .hgroup .site_name{margin:0;font-size:1.2em;text-align:justify;letter-spacing:-8px;word-spacing:10px;color:#d48300}
+#site_header .hgroup .tag_line{display:none;font-size:.35em;text-align:center;margin-bottom:20px;margin:0 auto;margin-bottom:2em;overflow:visible}
 #site_header ul{overflow:auto;float:left;line-height:2em;}
 #site_header ul li{float:left;font-size:.4em;}
 #site_header ul li a{float:none;color:#017890;display:block;padding:20px;text-align:center}
@@ -51,23 +51,23 @@ body.responsive form#login{position:absolute;right:0;width:95%;}
 body.responsive form#login div,body.responsive form#login input,body.responsive form#login input[type=submit]{display:inline;width:auto;padding:4px 1%}
 body.responsive form#login input{width:115px}
 }@media (max-width: 768px){body.responsive #site_header .login{display:none}
-body.responsive #site_header hgroup{width:167px;}
-body.responsive #site_header hgroup .site_name{letter-spacing:-4px;font-size:.75em}
+body.responsive #site_header .hgroup{width:167px;}
+body.responsive #site_header .hgroup .site_name{letter-spacing:-4px;font-size:.75em}
 body.responsive #site_header ul li a{padding:0 20px}
 body.responsive #page_header{font-size:1.5em;padding-top:10px;padding-bottom:10px}
 body.responsive a.mainLink{padding-top:12px;padding-bottom:12px}
 body.responsive .authorProfile{width:25%;min-width:125px}
-body.responsive article h2{line-height:1em}
-}@media (max-width: 600px){body.responsive #recent_articles header h2,body.responsive #recent_articles header,body.responsive #recent_articles p{width:100%;float:none;padding:0;text-align:left;}
-body.responsive #recent_articles header h2 small,body.responsive #recent_articles header small,body.responsive #recent_articles p small{margin-left:0}
-body.responsive #site_header hgroup,body.responsive #site_header .site_name,body.responsive #site_header .mainLink{width:100%;padding-left:0;padding-right:0;text-align:center !important}
+body.responsive .article h2{line-height:1em}
+}@media (max-width: 600px){body.responsive #recent_articles .header h2,body.responsive #recent_articles .header,body.responsive #recent_articles p{width:100%;float:none;padding:0;text-align:left;}
+body.responsive #recent_articles .header h2 small,body.responsive #recent_articles .header small,body.responsive #recent_articles p small{margin-left:0}
+body.responsive #site_header .hgroup,body.responsive #site_header .site_name,body.responsive #site_header .mainLink{width:100%;padding-left:0;padding-right:0;text-align:center !important}
 body.responsive #site_header ul{clear:left;padding:0;float:none;}
 body.responsive #site_header ul li{width:25%}
 body.responsive form#login{display:none;width:200px;}
 body.responsive form#login input{display:block}
 body.responsive #page_header h1 small{display:block;margin:0}
 }@media (max-width: 480px){body.responsive .clear_bp480{clear:left}
-body.responsive #site_header header .site_name{font-size:.65em}
+body.responsive #site_header .header .site_name{font-size:.65em}
 body.responsive #site_header ul li{width:50%}
 body.responsive #site_header a.mainLink{line-height:1em;padding:4px 0}
 }#site_footer{color:#ffdea9;border-top:1px solid #d48300;font-size:1em;overflow:auto;color:#f2e4d5;clear:both;}
@@ -83,11 +83,11 @@ ul.nav_posts li.next{float:right;margin-left:-40px;}
 ul.nav_posts li.next a{border-radius:10px 0 0 0}
 html[xmlns] #recent_articles  article{display:block}
 * html #recent_articles article{height:1%}
-#recent_articles header{width:50%;float:left}
+#recent_articles .header{width:50%;float:left}
 #recent_articles h2{margin:.75em 0;text-align:right;font-size:1.6em;padding-right:20px;}
 #recent_articles h2 small{display:block;font-size:.625em}
-#recent_articles article{position:relative;clear:left;margin-bottom:20px;}
-#recent_articles article h2,#recent_articles article p{margin-bottom:0}
+#recent_articles .article{position:relative;clear:left;margin-bottom:20px;}
+#recent_articles .article h2,#recent_articles .article p{margin-bottom:0}
 #recent_articles section{width:100%}
 #recent_articles .time{position:absolute;left:50%;top:24px;font-size:.875em;color:#f2e4d5}
 #recent_articles aside{position:absolute;top:24px;left:0;width:50%;text-align:right;font-size:.875em;}
@@ -95,20 +95,20 @@ html[xmlns] #recent_articles  article{display:block}
 #recent_articles aside a{color:#93a4a0}
 #recent_articles p{color:#c78b4a;padding-top:1.5em;width:50%;float:right}
 #recent_articles ul.navigator li{display:inline;margin:0 4px}
-article h2{letter-spacing:2px;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
-article h2:first-child{margin:0}
-article h3{margin-top:1em}
-article h3,article dt{color:#d48300;font-size:1em}
-article p,article dd{margin:0 0 20px;line-height:1.5em;text-align:justify}
-article code.complete{padding:10px 20px;display:block;margin:10px 0;overflow:auto}
-article dl.contentList{clear:both;overflow:auto;}
-article dl.contentList dt{float:left;clear:left;line-height:1.5em;margin-right:12px}
-article dl.contentList dd{margin:0}
-article dd.hide{opacity:.25}
-article p.listStatement{margin:0}
-article figure{background:rgba(0,0,0,0.5);}
-article figure img{border-bottom:2px solid #d48300;display:block}
-article figure figcaption{padding:0 10px;font-style:italic;line-height:1.5em;font-size:.875em}
+.article h2{letter-spacing:2px;font-size:1.5em;color:#d48300;line-height:1.5em;margin-top:20px;}
+.article h2:first-child{margin:0}
+.article h3{margin-top:1em}
+.article h3,.article dt{color:#d48300;font-size:1em}
+.article p,.article dd{margin:0 0 20px;line-height:1.5em;text-align:justify}
+.article code.complete{padding:10px 20px;display:block;margin:10px 0;overflow:auto}
+.article dl.contentList{clear:both;overflow:auto;}
+.article dl.contentList dt{float:left;clear:left;line-height:1.5em;margin-right:12px}
+.article dl.contentList dd{margin:0}
+.article dd.hide{opacity:.25}
+.article p.listStatement{margin:0}
+.article figure{background:rgba(0,0,0,0.5);}
+.article figure img{border-bottom:2px solid #d48300;display:block}
+.article figure figcaption{padding:0 10px;font-style:italic;line-height:1.5em;font-size:.875em}
 #article p[contenteditable],#article h2[contenteditable],#article dt[contenteditable],#article dd[contenteditable]{z-index:2;border:1px dashed;position:relative;padding:4px;left:-4px;top:-4px;}
 #article p[contenteditable]:hover,#article h2[contenteditable]:hover,#article dt[contenteditable]:hover,#article dd[contenteditable]:hover{border-style:solid}
 #article p[contenteditable]:focus,#article h2[contenteditable]:focus,#article dt[contenteditable]:focus,#article dd[contenteditable]:focus{border-style:solid;background:#000;box-shadow:0 0 5px 5px #000}

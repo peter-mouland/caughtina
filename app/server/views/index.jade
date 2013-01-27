@@ -10,24 +10,26 @@ block mainContent
             -pageItems = page.items;
             -for (var i = 0; i<pageItems.length;i++)
                 -pageItem = pageItems[i];
-                article
-                    .wrapper.clearfix
-                        header
-                            h2
-                                a(href='/posts/' + pageItem.url) #{pageItem.title}
-                                    -if (pageItem.subtitle)
-                                        small #{pageItem.subtitle}
-                            .time
-                                time(datetime="#{pageItem.published}", pubdate) #{ciadc.pretty_date(pageItem.published)}
-                        p #{pageItem.summary}
-                        -if (pageItem.tags)
-                            aside
-                                h3.at tags
-                                ul
-                                    -for (var x=0; x<pageItem.tags.length;x++)
-                                        -tag = pageItem.tags[x];
-                                        li
-                                            a(href='/tags/' + tag.url) #{tag.title}
+                .article
+                    article
+                        .wrapper.clearfix
+                            .header
+                                header
+                                    h2
+                                        a(href='/posts/' + pageItem.url) #{pageItem.title}
+                                            -if (pageItem.subtitle)
+                                                small #{pageItem.subtitle}
+                                    .time
+                                        time(datetime="#{pageItem.published}", pubdate) #{ciadc.pretty_date(pageItem.published)}
+                            p #{pageItem.summary}
+                            -if (pageItem.tags)
+                                aside
+                                    h3.at tags
+                                    ul
+                                        -for (var x=0; x<pageItem.tags.length;x++)
+                                            -tag = pageItem.tags[x];
+                                            li
+                                                a(href='/tags/' + tag.url) #{tag.title}
             -if(page.count!==1)
                 h3.at navigate post pages
                 ul.navigator
@@ -44,63 +46,71 @@ block mainContent
     #recent_articles_draft.wrapper.draft
         h2 draft articles not yet published
         section
-            article
-              header
-                h2
-                  a(href='/articles/responsive-design') responsive design
-                .time
-                    time(datetime="2012-06-26",pubdate="") 16th July 2012
-              p Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.
-                | I found out a cool way of reliabily detecting orientation too!
-              aside
-                h3.at tags
-                ul
-                  li
-                    a(href='/tags/usability') usability
-                  li
-                    a(href='/tags/html5') css3
-                  li
-                    a(href='/tags/html5') javascript
-
-
-            article
-                header
-                    h2
-                        a(href='/articles/css-event-hooks') css transitions + browsers
-                    .time
-                        time(datetime="2012-06-26",pubdate="") 16th July 2012
-                p building a css3 carousel wasn't as easy as 1,2, css3.
-                aside
+            .article
+                article
+                  .header
+                      header
+                        h2
+                          a(href='/articles/responsive-design') responsive design
+                        .time
+                            time(datetime="2012-06-26",pubdate="") 16th July 2012
+                  p Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.
+                    | I found out a cool way of reliabily detecting orientation too!
+                  aside
                     h3.at tags
                     ul
-                        li
-                            a(href='/tags/css') css
-                        li
-                            a(href='/tags/js') js
+                      li
+                        a(href='/tags/usability') usability
+                      li
+                        a(href='/tags/html5') css3
+                      li
+                        a(href='/tags/html5') javascript
 
-            article
-                header
-                    h2
-                        a(href='#') javascript to upload files
-                    .time
-                        time(datetime="2012-06-26",pubdate="") 16th July 2012
-                p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
-                aside
-                    h3.at tags
+
+            .article
+                article
+                    .header
+                        header
+                            h2
+                                a(href='/articles/css-event-hooks') css transitions + browsers
+                            .time
+                                time(datetime="2012-06-26",pubdate="") 16th July 2012
+                    p building a css3 carousel wasn't as easy as 1,2, css3.
+                    aside
+                        h3.at tags
                         ul
+                            li
+                                a(href='/tags/css') css
                             li
                                 a(href='/tags/js') js
 
+            .article
+                article
+                    .header
+                        header
+                            h2
+                                a(href='#') javascript to upload files
+                            .time
+                                time(datetime="2012-06-26",pubdate="") 16th July 2012
+                    p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
+                    aside
+                        h3.at tags
+                            ul
+                                li
+                                    a(href='/tags/js') js
 
-            article
-                header
-                    h2
-                        a(href='#') keyboard users + drop downs
-                    .time
-                        time(datetime="2012-06-26",pubdate="") 16th July 2012
-                p tabbing through sites with hover events complicates what you thought about usin ARIA to just announce list titles and other hidden content.
-                aside
-                    h3.at tags
-                    ul
-                        li
-                            a(href='/tags/accessibility') accessibility
+
+            .article
+                article
+                    .header
+                        header
+                            h2
+                                a(href='#') keyboard users + drop downs
+                            .time
+                                time(datetime="2012-06-26",pubdate="") 16th July 2012
+                    p tabbing through sites with hover events complicates what you thought about usin ARIA to just announce list titles and other hidden content.
+                    aside
+                        h3.at tags
+                        ul
+                            li
+                                a(href='/tags/accessibility') accessibility

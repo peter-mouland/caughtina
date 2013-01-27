@@ -14,7 +14,7 @@
     -ms-transition: background 1s ease-out;
     transition:background 1s ease-out;
 
-    hgroup{
+    .hgroup{
         width:240px;
         float:left;
         padding-right:3px;
@@ -156,7 +156,7 @@ form#login{
             .login{
                 display:none;
             }
-            hgroup {
+            .hgroup {
                 width:167px;
                 .site_name{
                     letter-spacing:-4px;
@@ -180,7 +180,7 @@ form#login{
             width:25%;
             min-width: 125px;
         }
-        article h2{
+        .article h2{
             line-height: 1em;
         }
     }
@@ -189,8 +189,8 @@ form#login{
 @media (max-width: 600px){
     body.responsive{
 
-        #recent_articles header h2,
-        #recent_articles header,
+        #recent_articles .header h2,
+        #recent_articles .header,
         #recent_articles p{
             width:100%;
             float:none;
@@ -201,7 +201,7 @@ form#login{
             }
         }
         #site_header {
-            hgroup,
+            .hgroup,
             .site_name,
             .mainLink{
                 width: 100%;
@@ -241,7 +241,7 @@ form#login{
             clear: left;
         }
         #site_header {
-            header .site_name{
+            .header .site_name{
                 font-size: 0.65em;
             }
             ul li{

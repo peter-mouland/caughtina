@@ -1,38 +1,40 @@
 #site_header
-    header(role='banner')
-        a.mainLink(href='/')
-            hgroup
-                h2.site_name caught in a dot com
-                h3.tag_line diary of web geek
+    .header
+        header(role='banner')
+            a.mainLink(href='/')
+                .hgroup
+                    hgroup
+                        h2.site_name caught in a dot com
+                        h3.tag_line diary of web geek
 
-        nav(role='navigation')
-            h2.at Site Navigation
-            ul
-                li
-                    a.mainLink(href='/tags/css') css
-                li
-                    a.mainLink(href='/tags/html') html
-                li.clear_bp480
-                    a.mainLink(href='/tags/js') js
-                li
-                    a.mainLink(href='/tags/accessibility') accessibility
+            nav(role='navigation')
+                h2.at Site Navigation
+                ul
+                    li
+                        a.mainLink(href='/tags/css') css
+                    li
+                        a.mainLink(href='/tags/html') html
+                    li.clear_bp480
+                        a.mainLink(href='/tags/js') js
+                    li
+                        a.mainLink(href='/tags/accessibility') accessibility
 
-            form#search(role='search')
-                input(type='search',value='',placeholder='e.g. js+transitions',results='10',autosave='ciadc_search')
-                input(type='submit',value='search')
+                form#search(role='search')
+                    input(type='search',value='',placeholder='e.g. js+transitions',results='10',autosave='ciadc_search')
+                    input(type='submit',value='search')
 
-        -if (user)
-            form#login.loggedin.rightColumn(method='post',action='/login')
-                -if (updateable)
-                    a.button#save-page update
-                -else if (editable)
-                    a.button#edit-page(href='#{post.url}/edit') edit
-                a.button#logout(href='/logout') logout
+            -if (user)
+                form#login.loggedin.rightColumn(method='post',action='/login')
+                    -if (updateable)
+                        a.button#save-page update
+                    -else if (editable)
+                        a.button#edit-page(href='#{post.url}/edit') edit
+                    a.button#logout(href='/logout') logout
 
-        -if (!user)
-            form#login.notloggedin.rightColumn(method='post',action='/login')
-                .login(href='#login') user login
-                input(name='user', placeholder='username')
-                input(name='pass', type='password', placeholder='password')
-                input(type='submit', value='login')
+            -if (!user)
+                form#login.notloggedin.rightColumn(method='post',action='/login')
+                    .login(href='#login') user login
+                    input(name='user', placeholder='username')
+                    input(name='pass', type='password', placeholder='password')
+                    input(type='submit', value='login')
 

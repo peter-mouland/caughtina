@@ -1,8 +1,9 @@
 #page_header.wrapper
-    header
-        h1 #{post.title}
-            -if (post.subtitle)
-                small #{post.subtitle}
-        -if (post.published)
-            .time
-                time(datetime="#{post.published}", pubdate) #{ciadc.pretty_date(post.published)}
+    .header
+        header
+            h1 #{post.title}
+                -if (post.subtitle)
+                    small #{post.subtitle}
+            -if (post.published)
+                .time
+                    time(datetime="#{post.published}", pubdate) #{ciadc.pretty_date(post.published)}
