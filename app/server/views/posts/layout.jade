@@ -1,11 +1,20 @@
-doctype html
+!!! html
 html(lang="en", class="no-js")
     head
+        meta(charset='utf-8')
         title #{post.title}
         script
             document.getElementsByTagName('html')[0].setAttribute('class','');
         link(rel='stylesheet', href='/css/app.css')
-    body.responsive
+    //if lt IE 7
+        body.lt-ie7
+    //if IE 7
+        body.lt-ie8
+    //if IE 8
+        body.lt-ie9
+    //[if (gt IE 8)|!(IE)]><!
+    body(lang='en', class='responsive')
+        //<![end if]
         #content
             include ../partials/header
 

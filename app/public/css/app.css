@@ -46,30 +46,30 @@ form#login input[type=submit]{width:100%}
 .authorProfile img{border-bottom:2px solid #d48300}
 .authorProfile small{display:block;margin:0;color:#d4a775;font-size:.75em;}
 .authorProfile small a{display:block}
-@media (max-width: 900px){body.responsive #site_header ul{padding-top:1em;line-height:1em;float:right}
-body.responsive form#login{position:absolute;right:0;width:95%;}
-body.responsive form#login div,body.responsive form#login input,body.responsive form#login input[type=submit]{display:inline;width:auto;padding:4px 1%}
-body.responsive form#login input{width:115px}
-}@media (max-width: 768px){body.responsive #site_header .login{display:none}
-body.responsive #site_header .hgroup{width:167px;}
-body.responsive #site_header .hgroup .site_name{letter-spacing:-4px;font-size:.75em}
-body.responsive #site_header ul li a{padding:0 20px}
-body.responsive #page_header{font-size:1.5em;padding-top:10px;padding-bottom:10px}
-body.responsive a.mainLink{padding-top:12px;padding-bottom:12px}
-body.responsive .authorProfile{width:25%;min-width:125px}
-body.responsive .article h2{line-height:1em}
-}@media (max-width: 600px){body.responsive #recent_articles .header h2,body.responsive #recent_articles .header,body.responsive #recent_articles p{width:100%;float:none;padding:0;text-align:left;}
-body.responsive #recent_articles .header h2 small,body.responsive #recent_articles .header small,body.responsive #recent_articles p small{margin-left:0}
-body.responsive #site_header .hgroup,body.responsive #site_header .site_name,body.responsive #site_header .mainLink{width:100%;padding-left:0;padding-right:0;text-align:center !important}
-body.responsive #site_header ul{clear:left;padding:0;float:none;}
-body.responsive #site_header ul li{width:25%}
-body.responsive form#login{display:none;width:200px;}
-body.responsive form#login input{display:block}
-body.responsive #page_header h1 small{display:block;margin:0}
-}@media (max-width: 480px){body.responsive .clear_bp480{clear:left}
-body.responsive #site_header .header .site_name{font-size:.65em}
-body.responsive #site_header ul li{width:50%}
-body.responsive #site_header a.mainLink{line-height:1em;padding:4px 0}
+@media (max-width: 900px){.responsive #site_header ul{padding-top:1em;line-height:1em;float:right}
+.responsive form#login{position:absolute;right:0;width:95%;}
+.responsive form#login div,.responsive form#login input,.responsive form#login input[type=submit]{display:inline;width:auto;padding:4px 1%}
+.responsive form#login input{width:115px}
+}@media (max-width: 768px){.responsive #site_header .login{display:none}
+.responsive #site_header .hgroup{width:167px;}
+.responsive #site_header .hgroup .site_name{letter-spacing:-4px;font-size:.75em}
+.responsive #site_header ul li a{padding:0 20px}
+.responsive #page_header{font-size:1.5em;padding-top:10px;padding-bottom:10px}
+.responsive a.mainLink{padding-top:12px;padding-bottom:12px}
+.responsive .authorProfile{width:25%;min-width:125px}
+.responsive .article h2{line-height:1em}
+}@media (max-width: 600px){.responsive #recent_articles .header h2,.responsive #recent_articles .header,.responsive #recent_articles p{width:100%;float:none;padding:0;text-align:left;}
+.responsive #recent_articles .header h2 small,.responsive #recent_articles .header small,.responsive #recent_articles p small{margin-left:0}
+.responsive #site_header .hgroup,.responsive #site_header .site_name,.responsive #site_header .mainLink{width:100%;padding-left:0;padding-right:0;text-align:center !important}
+.responsive #site_header ul{clear:left;padding:0;float:none;}
+.responsive #site_header ul li{width:25%}
+.responsive form#login{display:none;width:200px;}
+.responsive form#login input{display:block}
+.responsive #page_header h1 small{display:block;margin:0}
+}@media (max-width: 480px){.responsive .clear_bp480{clear:left}
+.responsive #site_header .header .site_name{font-size:.65em}
+.responsive #site_header ul li{width:50%}
+.responsive #site_header a.mainLink{line-height:1em;padding:4px 0}
 }#site_footer{color:#ffdea9;border-top:1px solid #d48300;font-size:1em;overflow:auto;color:#f2e4d5;clear:both;}
 #site_footer h2{float:right;margin:0}
 #site_footer ul{overflow:hidden;}
