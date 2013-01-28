@@ -109,12 +109,12 @@ html[xmlns] #recent_articles  article{display:block}
 .article figure{background:rgba(0,0,0,0.5);}
 .article figure img{border-bottom:2px solid #d48300;display:block}
 .article figure figcaption{padding:0 10px;font-style:italic;line-height:1.5em;font-size:.875em}
-#article p[contenteditable],#article h2[contenteditable],#article dt[contenteditable],#article dd[contenteditable]{z-index:2;border:1px dashed;position:relative;padding:4px;left:-4px;top:-4px;}
-#article p[contenteditable]:hover,#article h2[contenteditable]:hover,#article dt[contenteditable]:hover,#article dd[contenteditable]:hover{border-style:solid}
-#article p[contenteditable]:focus,#article h2[contenteditable]:focus,#article dt[contenteditable]:focus,#article dd[contenteditable]:focus{border-style:solid;background:#000;box-shadow:0 0 5px 5px #000}
-#article p[draggable],#article h2[draggable],#article dt[draggable],#article dd[draggable]{cursor:move;-khtml-user-drag:element}
-#article p.dragging,#article h2.dragging,#article dt.dragging,#article dd.dragging{opacity:.5}
-#article .sortable-placeholder{display:block;height:3em}
+.article p[contenteditable],.article h2[contenteditable],.article dt[contenteditable],.article dd[contenteditable]{z-index:2;border:1px dashed;position:relative;padding:4px;left:-4px;top:-4px;}
+.article p[contenteditable]:hover,.article h2[contenteditable]:hover,.article dt[contenteditable]:hover,.article dd[contenteditable]:hover{border-style:solid}
+.article p[contenteditable]:focus,.article h2[contenteditable]:focus,.article dt[contenteditable]:focus,.article dd[contenteditable]:focus{border-style:solid;background:#000;box-shadow:0 0 5px 5px #000}
+.article p[draggable],.article h2[draggable],.article dt[draggable],.article dd[draggable]{cursor:move;-khtml-user-drag:element}
+.article p.dragging,.article h2.dragging,.article dt.dragging,.article dd.dragging{opacity:.5}
+.article .sortable-placeholder{display:block;height:3em}
 .edit-controls{display:none;position:absolute;margin-left:-20px;width:20px;border-style:solid;border-width:1px 0 1px 1px;box-shadow:0 0 5px 5px #000;background:#000;z-index:1;}
 .edit-controls span{display:block;text-align:center;line-height:20px;font-weight:bold;cursor:pointer;}
 .edit-controls span:hover{color:#fff}

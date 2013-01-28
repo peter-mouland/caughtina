@@ -376,9 +376,9 @@ var page_editor = function(){
     var self = this;
     $('#article').append($('<div class="edit-controls"><span class="plus">+</span><span class="minus">-</span></div>'));
     this.controls = $('div.edit-controls');
-    this.articleWrapper = $('#article div.wrapper');
+    this.articleWrapper = $('div.article div.copy');
     this.$login = $('#login')
-    this.editableTags = $('h2,p,dt,dd',this.articleWrapper);
+    this.editableTags = $('h2,p,dt',this.articleWrapper);
     this.adminUser = false;
 
     self.init()

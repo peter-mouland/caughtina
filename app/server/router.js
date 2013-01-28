@@ -65,7 +65,7 @@ module.exports = function(app) {
     app.get('/posts/:post', function(req, res){
         var locals = getLocals(req, 'posts', req.params.post),
             url = (locals.post) ? req.params.post : 'holding-page';
-//        locals.editable = true;
+        locals.editable = true;
         res.render('posts/' + url, locals);
     });
 
