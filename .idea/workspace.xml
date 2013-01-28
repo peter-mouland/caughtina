@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade" afterPath="$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/partials/header.jade" afterPath="$PROJECT_DIR$/app/server/views/partials/header.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/router.js" afterPath="$PROJECT_DIR$/app/server/router.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/public/css/app.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359334011464" ignored="false" />
+    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359334759235" ignored="false" />
     <file path="/utils.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357394904649" ignored="false" />
     <file path="/app.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357402301279" ignored="false" />
     <file path="/index.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359296792370" ignored="false" />
@@ -162,7 +160,7 @@
       <file leaf-file-name="caught-in-a-dot-com.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="1212" selection-end="1212" vertical-scroll-proportion="0.7706422">
+            <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.3027523">
               <folding>
                 <marker date="1359334644000" expanded="true" signature="24:1783" placeholder="..." />
                 <marker date="1359334644000" expanded="true" signature="122:171" placeholder="..." />
@@ -516,10 +514,6 @@
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="archive" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -584,6 +578,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caughtina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1083,7 +1099,11 @@
       <created>1359334016921</created>
       <updated>1359334016921</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="internal server errors. put up holding page + get about working again">
+      <created>1359334763974</created>
+      <updated>1359334763974</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1171,7 +1191,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="tablet. ensure site name fits on 2 lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="internal server errors. put up holding page + get about working again" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1184,7 +1204,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="disable drag until editing and dragging works together" />
     <MESSAGE value="change db connection for both localhost + mongoLab" />
     <MESSAGE value="add connect module" />
     <MESSAGE value="update connection config for prod" />
@@ -1209,6 +1228,7 @@
     <MESSAGE value="mobile. remove maximum scale to allow zooming" />
     <MESSAGE value="mobile. remove minimum scale to allow zooming (whoops)." />
     <MESSAGE value="tablet. ensure site name fits on 2 lines" />
+    <MESSAGE value="internal server errors. put up holding page + get about working again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1323,7 +1343,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1212" selection-end="1212" vertical-scroll-proportion="0.7706422">
+        <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.3027523">
           <folding>
             <marker date="1359334644000" expanded="true" signature="24:1783" placeholder="..." />
             <marker date="1359334644000" expanded="true" signature="122:171" placeholder="..." />
