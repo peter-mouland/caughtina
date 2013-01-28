@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="editing. fix after design changes">
+    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/layout.jade" afterPath="$PROJECT_DIR$/app/server/views/layout.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/views/posts/layout.jade" afterPath="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359331786102" ignored="false" />
+    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359331959260" ignored="false" />
     <file path="/utils.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357394904649" ignored="false" />
     <file path="/app.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357402301279" ignored="false" />
     <file path="/index.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359296792370" ignored="false" />
@@ -131,20 +131,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="layout.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/server/views/posts/layout.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="29" selection-start="78" selection-end="195" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="4" column="60" selection-start="139" selection-end="139" vertical-scroll-proportion="0.10752688">
+              <folding>
+                <marker date="1359332247000" expanded="true" signature="13:1025" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="48:350" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="219:298" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="524:1025" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="678:871" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/views/layout.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="87" selection-end="87" vertical-scroll-proportion="0.10752688">
-              <folding />
+            <state line="4" column="60" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1359332247000" expanded="true" signature="13:683" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="48:278" placeholder="..." />
+                <marker date="1359332247000" expanded="true" signature="452:683" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -200,8 +210,8 @@
         <option value="$PROJECT_DIR$/app/server/admin/updates/using-html5-in-production.html" />
         <option value="$PROJECT_DIR$/app/server/admin/updates/client-side-kickstart-document-flow.html" />
         <option value="$PROJECT_DIR$/app/public/js/modules/page-editor.js" />
-        <option value="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
         <option value="$PROJECT_DIR$/app/server/views/layout.jade" />
+        <option value="$PROJECT_DIR$/app/server/views/posts/layout.jade" />
       </list>
     </option>
   </component>
@@ -972,7 +982,11 @@
       <created>1359331776796</created>
       <updated>1359331776797</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="mobile. add viewports">
+      <created>1359331965479</created>
+      <updated>1359331965479</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1060,7 +1074,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="editing. fix after design changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile. add viewports" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1073,7 +1087,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="start to add edit controls" />
     <MESSAGE value="improve inline editing of text + improve 'add' element button" />
     <MESSAGE value="added delete element + improve save message positioning" />
     <MESSAGE value="added basic drag and drop of page elements" />
@@ -1098,6 +1111,7 @@
     <MESSAGE value="crossbrowser. ie classes" />
     <MESSAGE value="crossbrowser. ie classes fix" />
     <MESSAGE value="editing. fix after design changes" />
+    <MESSAGE value="mobile. add viewports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1203,17 +1217,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/server/views/posts/layout.jade">
+    <entry file="file://$PROJECT_DIR$/app/server/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="29" selection-start="78" selection-end="195" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="4" column="60" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1359332247000" expanded="true" signature="13:683" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="48:278" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="452:683" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/server/views/layout.jade">
+    <entry file="file://$PROJECT_DIR$/app/server/views/posts/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="87" selection-end="87" vertical-scroll-proportion="0.10752688">
-          <folding />
+        <state line="4" column="60" selection-start="139" selection-end="139" vertical-scroll-proportion="0.10752688">
+          <folding>
+            <marker date="1359332247000" expanded="true" signature="13:1025" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="48:350" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="219:298" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="524:1025" placeholder="..." />
+            <marker date="1359332247000" expanded="true" signature="678:871" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
