@@ -19,10 +19,6 @@
                     li
                         a.mainLink(href='/tags/accessibility') accessibility
 
-                form#search(role='search')
-                    input(type='search',value='',placeholder='e.g. js+transitions',results='10',autosave='ciadc_search')
-                    input(type='submit',value='search')
-
             -if (user)
                 form#login.loggedin.rightColumn(method='post',action='/login')
                     -if (updateable)

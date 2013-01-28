@@ -82,7 +82,7 @@ module.exports = function(app) {
     });
 
     app.get('/tags/:tag', function(req, res){
-        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false});
+        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : AM.getUser(req)});
     });
 
     app.get('/admin', function(req, res){
