@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="">
+    <list default="true" id="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" name="Default" comment="update css">
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/public/css/app.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/assets/css/footer.styl" afterPath="$PROJECT_DIR$/app/server/assets/css/footer.styl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="caughtina.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359334759235" ignored="false" />
+    <file path="/Dummy.txt" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359404426691" ignored="false" />
     <file path="/utils.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357394904649" ignored="false" />
     <file path="/app.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1357402301279" ignored="false" />
     <file path="/index.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359296792370" ignored="false" />
@@ -29,7 +30,7 @@
     <file path="/header.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359315059648" ignored="false" />
     <file path="/profile-peter-mouland.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359290414070" ignored="false" />
     <file path="/articles.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359319304203" ignored="false" />
-    <file path="/footer.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359309013281" ignored="false" />
+    <file path="/footer.styl" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359335585109" ignored="false" />
     <file path="/footer.jade" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359316314263" ignored="false" />
     <file path="/navigation-manager.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359318612361" ignored="false" />
     <file path="/offline-storage-manager.js" changelist="88ecb1c2-21a8-4ffa-b357-01b39f6a56db" time="1359322856484" ignored="false" />
@@ -116,7 +117,10 @@
         <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="47" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1359325263000" expanded="true" signature="47:312" placeholder="..." />
+                <marker date="1359325263000" expanded="true" signature="62:155" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,10 +161,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="caught-in-a-dot-com.jade" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="caught-in-a-dot-com.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.3027523">
+            <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1359334644000" expanded="true" signature="24:1783" placeholder="..." />
                 <marker date="1359334644000" expanded="true" signature="122:171" placeholder="..." />
@@ -173,11 +177,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="footer.styl" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/server/assets/css/footer.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="39" selection-start="282" selection-end="282" vertical-scroll-proportion="0.3364486">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="using-html5-in-production.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server/views/posts/using-html5-in-production.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1349025261000" expanded="true" signature="21:1341" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,7 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/server/assets/css/global.styl" />
         <option value="$PROJECT_DIR$/app/server/assets/css/recent_articles.styl" />
         <option value="$PROJECT_DIR$/app/server/views/partials/post-header.jade" />
         <option value="$PROJECT_DIR$/app/server/views/index-to-do.jade" />
@@ -217,6 +231,7 @@
         <option value="$PROJECT_DIR$/app/server/views/partials/header.jade" />
         <option value="$PROJECT_DIR$/app/server/router.js" />
         <option value="$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade" />
+        <option value="$PROJECT_DIR$/app/server/assets/css/footer.styl" />
       </list>
     </option>
   </component>
@@ -578,28 +593,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="caughtina" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="caughtina" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1103,7 +1096,11 @@
       <created>1359334763974</created>
       <updated>1359334763974</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="update css">
+      <created>1359334944362</created>
+      <updated>1359334944363</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1191,7 +1188,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="internal server errors. put up holding page + get about working again" />
+    <option name="LAST_COMMIT_MESSAGE" value="update css" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1204,7 +1201,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="change db connection for both localhost + mongoLab" />
     <MESSAGE value="add connect module" />
     <MESSAGE value="update connection config for prod" />
     <MESSAGE value="use correct env settings for node. duh." />
@@ -1229,6 +1225,7 @@
     <MESSAGE value="mobile. remove minimum scale to allow zooming (whoops)." />
     <MESSAGE value="tablet. ensure site name fits on 2 lines" />
     <MESSAGE value="internal server errors. put up holding page + get about working again" />
+    <MESSAGE value="update css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1236,13 +1233,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="0" selection-start="102278" selection-end="102278" vertical-scroll-proportion="0.24958402">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/server/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="27" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
@@ -1316,7 +1306,9 @@
     <entry file="file://$PROJECT_DIR$/app/server/views/posts/using-html5-in-production.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1349025261000" expanded="true" signature="21:1341" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,13 +1329,16 @@
     <entry file="file://$PROJECT_DIR$/app/server/views/partials/post-header.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="47" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1359325263000" expanded="true" signature="47:312" placeholder="..." />
+            <marker date="1359325263000" expanded="true" signature="62:155" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/views/about/caught-in-a-dot-com.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.3027523">
+        <state line="11" column="12" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1359334644000" expanded="true" signature="24:1783" placeholder="..." />
             <marker date="1359334644000" expanded="true" signature="122:171" placeholder="..." />
@@ -1352,6 +1347,13 @@
             <marker date="1359334644000" expanded="true" signature="1008:1210" placeholder="..." />
             <marker date="1359334644000" expanded="true" signature="1258:1783" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/server/assets/css/footer.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="39" selection-start="282" selection-end="282" vertical-scroll-proportion="0.3364486">
+          <folding />
         </state>
       </provider>
     </entry>
