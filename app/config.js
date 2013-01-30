@@ -5,9 +5,11 @@ stylus = require('stylus'),
 module.exports = function(app, exp) {
 
     var js_manager = new asset_manager(app.public + '/js/app.js',
-        [   app.public + '/js/lib/jquery-1.8.2.min.js',
+        [   app.public + '/js/lib/jquery-2.0.0b.js',
             app.public + '/js/lib/jquery.cookie.js',
-            app.public + '/js/lib/jquery.sortable.js',
+            app.public + '/js/lib/json2.js',
+            app.public + '/js/lib/underscore-min.js',
+            app.public + '/js/lib/backbone-min.js',
             app.public + '/js/modules/utils.js',
             app.public + '/js/modules/navigation-manager.js',
             app.public + '/js/modules/offline-storage-manager.js',
