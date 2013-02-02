@@ -22,7 +22,8 @@ PM.prototype.archive_directory = function(root, dir, callback){
             execute = "",
             filename = "",
             final = "",
-            len= files.length, f= 0;
+            len= files.length,
+            f= 0;
         zip.pipe(out);
 
         for (f; f<len; f++){
@@ -51,10 +52,10 @@ PM.prototype.update_file = function(req, file, callback){
             if (err) {   return console.log(err);        }
             fs.writeFile(newFile, originalData, function (err) {
                 if (err) {  return console.log(err); }
-                console.log(oldFile + ' copied to ' + newFile);
+//                console.log(oldFile + ' copied to ' + newFile);
                 fs.writeFile(oldFile, data, function (err) {
                     if (err) { return console.log(err);}
-                    console.log(oldFile + ' updated.');
+//                    console.log(oldFile + ' updated.');
                     callback();
 
                 });
@@ -63,6 +64,28 @@ PM.prototype.update_file = function(req, file, callback){
     });
 };
 
+PM.prototype.delete_files = function(root, dir, callback){
+    var execCallback = function(count){
+        if (typeof callback == 'function'){
+            callback(count);
+            return;
+        }
+    };
+    fs.readdir(root + '/' + dir + '/', function(err, files){
+        if (files.length<1){ return execCallback(0); }
+        var file,
+            len= files.length,
+            f= 0;
+        for (f; f<len; f++){
+            file = root + '/' + dir + '/' + files[f];
+            fs.unlink(file, function (err) {
+                if (err) throw err;
+//                console.log('successfully deleted ' + file);
+            });
+        }
+        execCallback(len);
+    });
+};
 
 
 PM.prototype.get_previous = function(type, current){

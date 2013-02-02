@@ -112,6 +112,21 @@ module.exports = function(app) {
     });
 
 
+
+    app.get('/admin/clearCache', function(req, res){
+        var user = AM.getUser(req);
+        if (!user || !user.is_admin){
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            res.end('not found');
+        } else {
+            PM.delete_files('app/public','posts',function(count){
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end('{"cleared":"' + count + '"}');
+            });
+        }
+    });
+
+
     app.get('/admin/archive', function(req, res){
         var user = AM.getUser(req);
         if (!user.is_admin){
@@ -120,6 +135,7 @@ module.exports = function(app) {
         } else {
             PM.archive_directory('app/server/admin','archive',function(){
                 res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end('{"archived":"true"}');
             });
         }
     });
