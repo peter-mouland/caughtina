@@ -4,23 +4,31 @@
     background: none;
     border-top: 1px solid #d48300;
     font-size: 1em;
-    overflow: auto;
+    overflow: hidden;
     clear:both;
+
+    footer {
+        overflow: hidden;
+    }
 
     h2 {
         float:right;
     }
     ul {
-        margin-left:-21px;
+        margin-left:-1px;
+        position:relative;
+        left:-2.083333333333333%;
         li {
             float: left;
-            a {
-                border-left:1px solid #613d2d;
-                padding-left: 20px;
-                margin-right: 20px;
-                display:inline;
-                position: relative;
-                float: left;
+            border-left:1px solid #613d2d;
+            padding:0 2.083333333333333%;
+        }
+        .linkedIn {
+            background: url(/images/LinkedIn-Logo-2C.png) no-repeat 0 0;
+            float: right;
+            border: 0; padding: 0;
+            a{
+                display: block; height: 24px; width: 100px;
             }
         }
     }
