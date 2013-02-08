@@ -6,17 +6,26 @@
     font-size: 1em;
     overflow: auto;
     clear:both;
-    h2 { float:right;  margin:0; }
+
+    h2 {
+        float:right;
+    }
     ul {
-        overflow: hidden;
+        margin-left:-21px;
         li {
-            border-left:1px solid #000;
-            padding-left: 20px;
-            margin-left: 20px;
-            display:inline;
-            position: relative;
-            left: -41px;
+            float: left;
+            a {
+                border-left:1px solid #613d2d;
+                padding-left: 20px;
+                margin-right: 20px;
+                display:inline;
+                position: relative;
+                float: left;
+            }
         }
+    }
+    h2, li{
+        margin: 0 0 1em 0;
     }
 }
 
@@ -27,7 +36,7 @@ ul.nav_posts{
     border-bottom: 4px solid #d48300;
     box-shadow: 0 20px 20px -10px #000;
     margin: 0 0 15px 0;
-    font-size:1.15em;
+    font-size: 1.15em;
     li{
         a{
             background: rgba(0,0,0,0.5);
