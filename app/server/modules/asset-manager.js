@@ -26,6 +26,7 @@ AM.prototype.stylus = function(config){
 };
 
 AM.prototype.compile = function(str, path) {
+    console.log('compiled css')
         return stylus(str)
             .set('filename', path)
             .set('compress', true)
