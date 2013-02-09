@@ -1,6 +1,5 @@
 var asset_manager = require('./server/modules/asset-manager'),
-stylus = require('stylus'),
-    nib = require('nib');
+stylus = require('stylus');
 
 module.exports = function(app, exp) {
 

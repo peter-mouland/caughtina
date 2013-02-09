@@ -1,5 +1,4 @@
 var FILE_ENCODING = 'utf-8',
-    nib = require('nib'),
     uglyfyJS = require('uglify-js'),
     stylus = require('stylus'),
     fs = require('fs'),
@@ -29,8 +28,7 @@ AM.prototype.compile = function(str, path) {
     console.log('compiled css')
         return stylus(str)
             .set('filename', path)
-            .set('compress', true)
-            .use(nib());
+            .set('compress', true);
 };
 
 AM.prototype.uglify = function () {

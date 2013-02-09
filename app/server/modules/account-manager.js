@@ -1,5 +1,4 @@
 var bcrypt = require('bcrypt'),
-    connect = require('connect'),
     mongo = require('mongodb'),
     Db = mongo.Db,
     Server = Db.Server,
