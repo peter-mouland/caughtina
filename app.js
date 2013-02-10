@@ -18,7 +18,7 @@
 //todo: add test accounts for pepole to play!
 
 var express = require('express'),
-    app = express.createServer();
+    app = express();
 
 app.root = __dirname + '/';
 app.public = 'app/public';

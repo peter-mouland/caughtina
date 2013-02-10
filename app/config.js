@@ -17,7 +17,6 @@ module.exports = function(app, exp) {
 
     app.configure(function(){
 
-
         app.set('views', app.root + 'app/server/views');
         app.set('view engine', 'jade');
         app.set('view options', { doctype : 'html', pretty : true });
@@ -25,7 +24,6 @@ module.exports = function(app, exp) {
 
         app.configure('development',function(){
             console.log(app.root)
-//            app.use(css_manager.stylus({ src: __dirname + '/server/assets',dest: __dirname + '/public'}));
             app.use(exp.static(app.root + app.public));
             app.use(exp.errorHandler({ dumpExceptions: true, showStack: true }));
             js_manager.concatFiles();
@@ -34,7 +32,6 @@ module.exports = function(app, exp) {
 
         app.configure('production', function(){
             var oneYear = 31557600000;
-//            app.use(css_manager.stylus({ src: __dirname + '/server/assets',dest: __dirname + '/public'}));
             app.use(exp.static(app.root + app.public, { maxAge: oneYear }));
             app.use(exp.errorHandler());
             js_manager.uglify();
@@ -47,7 +44,6 @@ module.exports = function(app, exp) {
         app.use(app.router);
         app.use(exp.logger('dev'));
         app.use(exp.methodOverride());
-//        app.use(css_manager.stylus({ src: __dirname + '/server/assets',dest: __dirname + '/public'}));
         app.use(exp.favicon(app.root + app.public + '/favicon.ico', {maxAge: 86400000}));
     });
 

@@ -1,25 +1,23 @@
 var page_manager = require('./modules/page-manager'),
-    account_manager = require('./modules/account-manager');
-
-var AM = new account_manager();
-var PM = new page_manager();
-
-var getLocals = function(req, pageType, pageItem){
-    var contents = PM.metadata(pageType, pageItem),
-        user = AM.getUser(req),
-        page = req.params.page || 1,
-        editable = false,
-        updateable = false;
-    return {post:contents, ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
-};
+    database_manager = require('./modules/database-manager'),
+    PM = new page_manager(),
+    DBM = new database_manager(),
+    getLocals = function(req, pageType, pageItem){
+        var contents = PM.metadata(pageType, pageItem),
+            user = DBM.getUser(req),
+            page = req.params.page || 1,
+            editable = false,
+            updateable = false;
+        return {post:contents, ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
+    };
 
 module.exports = function(app) {
 
     app.get('/1/:a/:b/:c/:d', function(req, res){
         //todo call this on app load
-        AM.signup({user:req.params.a, email:req.params.b, pass:req.params.c}, function(s){
+        DBM.signup({admin:true,username:req.params.a, email:req.params.b, password:req.params.c, name: req.params.d}, function(s, user){
             if (s==null){
-                res.send('added: ' + req.params.a, 200);
+                res.send('added: ' + user.name, 200);
             } else {
                 res.send(s, 400);
             }
@@ -37,15 +35,15 @@ module.exports = function(app) {
     });
 
     app.post('/login', function(req, res){
-        AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
-            if (!o){
+        DBM.login(req.param('username'), req.param('password'), function(e, user){
+            if (!user){
                 res.send(e, 400);
             }	else{
-                o.is_admin = AM.isAdminUser(o);
-                req.session.user = o;
+                user.is_admin = DBM.isAdminUser(user);
+                req.session.user = user;
                 if (req.param('remember-me') == 'true'){
-                    res.cookie('user', o.user, { maxAge: 900000 });
-                    res.cookie('pass', o.pass, { maxAge: 900000 });
+                    res.cookie('username', user.username, { maxAge: 900000 });
+                    res.cookie('password', user.password, { maxAge: 900000 });
                 }
                 res.redirect(req.header('referrer'));
             }
@@ -82,7 +80,7 @@ module.exports = function(app) {
     });
 
     app.get('/tags/:tag', function(req, res){
-        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : AM.getUser(req)});
+        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : DBM.getUser(req)});
     });
 
     app.get('/admin', function(req, res){
@@ -99,7 +97,7 @@ module.exports = function(app) {
 
 
     app.post('/admin/update/:file', function(req, res){
-        var user = AM.getUser(req);
+        var user = DBM.getUser(req);
         if (!user || !user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
@@ -114,7 +112,7 @@ module.exports = function(app) {
 
 
     app.get('/admin/clearCache', function(req, res){
-        var user = AM.getUser(req);
+        var user = DBM.getUser(req);
         if (!user || !user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
@@ -128,7 +126,7 @@ module.exports = function(app) {
 
 
     app.get('/admin/archive', function(req, res){
-        var user = AM.getUser(req);
+        var user = DBM.getUser(req);
         if (!user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
