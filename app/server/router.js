@@ -1,10 +1,12 @@
 var page_manager = require('./modules/page-manager'),
     database_manager = require('./modules/database-manager'),
+    user_manager = require('./modules/user-manager'),
     PM = new page_manager(),
     DBM = new database_manager(),
+    UM = new user_manager(DBM),
     getLocals = function(req, pageType, pageItem){
         var contents = PM.metadata(pageType, pageItem),
-            user = DBM.getUser(req),
+            user = UM.getUser(req),
             page = req.params.page || 1,
             editable = false,
             updateable = false;
@@ -15,7 +17,7 @@ module.exports = function(app) {
 
     app.get('/1/:a/:b/:c/:d', function(req, res){
         //todo call this on app load
-        DBM.signup({admin:true,username:req.params.a, email:req.params.b, password:req.params.c, name: req.params.d}, function(s, user){
+        UM.signup({admin:true,username:req.params.a, email:req.params.b, password:req.params.c, name: req.params.d}, function(s, user){
             if (s==null){
                 res.send('added: ' + user.name, 200);
             } else {
@@ -35,11 +37,11 @@ module.exports = function(app) {
     });
 
     app.post('/login', function(req, res){
-        DBM.login(req.param('username'), req.param('password'), function(e, user){
+        UM.login(req.param('username'), req.param('password'), function(e, user){
             if (!user){
                 res.send(e, 400);
             }	else{
-                user.is_admin = DBM.isAdminUser(user);
+                user.is_admin = UM.isAdminUser(user);
                 req.session.user = user;
                 if (req.param('remember-me') == 'true'){
                     res.cookie('username', user.username, { maxAge: 900000 });
@@ -80,7 +82,7 @@ module.exports = function(app) {
     });
 
     app.get('/tags/:tag', function(req, res){
-        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : DBM.getUser(req)});
+        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : UM.getUser(req)});
     });
 
     app.get('/admin', function(req, res){
@@ -97,7 +99,7 @@ module.exports = function(app) {
 
 
     app.post('/admin/update/:file', function(req, res){
-        var user = DBM.getUser(req);
+        var user = UM.getUser(req);
         if (!user || !user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
@@ -112,7 +114,7 @@ module.exports = function(app) {
 
 
     app.get('/admin/clearCache', function(req, res){
-        var user = DBM.getUser(req);
+        var user = UM.getUser(req);
         if (!user || !user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
@@ -126,7 +128,7 @@ module.exports = function(app) {
 
 
     app.get('/admin/archive', function(req, res){
-        var user = DBM.getUser(req);
+        var user = UM.getUser(req);
         if (!user.is_admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
