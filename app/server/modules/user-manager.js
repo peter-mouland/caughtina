@@ -30,9 +30,6 @@ UM.prototype.login = function(username, password, callback)
 UM.prototype.getUser = function(req){
     return (req.session && req.session.user != null) ? req.session.user : undefined;
 };
-UM.prototype.isAdminUser = function(user){
-    return (user!=null && user.admin===true);
-};
 
 //sign up + update details //
 UM.prototype.signup = function(newData, callback){

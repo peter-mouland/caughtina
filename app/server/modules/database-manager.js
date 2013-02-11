@@ -1,4 +1,5 @@
-var mongoose = require('mongoose'),
+var fs = require('fs'),
+    mongoose = require('mongoose'),
     DBM = function(){
         mongoose.connect(global.dburi);
         var self = this,
@@ -6,27 +7,34 @@ var mongoose = require('mongoose'),
         db.on('error', console.error.bind(console, 'connection error:'));
         db.once('open', function callback () {
             self.createUserSchema();
-            self.createPostSchema();
+            self.createPageSchema();
         });
     };
 
 module.exports = DBM;
 
+DBM.prototype.init = function(){
+    if (this.db['Page'].find().length()>0){ return ; }
+    this.pukePages();
+};
+
 // schemas //
-DBM.prototype.createPostSchema = function(){
-    var postSchema = new mongoose.Schema({
+DBM.prototype.createPageSchema = function(){
+    var pageSchema = new mongoose.Schema({
+            pageType: {type: String},
             url: { type : String, index: { unique: true }},
-            title: { type : String, index: { unique: true }},
+            title: String,
+            subtitle: String,
             published: { type: Date, default: Date.now },
             updated: Date,
             author: String,
             summary: String,
             body: String,
-            tags: [{ name: String }]
+            tags: Array
         }),
-        Post;
-    Post = mongoose.model('Post', postSchema);
-    this['Post'] = Post;
+        Page;
+    Page = mongoose.model('Page', pageSchema);
+    this['Page'] = Page;
 };
 
 DBM.prototype.createUserSchema = function(){
@@ -43,3 +51,14 @@ DBM.prototype.createUserSchema = function(){
     User = mongoose.model('User', userSchema);
     this['User'] = User;
 };
+
+DBM.prototype.pukePages = function(){
+    var self = this,
+        aboutJson = eval(fs.readFileSync('app/server/json/about.json')+'')[0],
+        indexJson = eval(fs.readFileSync('app/server/json/index.json')+'')[0],
+        adminJson = eval(fs.readFileSync('app/server/json/admin.json')+'')[0],
+        postsJson = eval(fs.readFileSync('app/server/json/posts.json')+'');
+
+        self['Page'].create(aboutJson,indexJson, adminJson, function (err, page) {  console.log('error',err) });
+        self['Page'].create(postsJson, function (err, page) {  console.log('error',err) });
+}

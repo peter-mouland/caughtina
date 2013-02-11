@@ -1,9 +1,18 @@
 [
-    {   url: '/',
+    {   pageType: 'about',
+        url: '/about',
         title: 'about caught in a dot com',
-        published: null,
-        lastUpdated: '2012-09-26',
         author:'peter-mouland',
-        dataCode: ''
+        body: '<section><h2>caught in a what?</h2>' +
+        '<p>come on, like a dot-com bubble, I\'ve been caught in it. plus the \'.com\' is part of the name! whoah, it\'s genious!</p>' +
+        '<h2>not \'cough tina.com\' then?</h2><p>no. this is not a medical website for those guys who call themselves tina. stop it.</p>' +
+        '<h2>approach</h2><p>I have built this using <code>nodeJS</code> and <code>express</code> because I wanted to learn something new and to have some knowledge to be able to compare Ruby + Sinatra (which i use at work).' +
+        '<code>mongoDB</code> is my database of choice due to the ease of integration with JSON structures.</p>' +
+        '<p>On the client-side i am using <code>jQuery</code> and i could have chosen angularJS, but because i want more than templating and view changes am using <code>backbone</code>.' +
+        'You will also see that i use the <code>HTML5</code> doctype.  This is because of the looser add more meaningful markup.</p>' +
+        '<p>This website is also fully <code>responsive</code>, try resizing your browser and viewing this site on any device, the content should always be usable and fit on the screen.' +
+        'If you get lost at any time simply toggle the \'view desktop site\' in the footer.</p>' +
+        '<p>So I started, fully aware that i might need to stop and start again if the language turned out to be rubbish/unsuitable/immature.' +
+        'only time will tell if these choices are sensible!</p></section>'
     }
 ]

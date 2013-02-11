@@ -16,7 +16,7 @@ block mainContent
                             .header
                                 header
                                     h2
-                                        a(href='/posts/' + pageItem.url) #{pageItem.title}
+                                        a(href=pageItem.url) #{pageItem.title}
                                             -if (pageItem.subtitle)
                                                 small #{pageItem.subtitle}
                                     .time

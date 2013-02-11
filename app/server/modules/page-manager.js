@@ -1,12 +1,10 @@
 var fs = require('fs'),
     zipstream = require('zipstream'),
     moment = require('moment'),
-    PM = function(){
+    PM = function(db){
+        this.db = db;
         this.data = {
-            posts: eval(fs.readFileSync('app/server/json/posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);}),
-            index: eval(fs.readFileSync('app/server/json/index.json')+''),
-            admin: eval(fs.readFileSync('app/server/json/admin.json')+''),
-            about: eval(fs.readFileSync('app/server/json/about.json')+'')
+            posts: eval(fs.readFileSync('app/server/json/posts.json')+'').sort(function(a,b){return (b.published && a.published != b.published);})
         };
         this.items_per_page = 5;
     };
@@ -143,21 +141,16 @@ PM.prototype.paged = function(type,page_number){
     return _return;
 };
 
-PM.prototype.metadata = function(type,url) {
+PM.prototype.metadata = function(type,url, callback) {
+    var self = this;
     if (!this._metadata){                this._metadata = {};              }
     if (!this._metadata[type]){          this._metadata[type] = {};        }
-    if (this._metadata[type][url]){      return this._metadata[type][url]; }
-    if (!url) {url='/';}
-    var i= 0,
-        parent = this.data[type],
-        len = parent.length,
-        _return;
-    for (i;i<len;i++){
-        if (parent[i].url == url) {
-            _return = parent[i];
-            this._metadata[type][url] = _return;
-            return _return;
-        }
-    }
-    return false;
+    if (this._metadata[type][url]){      return callback(this._metadata[type][url]); }
+    if (!url) {url='';}
+
+    this.db['Page'].findOne({pageType:type, url:url},  function(err, page){
+        if (err) return callback();
+        self._metadata[type][url] = page;
+        callback(page);
+    });
 };

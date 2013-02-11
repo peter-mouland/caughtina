@@ -24,7 +24,7 @@
                     -if (updateable)
                         a.button#save-page update
                     -else if (editable)
-                        a.button#edit-page(href='#{post.url}/edit') edit
+                        a.button#edit-page(href='#{global.url}/edit') edit
                     a.button#logout(href='/logout') logout
 
             -if (!user)

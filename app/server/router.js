@@ -1,16 +1,16 @@
 var page_manager = require('./modules/page-manager'),
     database_manager = require('./modules/database-manager'),
     user_manager = require('./modules/user-manager'),
-    PM = new page_manager(),
     DBM = new database_manager(),
+    PM = new page_manager(DBM),
     UM = new user_manager(DBM),
-    getLocals = function(req, pageType, pageItem){
-        var contents = PM.metadata(pageType, pageItem),
-            user = UM.getUser(req),
+    getLocals = function(req){
+        global.url = req.url;
+        var user = UM.getUser(req),
             page = req.params.page || 1,
             editable = false,
             updateable = false;
-        return {post:contents, ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
+        return {ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
     };
 
 module.exports = function(app) {
@@ -27,13 +27,11 @@ module.exports = function(app) {
     });
 
     app.get('/', function(req, res){
-        var locals = getLocals(req, 'index');
-        res.render('index', locals);
-    });
-
-    app.get('/page/:page', function(req, res){
-        var locals = getLocals(req, 'index');
-        res.render('index', locals);
+        var locals = getLocals(req);
+        PM.metadata('index', '/', function(post){
+            locals.post = post;
+            res.render('index', locals);
+        })
     });
 
     app.post('/login', function(req, res){
@@ -41,7 +39,6 @@ module.exports = function(app) {
             if (!user){
                 res.send(e, 400);
             }	else{
-                user.is_admin = UM.isAdminUser(user);
                 req.session.user = user;
                 if (req.param('remember-me') == 'true'){
                     res.cookie('username', user.username, { maxAge: 900000 });
@@ -58,26 +55,31 @@ module.exports = function(app) {
     });
 
     app.get('/about', function(req, res){
-        var locals = getLocals(req, 'about');
-        res.render('about/caught-in-a-dot-com', locals);
+        var locals = getLocals(req);
+        PM.metadata('about', '/about', function(post){
+            locals.post = post;
+            res.render('about', locals);
+        });
     });
 
     app.get('/posts/:post', function(req, res){
-        var locals = getLocals(req, 'posts', req.params.post),
-            url = (locals.post) ? req.params.post : 'holding-page';
+        var locals = getLocals(req);
         locals.editable = true;
-        res.render('posts/' + url, locals);
+        PM.metadata('post', '/posts/' + req.params.post, function(post){
+            locals.post = post;
+            res.render('.' + post.url, locals);
+        });
     });
 
     app.get('/posts/:post/edit', function(req, res){
         var locals = getLocals(req, 'posts', req.params.post),
-            url = (locals.post) ? req.params.post : 'holding-page';
-        if (!locals.user || !locals.user.is_admin){
+            url = (locals.post) ? '.' + req.url  : './posts/holding-page';
+        if (!locals.user || !locals.user.admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
             locals.updateable = true;
-            res.render('posts/' + url, locals);
+            res.render(url, locals);
         }
     });
 
@@ -90,17 +92,19 @@ module.exports = function(app) {
 
         if (!locals.user){
             //show login
-        } else if (!locals.user.is_admin){
+        } else if (!locals.user.admin){
             //show login with error
         } else {
             //show admin
         }
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.end('not found');
     });
 
 
     app.post('/admin/update/:file', function(req, res){
         var user = UM.getUser(req);
-        if (!user || !user.is_admin){
+        if (!user || !user.admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
@@ -111,11 +115,23 @@ module.exports = function(app) {
         }
     });
 
+    app.get('/admin/pukePages', function(req, res){
+//        var user = UM.getUser(req);
+//        if (!user || !user.admin){
+//            res.writeHead(404, {'Content-Type': 'text/html'});
+//            res.end('not found');
+//        } else {
+            DBM.pukePages();
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end('{"called":"hugo"}');
+//        }
+    });
+
 
 
     app.get('/admin/clearCache', function(req, res){
         var user = UM.getUser(req);
-        if (!user || !user.is_admin){
+        if (!user || !user.admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {
@@ -129,7 +145,7 @@ module.exports = function(app) {
 
     app.get('/admin/archive', function(req, res){
         var user = UM.getUser(req);
-        if (!user.is_admin){
+        if (!user.admin){
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end('not found');
         } else {

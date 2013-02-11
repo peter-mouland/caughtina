@@ -1,9 +1,7 @@
 [
-    {   url: '/',
-        title: 'Recent posts',
-        published: null,
-        lastUpdated: '2012-09-26',
+    {   pageType: 'index',
+        url: '/',
+        title: 'recent posts',
         author:'peter-mouland',
-        dataCode: ''
-    }
+        body: ''}
 ]

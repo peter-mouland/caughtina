@@ -26,6 +26,7 @@ module.exports = function(app, exp) {
             console.log(app.root)
             app.use(exp.static(app.root + app.public));
             app.use(exp.errorHandler({ dumpExceptions: true, showStack: true }));
+            app.locals.pretty = true;
             js_manager.concatFiles();
             global.dburi = "mongodb://localhost/ciadc"
         });
