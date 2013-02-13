@@ -25,7 +25,8 @@ DBM.prototype.createPageSchema = function(){
             url: { type : String, index: { unique: true }},
             title: String,
             subtitle: String,
-            published: { type: Date, default: Date.now },
+            isDraft: {type:Boolean, default:true},
+            published: Date,
             updated: Date,
             author: String,
             summary: String,
@@ -59,6 +60,6 @@ DBM.prototype.pukePages = function(){
         adminJson = eval(fs.readFileSync('app/server/json/admin.json')+'')[0],
         postsJson = eval(fs.readFileSync('app/server/json/posts.json')+'');
 
-        self['Page'].create(aboutJson,indexJson, adminJson, function (err, page) {  console.log('error',err) });
-        self['Page'].create(postsJson, function (err, page) {  console.log('error',err) });
+        self['Page'].create(aboutJson,indexJson, adminJson, function (err) {  if (err) {console.log('error',err);} });
+        self['Page'].create(postsJson, function (err) {  if (err) {console.log('error',err);} });
 }

@@ -7,10 +7,9 @@ var page_manager = require('./modules/page-manager'),
     getLocals = function(req){
         global.url = req.url;
         var user = UM.getUser(req),
-            page = req.params.page || 1,
             editable = false,
             updateable = false;
-        return {ciadc:PM, this_page: page, user:user, editable:editable, updateable:updateable};
+        return {ciadc:PM, user:user, editable:editable, updateable:updateable};
     };
 
 module.exports = function(app) {
@@ -26,11 +25,14 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/', function(req, res){
+    app.get('/:page((\\d+))?', function(req, res){
         var locals = getLocals(req);
         PM.metadata('index', '/', function(post){
             locals.post = post;
-            res.render('index', locals);
+            PM.paged('post',req.params.page || 1,function(page){
+                locals.page = page
+                res.render('index', locals);
+            });
         })
     });
 
@@ -67,53 +69,53 @@ module.exports = function(app) {
         locals.editable = true;
         PM.metadata('post', '/posts/' + req.params.post, function(post){
             locals.post = post;
-            res.render('.' + post.url, locals);
+            res.render('post', locals);
         });
     });
 
-    app.get('/posts/:post/edit', function(req, res){
-        var locals = getLocals(req, 'posts', req.params.post),
-            url = (locals.post) ? '.' + req.url  : './posts/holding-page';
-        if (!locals.user || !locals.user.admin){
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            res.end('not found');
-        } else {
-            locals.updateable = true;
-            res.render(url, locals);
-        }
-    });
-
-    app.get('/tags/:tag', function(req, res){
-        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : UM.getUser(req)});
-    });
-
-    app.get('/admin', function(req, res){
-        var locals = getLocals(req, 'admin');
-
-        if (!locals.user){
-            //show login
-        } else if (!locals.user.admin){
+//    app.get('/posts/:post/edit', function(req, res){
+//        var locals = getLocals(req, 'posts', req.params.post),
+//            url = (locals.post) ? '.' + req.url  : './posts/holding-page';
+//        if (!locals.user || !locals.user.admin){
+//            res.writeHead(404, {'Content-Type': 'text/html'});
+//            res.end('not found');
+//        } else {
+//            locals.updateable = true;
+//            res.render(url, locals);
+//        }
+//    });
+//
+//    app.get('/tags/:tag', function(req, res){
+//        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : UM.getUser(req)});
+//    });
+//
+//    app.get('/admin', function(req, res){
+//        var locals = getLocals(req, 'admin');
+//
+//        if (!locals.user){
+//            show login
+//        } else if (!locals.user.admin){
             //show login with error
-        } else {
+//        } else {
             //show admin
-        }
-        res.writeHead(404, {'Content-Type': 'text/html'});
-        res.end('not found');
-    });
-
-
-    app.post('/admin/update/:file', function(req, res){
-        var user = UM.getUser(req);
-        if (!user || !user.admin){
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            res.end('not found');
-        } else {
-            PM.update_file(req, req.params.file, function(){
-                res.writeHead(200, {'Content-Type': 'text/html'});
-                res.end('{"saved":"true"}');
-            });
-        }
-    });
+//        }
+//        res.writeHead(404, {'Content-Type': 'text/html'});
+//        res.end('not found');
+//    });
+//
+//
+//    app.post('/admin/update/:file', function(req, res){
+//        var user = UM.getUser(req);
+//        if (!user || !user.admin){
+//            res.writeHead(404, {'Content-Type': 'text/html'});
+//            res.end('not found');
+//        } else {
+//            PM.update_file(req, req.params.file, function(){
+//                res.writeHead(200, {'Content-Type': 'text/html'});
+//                res.end('{"saved":"true"}');
+//            });
+//        }
+//    });
 
     app.get('/admin/pukePages', function(req, res){
 //        var user = UM.getUser(req);
@@ -129,33 +131,33 @@ module.exports = function(app) {
 
 
 
-    app.get('/admin/clearCache', function(req, res){
-        var user = UM.getUser(req);
-        if (!user || !user.admin){
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            res.end('not found');
-        } else {
-            PM.delete_files('app/public','posts',function(count){
-                res.writeHead(200, {'Content-Type': 'text/html'});
-                res.end('{"cleared":"' + count + '"}');
-            });
-        }
-    });
-
-
-    app.get('/admin/archive', function(req, res){
-        var user = UM.getUser(req);
-        if (!user.admin){
-            res.writeHead(404, {'Content-Type': 'text/html'});
-            res.end('not found');
-        } else {
-            PM.archive_directory('app/server/admin','archive',function(){
-                res.writeHead(200, {'Content-Type': 'text/html'});
-                res.end('{"archived":"true"}');
-            });
-        }
-    });
-
-
+//    app.get('/admin/clearCache', function(req, res){
+//        var user = UM.getUser(req);
+//        if (!user || !user.admin){
+//            res.writeHead(404, {'Content-Type': 'text/html'});
+//            res.end('not found');
+//        } else {
+//            PM.delete_files('app/public','posts',function(count){
+//                res.writeHead(200, {'Content-Type': 'text/html'});
+//                res.end('{"cleared":"' + count + '"}');
+//            });
+//        }
+//    });
+//
+//
+//    app.get('/admin/archive', function(req, res){
+//        var user = UM.getUser(req);
+//        if (!user.admin){
+//            res.writeHead(404, {'Content-Type': 'text/html'});
+//            res.end('not found');
+//        } else {
+//            PM.archive_directory('app/server/admin','archive',function(){
+//                res.writeHead(200, {'Content-Type': 'text/html'});
+//                res.end('{"archived":"true"}');
+//            });
+//        }
+//    });
+//
+//
 
 };

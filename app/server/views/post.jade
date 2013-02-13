@@ -2,7 +2,7 @@
 html(lang="en", class="no-js")
     head
         meta(charset='utf-8')
-        meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0", name="viewport")
+        meta(content="width=device-width, initial-scale=1.0", name="viewport")
         title #{post.title}
         script
             document.getElementsByTagName('html')[0].setAttribute('class','');
@@ -17,20 +17,20 @@ html(lang="en", class="no-js")
     body(lang='en', class='responsive')
         //<![end if]
         #content
-            include ../partials/header
+            include partials/header
 
             .article
                 article
 
-                    include ../partials/post-header
-                    include ../partials/profile-peter-mouland
+                    include partials/post-header
+                    include partials/profile-peter-mouland
 
                     .wrapper.copy
 
-                        block mainContent
+                        !=post.body
 
-            include ../partials/navigate_next_previous
+            //            include partials/navigate_next_previous
 
-            include ../partials/footer
+            include partials/footer
 
         script(type='text/javascript', src="/js/app.js")

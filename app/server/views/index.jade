@@ -2,14 +2,11 @@ extends layout
 
 block mainContent
     section(role='main')
-
         include partials/post-header
 
         #recent_articles
-            -page = ciadc.paged('posts', this_page);
-            -pageItems = page.items;
-            -for (var i = 0; i<pageItems.length;i++)
-                -pageItem = pageItems[i];
+            -for (var i = 0; i<page.items.length;i++)
+                -pageItem = page.items[i];
                 .article
                     article
                         .wrapper.clearfix
@@ -38,79 +35,6 @@ block mainContent
                         li
                             -if (page_number==page.current)
                                 b
-                                    a(href='/page/' + page_number) #{page_number}
+                                    a(href='/' + page_number) #{page_number}
                             -else
-                                a(href='/page/' + page_number) #{page_number}
-
-
-    #recent_articles_draft.wrapper.draft
-        h2 draft articles not yet published
-        section
-            .article
-                article
-                  .header
-                      header
-                        h2
-                          a(href='/articles/responsive-design') responsive design
-                        .time
-                            time(datetime="2012-06-26",pubdate="") 16th July 2012
-                  p Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.
-                    | I found out a cool way of reliabily detecting orientation too!
-                  aside
-                    h3.at tags
-                    ul
-                      li
-                        a(href='/tags/usability') usability
-                      li
-                        a(href='/tags/html5') css3
-                      li
-                        a(href='/tags/html5') javascript
-
-
-            .article
-                article
-                    .header
-                        header
-                            h2
-                                a(href='/articles/css-event-hooks') css transitions + browsers
-                            .time
-                                time(datetime="2012-06-26",pubdate="") 16th July 2012
-                    p building a css3 carousel wasn't as easy as 1,2, css3.
-                    aside
-                        h3.at tags
-                        ul
-                            li
-                                a(href='/tags/css') css
-                            li
-                                a(href='/tags/js') js
-
-            .article
-                article
-                    .header
-                        header
-                            h2
-                                a(href='#') javascript to upload files
-                            .time
-                                time(datetime="2012-06-26",pubdate="") 16th July 2012
-                    p what's been a personal triumph for me because it been my unicorn for so long.  At last i have had time to try and complete this work!
-                    aside
-                        h3.at tags
-                            ul
-                                li
-                                    a(href='/tags/js') js
-
-
-            .article
-                article
-                    .header
-                        header
-                            h2
-                                a(href='#') keyboard users + drop downs
-                            .time
-                                time(datetime="2012-06-26",pubdate="") 16th July 2012
-                    p tabbing through sites with hover events complicates what you thought about usin ARIA to just announce list titles and other hidden content.
-                    aside
-                        h3.at tags
-                        ul
-                            li
-                                a(href='/tags/accessibility') accessibility
+                                a(href='/' + page_number) #{page_number}

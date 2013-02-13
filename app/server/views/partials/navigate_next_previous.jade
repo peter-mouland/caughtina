@@ -1,14 +1,12 @@
--var previous = ciadc.get_previous('posts',post)
--var next = ciadc.get_next('posts',post)
 nav
   h2.at navigate posts
   ul.nav_posts
-    -if (previous)
+    -if (typeof previous!=='undefined')
         li.prev
             a(href='/posts/'+previous.url) &laquo; #{previous.title}
                 -if (previous.subtitle)
                     |: #{previous.subtitle}
-    -if (next)
+    -if (typeof next!=='undefined')
         li.next
             a(href='/posts/'+next.url) #{next.title}
                 -if (next.subtitle)
