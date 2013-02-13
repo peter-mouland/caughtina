@@ -114,6 +114,7 @@ PM.prototype.pretty_date = function(date, format){
 PM.prototype.paged = function(type,page_number, callback){
     if (!this._paged) {                  this._paged = {};                      }
     if (!this._paged[type]){             this._paged[type] = {};                }
+    console.log(this._paged[type][page_number])
     if (this._paged[type][page_number]){ return callback(this._paged[type][page_number]); }
     var self = this,
         published = this.db['Page'].find({pageType:type}).where('isDraft',false);
@@ -122,12 +123,13 @@ PM.prototype.paged = function(type,page_number, callback){
         .skip(this.items_per_page * (page_number-1))
         .sort({published: 'desc'}).exec(function(err,pages){
             published.count().exec(function (err, count) {
-                self._paged[type][page_number] = pages;
-                callback({
+                var _return = {
                     items: pages,
                     page_number: page_number,
                     count: Math.ceil(count / self.items_per_page)
-                });
+                };
+                self._paged[type][page_number] = _return;
+                callback(_return);
             });
         });
     return null;

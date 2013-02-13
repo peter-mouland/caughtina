@@ -1,3 +1,4 @@
 # admin files
 admin/archive/*.html
 admin/archive/*.zip
+.idea
