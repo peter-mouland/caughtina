@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
