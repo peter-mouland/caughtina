@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -14,6 +14,7 @@
         "npm":"1.2.10"
     },
     "dependencies": {
+        "cookie-signature": "*",
         "connect": "*",
         "express": "3.1",
         "jade": "0.28.1",
