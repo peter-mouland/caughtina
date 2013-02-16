@@ -1,3 +1,26 @@
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+        if (typeof this !== "function") {
+            // closest thing possible to the ECMAScript 5 internal IsCallable function
+            throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var aArgs = Array.prototype.slice.call(arguments, 1),
+            fToBind = this,
+            fNOP = function () {},
+            fBound = function () {
+                return fToBind.apply(this instanceof fNOP && oThis
+                    ? this
+                    : oThis,
+                    aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
+
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+
+        return fBound;
+    };
+}
 /*!
  * jQuery JavaScript Library v2.0.0b1
  * http://jquery.com/
@@ -9249,10 +9272,17 @@ Utils.prototype.showMessage = function(e,cfg){
     }
 };
 
+
+Utils.prototype.textToId = function(s){
+    return s.toLowerCase().replace(/ /g,'-');
+};
+
 var utils = new Utils();
 var navigation_manager = function(){
     this.$login = $('#login');
     this.$toggleResponsive = $('#toggle-responsive');
+    this.$filters = $('#filter').find('a');
+    this.$recentArticles = $('#recent_articles');
     this.init();
 };
 
@@ -9271,16 +9301,45 @@ navigation_manager.prototype.toggleResponsive = function(type){
 };
 
 navigation_manager.prototype.setView = function(){
-//    console.log($('body.responsive').size(),$.cookie('view'))
     if ($.cookie('view') == 'desktop'){
         $('body').removeClass('responsive');
         this.toggleResponsive('desktop');
     }
 };
 
+
+
+navigation_manager.prototype.addFilter = function($el){
+    var filter = utils.textToId($el.text());
+    $el.addClass('selected');
+    this.$recentArticles.children().hide().filter('.tag-' + filter).show();
+    this.$recentArticles.append('div.loader')
+    $.getJSON('/tags/css.json')
+
+};
+
+navigation_manager.prototype.removeFilter = function($el){
+    var filter = utils.textToId($el.text());
+    $el.removeClass('selected');
+    this.$summaries.show()
+
+};
+
+navigation_manager.prototype.filterTags = function(e){
+    e.preventDefault();
+    var $el = $(e.currentTarget);
+
+    if ($el.hasClass('selected')){
+        this.removeFilter($el);
+    } else {
+        this.addFilter($el);
+    }
+}
+
 navigation_manager.prototype.bindEvents = function(){
     this.$toggleResponsive.on('click', this.toggleResponsive.bind(this));
-    $(window).on('load',this.setView.bind(this))
+    this.$filters.on('click', this.filterTags.bind(this));
+    $(window).on('load',this.setView.bind(this));
 };
 
 navigation_manager.prototype.init = function(){
@@ -9561,14 +9620,15 @@ page_editor.prototype.loadOfflineContent = function(){
 
 page_editor.prototype.init = function(){
     var self = this;
-    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
-    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
-    this.controls.live('mouseenter',       function(){ self.controls.hovering = true; });
-    this.controls.live('mouseleave',       function(){ self.clearEditVars(); });
-    $('span.plus', this.controls).live('click',          function(){ self.addElement(); });
-    $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
-    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+    $('a#edit-page',this.$login).on('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+    if (!this.adminUser){ return; }
+    this.editableTags.on('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
+    this.editableTags.on('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
+    this.controls.on('mouseenter',       function(){ self.controls.hovering = true; });
+    this.controls.on('mouseleave',       function(){ self.clearEditVars(); });
+    $('span.plus', this.controls).on('click',          function(){ self.addElement(); });
+    $('span.minus',this.controls).on('click',          function(){ self.removeElement(); });
+    $('a#save-page',this.$login).on('click',           function(e){ e.preventDefault(); self.savePage();         });
 
     $(window).bind('online', function(){ self.onlineMode(); });
     $(window).bind('offline', function(){ self.offlineMode(); });

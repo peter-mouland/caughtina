@@ -20,4 +20,9 @@ Utils.prototype.showMessage = function(e,cfg){
     }
 };
 
+
+Utils.prototype.textToId = function(s){
+    return s.toLowerCase().replace(/ /g,'-');
+};
+
 var utils = new Utils();

@@ -138,14 +138,15 @@ page_editor.prototype.loadOfflineContent = function(){
 
 page_editor.prototype.init = function(){
     var self = this;
-    this.editableTags.live('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
-    this.editableTags.live('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
-    this.controls.live('mouseenter',       function(){ self.controls.hovering = true; });
-    this.controls.live('mouseleave',       function(){ self.clearEditVars(); });
-    $('span.plus', this.controls).live('click',          function(){ self.addElement(); });
-    $('span.minus',this.controls).live('click',          function(){ self.removeElement(); });
-    $('a#save-page',this.$login).live('click',           function(e){ e.preventDefault(); self.savePage();         });
-    $('a#edit-page',this.$login).live('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+    $('a#edit-page',this.$login).on('click',           function(e){ e.preventDefault(); self.enableEdit(); self.enableDrag();      });
+    if (!this.adminUser){ return; }
+    this.editableTags.on('mouseenter',   function(e){ e.preventDefault(); self.showEditControls($(this));});
+    this.editableTags.on('mouseleave',   function(e){ e.preventDefault(); self.controls.hovering = false; self.hideEditControls(); });
+    this.controls.on('mouseenter',       function(){ self.controls.hovering = true; });
+    this.controls.on('mouseleave',       function(){ self.clearEditVars(); });
+    $('span.plus', this.controls).on('click',          function(){ self.addElement(); });
+    $('span.minus',this.controls).on('click',          function(){ self.removeElement(); });
+    $('a#save-page',this.$login).on('click',           function(e){ e.preventDefault(); self.savePage();         });
 
     $(window).bind('online', function(){ self.onlineMode(); });
     $(window).bind('offline', function(){ self.offlineMode(); });

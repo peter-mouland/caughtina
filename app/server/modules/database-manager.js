@@ -53,6 +53,8 @@ DBM.prototype.createUserSchema = function(){
     this['User'] = User;
 };
 
+
+// utils //
 DBM.prototype.pukePages = function(){
     var self = this,
         aboutJson = eval(fs.readFileSync('app/server/json/about.json')+'')[0],

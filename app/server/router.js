@@ -67,10 +67,13 @@ module.exports = function(app) {
     app.get('/posts/:post', function(req, res){
         var locals = getLocals(req);
         locals.editable = true;
-        PM.metadata('post', '/posts/' + req.params.post, function(post){
+        PM.alldata('post', '/posts/' + req.params.post, function(post){
             locals.post = post;
             res.render('post', locals);
         });
+    });
+    app.get('/tags/:tag(*):format(.json)?', function(req, res){
+        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : UM.getUser(req)});
     });
 
 //    app.get('/posts/:post/edit', function(req, res){

@@ -4,7 +4,8 @@ stylus = require('stylus');
 module.exports = function(app, exp) {
 
     var js_manager = new asset_manager(app.public + '/js/app.js',
-        [   app.server + '/assets/js/lib/jquery-2.0.0b.js',
+        [   app.server + '/assets/js/polyfill/bind.js',
+            app.server + '/assets/js/lib/jquery-2.0.0b.js',
             app.server + '/assets/js/lib/jquery.cookie.js',
             app.server + '/assets/js/lib/json2.js',
             app.server + '/assets/js/lib/underscore-min.js',

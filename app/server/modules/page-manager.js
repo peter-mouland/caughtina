@@ -2,6 +2,8 @@ var fs = require('fs'),
     zipstream = require('zipstream'),
     moment = require('moment'),
     PM = function(db){
+        this.metaColumns = 'title subtitle published updated summary author tags url';
+        this.bodyColumns = 'body';
         this.db = db;
         this.items_per_page = 5;
     };
@@ -111,16 +113,20 @@ PM.prototype.pretty_date = function(date, format){
     return moment(date).format(format);
 };
 
+PM.prototype.stringToId = function(s){
+    return s.toLowerCase().replace(/ /g,'-');
+};
+
 PM.prototype.paged = function(type,page_number, callback){
     if (!this._paged) {                  this._paged = {};                      }
     if (!this._paged[type]){             this._paged[type] = {};                }
-    console.log(this._paged[type][page_number])
     if (this._paged[type][page_number]){ return callback(this._paged[type][page_number]); }
     var self = this,
         published = this.db['Page'].find({pageType:type}).where('isDraft',false);
 
     published.limit(this.items_per_page)
         .skip(this.items_per_page * (page_number-1))
+        .select(this.metaColumns)
         .sort({published: 'desc'}).exec(function(err,pages){
             published.count().exec(function (err, count) {
                 var _return = {
@@ -142,10 +148,25 @@ PM.prototype.metadata = function(type, url, callback) {
     if (this._metadata[type][url]){      return callback(this._metadata[type][url]); }
     if (!url) {url='';}
 
-    this.db['Page'].findOne({pageType:type, url:url},  function(err, page){
+    this.db['Page'].findOne({pageType:type, url:url}).select(this.metaColumns).exec(function(err, page){
         if (err) return callback({pageType: 500,url:'/500',title:'Internal Server Error',subtitle:'Sorry!'});
         if (!page) return callback({pageType: 404,url:'/404',title:'Page Not Found',subtitle:'Sorry!'});
         self._metadata[type][url] = page;
+        callback(page);
+    });
+};
+
+PM.prototype.alldata = function(type, url, callback) {
+    var self = this;
+    if (!this._alldata){                this._alldata = {};              }
+    if (!this._alldata[type]){          this._alldata[type] = {};        }
+    if (this._alldata[type][url]){      return callback(this._alldata[type][url]); }
+    if (!url) {url='';}
+
+    this.db['Page'].findOne({pageType:type, url:url}).select(this.metaColumns + ' '+ this.bodyColumns).exec(function(err, page){
+        if (err) return callback({pageType: 500,url:'/500',title:'Internal Server Error',subtitle:'Sorry!'});
+        if (!page) return callback({pageType: 404,url:'/404',title:'Page Not Found',subtitle:'Sorry!'});
+        self._alldata[type][url] = page;
         callback(page);
     });
 };

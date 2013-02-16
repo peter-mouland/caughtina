@@ -3,11 +3,11 @@ extends layout
 block mainContent
     section(role='main')
         include partials/post-header
-
         #recent_articles
             -for (var i = 0; i<page.items.length;i++)
                 -pageItem = page.items[i];
-                .article
+                -classTags = (pageItem.tags.length==0) ? '' : 'tag-' + pageItem.tags.toString().toLowerCase().replace(',',' tag-');
+                .article(class="#{classTags}")
                     article
                         .wrapper.clearfix
                             .header
@@ -22,11 +22,11 @@ block mainContent
                             -if (pageItem.tags)
                                 aside
                                     h3.at tags
-                                    ul
+                                    ul.tags
                                         -for (var x=0; x<pageItem.tags.length;x++)
                                             -tag = pageItem.tags[x];
                                             li
-                                                a(href='/tags/' + tag.url) #{tag.title}
+                                                a(href='/tags/' + ciadc.stringToId(tag)) #{tag}
             -if(page.count!==1)
                 h3.at navigate post pages
                 ul.navigator
