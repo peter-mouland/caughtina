@@ -17,11 +17,11 @@
         "bcrypt": "*",
         "express": "*",
         "jade": "*",
+        "moment": "*",
+        "mongodb": "*",
+        "mongoose": "*",
         "stylus": "*",
         "uglify-js": "*",
-        "moment": "*",
-        "zipstream": "*",
-        "mongodb": "*",
-        "mongoose": "*"
+        "zipstream": "*"
     }
 }
