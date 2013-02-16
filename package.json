@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -10,7 +10,7 @@
         "url": "www.caughtina.com"
     },
     "engines":{
-        "node": "0.8.19",
+        "node": "0.8.*",
         "npm":"1.2.10"
     },
     "dependencies": {

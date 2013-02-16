@@ -9341,7 +9341,7 @@ navigation_manager.prototype.filterTags = function(e){
 
 navigation_manager.prototype.bindEvents = function(){
     this.$toggleResponsive.on('click', this.toggleResponsive.bind(this));
-    this.$filters.on('click', this.filterTags.bind(this));
+//    this.$filters.on('click', this.filterTags.bind(this));
     $(window).on('load',this.setView.bind(this));
 };
 
