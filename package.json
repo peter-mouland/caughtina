@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -14,15 +14,13 @@
         "npm":"1.2.10"
     },
     "dependencies": {
-        "cookie-signature": "*",
-        "connect": "*",
-        "express": "3.1",
-        "jade": "0.28.1",
-        "stylus": "0.32.0",
-        "uglify-js": "2.2.4",
-        "moment": "2.0.0",
-        "zipstream": "0.2.1",
         "bcrypt": "*",
+        "express": "*",
+        "jade": "*",
+        "stylus": "*",
+        "uglify-js": "*",
+        "moment": "*",
+        "zipstream": "*",
         "mongodb": "*",
         "mongoose": "*"
     }
