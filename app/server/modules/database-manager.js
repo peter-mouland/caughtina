@@ -31,7 +31,8 @@ DBM.prototype.createPageSchema = function(){
             author: String,
             summary: String,
             body: String,
-            tags: Array
+            tags: [String],
+            tags_lower: [String]
         }),
         Page;
     Page = mongoose.model('Page', pageSchema);

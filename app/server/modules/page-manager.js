@@ -117,12 +117,14 @@ PM.prototype.stringToId = function(s){
     return s.toLowerCase().replace(/ /g,'-');
 };
 
-PM.prototype.paged = function(type,page_number, callback){
+PM.prototype.paged = function(type,page_number, tag, callback){
     if (!this._paged) {                  this._paged = {};                      }
     if (!this._paged[type]){             this._paged[type] = {};                }
-    if (this._paged[type][page_number]){ return callback(this._paged[type][page_number]); }
+    if (!this._paged[type][tag]){        this._paged[type][tag] = {};           }
+    if (this._paged[type][tag][page_number]){ return callback(this._paged[type][tag][page_number]); }
     var self = this,
-        published = this.db['Page'].find({pageType:type}).where('isDraft',false);
+        query = (tag=='all') ? {pageType: type} : {pageType: type, tags_lower: { $in: [tag] }},
+        published = this.db['Page'].find(query).where('isDraft',false);
 
     published.limit(this.items_per_page)
         .skip(this.items_per_page * (page_number-1))

@@ -29,11 +29,11 @@ module.exports = function(app) {
         var locals = getLocals(req);
         PM.metadata('index', '/', function(post){
             locals.post = post;
-            PM.paged('post',req.params.page || 1,function(page){
+            PM.paged('post',req.params.page || 1,'all', function(page){
                 locals.page = page
                 res.render('index', locals);
             });
-        })
+        });
     });
 
     app.post('/login', function(req, res){
@@ -72,8 +72,21 @@ module.exports = function(app) {
             res.render('post', locals);
         });
     });
-    app.get('/tags/:tag(*):format(.json)?', function(req, res){
-        res.render('tags/holding-page', {post:{title : "Tag Search"}, editable:false,user : UM.getUser(req)});
+    app.get('/tags/:tag(css|js|html|html5|accessibility):format(.json)?:page(/(\\d+))?', function(req, res){
+        var locals = getLocals(req);
+        PM.metadata('index', '/', function(post){
+            locals.post = post;
+            PM.paged('post',req.params.page || 1, req.params.tag, function(page){
+                if (req.params.format=='.json'){
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    res.end(JSON.stringify(page));
+                } else{
+                    locals.page = page
+                    res.render('index', locals);
+                }
+            });
+        })
+
     });
 
 //    app.get('/posts/:post/edit', function(req, res){

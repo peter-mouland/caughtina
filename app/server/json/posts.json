@@ -35,7 +35,8 @@
 'For me, this makes the extra effort worth it.</p></section><section><h2>Other Notes</h2><p>When implementing my sollution, I decided to keep all my <abbr title="Accessible Rich Internet Application">ARIA</abbr> attributes on the HTML5 tags themselves.   ' +
 'This is so that in the future, when more <abbr title="Assistive Technology">AT</abbr>\'s do understand the purpose of each tag, the announcements made by screen readers are not duplicated.</p></section><section><h2><a name="sources">References</a></h2><ul class="references"><li><a href="https://developer.mozilla.org/en/Firefox_3_for_developers" target="_new">New developer features in Firefox 3</a></li><li>HTML5 tags to be rendered are header, hgroup, nav, section, article, aside and footer.</li><li>Browsers chosen as being either important or popular IE6, IE7, IE8, IE9, FF3.6, FF15, Opera, Chrome, Safari.</li><li><a href="http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html" target="_new">A Simple HTML5 Fix for IE</a></li><li><a href="http://gs.statcounter.com/#browser_version_partially_combined-ww-yearly-2012-2012-bar">Browser usage statistics for 2012</a></li><li><a href="http://www.w3.org/wiki/HTML/Elements/input/search">Example of an HTML5 element which is used primarily for styling</a></li></ul></section>' +
 '',
-        tags:[ 'Accessibility','HTML5' ]
+        tags:[ 'Accessibility','HTML5' ],
+        tags_lower:[ 'accessibility','html5' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart',
@@ -50,7 +51,8 @@
 'I started writing this as a single post, with a couple of quick tips, but as the post got longer it made sense to split it.</p><h3>Target Design</h3><p>To help put the theory into practise I will be building a tabbed document.'+
 'Each tab will show a set of four articles, each containing an image, logo, title, tag-line and a button.</p><p>The end product should look the same in all browsers from IE6 to IE9 as well as Firefox 3.6 and the latest versons for Firefox (v15), chrome (v21), safari (v6) and Opera (v12).</p><figure><img src="/images/articles/useful-front-end.JPG"><figcaption>The final product, a tabbed document looking pretty.</figcaption></figure><h3>approach</h3><p class="listStatement">Below are the other posts in this mini-series, in order of how I approach most jobs;</p><dl class="contentList"><dt><a href="/posts/client-side-kickstart-design-to-web">part 1 - design to web</a>:</dt><dd>some things that designs don\'t show you</dd><dt><a href="/posts/client-side-kickstart-document-flow">part 2 - document flow</a>:</dt><dd>how to structure the html and the effects of display types</dd><dt><a href="/posts/client-side-kickstart-css3">part 3 - css3</a>:</dt><dd>when to use css3 or stick to images</dd><dt><a href="/posts/client-side-kickstart-ui">part 4 : ui</a>:</dt><dd>css3 support and JS fallback</dd><dt><a href="/posts/client-side-kickstart-javascript">part 5 : javascript</a>:</dt><dd>jQuery pitfalls and testing</dd><dt><a href="/posts/client-side-kickstart-devices">part 6 : devices</a>:</dt><dd>responsive design and media queries</dd><dt><a href="/posts/client-side-kickstart-tracking">part 7 : tracking</a>:</dt><dd>what ARIA is and how to structure your document so <abbr title="Assistive Technologies">AT\'s</abbr> can make sense of it</dd></dl></section>'+
 '',
-        tags:['Accessibility','CSS' ]
+        tags:['Accessibility','CSS' ],
+        tags_lower:[ 'accessibility','css' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-design-to-web',
@@ -76,7 +78,8 @@
 'as you switch tabs in this design, the elements within the tabs should stay in the same position. ' +
 'I.e. the channel logo\'s should always be in the same position, as should the call-to-action at the bottom. ' +
 'if any matching elements move by even a pixel, this will look strange and buggy to the user.</p></section>',
-        tags:['Accessibility','CSS']
+        tags:['Accessibility','CSS'],
+        tags_lower:[ 'accessibility','css' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-document-flow',
@@ -97,7 +100,9 @@
 'You could also use padding (IE will add font-size to the height even with no text inside<sup><a href="#sources">[2]</a></sup>)</li><li>inline-block: This will allow height and width to be set on an but it is not fully cross browser compatible<sup><a href="#sources">[3]</a></sup></li><li>block: These elements will take full width of the screen, so <code class="css">float:left</code> will also have to be used.</li><li>position:absolute : put the element where ever you want, but now you have to specifiy a place for each tab.'+
 'This should be used last as its not very scaleable and elements are taken out of the document flow.'+
 'This means more work is still needed to ensure the rest of the page renders as expected with no overlaps.</li></ul></dd><dt>How to layout the tabs content?</dt><dd class="hide">as the content of each tab starts in the same position, position:absolute has to be used here.'+
-'as the question suggest, this is tab content, as it belongs in the same LI as the tab header.</dd></dl></section>'
+'as the question suggest, this is tab content, as it belongs in the same LI as the tab header.</dd></dl></section>',
+        tags:[ 'Accessibility' ],
+        tags_lower:[ 'accessibility' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-css3',
@@ -145,7 +150,9 @@
 ' The other reason is accessibility.  Doing what we can to help Assistive technology (AT) will in turn help more users.' +
 ' I\'m sure more AT\'s will suport these semantic descriptive tags in the future.' +
 ' I also expect html5 to help Search Engine Optimisation (SEO), maybe not hugely important now, but hopefully soon.</section>',
-        author:'peter-mouland'
+        author:'peter-mouland',
+        tags:[ 'CSS' ],
+        tags_lower:[ 'css' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-ui',
@@ -196,15 +203,16 @@
 '<li>visibility:hidden (still in document flow but not shown)</li>' +
 '<li>transitions?</li>' +
 '</ul></section>',
-        author:'peter-mouland'
+        author:'peter-mouland',
+        tags:[ 'JS' ],
+        tags_lower:[ 'js' ]
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-devices',
         title:'a client side kickstart',
         subtitle:'part 6 : devices',
-        summary: 'Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.'
-        author:'peter-mouland',
-        tags: ['usability','css3','javascript']
+        summary: 'Buzz word of warning, this is about developing one site that fits on many screens - using responsive design.',
+        author:'peter-mouland'
     },
     {   pageType: 'post',
         url:'/posts/client-side-kickstart-tracking',

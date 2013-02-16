@@ -30,18 +30,21 @@ navigation_manager.prototype.setView = function(){
 
 
 navigation_manager.prototype.addFilter = function($el){
-    var filter = utils.textToId($el.text());
+    var filter = utils.textToId($el.text()),
+        $loader =  this.$recentArticles.append('div.loader');
     $el.addClass('selected');
     this.$recentArticles.children().hide().filter('.tag-' + filter).show();
-    this.$recentArticles.append('div.loader')
-    $.getJSON('/tags/css.json')
+    $.getJSON('/tags/' + filter + '.json', function(data){
+        $loader.remove();
+        this.$recentArticles.append(data)
+    });
 
 };
 
 navigation_manager.prototype.removeFilter = function($el){
     var filter = utils.textToId($el.text());
     $el.removeClass('selected');
-    this.$summaries.show()
+    this.$recentArticles.show()
 
 };
 
