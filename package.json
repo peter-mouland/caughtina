@@ -1,6 +1,6 @@
 {
     "name": "caughtinadotcom",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -19,7 +19,6 @@
         "jade": "*",
         "moment": "*",
         "mongodb": "*",
-        "mongoose": "*",
         "stylus": "*",
         "uglify-js": "*",
         "zipstream": "*"
