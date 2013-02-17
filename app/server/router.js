@@ -59,7 +59,7 @@ module.exports = function(app) {
 
     app.get('/about', function(req, res){
         var locals = getLocals(req);
-        PM.metadata('about', '/about', function(post){
+        PM.alldata('about', '/about', function(post){
             locals.post = post;
             res.render('about', locals);
         });
