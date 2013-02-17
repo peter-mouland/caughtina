@@ -1,7 +1,7 @@
 [
     {   pageType: 'index',
         url: '/',
-        title: 'recent posts',
+        title: 'posts',
         author:'peter-mouland',
         body: ''}
 ]

@@ -25,21 +25,12 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/appInfo', function(req, res){
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end(JSON.stringify(app.settings));
-    });
-
-    app.get('/publicInfo', function(req, res){
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end(JSON.stringify(process.env));
-    });
-
     app.get('/:page((\\d+))?', function(req, res){
         var locals = getLocals(req);
-        PM.metadata('index', '/', function(post){
-            locals.post = post;
-            PM.paged('post',req.params.page || 1,'all', function(page){
+        PM.metadata('index', '/', function(index){
+            locals.post = index;
+            locals.tag = 'all';
+            PM.paged('post',req.params.page || 1, locals.tag, function(page){
                 locals.page = page
                 res.render('index', locals);
             });
@@ -86,7 +77,8 @@ module.exports = function(app) {
         var locals = getLocals(req);
         PM.metadata('index', '/', function(post){
             locals.post = post;
-            PM.paged('post',req.params.page || 1, req.params.tag, function(page){
+            locals.tag = req.params.tag;
+            PM.paged('post',req.params.page || 1, locals.tag, function(page){
                 if (req.params.format=='.json'){
                     res.writeHead(200, {'Content-Type': 'application/json'});
                     res.end(JSON.stringify(page));
@@ -155,7 +147,16 @@ module.exports = function(app) {
         }
     });
 
-
+    app.get('/admin/publicInfo', function(req, res){
+        var user = UM.getUser(req);
+        if (!user || !user.admin){
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            res.end('not found');
+        } else {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(process.env));
+        }
+    });
 
 //    app.get('/admin/clearCache', function(req, res){
 //        var user = UM.getUser(req);
