@@ -12,8 +12,9 @@ module.exports = AM;
 AM.prototype.concatFiles = function() {
     var self = this,
         out = self.files.map(function(filePath){
-        return fs.readFileSync(filePath, FILE_ENCODING);
-    });
+            console.log('file: ' + filePath);
+            return fs.readFileSync(filePath, FILE_ENCODING);
+        });
     fs.writeFileSync(self.path, out.join('\n'), FILE_ENCODING);
     console.log('concat: '+ self.path +' built.');
     return self.path;
