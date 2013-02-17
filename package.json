@@ -1,6 +1,6 @@
 {
     "name": "hello",
-    "version": "0.1.8",
+    "version": "0.1.0",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -10,18 +10,20 @@
         "url": "www.caughtina.com"
     },
     "engines":{
-        "node": "0.8.*",
-        "npm":"1.2.10"
+        "node": "0.8.2",
+        "npm":"1.1.41"
     },
     "dependencies": {
-        "bcrypt": "*",
-        "express": "*",
+        "express": "3.0.0beta7",
         "jade": "*",
-        "moment": "*",
-        "mongodb": "*",
-        "mongoose": "*",
         "stylus": "*",
+        "nib": "*",
         "uglify-js": "*",
-        "zipstream": "*"
+        "moment": "*",
+        "fs": "*",
+        "zipstream": "*",
+        "bcrypt": ">= 0.5.x",
+        "mongodb": "*",
+        "connect": "*"
     }
 }
