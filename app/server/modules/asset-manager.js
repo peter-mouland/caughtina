@@ -10,9 +10,10 @@ var FILE_ENCODING = 'utf-8',
 module.exports = AM;
 
 AM.prototype.concatFiles = function() {
+    console.log('building file with:');
     var self = this,
         out = self.files.map(function(filePath){
-            console.log('file: ' + filePath);
+            console.log('   ' + filePath);
             return fs.readFileSync(filePath, FILE_ENCODING);
         });
     fs.writeFileSync(self.path, out.join('\n'), FILE_ENCODING);
@@ -33,16 +34,7 @@ AM.prototype.compile = function(str, path) {
 };
 
 AM.prototype.uglify = function () {
-        var self = this,
-            srcPath = this.concatFiles(),
-            jsp = uglyfyJS.parser,
-            pro = uglyfyJS.uglify,
-            ast = jsp.parse( fs.readFileSync(srcPath, FILE_ENCODING) );
-
-        ast = pro.ast_mangle(ast);
-        ast = pro.ast_squeeze(ast);
-
-        fs.writeFileSync(self.path, pro.gen_code(ast), FILE_ENCODING);
-        console.log('uglify: '+ self.path +' built.');
-        return self.path;
+        var result = uglyfyJS.minify(this.files);
+        fs.writeFileSync(this.path, result.code, FILE_ENCODING);
+        return this.path;
 };
