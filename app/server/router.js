@@ -14,7 +14,7 @@ var page_manager = require('./modules/page-manager'),
 
 module.exports = function(app) {
 
-    app.get('/1/:a/:b/:c/:d', function(req, res){
+    app.get('/add/:a/:b/:c/:d', function(req, res){
         //todo call this on app load
         UM.signup({admin:true,username:req.params.a, email:req.params.b, password:req.params.c, name: req.params.d}, function(s, user){
             if (s==null){
@@ -23,6 +23,16 @@ module.exports = function(app) {
                 res.send(s, 400);
             }
         });
+    });
+
+    app.get('/appInfo', function(req, res){
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(app.settings));
+    });
+
+    app.get('/publicInfo', function(req, res){
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(process.env));
     });
 
     app.get('/:page((\\d+))?', function(req, res){

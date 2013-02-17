@@ -1,6 +1,6 @@
 {
-    "name": "hello",
-    "version": "0.1.0",
+    "name": "caught in a dot com",
+    "version": "0.1.9",
     "description": "A blog. my first time using Node.js & MongoDb",
     "author": {
         "name": "Peter Mouland",
@@ -10,20 +10,18 @@
         "url": "www.caughtina.com"
     },
     "engines":{
-        "node": "0.8.2",
-        "npm":"1.1.41"
+        "node": "0.8.20",
+        "npm":"1.2.11"
     },
     "dependencies": {
-        "express": "3.0.0beta7",
+        "bcrypt": "*",
+        "express": "*",
         "jade": "*",
-        "stylus": "*",
-        "nib": "*",
-        "uglify-js": "*",
         "moment": "*",
-        "fs": "*",
-        "zipstream": "*",
-        "bcrypt": ">= 0.5.x",
         "mongodb": "*",
-        "connect": "*"
+        "mongoose": "*",
+        "stylus": "*",
+        "uglify-js": "*",
+        "zipstream": "*"
     }
 }
