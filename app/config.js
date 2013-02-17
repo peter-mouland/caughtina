@@ -4,16 +4,16 @@ stylus = require('stylus');
 module.exports = function(app, exp) {
 
     var js_manager = new asset_manager(app.public + '/js/app.js',
-        [   app.server + '/assets/js/polyfill/bind.js',
-            app.server + '/assets/js/lib/jquery-2.0.0b.js',
-            app.server + '/assets/js/lib/jquery.cookie.js',
-            app.server + '/assets/js/lib/json2.js',
-            app.server + '/assets/js/lib/underscore-min.js',
-            app.server + '/assets/js/lib/backbone-min.js',
-            app.server + '/assets/js/modules/utils.js',
-            app.server + '/assets/js/modules/navigation-manager.js',
-            app.server + '/assets/js/modules/offline-storage-manager.js',
-            app.server + '/assets/js/modules/page-editor.js']);
+        [   app.public + '/js/polyfill/bind.js',
+            app.public + '/js/lib/jquery-2.0.0b.js',
+            app.public + '/js/lib/jquery.cookie.js',
+            app.public + '/js/lib/json2.js',
+            app.public + '/js/lib/underscore-min.js',
+            app.public + '/js/lib/backbone-min.js',
+            app.public + '/js/modules/utils.js',
+            app.public + '/js/modules/navigation-manager.js',
+            app.public + '/js/modules/offline-storage-manager.js',
+            app.public + '/js/modules/page-editor.js']);
     var css_manager = new asset_manager();
 
     app.configure(function(){
