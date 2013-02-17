@@ -29,8 +29,8 @@ module.exports = function(app) {
         var locals = getLocals(req);
         PM.metadata('index', '/', function(index){
             locals.post = index;
-            locals.tag = 'all';
-            PM.paged('post',req.params.page || 1, locals.tag, function(page){
+            locals.post.title = 'all ' + index.title;
+            PM.paged('post',req.params.page || 1, 'all', function(page){
                 locals.page = page
                 res.render('index', locals);
             });
@@ -77,7 +77,7 @@ module.exports = function(app) {
         var locals = getLocals(req);
         PM.metadata('index', '/', function(post){
             locals.post = post;
-            locals.tag = req.params.tag;
+            locals.post.title = req.params.tag + ' ' + post.title;
             PM.paged('post',req.params.page || 1, locals.tag, function(page){
                 if (req.params.format=='.json'){
                     res.writeHead(200, {'Content-Type': 'application/json'});
