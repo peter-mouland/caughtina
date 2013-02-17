@@ -144,15 +144,15 @@ module.exports = function(app) {
 //    });
 
     app.get('/admin/pukePages', function(req, res){
-//        var user = UM.getUser(req);
-//        if (!user || !user.admin){
-//            res.writeHead(404, {'Content-Type': 'text/html'});
-//            res.end('not found');
-//        } else {
+        var user = UM.getUser(req);
+        if (!user || !user.admin){
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            res.end('not found');
+        } else {
             DBM.pukePages();
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.end('{"called":"hugo"}');
-//        }
+        }
     });
 
 
